@@ -9,6 +9,11 @@
 expId=${1:-"$EXP_ID"}
 experimentDir=${2:-"$ATLAS_SC_EXPERIMENTS"}
 skipZooma=${3:-"$SKIP_ZOOMA"}
+outputDir=${4:-''}
+
+if [ -z "$outputDir" ]; then 
+    outputDir=$experimentDir/$expId/
+fi
 
 set -e
 
@@ -138,8 +143,8 @@ if [ -n "$skipZooma" ]; then
   zoomaOption=""
 fi
 
-condense_sdrf.pl -e $expId $technicalReplicatesOption -sc $zoomaOption -o $experimentDir/$expId/
-export CONDENSED_SDRF_TSV=$experimentDir/$expId/$expId.condensed-sdrf.tsv
+condense_sdrf.pl -e $expId $technicalReplicatesOption -sc $zoomaOption -o $outputDir
+export CONDENSED_SDRF_TSV=$outputDir/$expId.condensed-sdrf.tsv
 # Explode condensed SDRF for droplet experiments from RUN_ID to RUN_ID-CELL_ID.
 if [ -f $experimentDir/$expId/cell_to_library.txt ]; then
   use_run_id_cell_id_In_condensed
@@ -158,7 +163,7 @@ if [ -f $CELLTYPES ]; then
     # replace condensed file with the new one that has cell type ontologies.
     mv $CONDENSED_SDRF_TSV"_celltypes" $CONDENSED_SDRF_TSV
     # Append cell type zommification logs to main zoomification logs
-    tail -n+2 $CONDENSED_SDRF_TSV"_zoomalogs" >> $experimentDir/$expId/$expId-zoomifications-log.tsv
+    tail -n+2 $CONDENSED_SDRF_TSV"_zoomalogs" >> $outputDir/$expId-zoomifications-log.tsv
     rm $CONDENSED_SDRF_TSV"_zoomalogs"
   fi
 fi
