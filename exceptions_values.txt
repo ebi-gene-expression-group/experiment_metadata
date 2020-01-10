@@ -1,0 +1,1238 @@
+0.05%	0.055 M
+0.10%	0.1 mM
+10:00 PM	10 ppb
+97%	~95%
++	+/-
+<=1 year biopsy - Banff: cg=0	>=1 year biopsy - Banff: cg=0
+<10 years	>40 years
+>=1 year biopsy - Banff: cg=0	>=1 year biopsy - Banff: cg>0
+>=1 year biopsy - Banff: cg>0	>=2 year biopsy - Banff: cg=0
+0 mg/kg	0 mg/m3
+0 nM	0 ppm
+0-1 h	0-2
+0.001 mg_per_kg_per_day	0.001 ug_per_kg_per_day
+0.1 mM	0.1 uM
+0.1 ug	0.1 uM
+0.1 uM	0.1 umol
+0.1 uM	0.2 mM
+0.5 mL	0.5 mM
+0.5 mM	0.5 nM
+0.5 nM	0.5 nmol
+0.5 ppm	0.5 uM
+1 ÂµM GA3	1 ÂµM IAA
+1 mM	1 nM
+1 nM + 1 uM	1 nM + 10 nM
+1.5 mM	1.5 nM
+10 ÂµM ABA	10 ÂµM ACC
+10 ppb	10 ppm
+10 uM	10 umol
+10-8 M N-OH-PhIP	10-9M N-OH-PhIP
+100 d	10B
+100 ng_per_L	100 ng_per_mL
+100 pM	100 ppb
+100 ppb	100 ppm
+100 ul	100 uM
+100 uM	100 umol
+1000 nM	1000 ppm
+1000 U/ml	1000 uM
+1000 uM	10000 nM
+10000 nM	10000 ppm
+10A	10B
+10B	10C
+10C	10D
+10D	10E
+10E	10F
+10F	10G
+10G	10H
+10H	11A
+11A	11B
+11B	11C
+11C	11D
+11D	11E
+11E	11F
+11F	11G
+11G	11H
+11H	12A
+12 hours light at 25degC : 12 hours dark at 12 degC	12 hours light at 25degC : 12 hours dark at 25degC
+12 hours light at 31 degC : 12 hours dark at 31degC	12 hours light at 31degC : 12 hours dark at 21degC
+129/Sv	129/SvEv
+129rtTAXist3E	129rtTAXist8A
+12A	12B
+12B	12C
+12C	12D
+12D	12E
+12E	12F
+12F	12G
+12G	12H
+13 weeks + 5 month + 1 day	13 weeks + 5 month + 13 days
+14-16	14-d
+17a-ethynylestradiol 10 milligrams per kilogram per day	17a-ethynylestradiol 1 milligram per kilogram per day
+17a-ethynylestradiol 1 milligram per kilogram per day	17a-ethynylestradiol 10 milligrams per kilogram per day
+189N	189T
+1x75D	2x75
+1x DSS, no recovery	1x DSS, recovery
+2 mg/m3	2 mg/ml
+2 nM	2 ppm
+2 ppm	2 uM
+2 weeks	2-4 weeks
+2-4 days	20 days
+20 g/kg	20 mg/kg
+20 nM	20 ppm
+20 nM	20 uM
+20 ppm	20 uM
+200 nM	200 ppm
+200 nM	200 uL
+24h after cornea chemical injury	4h after corneal chemical injury
+25 ul	25 uM
+250 uM	270 pM
+293S	293T
+3 mM	3 nM
+30 DAS	30 days
+30 pM	30 ppm
+30 pM	30 uM
+30 ppm	30 uM
+3000 ppm	30000 nM
+358N	358T
+358T	359N
+359N	359T
+35S::C2	35S::CBF2
+35S::SUB1A	35S::SUB1C
+360N	360T
+363N	363T
+363T	364N
+364N	364T
+364T	365N
+365N	365T
+365T	367N
+367N	367T
+375N	375T
+375T	376N
+376N	376T
+"39,Xm (XmO)"	"39,Xp (XpO)"
+3h doxycycline plus 4	3h doxycycline plus3
+4 days under continuous light supplemented with UV-B under a 305nm cutoff filter (+UV-B)	4 days under continuous light supplemented with UV-B under a 345nm cutoff filter (?UV-B)
+-4 hours	4 hours
+4-7 days	4.5 days
+4.5 mM	4.5 nM
+"46, XX"	"46, XY"
+"46, XY"	"47, XXY"
+5 uL	5 uM
+50 mg/kg	50 ng/g
+50 ng/g	50 ng/mL
+500 nM	500 ppm
+500 U/ml	500 ul
+500 ul	500 uM
+5x10-8 M N-OH-PhIP	5x10-9M N-OH-PhIP
+6 mM	6 nM
+6 mM	6 ppm
+6 nM	6 ppm
+6 weeks	6-8 weeks
+6-8 weeks;	6-9 weeks
+6-deoxocastasterone	6-deoxocathasterone
+60 pM	60 uM
+75 nM	75 ppm
+75 nM	75 uM
+75 ppm	75 uM
+8 nM	8 uM
+8 To 12 weeks	8 to 9 weeks
+8 weeks	8-9 weeks
+800 ppm	810 pM
+90-8	90-8TL
+A1	A1-1
+A431_GR	A431_wt
+a498	A549
+A549	llf
+AA7	Aa8
+Aa8	AAK1
+aba2	aba2-2
+ACHN	ACN
+acute rejection IA	acute rejection IB
+acute rejection IB	acute rejection IIA
+acute rejection IIA	acute rejection IIB
+Ada2b null animals rescued with Ada2bL transgene	Ada2b null animals rescued with Ada2bS transgene
+Adamts12 KO	Adamts12 WT
+adult	adult Ce
+aerial part	aerial parts
+affyq_areg_expression	affyq_ereg_expression
+AggrI	AggrII
+AGO1	ago4-1
+AICAR	Air
+AICAR	air
+Air	Akt
+Aire KO	Aire WT
+Akt1 -/-	Akt1+/+
+Akt1 -/-	akt1-1
+Akt1 +/+	Akt1 -/-
+alphaMHC-Cre+/0;MAT1F/+	alphaMHC-Cre+/0;MAT1F/F
+alveolar epithelial type I	alveolar epithelial type II
+ammonia limitation	ammonium limitation
+ammonium limited steady state 1 sample a	ammonium limited steady state 1 sample b
+ammonium limited steady state 1 sample b	ammonium limited steady state 2 sample a
+ammonium limited steady state 2 sample a	ammonium limited steady state 2 sample b
+Andrea	Andreas
+Andreas	Andrey
+androgen-dependent prostate carcinoma	androgen-independent prostate carcinoma
+Ann Arbor stage: I	Ann Arbor stage: IA
+Ann Arbor stage: IA	Ann Arbor stage: IIA
+Ann Arbor stage: IIA	Ann Arbor stage: IIB
+Ann Arbor stage: IIB	Ann Arbor stage: III
+Ann Arbor stage: III	Ann Arbor stage: IIIA
+Ann Arbor stage: IIIA	Ann Arbor stage: IIIB
+Ann Arbor stage: IV	Ann Arbor stage: IVA
+Ann Arbor stage: IVA	Ann Arbor stage: IVB
+Antonino	Antonio
+arm-Abd	arm-abdA
+arm-AbdA	arm-AbdB
+arr21c-ox	arr22-ox
+asian	asn
+Asian	asn
+ATF3 -/-	Atf5-/-
+Atf5+/+	Atf5-/-
+ATM +/-	ATM -/-
+ATX1	atx1
+B117H	B117P
+B140H	B140P
+B220+ B cell	B220+ cell
+B6C3B	B6C3F1
+B6C3F1	B6D2F1
+B6g7	B6I1
+BAFF	BaP
+BALB	BALB/c
+BALB/cByJ	BALB/CJ
+BALB/CJ	Balbc
+Banff IA	Banff IIA
+basal B cell	basal cell
+batch A	batch B
+batch B	batch C
+batch C	batch D
+batch D	batch F
+BC-5	BC1
+BCBL-1	BCKN-1
+Bcl6 +/+ BCR-ABL1-transformed B cell precursor	Bcl6 -/- BCR-ABL1-transformed B cell precursor
+BDC2.5 TCR tg RAG1+/o Foxp3GFP NOD	BDC2.5 TCR tg RAG1o/o Foxp3GFP NOD
+BDCA1+	BDCA1-
+BDCA3+ dendritic cell	BDCA4+ dentritic cell
+BFTC-909	BFTC905
+BFU-E	CFU-E
+Binet stage: A	Binet stage: B
+Binet stage: B	Binet stage: C
+Binet stage: C	Binet Stage:A
+Binet Stage:A	Binet Stage:B
+Binet Stage:B	Binet Stage:C
+bis-(2-chloroethyl) sulfide 1 milligram per kilogram	bis-(2-chloroethyl) sulfide 3 milligrams per kilogram
+BJAB	BJABK3
+Bl-1	Bla-1
+BL6	Bl6J
+BLG-PTEN-P53HET	BLG-PTEN-P53HOM
+body	bone
+body	Bone
+Boyes key 5.10	Boyes Key 6.0
+Boyes Key 6.0	Boyes key 6.9
+BWF1	BXD1
+BXD9	BXDF1
+BXD99	BXDF1
+C/EBP beta	C/EBP delta
+C24	C2S1
+C3H-HeJ	C3H-HeOuJ
+C3H10T1/2	C3H_10T1_2
+C4I	C4II
+C57B6	C57BJ/6
+C57BJ/6	C57BK/6J
+C57BL/6	C57BL/6J
+C57Bl/6	C57BL/6J
+C57BL/6;	C57BL/6J
+C57BL/6J	C57Bl6
+C57BL/6J	C57Bl6N
+C57BL/6J; NeuroD1flox::Crx-Cre+/-	C57BL/6J; NeuroD1flox::Crx-Cre-/-
+C57BL/6J	C57BL/6N
+C57BL/6L	C57BL/6N
+C57BL6/J	C57Bl6/N
+C57BL/10	C57Bl/6
+C57Bl6/N	c57bl6/ncr
+C7H2-R19E7	C7H2-R19F2
+Caen-0	Cal-0
+cal 27	CAL54
+CAL851	Calu1
+calu-1	Calu-3
+Calu-3	Calu1
+calu-6	Calu1
+Calu-6	Calu1
+calu3	Calu6
+CAMTA1	camta1-1
+camta1-2	CAMTA1.2
+camta3-2	CAMTA6.2
+Canary Islands	Canary Islands-0
+Capan-1	CaPan-2
+Capan-2	Capan1
+Carbamazepine 100 micromolar	carbamazepine 12 micromolar
+carbamazepine 12 micromolar	Carbamazepine 3 micromolar
+Carbamazepine 3 micromolar	carbamazepine 300 micromolar
+Carlos	Carol
+castasterone	cathasterone
+CBA/Ca	CBA/CaJ
+CBA/CaJ	CBA/J
+CD-1	CD1
+CD161++CD8aa T cells	CD161++CD8ab T cells
+cd1a	cd3
+cd1a +	cd1a +/-
+cd1a +/-	cd1a -
+CD21hi transitional B cell	CD21lo transitional B cell
+cd3	cd34
+cd3 +	cd3 -
+CD3- CD56dim CD62L+ NK cell	CD3- CD56dim CD62L- NK cell
+cd34	cd38
+cd34 +	cd34 -
+CD34-DC	CD34-LC
+CD34+CD19+	CD34-CD19+
+CD34+CD1a- thymocyte	CD34+CD38- thymocyte
+CD34+CD38-/lowCD19+	CD34+CD38-/lowCD19-
+cd38	cd4
+cd38 +	cd38 -
+CD38+	CD38-
+CD3e+/+TAL1-LMO1 tg	CD3e-/-TAL1-LMO1 tg
+cd4	cd8
+cd4 +	cd4 -
+CD4+ CD25- CD45RB low LAG3+ T cell	CD4+ CD25- CD45RB low LAG3- T cell
+CD4+ CD25+ cell	CD4+ CD25- cell
+CD4+CD2	CD4+CD25+
+CD4+hCD2+	CD4+hCD2-
+CD4+ T cells	CD8+ T cell
+CD44-CD25-CD4-CD8- (negA)	CD44-CD25-CD4-CD8- (negB)
+CD45-positive	CD49a positive
+CD45+	CD45-
+cd8 +	cd8 -
+CD8+CD28+	CD8+CD28-
+CD8+CD45RA-CD40L+	CD8+CD45RA-CD40L-
+CDH13 M	CDH13 U
+Cebpa fl/fl; Cebpb fl/fl; K14-Cre tg/+	Cebpa fl/KK; Cebpb fl/fl; K14-cre tg/+
+Cebpa K/K	Cebpa K/L
+Cebpa K/K mutant	Cebpa K/L mutant
+Cebpa K/L	Cebpa L/L
+Cebpa K/L mutant	Cebpa L/L mutant
+CEN.PK113-7A	CEN.PK113-7D
+central memory 1 CD4-positive T cell	central memory CD4-positive T cell
+CFTR-	CFTR-/-
+Chemotherapeutic response: good	Chemotherapeutic response: poor
+chemotherapy: complete response	chemotherapy: incomplete response
+chip_lot	chip_row
+chromosome 5 disomic	chromosome 5 trisomic
+chronic allograft nephropathy grade I	chronic allograft nephropathy grade II
+chronic allograft nephropathy grade II	chronic allograft nephropathy grade III
+CJ7	CL8
+CL 316	CLE10
+ClC-2 knock out	ClC-6 knockout
+CLP Ly6D+ CLP cell	CLP Ly6D- CLP cell
+"Cluster B lysis at D4, treated with microRNA cluster B,Group2"	"Cluster B lysis at D8, treated with microRNA cluster B, Group2"
+CM7-1	CMA-01
+co	co-2
+cognitively impaired	cognitively unimpaired
+coi1 mutant	coi1-2 mutant
+Col	Col-0
+Col	CSB
+col-5	Col-7
+Col-7	Col0
+COLO201	colo205
+Columbia	Columbia-0
+columbia	Columbia-0
+Columbia	Columbia-3
+Columbia-0	Columbia-0 G1
+Compound	compound 1
+Compound 40 	Compound 41
+Compound 76 	Compound 77
+Concentration: 12.7 pM	Concentration: 127 uM
+Concentration: 7.7 mM	Concentration: 77 uM
+Concentration: 8.1 pM	Concentration: 8.5 mM
+Connexin 30-/-	connexin30 -/-
+Constantinidis type A	Constantinidis type C1
+containing inorganic selenium	containing organic selenium
+control diet	control DMEM
+control shRNA	control siRNA
+Control-a	Control-b
+Control-b	Control-c
+Control-c	Control-d
+COPD; GOLD-I	COPD; GOLD-II
+COPD; GOLD-II	COPD; GOLD-III
+Cre+;Tgfbr2lox/lox	Cre+;Tgrbr2lox.lox
+cs26 mutant	Csb mutant
+Cvi	Cvi-1
+Cxcl12	CXCL4
+CXCL4	Cxcr4
+CXCR4 I shRNA	CXCR4 II shRNA
+CXCR4 shRNA I	CXCR4 shRNA II
+cyclin D1 shRNA	cyclin T1 shRNA
+D1	d20
+dAda2a mutant	dAda3 mutant
+Damien	Daniel
+DAOY	dark
+Dasatinib 1.5 nanomolar	dasatinib 100 nanomolar
+dasatinib 100 nanomolar	Dasatinib 10000 nanomolar
+Dave	David
+Day 0	day 1
+day 12	Day 14
+Day 14	day 2
+day 7	Day0
+db/db	db/m
+DBA deletion	DBA Deletion 1
+dcp1	DCR1
+dcrfl/+; R26R-yfp	dcrfl/fl; R26R-yfp
+dermal	dermis
+DEX-inducible construct with reg-delta17	DEX-inducible construct with rga-delta17
+DFO	DMSO
+DFS = 0 months	DFS = 1 month
+DFS = 1 month	DFS = 10 months
+Dicer -/-	Dicer D/+
+Dicer D/+	Dicer D/D
+differentiated	undifferentiated
+diploid	euploid
+DiseaseStaging: I	DiseaseStaging: III
+dlx1/2 +/-	dlx1/2 -/-
+DM	DMN
+DMN	DMSO
+DMNQ	DMSO
+DN1	DN2a
+DN2a	DN2b
+DN2b	DN3
+DOHH2	DoTc2
+donor	donorid
+DOX	dox
+doxycycline 1 microgram per milliliter	doxycycline 2 micrograms per milliliter
+DP CD3+ thymocyte	DP CD3- thymocyte
+DRFZ	DSMZ
+DSMO	DSS
+Dukes B	Dukes C
+Dukes C	Dukes D
+DUSP1+/+	DUSP1-/-
+E14	E14+
+E14TG2a	E14Tg2aIV
+E14TG2a_ABD	E14TG2a_GBD
+edr1 mutant	eds16 mutant
+EFM19	EFM192A
+elav c155>2x rCAA_independent line 3	elav c155>2x rCAG_independent line 1
+elav c155>2x rCAG_independent line 3	elav c155>2x rCUG_independent line 1
+elavII>4x rCAA_independent line 2	elavII>4x rCAG_independent line 1
+elavII>4x rCAG_independent line 2	elavII>4x rCUG_independent line 1
+embryonic day 10	Embryonic day 10.5
+embryonic day 10.5	Embryonic day 12.5
+embryonic day 12	Embryonic day 12.5
+Embryonic day 13.5	embryonic day 14.5
+EML	Eol1
+Enkheim	Enkheim-T
+Eoin	Eric
+embryo	embryo Ce
+epidermal growth factor 1 nanomole	epidermal growth factor 10 nanomoles
+epididymal fat	epididymal WAT
+epithelial type I	epithelial type II
+erbb3b +/+	erbb3b -/-
+ES P-F+	ES P-F-
+ES P+F-	ES P-F+
+ES P+F+	ES P+F-
+ES2	ESC2
+esg	Est
+ESW-N+P+	ESW-N-P-
+"ethanol tolerant strain, diploid"	"ethanol tolerant strain, haploid"
+eto1-4	etr1-1
+EVSA-T	EVSA1
+exoS	exoT
+"exoS, exoY deleted Pseudomonas aeruginosa PAK"	"exoT, exoY deleted Pseudomonas aeruginosa PAK"
+expressing plasmid borne histone H3 protein encoding the substitutions K42A	expressing plasmid borne histone H3 protein encoding the substitutions K42L
+expressing plasmid borne histone H3 protein encoding the substitutions K42L	expressing plasmid borne histone H3 protein encoding the substitutions K42Q
+expressing plasmid-borne histone H3 protein encoding the substitutions K42A	expressing plasmid-borne histone H3 protein encoding the substitutions K42L
+expressing plasmid-borne histone H3 protein encoding the substitutions K42L	expressing plasmid-borne histone H3 protein encoding the substitutions K42Q
+F9	FRT
+Fa/?	fa/fa
+fab_type: M2	fab_type: M2E0
+fab_type: M4	fab_type: M4E0
+fab_type: M4E0	fab_type: M4Eo
+FAB: M4 acute myeloid leukemia	FAB:M3 acute myeloid leukemia
+FABP-hCFTR+|-/mCftr+|+	FABP-hCFTR+|-/mCftr-|-
+FAC	FACT
+FAK +/+	FAK -/-
+Fancc-/-	Fancg-/-
+Fas shRNA4 knock-out	FAS shRNA6 knock-out
+Fatp4+/-	Fatp4-/-
+FCCP	FCS
+FEC	FECT
+female	male
+fetal	fetus
+fibroblast	Fibroblastic
+FIGO IA	FIGO IB
+FIGO IB	FIGO IC
+FIGO IC	FIGO IIA
+FIGO IIA	FIGO IIB
+FIGO IIB	FIGO IIIB
+fistula	no fistula
+fkh1Îfkh2Î	fkh1Îfkh2Î2C
+flower (1 cm)	flower (5 mm)
+FL	FR4
+FLA2 leukemia	FLB1 leukemia
+forskolin 10 micromolar	Forskolin 100 micromolar
+FR4	FRT
+frataxin KO	frataxin WT
+"fresh air, treatment over 5 month + 1 day recovery, 4x1h exposure per day"	"fresh air, treatment over 5 month + 15 days recovery, 4x1h exposure per day"
+FRI FLC	FRI flc
+FRI flc	fri FLC
+fri FLC	fri flc
+fri flc	FRI flc-3
+FRI flc-3	fri flc-3
+FRL	FSL
+frontal lobe	frontal pole
+FSL	FVB
+FVB	FVB/N
+FVB/N	FVB/NJ
+G1	G1-2
+G2	G2-3
+G22	G28T
+G3 Terc-/-/Ku86+/+	G3 Terc-/-/Ku86-/-
+Ga 13 KO	Ga 13 WT
+"gastrin+/-, CFTR+/+"	"gastrin+/-, CFTR-/-"
+genestein 1 milligram per kilogram per day	genestein 10 milligrams per kilogram per day
+genestein 10 milligrams per kilogram per day	genestein 1 milligram per kilogram per day
+GFP	GFP+
+GFP mRNA	GFP siRNA
+GFP+	GFP++
+GI-LI-N	GI-ME-N
+gingiva	gingival
+gl1	GL2
+gl1	gl1T
+gl1T	GL2
+gl1T	gl3
+gl3	gl3-3
+Gleason 8	Gleason 8+
+Gleason 8/9	Gleason 9
+Gleason 8+	Gleason 8/9
+Gli3 -/-; Hoxa13Cre T/+	Gli3 -/f; Hoxa13Cre T/+
+Gli3 +/-; Hoxa13Cre T/+	Gli3 -/-; Hoxa13Cre T/+
+Gli3 +/+; Hoxa13Cre T/+	Gli3 +/-; Hoxa13Cre T/+
+gloubus pallidum external	gloubus pallidum internal
+glucose limited steady state 1 sample a	glucose limited steady state 1 sample b
+glucose limited steady state 1 sample b	glucose limited steady state 2 sample a
+glucose limited steady state 2 sample a	glucose limited steady state 2 sample b
+GM08390	GM08398C
+GOLD stage II	GOLD stage III
+GOLD stage III	GOLD stage IV
+gpa1 mutant	gpa1-4 mutant
+gpa2 mutant	gpr1 mutant
+grade 0	Grade 1
+grade 1	Grade 2
+grade 2	Grade 3
+grade 3	Grade 4
+grade 4	Grade II
+grade 4	grade II
+grade II	grade III
+grade III	Grade IV
+grade III	grade IV
+grade III glioma	grade IV glioma
+group A streptococcus	group B streptococcus
+GTE6	LT6
+gun1	gun1-1
+H1395	H13A
+H13A	H13B
+H13B	H1437
+H2be-GF	H2be-KO
+h460	H520
+H460	H460a
+H720	h82
+h82	H820
+HAP4/hap4	hap4/hap4
+HB-1	HC11
+HC11	HC1C
+HCC95	HCG25
+hct-15	HCT-8
+HCT-8	HCT-8Sa
+hct116	HCT15
+HD PB 3	HD PC 1
+HDAC1 G10 shRNA	HDAC2 B10 shRNA
+head	heart
+heart hypertrophy	heart hypotrophy
+HEC1A	HEC1B
+HEK-293	HEK-293H
+HEK-293H	HEK293
+HEK-293H	HEK-293T
+HEK-293T	HEK293
+HEK293	HEK293T
+HEK293 embryonic kidney	HEK293T embryonic kidney
+Hep G2	Hep-2
+Hep-2	Hep2G
+Hep2G	Hep3B
+Hep3B	HepG2
+hepatocellular carcinoma HBV+	hepatocellular carcinoma; HBV+
+hepatocellular carcinoma; HBV+	hepatocellular carcinoma; HCV+
+heregulin 1 nanomole	heregulin 10 nanomoles
+hESC H9	hES_H1
+HFF1	hFOB
+hFOB	HFSF
+Hh-0	HR-5
+high PD-1 expression	high psf1 expression
+hindlimb loading	hindlimb unloading
+HIV	HRG
+HMCB	HMEC
+HMEC	HMEC S1
+HMEC S1	Hmec-1
+Hnf1a -/-	Hnf1a+/-
+HNF1b transfected	HNF4a transfected
+homozygous SP-C-hCFTR+|+	homozygous SP-C-hCFTR+|-
+HPAF1	HPAM1
+Hr6b+/+	Hr6b-/-
+Hs746T	HS766t
+HSB2	Hsd
+hsp90.2	hsp90.2-3
+hsp90.2-3	hsp90.3
+HT29 ACO2-V5 #C	HT29 ACO2-V5 #UD
+hTERT-immortalized K5+K19+ mammary epithelial cell	hTERT-immortalized K5+K19- mammary epithelial cell
+HUES-1	HUES9
+HUF1	Huh7
+human neuroblastoma cell	human neuroblastoma cells
+HupT3	HuPT4
+hydrogen peroxide 100 micromolar	hydrogen peroxide 100 micromoles
+hyh mutant	hyl1 mutant
+Hypertension	Hypotension
+hypertension	hypertensive
+hypertension	Hypotension
+hypothetical condition A	hypothetical condition B
+hypoxia	hypoxic
+I04	R01
+Ic/3	II/2
+iCLAP	iCLIP
+ICR	Ler
+IDC	IIA
+IDC/IBC	IDC/ILC
+IDC/ILC/DCIS	IDC/ILC/LCIS
+IFN	IgE
+II	IIA
+II	II/2
+II/2	Iib/3
+II/2	IIA
+IIA	IIB
+IIB	III
+IIB	ILC
+IIB	Iib/3
+Iib/3	III/2
+III	IIIA
+III	III/2
+III/3	IIIa/2
+III/3	IIIA
+IIIA	IIIB
+IIIA	IIIa/2
+IIIa/3	IIIb/2
+IIIB	IIIC
+IIIB	IIIb/2
+IIIb/3	IIIc/1
+IIIC	IIIc/1
+IL13-treated	IL17A-treated
+IM8A1-I	IM8A1-II
+IMP(1,3)A	IMP(1,3)B
+IMP(1,3)A siRNA	IMP(1,3)B siRNA
+induced pluripotent stem cell line 15	induced pluripotent stem cell line 1i
+induced pluripotent stem cell line 1i	induced pluripotent stem cell line 1ine
+induced pluripotent stem cell line 1M	induced pluripotent stem cell line 6
+induced pluripotent stem cell line DF19-9-11	induced pluripotent stem cell line DF19-9-7T
+inflorescence (1 cm)	inflorescence (5 mm)
+influenza	influenza A
+influenza A virus	influenza virus
+injured	injury
+inoculated with P. syringae pv. glycinea strain R4 + avrRpm1	inoculated with P. syringae pv. glycinea strain R4 + avrRps4
+inoculated with P. syringae pv. glycinea strain R4 + avrRps4	inoculated with P. syringae pv. glycinea strain R4 + avrRpt2
+inoculated with P. syringae pv. tomato strain DC3000 + avrRpm1	inoculated with P. syringae pv. tomato strain DC3000 + avrRps4
+inoculated with P. syringae pv. tomato strain DC3000 + avrRps4	inoculated with P. syringae pv. tomato strain DC3000 + avrRpt2
+interleukin 19	interleukin 1b
+interleukin 1b	interleukin 20
+interleukin 26	interleukin-3
+international staging system: I	international staging system: II
+international staging system: II	international staging system: III
+Ishikawa	Ishikawa HIshikawa value not linked to any samples or assays
+Ist1	ITM
+ITP PB 3	ITP PC 1
+IV	IV/2
+J03A	J03B
+J10A	J10B
+J10B	J121
+J82	JAR
+JAR	JB6
+JM1	JMN1B
+Joel	Joerg
+July	June
+Jurkat	Jurkat T
+K07	KP1
+karen	Karin
+Kasumi2	Kasumi_1
+Katherine	Katrine
+keratinocyte	keratocyte
+"keratinocyte, P-2 treatment"	"keratinocyte, PP-2 treatment"
+Klf1-/-	KLF10 -/-
+KM-H2	KM12
+KM4	KMH2
+"knockout, untreated, replicate: m2"	"Knockout, untreated, Replicate: m3"
+kp21-4	Kp27-5
+kp21-4 	Kp27-5 
+KRAS mutation: c.35G>A	KRAS mutation: c.35G>C
+KRAS mutation: c.35G>C	KRAS mutation: c.35G>T
+KRAS mutation: c.35G>T	KRAS mutation: c.38G>A
+kras_mutation c.35G>C	kras_mutation c.35G>T
+kras_mutation c.35G>T	kras_mutation c.38G>A
+L1 larva	L1 larva Ce
+lactation	Lactation D9
+larvae	Larval
+LeB4	lep
+left leg	left lung
+lens	Ler
+lep	Ler
+Ler	Ler-0
+LHm	lhy
+limb bud	limbus
+limb girdle muscular dystrophy 2A	limb girdle muscular dystrophy 2B
+limb girdle muscular dystrophy 2B	limb girdle muscular dystrophy 2I
+lin- CD34+	lin- CD34-
+lin+ CD34+	lin- CD34+
+Line 1	line 128
+line 17	Line 2
+Line 2	line 23
+Lineage-c-Kit+Sca-1+CD34+	Lineage-c-Kit+Sca-1+CD34-
+low PD-1 expression	low psf1 expression
+lp1	LP9
+LP9	LY2
+LPA	LPS
+"LSK, Flk2- Ncad+"	"LSK, Flk2- Ncad-"
+"LSK, Flk2+ Ncad-"	"LSK, Flk2- Ncad+"
+"LSK, Flk2+ Ncad+"	"LSK, Flk2+ Ncad-"
+Lu130	LU135
+Lu130 lung small cell cancer	LU134 lung small cell cancer
+Lu135	LU139
+Lu139	LU165
+lug-3	lux-2
+LuminalA	LuminalB
+lung adenocarcinoma (NCI_Thesaurus C0152013) has DiseaseStaging Stage I	lung adenocarcinoma (NCI_Thesaurus C0152013) has DiseaseStaging Stage II
+lung adenocarcinoma (NCI_Thesaurus C0152013) has DiseaseStaging Stage II	lung adenocarcinoma (NCI_Thesaurus C0152013) has DiseaseStaging Stage III
+lung adenocarcinoma (NCI_Thesaurus C0152013) has DiseaseStaging Stage III	lung adenocarcinoma (NCI_Thesaurus C0152013) has DiseaseStaging Stage IV
+lung epithelia	lung epithelial
+lymph node stage 1	lymph node stage 2a
+lymph node stage 2a	lymph node stage 2b
+lymph node stage 2b	lymph node stage 2c
+lymph node stage 2c	lymph node stage 3
+M059J	M059K
+M059K	M091
+mammary luminal ER+ cell	mammary luminal ER- cell
+Marcelo	Marco
+Marco	Marek
+Marek	Maria
+maria	Mario
+Marjan	Marta
+Marta	Martin
+MATa URA3 HIS3 TRP1 LEU2 SUC2 MAL28C snf1 (1	MATa URA3 HIS3 TRP1 LEU2 SUC2 MAL28C snf1(4
+maternal Ring1-Rnf+	maternal Ring1-Rnf2-
+Math1_LacZ/+	Math1_LacZ/-
+mating_type_a	mating_type_a/a
+mating_type_a/alpha	mating_type_alpha
+MCF-7:2A	MCF-7:5C
+mCftr+|+	mCftr-|-
+MDA-MB-231-S1a-2	MDA-MB-231-S1b-1
+MDA-MB-435	MDA-MB-435s
+MDA-MB-435s	MDA-MB-436
+mdx	MGA
+mdx;utrn+/+	mdx;Utrn-/-
+MEC1	MEG01
+Media change	media changed
+memory-impaired	memory-unimpaired
+mesenteric LN_CD4+CD25+	mesenteric LN_CD4+CD25-
+MESSA	Met5A
+metagroups_15	metagroups_4
+metagroups_4	metagroups_6
+metaphase I oocyte	metaphase II oocyte
+metastasis	metastatic
+mg/kg	mg/m3
+MIG1/mig1	mig1/mig1
+miR-9 transfection	miR-9* transfection
+miR156b transgenic	miR159a transgenic
+miR221 transfected	miR222 trasfected
+mixed	Mixer-
+Mixl1+/-	Mixl1-/-
+MK6	MKP
+MLC-CnAa	MLC-CnAb1
+MM.1R	MM.1S
+MM.1S	MM1
+MM.1s	MM1
+MM1	MM1S
+MM1S	MM6
+MMTV-c-myc/Hunk KO; Gender: Female; Tissue: Mammary gland tumors; Strain: FVB	MMTV-c-myc/Hunk WT; Gender: Female; Tissue: Mammary gland tumors; Strain: FVB
+Molecular genetic testing for the unstable polymorphic trinucleotide repeat (CAG)n in exon 1 of the IT15 gene. Two alleles detected. Allele sizes 17 and 49 repeats (All repeats are  1).	Molecular genetic testing for the unstable polymorphic trinucleotide repeat (CAG)n in exon 1 of the IT15 gene. Two alleles detected. Allele sizes 17 nd 42 repeats (All repeats are  1).
+MMTV-ras/p53-/-	MMTV-ras/p53+/+
+MMTV-ras/p53+/+	MMTV-ras/p53-/-
+Mo17	mock
+Molt-3	MOLT-4
+MOLT-4	MOLT16
+msi1-as	msi1-cs
+MSL3	Mtr3
+MsMsRfrf	MsMsrfrf
+MsMsrfrf	Msmsrfrf
+Msmsrfrf	msmsrfrf
+MT-1	MT3
+MT-4	MT1
+MT4	MV4
+MTHFR+/-	MTHFR+/+
+mutant hungtingtin; p62 -/-	mutant hungtingtin; p62 +/+
+mutant hungtingtin; p62 +/+	mutant hungtingtin; p62 -/-
+MYB28 knock out	MYB29 knock-out
+myoctye	myocyte
+n/a	NAA
+n/a	NS1
+"N0, M0, T1a"	"N0, M0, T1b"
+"N0, M0, T1b"	"N0, M0, T2"
+"N0, M0, T2"	"N0, M0, T3a"
+"N0, M0, T3a"	"N0, M0, T3b"
+"N0, M0, T3b"	"N0, M0, T4a"
+"N0, M0, Ta"	"N0, Mx, T3a"
+"N0, Mx, T3a"	"N1, M0, T3a"
+"N1, M0, T3a"	"N1, M0, T3b"
+"N2, M0, T3b"	"N2, M0, T4a"
+"N2, M1, T4a"	"N2, Mx, T4a"
+N231	N2A
+NAA	NaCl
+NaCl	NaOH
+Nc-1	Nd-1
+NCI-H226	NCI-H322M
+ND	NEG
+NDR1+/-	NDR1-/-
+negative control shRNA	negative control siRNA
+neonatal	neonate
+neuron	neuronal
+neuronal	Neurons
+NeutrI	NeutrII
+NFATc1 fl/fl MxCre+	NFATc1 fl/fl MxCre-
+NHEK cell line	NHLF cell line
+Niederzenz	Niederzenz-1
+NK92	NKYS
+Nkx2-1 overexpression	NKX2-8 overexpression
+NMR-1	NMRI
+No	none
+none	NOT1
+Notch3+/+	Notch3-/-
+Nrf+/+	Nrf-/-
+NT-1	NTci
+NTci	NuLi
+"Nx, M1, T3a"	"Nx, Mx, T3a"
+od260	od280
+Olig1cre/+;Dnmt1flox/flox	Olig1cre/+;Dnmt3aflox/flox
+Olig1+/+;Dnmt1flox/flox	Olig1+/+;Dnmt3aflox/flox
+Oliver	Olivier
+OPEC	OPM2
+Oregon R	Oregon Red
+osteoblast	osteoclast
+OsTOP6A3 overexpression	OsTOP6B overexpression
+OTHER: Day 6	OTHER: Day3
+ovary	OVCAR8
+OX0124:MZ twin	OX0125:DZ twin
+OX0126:DZ twin	OX0127:MZ twin
+OX0134:MZ twin	OX0135:DZ twin
+OX0140:DZ twin	OX0141:MZ twin
+OX0142:MZ twin	OX0143:DZ twin
+OX0144:DZ twin	OX0145:MZ twin
+OX0150:MZ twin	OX0151:DZ twin
+OX0166:DZ twin	OX0167:MZ twin
+OX0177:MZ twin	OX0178:DZ twin
+OX0181:MZ twin	OX0182:DZ twin
+OX0182:DZ twin	OX0184:MZ twin
+OX0184:MZ twin	OX0186:DZ twin
+OX0187:DZ twin	OX0188:MZ twin
+OX0203:MZ twin	OX0204:DZ twin
+OX0205:DZ twin	OX0206:MZ twin
+OX0207:MZ twin	OX0208:DZ twin
+OX0223:MZ twin	OX0224:DZ twin
+OX0225:DZ twin	OX0226:MZ twin
+OX0251:MZ twin	OX0252:DZ twin
+OX0253:DZ twin	OX0254:MZ twin
+OX0257:MZ twin	OX0258:DZ twin
+OX0274:DZ twin	OX0275:MZ twin
+OX0278:MZ twin	OX0279:DZ twin
+OX0280:DZ twin	OX0281:MZ twin
+OXGR	oxt6
+P	P/J
+P. syringae pv. glycinea strain R4 + avrRpm1	P. syringae pv. glycinea strain R4 + avrRps4
+P. syringae pv. glycinea strain R4 + avrRps4	P. syringae pv. glycinea strain R4 + avrRpt2
+P. syringae pv. tomato strain DC3000 + avrRpm1	P. syringae pv. tomato strain DC3000 + avrRps4
+P. syringae pv. tomato strain DC3000 + avrRps4	P. syringae pv. tomato strain DC3000 + avrRpt2
+P/J	P07
+P30	p48
+p53 -/+	p53 -/-
+p53 +/+	p53 -/+
+PACLITAXEL x 12	PACLITAXEL x 7 
+"PACLITAXEL x 12, FAC x 6"	"PACLITAXEL x 12, FEC x 4"
+"PACLITAXEL x 7 , FAC x 4"	"PACLITAXEL x 8 , FEC x 4"
+pair-feeding to ZD for 10 days from 5-wk-old	pair-feeding to ZR for 16 days from 5-wk-old
+Pam2CK4 stimulation	Pam3CSK4 stimulation
+PAMAM-NH2 0.1 micromoles	PAMAM-OH 0.1 micromoles
+Paolo	Paul
+PC-1 lung squamous cell cancer	pc-10 lung sqamous cell cancer
+pc-10	PC-14
+PC-3/Mc	PC-3/S
+pc-6	PC-7
+PC-9	PC12
+pc3	PC7
+PC3	PDB
+pc7 lung non-small cell adenocarcinoma	PC9 lung non-small cell adenocarcinoma
+pCO2	pCORthese are part of longer values
+pelvis	penis
+pen3	penta
+peripheral LN_CD4+CD25+	peripheral LN_CD4+CD25-
+pF1	pF1fs
+Phenytoin 1 micromolar	phenytoin 12 micromolar
+Phenytoin 30 micromolar	phenytoin 60 micromolar
+pho1 mutant	phr1 mutant
+pho3 mutant	phr1 mutant
+PKCZ -/-	pkd1 -/-
+pkl	pkl-1
+Plant P rep A	Plant P rep B
+Plant W repA	Plant W repB
+plasma B cell	plasma cell
+pollen mitosis I (PMI)	pollen mitosis II (PMII)
+poly I	poly(I
+polyamide 1	Polyamide 2
+PolyRF+	PolyRF-
+Pon1+/+	Pon1-/-
+ponasterone	ponasterone A
+poor performers	good performers
+PPAR g fl/fl; Lysozyme M cre+	PPAR g fl/fl; Lysozyme M cre-
+PPAR g fl/fl; Lysozyme M cre-	PPAR g fl/fl; Lysozyme M cre+
+Pre-miR-17	Pre-miR-Co
+primary culture	primary culture 1
+primary culture C11sx	primary culture C13dx
+primary culture C13dx	primary culture C14sx
+primary culture C19dx	primary culture C19sx
+primary culture C19sx	primary culture C1dx
+primary culture C22dx	primary culture C24sx
+primary culture C24sx	primary culture C25dx
+primary culture C35sx	primary culture C38dx
+primary culture C39dx	primary culture C39sx
+primary culture C39sx	primary culture C3dx
+primary culture C40dx	primary culture C41sx
+primary culture C41sx	primary culture C43dx
+proliferation	proliferative
+protoplast	protoplasted
+Pseudomonas syringae pv tomato DC3000(avrRpm1)	Pseudomonas syringae pv tomato DC3000(avrRpt2)
+PSG5	pSHR
+Pst DC3000 avrRpm1	Pst DC3000 avrRps4
+PT Protocol A	PT Protocol B
+PT Protocol B	PT Protocol C
+PT Protocol C	PT Protocol D
+PT Protocol D	PT Protocol E
+pT1	pT1a
+pT1a	pT1b
+pT1b	PT2
+pT1b	pT2
+pT2	PT2a
+PT2	PT2a
+PT2a	PT2b
+PT2b	PT3
+PT2b	pT3
+pT3	PT3a
+pT3	pT3a
+PT3	PT3a
+pT3a	PT3b
+pT3a	pT3b
+PT3a	PT3b
+pT3b	PT4a
+PT3b	PT4a
+PTIP KO	PTIP+
+PTPN22 risk allele: C/C	PTPN22 risk allele: C/T
+PTPN22 risk allele: C/T	PTPN22 risk allele: T/T
+pWER	pWOL
+pWER::GFP	pWOL::GFP
+pWER::GFP	pWER::GRP
+qrt_pcr_areg_dct	qrt_pcr_ereg_dct
+Rachel	Rafael
+Rag1-/-	RAG-1-/-
+RD	RDES
+RDES	REC
+REC1	Reh
+Recombinant Tumor Necrosis Factor-Alpha 1 nanogram per milliliter	Recombinant Tumor Necrosis Factor-Alpha 10 nanograms per milliliter
+rectal	rectum
+Reh	RKO
+relapse 0; ER status ER-; brain relapse 0	relapse 1; ER status ER+; brain relapse 0
+relapse 0; ER status ER+; brain relapse 0	relapse 0; ER status ER-; brain relapse 0
+relapse 1; ER status ER+; brain relapse 1	relapse 1; ER status ER-; brain relapse 0
+RERF-LC-AI	RERF-LC-KJ
+RERF-LC-KJ	RERF-LC-MS
+RERF-LC-KJ lung non-small cell adenocarcinoma	RERF-LC-MS lung non-small cell adenocarcinoma
+Response to chemiotherapy: 'NA'	Response to chemiotherapy: 'No'
+right leg	right lung
+right or left presomitic mesoderm (posterior half)(a)	right or left presomitic mesoderm (posterior half)(b)
+RIP1/rip1	rip1/rip1
+RKO	RKOE6
+RLI  mutant	rlk1 mutant
+RNAi of Gap1	RNAi of GFP
+root longitudinal zone	root longitudinal zone 1
+RPL12A  RPL12B double deletion and high copy RPL12A	RPL12A  RPL12B double deletion and high copy RPL12B
+Rpv1-/Rpv2+	Rpv1-/Rpv2-
+Rpv1+/Rpv2-	Rpv1-/Rpv2+
+rrd2 mutant	rre1 mutant
+saline 5	Saline_1
+Sav-0	Se-0
+SBC-5	SBC3
+SBC-5 lung small cell cancer	SBC3 lung small cell cancer
+SBR grade 3	SBR grade NA
+Schneider S2	Schneider SL2
+scrambled shRNA	scrambled siRNA
+SD	UTD
+SDHB mutation	SDHD mutation
+Seedlings grown for 4 days in darkness and 1 hour in red continuous light	Seedlings grown for 4 days in darkness and 18 hours in red continuous light
+senescence	Senescent
+sex__f__age__years_	sex__m__age__years_no samples or assays
+sexually immature	sexually mature
+Sfpq-/-	Sfpq+/-
+sh2B-raf (doxycycline inducible)	shB-Raf (doxycycline inducible)
+SH4	SHEP
+Sha	sham
+Shef3	SHEP
+SHEP	SHEP-2
+SHEP	shGFP
+SHEP-2	SHEP-SF
+SHHF	SHR
+shHMGA2	shhMGA2
+sid2 mutant	sid2-2 mutant
+sid2-2 mutant	sid2 mutant
+siGAM	sim
+Sip1c/+;Olig1-Cre	Sip1c/c;Olig1-Cre
+sir2 overexpression	Sirt1 overexpression
+siVFp(-992)	siVFp(-992)m1
+Six1 -/+ Six4 -/+	Six1 -/- Six4 -/-
+Six1 +/- Six4 +/-	Six1 -/- Six4 -/-
+Six1 +/+ Six4 +/+	Six1 +/- Six4 +/-
+SK-MEL-2	sk-mel-28
+SK-N-AS	SK-N-MC
+SK-N-AS neuroblastoma	SK-N-MC neuroblastoma
+SK-N-F1	SK-N-MC
+SK+	Ski6
+skmel5	SKMES1
+SKMEL5	SKMES1
+SKMES1	SKMM1
+SKNAS	SKNDZ
+SKNFI	SKNMc
+SL-2	SL2
+SL2	SM1
+snb-19	SNB-75
+SNT8	SNU1
+SNU5	SQ-5
+SOCS3+/+	SOCS3-/-
+SPC3649 1 milligram per kilogram	SPC3649 5 milligrams per kilogram
+stage 1	stage 1A
+stage 15a	stage 15b
+stage 15b	stage 15c
+stage 15c	Stage 16
+stage 1A	stage 1C
+stage 1C	Stage 2
+stage 1C	stage 2
+Stage 28	stage 5
+stage 2A	stage 2B
+stage 2a	stage 2B
+stage 2B	stage 2C
+stage 2C	Stage 3
+stage 2C	stage 3
+stage 3	stage 3B
+stage 3B	stage 3C
+stage 3C	stage 3D
+stage 3D	Stage 4
+stage 3D	stage 4
+stage 4	Stage 4s
+stage 4	stage I
+Stage 4s	Stage I
+Stage 4s	stage I
+stage 8-10	stages 1-10
+Stage I	Stage II
+stage I	stage IA
+stage I	stage Ia
+stage I	stage II
+stage Ia	stage Ib
+stage Ia	stage IB
+stage IA	stage Ib
+stage Ib	Stage II
+stage IB	stage IC
+stage Ib	stage II
+stage Ib	stage IC
+stage IB	stage Ib
+stage IC	stage IIa
+stage IC	stage Ic
+Stage II	Stage III
+stage II	stage II/2
+stage II	Stage IIA
+stage II	stage III
+stage II	stage IIa
+stage II/2	Stage IIA
+stage IIa	stage IIb
+stage IIa	stage IIB
+stage IIb	stage Iib/3
+stage IIb	Stage III
+stage IIB	stage IIC
+stage IIb	stage III
+stage IIB	stage IIb
+stage IIb	stage IIC
+stage IIC	stage III
+Stage III	Stage IV
+stage III	Stage IV
+stage III	stage IIIa
+stage III	stage IV
+stage III/3	stage IIIA
+stage IIIa	stage IIIa/2
+stage IIIa	stage IIIB
+stage IIIa	stage IIIb
+stage IIIb	stage IIIb/2
+stage IIIb	stage IIIC
+stage IIIb/3	stage IIIc/1
+Stage IV	stage IV/2
+staphylococcal superantigen SEB	staphylococcal superantigen SEI
+staphylococcal superantigen SEB 100 picograms per milliliter	staphylococcal superantigen SEI 100 picograms per milliliter
+stele	stem
+stn7-1	str6-1
+stress_2fflow_condition	stress_flow_conditionno samples or assays for second one
+Su-dhl1	SUDHL10
+survival: 0 months	survival: 1 month
+survival: 1 month	survival: 10 months
+survival: 20 months	survival: 21 month
+survival: 21 month	survival: 22 months
+survival: 30 months	survival: 31 month
+survival: 31 month	survival: 32 months
+survival: 60 months	survival: 61 month
+survival: 61 month	survival: 64 months
+SVG-A	SVGR2
+sw620	SW684
+T1	T1N0
+T1aN0M0	T1bN0M0
+T1N2	T1N2b
+T1N2b	T1N2bM0
+T2+	T2N0
+T2N0	T2N0G2
+T2N0G3	T2N0M0
+T2N1	T2N1G1
+T2N2	T2N2G3
+T3aN0M0	T3aN0Mx
+T3aN0Mx	T3aN1M0
+T3aN1M0	T3aNxM1
+T3aNxM1	T3aNxMx
+T3b	T3N0
+T3N0	T3N0G3
+T3N0G3	T3N0Gu
+T3N0Gu	T3N0M0
+T3N1	T3N1G2
+T3N2	T3N2b
+T3N2b	T3N2bM0
+T3N2c	T3N2G2
+T3N2G2	T3N2M1
+T47D	T87
+T4a	T4aN0
+T4aN0	T4aN0M0
+T4aN2	T4aN2b
+T4aN2b	T4aN2M0
+T4aN2M1	T4aN2Mx
+T4aN2Mx	T4aNxMx
+T4N0G2	T4N0Gu
+T4N0Gu	T4N0M0
+T4N1G3	T4N1M0
+T4N2b	T4N2bM0
+T4N2bM0	T4N2M0
+T84	T98G
+T87	T98G
+TaT	TaY
+TAT-BH4 peptide	TAT-BH4D2 peptide
+TAT-BH4 peptide 1 micromolar	TAT-BH4D2 peptide 1 micromolar
+"Taxol 80 mg/m2 x12 , FAC X6"	"Taxol 80 mg/m2 x12 , FEC X4"
+"Taxol 80 mg/m2 x12, FAC X 4"	"Taxol 80 mg/m2 x12, FEC X 4"
+Taxol 80 weekly x 11	Taxol 80 weekly X 12
+"Taxol 80 weekly X 12, FAC X 6"	"Taxol 80 weekly x 12, FAC x4"
+"Taxol 80mg/m2. q weekly x 12, FAC X 4"	"Taxol 80mg/m2.q weekly x 12, FAC X 4"
+"Taxol 80mg/m2.q weekly x 12, FAC X 4"	"Taxol 80mg/m2.q.weekly x12, FAC X 4"
+"Taxol q 3wk (225mg/m2) x 4, FAC x4"	"Taxol q 3wk (225mg/m2) x4, FAC x4"
+"Taxol q 3wk (225mg/m2) x4, FAC x4"	"Taxol q 3wk (225mg/m2) x4, Fac x4"
+Taxol q wk (80g/m2) x12	Taxol q wk (80mg/m2) x12
+"Taxol q wk (80g/m2) x12, FAC x4"	"Taxol q wk (80mg/m2) x12, FAC x4"
+Taxol q.3 week x 4 FAC x 4	Taxol q.3 week x 4 FEC  x 4
+"Taxol weekly x 12, FACX 4"	"Taxol weeklyx 12, FAC x 4"
+Taxol x 12 FAC x 6	Taxol x 12 FEC x 4
+TCP4p::rTCP4:GFP	TCP4p::wtTCP4:GFP
+te85	TERV
+TE85	TERV
+temporal lobe	temporal pole
+Terc+/+/Ku86+/+	Terc+/+/Ku86-/-
+tg +/-	tg -/-
+tg/g	tg/wt
+TgA	TgB
+TGF-beta	TGF-Beta1
+tgHuPON1Q192	tgHuPON1R192
+TH/FAC	TH/FEC
+Thoratec (biVAD)	Thoratec (iVAD)
+thymocyte	thyrocyte
+TIA-1 siRNA	TIAR siRNA
+TK10	TMK1
+TNF	TNFa
+TNRC6A	TNRC6B
+TNRC6B	TNRC6C
+toc1 mutant	Toc33 mutant
+total_hip_t_score	total_hip_z_score
+transduction	transfection
+transforming growth factor beta	transforming growth factor beta 1
+Trichuris muris isolate E	Trichuris muris isolate N
+Trichuris muris isolate N	Trichuris muris isolate S
+trigeminal ganglion	trigeminal V ganglion
+trilinolein	trilinolenin
+trisomy 8	trisomy Y
+TT	TT3E
+Tu8988S	Tu8988T
+TuBo	tumor
+tumor necrosis factor	tumor necrosis factor a
+tumor stage: T3a	tumor stage: T3aN1
+type 2A	type 2B
+type A spermatogonia	type B spermatogonia
+type I diabetes mellitus	type II diabetes mellitus
+type I endometrial adenocarcinoma	type II endometrial adenocarcinoma
+type I helper T cell	type II helper T cell
+U19/Eaf2 +/+	U19/Eaf2 -/-
+U266	U266B1
+U87	U87L4
+U87L4	U87MG
+U87MG	U87R4
+UACC-62	UACC812
+Ucn II_3	Ucn I_1
+UMRC3	UMUC3
+undifferentiated ES cells	undifferentiated MEF cells
+uninfected	uninfested
+urocortin I	urocortin II
+urocortin I 15 micrograms per kilogram	urocortin II 15 micrograms per kilogram
+UV-A light pulse	UV-A/B light pulse
+vaccinia virus delE3L	vaccinia virus delK3L
+vaccinia virus E3L Y48A	vaccinia virus E3L Y48F
+VAL	VCaP
+vascular endothelial growth factor	vascular endothelial growth factor-A
+ventricular assist device: Thoratec (biVAD)	ventricular assist device: Thoratec (iVAD)
+vitamin A	vitamin E
+W303-1a	W303-1B
+Wassilewskija	Wassilewskija-0
+WE 68	WI38
+WFS1 KO	WFS1 WT
+WHO grade III	WHO grade IV
+Wi38	WIDR
+WIBR7	WIDR
+wild_type AB	wild_type DT
+wild_type DT	wild_type EDT
+wild_type FH	wild_type FY4
+wild type huntingtin; p62 -/-	wild type huntingtin; p62 +/+
+wild type huntingtin; p62 +/+	wild type huntingtin; p62 -/-
+WL	WOL
+Ws	Ws-2
+Ws	Ws-0
+WT mix background A	WT mix background B
+X chromosome (OdsH locus) F variant from D. mauritiana	X chromosome (OdsH locus) S variant from D. mauritiana
+"X,X"	"X,Y"
+Xanthomonas oryzae PXO99A	Xanthomonas oryzae PXO99A-2
+y	y w
+y+ w roX1+ roX2-/y	y+ w roX1- roX2-/y
+y+ w roX1- roX2-/y	y+ w roX1+ roX2-/y
+YAP	yda
+YAPC	YPAC
+YPA media	YPD media
+ZAP-70+CD38+	ZAP-70-CD38-
+Zbp1-/-Eu-Myc	Zbp1+/+Eu-Myc
+Zbp1+/+Eu-Myc	Zbp1-/-Eu-Myc
+ZD group	ZR group
+Zebrafish regenerating heart after 1 day post-amputation	Zebrafish regenerating heart after 3 days post-amputation
+ZR group	ZS group
+ZR75	ZR75-1
+ZR75-1	ZR7530
+ZR7530	ZR75B
+ZR7530 breast cancer	ZR75B breast cancer
+ZT1	CA1

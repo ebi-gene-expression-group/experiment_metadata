@@ -1,0 +1,16 @@
+affyq_areg_expression	affyq_ereg_expression
+cd1a	cd3
+cd3	cd34
+cd34	cd38
+cd38	cd4
+cd4	cd8
+chip_lot	chip_row
+donor	donorid
+metagroups_15	metagroups_4
+metagroups_4	metagroups_6
+od260	od280
+qrt_pcr_areg_dct	qrt_pcr_ereg_dct
+total_hip_t_score	total_hip_z_score
+AffyQ_AREG_expression	AffyQ_EREG_expression
+pe_pcr_primer_f	pe_pcr_primer_r
+qRT_PCR_AREG_dCt	qRT_PCR_EREG_dCt
