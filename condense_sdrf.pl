@@ -33,6 +33,10 @@ Optional. Print de-bugging messages. WARNING -- this creates a lot of output.
 
 Required. ArrayExpress experiment accession of experiment.
 
+=item -fi --fileInput
+
+Optional. Provide an IDF file explicitly, rather than inferring it from the identifier.
+
 =item -f --factors
 
 Optional. Path to Factors XML config (e.g. E-MTAB-1829-factors.xml)
@@ -128,12 +132,19 @@ $logger->info("Detected -m option, merging technical replicates, using the unmod
 
 
 my $idfFile;
-# Import IDF path required.
-if( $args->{ "single_cell" } ) {
-  $idfFile = get_singlecell_idfFile_path( $expAcc );
+# Import IDF path required if not specified.
+
+if( $args->{ "fileInput" } ) {
+    $idfFile = $args->{ "fileInput" };
+    die "Supplied IDF file $idfFile does not exist." unless -e $idfFile;
 }
 else {
-  $idfFile = get_idfFile_path( $expAcc );
+    if( $args->{ "single_cell" } ) {
+      $idfFile = get_singlecell_idfFile_path( $expAcc );
+    }
+    else {
+      $idfFile = get_idfFile_path( $expAcc );
+    }
 }
 
 # Import IDF if required.
@@ -235,6 +246,7 @@ sub parse_args {
         "b|bioreps"         => \$args{ "bioreps" },
         "d|debug"           => \$args{ "debug" },
         "sc|singlecell"     => \$args{ "single_cell" },
+        "fi|fileInput=s"      => \$args{ "fileInput" },
         "m|mergeTechReplicates" => \$args{ "mergeTechReplicates" }
     );
     unless( $args{ "experiment_accession" } ) {
