@@ -17,7 +17,7 @@ function lowercase_first_letter {
 
 IFS="
 "
-aux="/net/isilonP/public/rw/homes/"`whoami`"/tmp/anatomograms_todo.$$.aux"
+aux="$FG_ATLAS_ISILON_HOMES/"`whoami`"/tmp/anatomograms_todo.$$.aux"
 echo -e "cervix\nmammary\nmammary gland\nanimal ovary\nplacenta\nendometrium\nvagina\nuterus\nfallopian tube" > $aux.female_only
 echo -e "testis\nprostate\ntestes\npenis\nepididymis" > $aux.male_only
 
