@@ -1,0 +1,74 @@
+12-oxophytodienoic acid	12-oxo-phytodienoic acid
+129/SvEv	129SV/EV
+3 months	3-month
+6 month	6 months
+8 to 12 weeks	8 To 12 weeks
+Abortions. Treated with aspirin.	Abortions. Treated with Aspirin.
+adipose tissue	adipose
+adrenal gland	Adrenal gland
+adrenal gland	adrenal
+Aire -/-	AIRE -/-
+Aire -/-	aire -/-
+Aire knock out	aire knock out
+Aire knock out	AIRE knock-out
+animal ovary	ovary
+B lymphocyte	B lymphocytes
+C57BL/10	C57Bl10
+C57BL/6	C57/Bl6
+C57BL/6	C57Bl/6
+C57Bl/6	C57 BL/6
+C57Bl/6	C57/BL6
+C57BL/6 x 129/Sv	C57BL/6 X 129/sv
+C57BL/6J	C57BL6J
+C57BL/6N	C57Bl6N
+calorie-restricted diet	calorie restricted diet
+Canton S	Canton-S
+CD14-positive monocyte	CD14 positive monocyte
+CD4-positive T cell	CD4+ T cells
+CD4-positive T cell	CD4+ T cell
+Col-0	Col0
+cortex	Cortex
+diet-induced obesity	diet induced obesity
+Ercc1 knock out	Ercc1 knock-out
+Fischer 344	Fisher 344
+fresh specimen	fresh sample
+fresh specimen	fresh_sample
+frozen specimen	frozen sample
+frozen specimen	frozen_sample
+gall bladder	gallbladder
+gene knock in	gene_knock_in
+gene knock out	gene_knock_out
+HaCaT	HaCat
+HCT116	HCT-116
+HEK293	HEK 293	
+HEK293	HEK-293
+induced mutation	induced_mutation
+inflorescence	inflorescences
+male	Male
+MCF-7	MCF7
+Mist1 knockout with induced Mist1 expression	Mist1-knockout with induced Mist1 expression
+miR222 transfected	miR222 trasfected
+mixed sex population	mixed_sex
+mixed sex population	mixed sex
+MOLT-4	MOLT4
+myelinating oligodendrocyte	myelinating oligodendrocytes
+newly formed oligodendrocyte	newly formed oligodendrocytes
+oligodendrocyte precursor cell	oligodendrocyte precursor cells
+Oryza sativa Japonica Group	Oryza sativa Japonica group
+Oryza sativa Japonica Group	Oryza sativa japonica
+Oryza sativa Indica Group	Oryza sativa Indica group
+primary macrophage	primary macrophate
+SKBR3	SKBR-3
+Sprague Dawley	Sprague-Dawley
+testis	testes
+TGF-beta1 5 nanograms per milliliter	TGFbeta1 5 nanograms per milliliter
+TGF-beta1 5 nanograms per milliliter	TGF-beta-1 5 nanograms per milliliter	
+type II diabetes mellitus	type 2 diabetes
+type II diabetes mellitus	Type 2 diabetes
+w1118	W1118
+whole organism	whole_organism
+wild type genotype	wild type
+wild type genotype	wild_type
+Xenopus tropicalis	Xenopus (Silurana) tropicalis
+CD1 mus strain	CD1
+CD1 mus strain	CD-1

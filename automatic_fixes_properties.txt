@@ -1,0 +1,21 @@
+disease	disease state
+disease	DiseaseState
+disease	DiseaseState
+disease	DISEASESTATE
+age	Age
+biosource provider	BioSourceProvider
+biosource type	BioSourceType
+clinical information	clinical Information
+culture condition	CULTURE CONDITION
+developmental stage	DevelopmentalStage
+genotype	Genotype
+genotype	GENOTYPE
+growth condition	growth_condition
+organism	Organism
+organism part	OrganismPart
+RNA interference	RNAi
+RNA interference	rnai
+sex	Sex
+specimen with known storage state	Specimen with known storage state
+strain	strain or line
+strain	StrainOrLine
