@@ -6,6 +6,10 @@
 # Optionally:
 # SKIP_ZOOMA (if set, then Zooma mapping is skipped)
 
+expId=${1:-"$EXP_ID"}
+experimentDir=${2:-"$ATLAS_SC_EXPERIMENTS"}
+skipZooma=${3:-"$SKIP_ZOOMA"}
+
 set -e
 
 # Source script from the same (prod or test) Atlas environment as this script
@@ -17,8 +21,8 @@ checkExecutableInPath() {
 }
 
 hasTechnicalReplicates() {
-  [ -z ${EXP_ID+x} ] && "Var EXP_ID for the experiment accession needs to be defined."
-  SDRF_FILE=$ATLAS_SC_EXPERIMENTS/$EXP_ID/$EXP_ID.sdrf.txt
+  [ -z ${expId+x} ] && "Var EXP_ID for the experiment accession needs to be defined."
+  SDRF_FILE=$experimentDir/$expId/$expId.sdrf.txt
 
   columnTechRep=$(head -n 1 $SDRF_FILE | sed 's/\t/\n/g' | awk -F'\t' '{ if( $s ~ /^Comment\s{0,1}\[technical replicate group\]$/ ) { print NR } }' )
   columnRun=$(head -n 1 $SDRF_FILE | sed 's/\t/\n/g' | awk -F'\t' '{ if( $s ~ /^Comment\s{0,1}\[ENA_RUN\]$/ ) { print NR } }' )
@@ -70,7 +74,7 @@ hasTechnicalReplicates() {
 }
 
 use_run_id_cell_id_In_condensed() {
-  C2L=$ATLAS_SC_EXPERIMENTS/$EXP_ID/cell_to_library.txt
+  C2L=$experimentDir/$expId/cell_to_library.txt
   COND=$CONDENSED_SDRF_TSV
   # Format follows the fields of the condensed SDRF, replacing the 3rd field
   # for the 1st field in the cell_to_library file. Condensed can have up to 8 fields
@@ -79,7 +83,7 @@ use_run_id_cell_id_In_condensed() {
     <( grep -v '^# Comment' $C2L | sort -t$'\t' -k 2,2 ) > $COND\_expanded
   if [ ! -s $COND\_expanded ]; then
     # file is empty, no keys matched
-    echo "Error: $EXP_ID sdrf doesn't have the correct technical replicates identifiers or cell identifiers"
+    echo "Error: $expId sdrf doesn't have the correct technical replicates identifiers or cell identifiers"
     echo "as expected in the cell to library file $C2L."
     echo "In the past this has been because the SDRF's technical replicates group has either an issue in the column name,"
     echo "the technical replicate group column is in the incorrect place or there are strange characters in the identifiers."
@@ -98,7 +102,7 @@ use_cell_types_In_condensed() {
   col_num_ct=$( head -1 $CT | tr '\t' '\012' | nl | grep 'inferred cell type' | awk '{ print $1 }' )
   col_num_cell_id=$( head -1 $CT | tr '\t' '\012' | nl | grep 'Cell ID' | awk '{ print $1 }' )
   # For all elements in COND (column 3) that are in CT Cell id column, add columns:
-  # EXP_ID\t\tcell-id\tfactor\tinferred cell types\t<value-for-inferred-cell-type
+  # expId\t\tcell-id\tfactor\tinferred cell types\t<value-for-inferred-cell-type
   # to condensed SDRF
 
   # First generate the additional condensed rows
@@ -130,21 +134,21 @@ if [ "$replicates" = true ]; then
 fi
 
 zoomaOption="-z"
-if [ -n "$SKIP_ZOOMA" ]; then
+if [ -n "$skipZooma" ]; then
   zoomaOption=""
 fi
 
-condense_sdrf.pl -e $EXP_ID $technicalReplicatesOption -sc $zoomaOption -o $ATLAS_SC_EXPERIMENTS/$EXP_ID/
-export CONDENSED_SDRF_TSV=$ATLAS_SC_EXPERIMENTS/$EXP_ID/$EXP_ID.condensed-sdrf.tsv
+condense_sdrf.pl -e $expId $technicalReplicatesOption -sc $zoomaOption -o $experimentDir/$expId/
+export CONDENSED_SDRF_TSV=$experimentDir/$expId/$expId.condensed-sdrf.tsv
 # Explode condensed SDRF for droplet experiments from RUN_ID to RUN_ID-CELL_ID.
-if [ -f $ATLAS_SC_EXPERIMENTS/$EXP_ID/cell_to_library.txt ]; then
+if [ -f $experimentDir/$expId/cell_to_library.txt ]; then
   use_run_id_cell_id_In_condensed
 fi
 
 # Explode condensed SDRF with inferred cell type
-export CELLTYPES=$ATLAS_PROD/singlecell/experiment/$EXP_ID.cells.txt
+export CELLTYPES=$ATLAS_PROD/singlecell/experiment/$expId.cells.txt
 if [ -f $CELLTYPES ]; then
-  echo "Found cell types file for $EXP_ID"
+  echo "Found cell types file for $expId"
   use_cell_types_In_condensed
   annotate_celltypes_condensed_sdrf.pl -c $CONDENSED_SDRF_TSV \
                                        -o $CONDENSED_SDRF_TSV"_celltypes" \
@@ -154,7 +158,7 @@ if [ -f $CELLTYPES ]; then
     # replace condensed file with the new one that has cell type ontologies.
     mv $CONDENSED_SDRF_TSV"_celltypes" $CONDENSED_SDRF_TSV
     # Append cell type zommification logs to main zoomification logs
-    tail -n+2 $CONDENSED_SDRF_TSV"_zoomalogs" >> $ATLAS_SC_EXPERIMENTS/$EXP_ID/$EXP_ID-zoomifications-log.tsv
+    tail -n+2 $CONDENSED_SDRF_TSV"_zoomalogs" >> $experimentDir/$expId/$expId-zoomifications-log.tsv
     rm $CONDENSED_SDRF_TSV"_zoomalogs"
   fi
 fi
