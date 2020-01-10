@@ -32,7 +32,7 @@ for l in $(tail -n +2 $outputPath/curated.tsv); do
     title=`echo $l | awk -F"\t" '{print $10}'`
     experimentType=`echo $l | awk -F"\t" '{print $7}'`
     organism="Homo sapiens"
-    idf="/ebi/microarray/home/arrayexpress/ae2_production/data/EXPERIMENT/$middle/$ae2Acc/$ae2Acc.idf.txt"
+    idf="$AE2_BASE_DIR/$middle/$ae2Acc/$ae2Acc.idf.txt"
     experimentDescription=`grep '^Experiment Description' $idf | awk -F"\t" '{print $2}'`
     geoAccession=`grep "Comment\[SecondaryAccession\]" $idf | awk -F"\t" '{print $2}' | grep GSE`
 

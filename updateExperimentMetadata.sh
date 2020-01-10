@@ -39,10 +39,9 @@ checkZooma() {
 
 #### Main code starts
 today="`eval date +%Y-%m-%d`"
-tmp="/nfs/public/rw/homes/fg_atlas/tmp"
 # Log is setable from the outside through LOG_UPDATE_EXPERIMENT_METADATA
-log=${LOG_UPDATE_EXPERIMENT_METADATA:-"$tmp/${mode}_refresh_experiment_metadata.$today.log"}
-zoomaMappingReport="$tmp/${mode}_zooma_mapping_report.$today.tsv"
+log=${LOG_UPDATE_EXPERIMENT_METADATA:-"$FG_ATLAS_TMP/${mode}_refresh_experiment_metadata.$today.log"}
+zoomaMappingReport="$FG_ATLAS_TMP/${mode}_zooma_mapping_report.$today.tsv"
 MAX_TIME=1800
 SUCCESS_HTTP_RESPONSE=200
 

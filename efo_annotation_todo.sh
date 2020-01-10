@@ -11,7 +11,7 @@ notificationEmail=$1
 
 IFS="
 "
-tmp="/nfs/public/rw/homes/fg_atlas/tmp"
+tmp="$FG_ATLAS_TMP"
 
 aux="$$.aux"
 
