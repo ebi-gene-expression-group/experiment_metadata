@@ -15,10 +15,20 @@ if [ -z "$outputDir" ]; then
     outputDir=$experimentDir/$expId/
 fi
 
+# If an actual file is specified, we can pass that directly
+
+
 set -e
 
 # Source script from the same (prod or test) Atlas environment as this script
 scriptDir=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+# Set SDRF file using experiment DIR and experiment ID
+SDRF_FILE=$experimentDir/$expId/$expId.sdrf.txt
+if [ ! -e "$SDRF_FILE" ]; then
+    echo "SDRF file $SDRF_FILE missing" 1>&2
+    exit 1
+fi
 
 checkExecutableInPath() {
   [[ $(type -P $1) ]] || (echo "$1 binaries not in the path." && exit 1)
@@ -27,7 +37,6 @@ checkExecutableInPath() {
 
 hasTechnicalReplicates() {
   [ -z ${expId+x} ] && "Var EXP_ID for the experiment accession needs to be defined."
-  SDRF_FILE=$experimentDir/$expId/$expId.sdrf.txt
 
   columnTechRep=$(head -n 1 $SDRF_FILE | sed 's/\t/\n/g' | awk -F'\t' '{ if( $s ~ /^Comment\s{0,1}\[technical replicate group\]$/ ) { print NR } }' )
   columnRun=$(head -n 1 $SDRF_FILE | sed 's/\t/\n/g' | awk -F'\t' '{ if( $s ~ /^Comment\s{0,1}\[ENA_RUN\]$/ ) { print NR } }' )
@@ -143,7 +152,7 @@ if [ -n "$skipZooma" ]; then
   zoomaOption=""
 fi
 
-condense_sdrf.pl -e $expId $technicalReplicatesOption -sc $zoomaOption -o $outputDir
+condense_sdrf.pl -e $expId -fi $SDRF_FILE $technicalReplicatesOption -sc $zoomaOption -o $outputDir
 export CONDENSED_SDRF_TSV=$outputDir/$expId.condensed-sdrf.tsv
 # Explode condensed SDRF for droplet experiments from RUN_ID to RUN_ID-CELL_ID.
 if [ -f $experimentDir/$expId/cell_to_library.txt ]; then
