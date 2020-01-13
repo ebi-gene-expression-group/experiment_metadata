@@ -34,7 +34,7 @@ setup() {
         skip "Output from implicit condense pl exists"
     fi
 
-    run mkdir -p $implicit_pl_out_dir && env ATLAS_PROD=$test_data_dir $condense_pl -e $test_exp_acc -o $implicit_pl_out_dir
+    run mkdir -p $implicit_pl_out_dir && env ATLAS_PROD=$test_data_dir $condense_pl -sc -e $test_exp_acc -o $implicit_pl_out_dir
 
     [ "$status" -eq 0 ]
     [ -f "$implicit_pl_out" ]
