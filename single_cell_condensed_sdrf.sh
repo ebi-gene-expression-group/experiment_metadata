@@ -64,6 +64,7 @@ if [ -z "$idfFile" ]; then
 fi
 
 sdrfFile=$(dirname $idfFile)/${expId}.sdrf.txt
+cellTypesFile=$(dirname $idfFile)/${expId}.cells.txt
 cellToLib=$(dirname $idfFile)/cell_to_library.txt
 
 # Check input files exist
@@ -155,7 +156,7 @@ use_run_id_cell_id_In_condensed() {
 }
 
 use_cell_types_In_condensed() {
-  CT=$CELLTYPES
+  CT="$cellTypesFile"
   COND=$CONDENSED_SDRF_TSV
   # Find the column in CT for the cell id and the inferred cell types.
   col_num_ct=$( head -1 $CT | tr '\t' '\012' | nl | grep 'inferred cell type' | awk '{ print $1 }' )
@@ -212,8 +213,7 @@ if [ -f $cellToLib ]; then
 fi
 
 # Explode condensed SDRF with inferred cell type
-export CELLTYPES=$ATLAS_PROD/singlecell/experiment/$expId.cells.txt
-if [ -f $CELLTYPES ]; then
+if [ -f "$cellTypesFile" ]; then
   echo "Found cell types file for $expId"
   use_cell_types_In_condensed
 
