@@ -62,6 +62,10 @@ Optional. Single cell experiments specific
 
 Optional. Map terms to ontology using Zooma.
 
+=item -x --zoomaExclusions
+
+Optional. Path to a zooma exclusions file.
+
 =item -h --help
 
 Optional. Print this help message.
@@ -241,6 +245,7 @@ sub parse_args {
         "e|experiment=s"    => \$args{ "experiment_accession" },
         "o|outdir=s"        => \$args{ "output_directory" },
         "z|zooma"           => \$args{ "zooma" },
+        "x|zoomaExclusions=s" => \$args{ "zooma_exclusions_path" },
         "i|idf"             => \$args{ "idf" },
         "f|factors=s"       => \$args{ "factors_file" },
         "b|bioreps"         => \$args{ "bioreps" },
@@ -269,6 +274,12 @@ sub parse_args {
         print "WARN  - No output directory specified, will write output files in ", Cwd::cwd(), "\n";
         $args{ "output_directory" } = Cwd::cwd();
     }
+    unless($args{ "zooma_exclusions_path" }) {
+        my $defaultExclusionsFile="$abs_path/../supporting_files/zooma_exclusions.yml";
+        print "Using default exclusions file path of $defaultExclusionsFile\n";
+        $args{ "zooma_exclusions_path" } = $defaultExclusionsFile ;
+    }
+
     # If one was specified, check that it's writable and die if not.
     unless(-w $args{ "output_directory" }) {
         pod2usage(
@@ -519,9 +530,8 @@ sub run_zooma_mapping {
     # Filename for Zoomifications to be written to.
     my $zoomificationsFilename = File::Spec->catfile( $args->{ "output_directory" }, $expAcc . "-zoomifications-log.tsv" );
     my $atlasSiteConfig = create_atlas_site_config;
-    my $zoomaExclusionsFile = "$abs_path/../supporting_files/zooma_exclusions.yml";
     my $zoomaExclusions = Config::YAML->new(
-        config => $zoomaExclusionsFile
+        config => $args->{ "zooma_exclusions_path" }
     );
     # Minimum length of a property value allowed for mapping. Anything less
     # than this is excluded.

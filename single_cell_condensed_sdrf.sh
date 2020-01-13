@@ -6,7 +6,7 @@
 # Optionally:
 # SKIP_ZOOMA (if set, then Zooma mapping is skipped)
 
-usage() { echo "Usage: $0 [-e <experiment id>] [-f <IDF file location (optional, otherwise inferred from ATLAS_SC_EXPERIMENTS env var)>] [-s <supply any non-empty string to skip zooma processing (if not specified, inferred from SKIP_ZOOM env var where available)>] [-o <directory to store file output (where not specified, output will be experiment location under ATLAS_SC_EXPERIMENTS env var, where specified)>]" 1>&2; }
+usage() { echo "Usage: $0 [-e <experiment id>] [-f <IDF file location (optional, otherwise inferred from ATLAS_SC_EXPERIMENTS env var)>] [-s <supply any non-empty string to skip zooma processing (if not specified, inferred from SKIP_ZOOM env var where available)>] [-o <directory to store file output (where not specified, output will be experiment location under ATLAS_SC_EXPERIMENTS env var, where specified)>] [-z <zooma exclusions file (optional, overrides default search path)>]" 1>&2; }
 
 # Parse arguments
 
@@ -14,9 +14,10 @@ expId="$EXP_ID"
 idfFile=
 experimentDir="$ATLAS_SC_EXPERIMENTS"
 skipZooma="$SKIP_ZOOMA"
+zoomaExclusions="$scriptDir/../supporting_files/zooma_exclusions.yml"
 outputDir=
 
-while getopts ":e:f:s:o:" o; do
+while getopts ":e:f:s:o:z:" o; do
     case "${o}" in
         e)
             expId=${OPTARG}
@@ -29,6 +30,9 @@ while getopts ":e:f:s:o:" o; do
             ;;
         o)
             outputDir=${OPTARG}
+            ;;
+        z)
+            zoomaExclusions=${OPTARG}
             ;;
         *)
             usage
@@ -193,7 +197,14 @@ if [ -n "$skipZooma" ]; then
   zoomaOption=""
 fi
 
-condense_sdrf.pl -e $expId -fi $idfFile $technicalReplicatesOption -sc $zoomaOption -o $outputDir
+# Pass the same exclusions file to both downstream scrips
+exclusions=
+
+if [ -e "$zoomaExclusions" ]; then
+exclusions=" -x $zoomaExclusions"
+fi
+condense_sdrf.pl -e $expId -fi $idfFile $technicalReplicatesOption -sc $zoomaOption -o $outputDir $exclusions
+
 export CONDENSED_SDRF_TSV=$outputDir/$expId.condensed-sdrf.tsv
 # Explode condensed SDRF for droplet experiments from RUN_ID to RUN_ID-CELL_ID.
 if [ -f $cellToLib ]; then
@@ -206,12 +217,6 @@ if [ -f $CELLTYPES ]; then
   echo "Found cell types file for $expId"
   use_cell_types_In_condensed
 
-  exclusions=
-  exclusionsFile=$scriptDir/../supporting_files/zooma_exclusions.yml
-
-  if [ -e "$exclusionsFile" ]; then
-    exclusions=" -x $exclusionsFile"
-  fi
 
   annotate_celltypes_condensed_sdrf.pl -c $CONDENSED_SDRF_TSV \
                                        -o $CONDENSED_SDRF_TSV"_celltypes" \
