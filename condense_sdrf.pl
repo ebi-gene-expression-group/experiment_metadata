@@ -33,6 +33,10 @@ Optional. Print de-bugging messages. WARNING -- this creates a lot of output.
 
 Required. ArrayExpress experiment accession of experiment.
 
+=item -fi --fileInput
+
+Optional. Provide an IDF file explicitly, rather than inferring it from the identifier.
+
 =item -f --factors
 
 Optional. Path to Factors XML config (e.g. E-MTAB-1829-factors.xml)
@@ -57,6 +61,10 @@ Optional. Single cell experiments specific
 =item -z --zooma
 
 Optional. Map terms to ontology using Zooma.
+
+=item -x --zoomaExclusions
+
+Optional. Path to a zooma exclusions file.
 
 =item -h --help
 
@@ -128,12 +136,19 @@ $logger->info("Detected -m option, merging technical replicates, using the unmod
 
 
 my $idfFile;
-# Import IDF path required.
-if( $args->{ "single_cell" } ) {
-  $idfFile = get_singlecell_idfFile_path( $expAcc );
+# Import IDF path required if not specified.
+
+if( $args->{ "fileInput" } ) {
+    $idfFile = $args->{ "fileInput" };
+    die "Supplied IDF file $idfFile does not exist." unless -e $idfFile;
 }
 else {
-  $idfFile = get_idfFile_path( $expAcc );
+    if( $args->{ "single_cell" } ) {
+      $idfFile = get_singlecell_idfFile_path( $expAcc );
+    }
+    else {
+      $idfFile = get_idfFile_path( $expAcc );
+    }
 }
 
 # Import IDF if required.
@@ -230,11 +245,13 @@ sub parse_args {
         "e|experiment=s"    => \$args{ "experiment_accession" },
         "o|outdir=s"        => \$args{ "output_directory" },
         "z|zooma"           => \$args{ "zooma" },
+        "x|zoomaExclusions=s" => \$args{ "zooma_exclusions_path" },
         "i|idf"             => \$args{ "idf" },
         "f|factors=s"       => \$args{ "factors_file" },
         "b|bioreps"         => \$args{ "bioreps" },
         "d|debug"           => \$args{ "debug" },
         "sc|singlecell"     => \$args{ "single_cell" },
+        "fi|fileInput=s"      => \$args{ "fileInput" },
         "m|mergeTechReplicates" => \$args{ "mergeTechReplicates" }
     );
     unless( $args{ "experiment_accession" } ) {
@@ -257,6 +274,12 @@ sub parse_args {
         print "WARN  - No output directory specified, will write output files in ", Cwd::cwd(), "\n";
         $args{ "output_directory" } = Cwd::cwd();
     }
+    unless($args{ "zooma_exclusions_path" }) {
+        my $defaultExclusionsFile="$abs_path/../supporting_files/zooma_exclusions.yml";
+        print "Using default exclusions file path of $defaultExclusionsFile\n";
+        $args{ "zooma_exclusions_path" } = $defaultExclusionsFile ;
+    }
+
     # If one was specified, check that it's writable and die if not.
     unless(-w $args{ "output_directory" }) {
         pod2usage(
@@ -507,9 +530,8 @@ sub run_zooma_mapping {
     # Filename for Zoomifications to be written to.
     my $zoomificationsFilename = File::Spec->catfile( $args->{ "output_directory" }, $expAcc . "-zoomifications-log.tsv" );
     my $atlasSiteConfig = create_atlas_site_config;
-    my $zoomaExclusionsFile = "$abs_path/../supporting_files/zooma_exclusions.yml";
     my $zoomaExclusions = Config::YAML->new(
-        config => $zoomaExclusionsFile
+        config => $args->{ "zooma_exclusions_path" }
     );
     # Minimum length of a property value allowed for mapping. Anything less
     # than this is excluded.

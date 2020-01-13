@@ -1,0 +1,73 @@
+MAGE-TAB Version	1.1			
+Investigation Title	Determining single-cell mRNA expression profiles of a specific population isolated from zebrafish embryos at 10 hours post fertilization			
+				
+Experimental Design	cell type comparison design			
+Experimental Design Term Source REF	EFO			
+Experimental Design Term Accession Number	EFO_0001745			
+				
+Experimental Factor Name	phenotype	single cell identifier	block	
+Experimental Factor Type	phenotype	single cell identifier	block	
+Experimental Factor Term Source REF	EFO			
+Experimental Factor Term Accession Number	EFO_0000651			
+				
+Person Last Name	Wilson	Yuan	Scott	
+Person First Name	Michael	Xuefei	Ian	
+Person Mid Initials	D		C	
+Person Email	michael.wilson@sickkids.ca	xuefei.yuan@mail.utoronto.ca	ian.scott@sickkids.ca	
+Person Phone				
+Person Fax				
+Person Affiliation	Genetics and Genome Biology Program, Hospital for Sick Children, Toronto, Canada; Department of Molecular Genetics, University of Toronto	Department of Molecular Genetics, University of Toronto	Developmental and Stem Cell Biology Program, Hospital for Sick Children, Toronto, Canada; Department of Molecular Genetics, University of Toronto	
+Person Address	Peter Gilgan Centre for Research and Learning 686 Bay Street Toronto, ON, M5G 0A4	Peter Gilgan Centre for Research and Learning 686 Bay Street  Toronto, ON, M5G 0A4	Peter Gilgan Centre for Research and Learning 686 Bay Street  Toronto, ON, M5G 0A4	
+Person Roles	submitter	experiment performer	investigator	
+Person Roles Term Source REF				
+Person Roles Term Accession Number				
+				
+Quality Control Type				
+Quality Control Term Source REF				
+Quality Control Term Accession Number				
+				
+Replicate Type				
+Replicate Term Source REF				
+Replicate Term Accession Number				
+				
+Normalization Type				
+Normalization Term Source REF				
+Normalization Term Accession Number				
+				
+Date of Experiment	2017-08-20			
+Public Release Date	2018-08-20			
+				
+PubMed ID				
+Publication DOI				
+Publication Author List				
+Publication Title				
+Publication Status				
+Publication Status Term Source REF				
+Publication Status Term Accession Number				
+				
+Experiment Description	Stable zebrafish cell lines were created that expressed GFP under the control of a previously characterized mouse Smarcd3 enhancer (10.7554/eLife.03848). Specifically, the 2.7 kb Mouse Smarcd3-F6 sequence (chr5: 24113559 -24116342 from mm9 assembly) was sub-cloned from a gateway entry vector into the Zebrafish Enhancer Detection (ZED). Tol2-mediated transgenesis was performed and stable lines were created. The Smarcd3-F6:EGFPhsc70 allele was used for all genomics experiments. Smarcd3-F6:EGFPhsc70 embryos were dissociated at 10 hours post fertilization for fluorescent activated cell sorting (FACS) to collect GFP+ cells. Single-cell cDNA libraries were prepared using Fluidgim C1 system ((Fluidgim, PN 100-7168 Rev. B1)). 96 single-cell libraries were collected from three batches of experiments and sequenced on the Illumina HiSeq 2500 platform. Data from 92 cells (number of genes detected > 2000) were kept for clustering analysis. For the tube control experiments we performed mRNA-seq on ~4000 cells from the same embryo batches as the scRNA-seq experiments. GFP negative cells were also included to enable a GFP+ versus GFP- comparison.  Libraries were made following the Fluidgim C1 mRNA-seq tube control protocol (Fluidgim, PN 100-7168 Rev. B1). Polyadenylated mRNA was captured by Oligo-dT primers and PCR amplified after reverse transcription. Final sequencing libraries were made using Nextera XT DNA Sample Preparation Kit and pair-end sequenced on the Illumina HiSeq 2500 platform.			
+				
+Protocol Name	P-MTAB-68336	P-MTAB-68338	P-MTAB-68337	P-MTAB-68339
+Protocol Type	sample collection protocol	nucleic acid library construction protocol	nucleic acid extraction protocol	nucleic acid sequencing protocol
+Protocol Term Source REF	EFO	EFO	EFO	EFO
+Protocol Term Accession Number	EFO_0005518	EFO_0004184	EFO_0002944	EFO_0004170
+Protocol Description	Around 100 Tg(Smarcd3-F6: EGFP) embryos were dechorionated with pronase (Sigma, Cat# 11459643001) and transferred to a 1.5mL Eppendorf tube when they reached bud stage. After incubated in 200ul calcium-free Ringer solution (116 mM NaCl, 2.6mM KCl, 5mM HEPE, pH 7.0) for 5 min, embryos were transferred into a 24-well plate filled with 500 ul TrypLE solution (GIBOCO, TrypLE Express Enzyme, cat #: 12604-013) for dissociation at room temperature.  Embryos were gently homogenized every 5min with P1000 tips. Dissociation was monitored under a dissection scope until most cells were in single-cell suspension. The cell suspension was transferred into 200ul ice-cold FBS to stop the reaction. Cells were centrifuged at 300g for 3min at 4 degree and washed with 500 ul ice-cold DMEM with 10% FBS before resuspended in 500 ul ice-cold DMEM with 1% FBS. Right before the FACS, cells were filtered through a 40um strainer and DAPI was added at a concentration of 5 ug/ml to exclude dead cells. FACS was performed on Beckman Coulter Mo Flo XDP or Mo Flo Astrios sorter with a 100um nozzle by the SickKids-UHN Flow and Mass Cytometry Facility. Cell-doublets and dead cells were excluded based on forward scatter, side scatter and DAPI channel. GFP+ and GFP- cells were sorted into 100% FBS and subjected to RNA-seq or procedures immediately once sorting finished. 30,000-50,000 GFP+ cells and 100, 000 GFP- cells were usually collected in one sort.	Final sequencing libraries were made using Nextera XT DNA Sample Preparation Kit (Illumina, Cat# FC-131-1096).	Single-cell cDNA libraries were prepared using Fluidgim C1 system. After FACS, GFP positive cells were washed twice in DMEM with 3%FBS and filtered through a 40um cell strainer. Cells were adjusted to a concentration of 400-500 cells/ul before mixed with C1 suspension solution at a 5.2:4.8 ratio. Then 10ul final cell mixture was loaded into a C1 medium or small Chip. Cell capture was examined under a microscope and only wells with a single cell captured were included in library construction. Reverse transcription, PCR amplification and cDNA harvesting were performed as per manufactures instruction.  Since the optimized capture efficiency of C1 chip for our cell is 30-40%, 96 single-cell cDNA libraries were collected from three batches of experiments at the end.	120bp pair-end sequenced on an Illumina HiSeq 2500 platform according to manufacturers instruction. Bulk RNA-seq libraries were sequenced to a depth of (181.9) million reads and single-cell mRNA-seq libraries a depth of (3.00.7) million reads.
+Protocol Parameters			C1 chip type	
+Protocol Hardware				Illumina HiSeq 2500
+Protocol Software				
+Protocol Contact				
+				
+Term Source Name	EFO	ArrayExpress		
+Term Source File	http://www.ebi.ac.uk/efo/	http://www.ebi.ac.uk/arrayexpress/		
+Term Source Version	2.38			
+				
+SDRF File	E-MTAB-6077.sdrf.txt			
+Comment [Submitted Name]	Determining single-cell mRNA expression profiles of a specific population isolated from zebrafish embryos at 10 hours post fertilization			
+Comment [SecondaryAccession]	ERP104575			
+Comment [SequenceDataURI]	http://www.ebi.ac.uk/ena/data/view/ERR2146881-ERR2146982			
+Comment [AEExperimentType]	RNA-seq of coding RNA from single cells			
+Comment[ArrayExpressAccession]	E-MTAB-6077			
+Comment [RelatedExperiment]	E-MTAB-6078			
+Comment[EAExpectedClusters]	2			
+Comment[EACurator]	Anja Fullgrabe			
+Comment[EAExperimentType]	differential			
