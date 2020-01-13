@@ -37,8 +37,7 @@ cache:
     - $HOME/miniconda
 
 script:
-    - bash single_cell_condensed_sdrf.sh -e E-MTAB-6077 -f $(pwd)/test_data/E-MTAB-6077/E-MTAB-6077.idf.txt -o $(pwd) -z $(pwd)/test_data/zooma_exclusions.yml 
-    - env ATLAS_SC_EXPERIMENTS=$(pwd)/test_data bash single_cell_condensed_sdrf.sh -e E-MTAB-6077 -o $(pwd) -z $(pwd)/test_data/zooma_exclusions.yml 
+    - ./atlas-experiment-metadata-test.bats
 
 before_cache:
     - if ! [[ $TRAVIS_TAG ]]; then rm -rf $HOME/miniconda/conda-bld; fi
