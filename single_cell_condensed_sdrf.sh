@@ -205,10 +205,17 @@ export CELLTYPES=$ATLAS_PROD/singlecell/experiment/$expId.cells.txt
 if [ -f $CELLTYPES ]; then
   echo "Found cell types file for $expId"
   use_cell_types_In_condensed
+
+  exclusions=
+  exclusionsFile=$scriptDir/../supporting_files/zooma_exclusions.yml
+
+  if [ -e "$exclusionsFile" ]; then
+    exclusions=" -x $exclusionsFile"
+  fi
+
   annotate_celltypes_condensed_sdrf.pl -c $CONDENSED_SDRF_TSV \
                                        -o $CONDENSED_SDRF_TSV"_celltypes" \
-                                       -l $CONDENSED_SDRF_TSV"_zoomalogs" \
-                                       -x $scriptDir/../supporting_files/zooma_exclusions.yml
+                                       -l $CONDENSED_SDRF_TSV"_zoomalogs"$exclusions
   if [ "$?" = "0" ]; then # zooma mapping went fine
     # replace condensed file with the new one that has cell type ontologies.
     mv $CONDENSED_SDRF_TSV"_celltypes" $CONDENSED_SDRF_TSV
