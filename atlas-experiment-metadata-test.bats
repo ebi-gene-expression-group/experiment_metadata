@@ -69,7 +69,7 @@ setup() {
         skip "Output from unmelt exists"
     fi
 
-    unmelt_condensed.R -i $test_condensed_sdrf -o test_unmelted_sdrf --retain-types
+    run unmelt_condensed.R -i $test_condensed_sdrf -o test_unmelted_sdrf --retain-types
 
     [ "$status" -eq 0 ]
     [ -f "$test_unmelted_sdrf" ]
