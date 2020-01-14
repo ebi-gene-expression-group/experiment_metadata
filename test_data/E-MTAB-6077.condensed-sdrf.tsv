@@ -1,0 +1,1218 @@
+E-MTAB-6077		ERR2146881	characteristic	age	10 hour
+E-MTAB-6077		ERR2146881	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146881	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146881	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146881	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146881	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146881	characteristic	post analysis well quality	fail
+E-MTAB-6077		ERR2146881	characteristic	single cell quality	OK, filtered
+E-MTAB-6077		ERR2146881	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146881	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146881	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146881	factor	single cell identifier	XY_B12
+E-MTAB-6077		ERR2146882	characteristic	age	10 hour
+E-MTAB-6077		ERR2146882	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146882	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146882	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146882	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146882	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146882	characteristic	post analysis well quality	fail
+E-MTAB-6077		ERR2146882	characteristic	single cell quality	OK, filtered
+E-MTAB-6077		ERR2146882	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146882	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146882	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146882	factor	single cell identifier	XY_C11
+E-MTAB-6077		ERR2146883	characteristic	age	10 hour
+E-MTAB-6077		ERR2146883	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146883	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146883	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146883	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146883	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146883	characteristic	post analysis well quality	fail
+E-MTAB-6077		ERR2146883	characteristic	single cell quality	OK, filtered
+E-MTAB-6077		ERR2146883	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146883	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146883	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146883	factor	single cell identifier	XY_E9
+E-MTAB-6077		ERR2146884	characteristic	age	10 hour
+E-MTAB-6077		ERR2146884	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146884	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146884	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146884	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146884	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146884	characteristic	post analysis well quality	fail
+E-MTAB-6077		ERR2146884	characteristic	single cell quality	OK, filtered
+E-MTAB-6077		ERR2146884	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146884	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146884	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146884	factor	single cell identifier	XY_G8
+E-MTAB-6077		ERR2146885	characteristic	age	10 hour
+E-MTAB-6077		ERR2146885	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146885	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146885	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146885	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146885	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146885	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146885	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146885	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146885	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146885	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146885	factor	single cell identifier	XY_A10
+E-MTAB-6077		ERR2146886	characteristic	age	10 hour
+E-MTAB-6077		ERR2146886	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146886	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146886	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146886	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146886	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146886	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146886	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146886	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146886	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146886	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146886	factor	single cell identifier	XY_A11
+E-MTAB-6077		ERR2146887	characteristic	age	10 hour
+E-MTAB-6077		ERR2146887	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146887	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146887	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146887	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146887	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146887	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146887	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146887	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146887	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146887	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146887	factor	single cell identifier	XY_A12
+E-MTAB-6077		ERR2146888	characteristic	age	10 hour
+E-MTAB-6077		ERR2146888	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146888	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146888	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146888	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146888	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146888	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146888	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146888	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146888	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146888	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146888	factor	single cell identifier	XY_B10
+E-MTAB-6077		ERR2146889	characteristic	age	10 hour
+E-MTAB-6077		ERR2146889	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146889	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146889	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146889	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146889	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146889	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146889	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146889	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146889	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146889	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146889	factor	single cell identifier	XY_B11
+E-MTAB-6077		ERR2146890	characteristic	age	10 hour
+E-MTAB-6077		ERR2146890	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146890	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146890	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146890	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146890	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146890	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146890	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146890	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146890	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146890	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146890	factor	single cell identifier	XY_B9
+E-MTAB-6077		ERR2146891	characteristic	age	10 hour
+E-MTAB-6077		ERR2146891	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146891	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146891	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146891	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146891	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146891	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146891	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146891	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146891	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146891	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146891	factor	single cell identifier	XY_C10
+E-MTAB-6077		ERR2146892	characteristic	age	10 hour
+E-MTAB-6077		ERR2146892	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146892	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146892	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146892	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146892	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146892	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146892	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146892	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146892	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146892	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146892	factor	single cell identifier	XY_C12
+E-MTAB-6077		ERR2146893	characteristic	age	10 hour
+E-MTAB-6077		ERR2146893	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146893	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146893	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146893	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146893	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146893	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146893	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146893	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146893	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146893	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146893	factor	single cell identifier	XY_C9
+E-MTAB-6077		ERR2146894	characteristic	age	10 hour
+E-MTAB-6077		ERR2146894	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146894	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146894	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146894	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146894	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146894	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146894	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146894	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146894	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146894	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146894	factor	single cell identifier	XY_D10
+E-MTAB-6077		ERR2146895	characteristic	age	10 hour
+E-MTAB-6077		ERR2146895	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146895	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146895	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146895	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146895	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146895	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146895	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146895	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146895	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146895	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146895	factor	single cell identifier	XY_D11
+E-MTAB-6077		ERR2146896	characteristic	age	10 hour
+E-MTAB-6077		ERR2146896	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146896	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146896	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146896	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146896	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146896	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146896	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146896	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146896	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146896	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146896	factor	single cell identifier	XY_D12
+E-MTAB-6077		ERR2146897	characteristic	age	10 hour
+E-MTAB-6077		ERR2146897	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146897	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146897	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146897	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146897	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146897	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146897	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146897	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146897	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146897	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146897	factor	single cell identifier	XY_D9
+E-MTAB-6077		ERR2146898	characteristic	age	10 hour
+E-MTAB-6077		ERR2146898	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146898	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146898	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146898	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146898	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146898	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146898	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146898	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146898	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146898	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146898	factor	single cell identifier	XY_E10
+E-MTAB-6077		ERR2146899	characteristic	age	10 hour
+E-MTAB-6077		ERR2146899	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146899	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146899	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146899	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146899	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146899	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146899	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146899	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146899	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146899	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146899	factor	single cell identifier	XY_E11
+E-MTAB-6077		ERR2146900	characteristic	age	10 hour
+E-MTAB-6077		ERR2146900	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146900	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146900	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146900	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146900	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146900	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146900	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146900	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146900	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146900	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146900	factor	single cell identifier	XY_F10
+E-MTAB-6077		ERR2146901	characteristic	age	10 hour
+E-MTAB-6077		ERR2146901	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146901	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146901	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146901	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146901	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146901	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146901	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146901	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146901	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146901	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146901	factor	single cell identifier	XY_F11
+E-MTAB-6077		ERR2146902	characteristic	age	10 hour
+E-MTAB-6077		ERR2146902	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146902	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146902	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146902	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146902	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146902	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146902	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146902	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146902	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146902	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146902	factor	single cell identifier	XY_F9
+E-MTAB-6077		ERR2146903	characteristic	age	10 hour
+E-MTAB-6077		ERR2146903	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146903	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146903	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146903	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146903	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146903	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146903	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146903	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146903	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146903	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146903	factor	single cell identifier	XY_G10
+E-MTAB-6077		ERR2146904	characteristic	age	10 hour
+E-MTAB-6077		ERR2146904	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146904	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146904	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146904	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146904	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146904	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146904	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146904	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146904	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146904	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146904	factor	single cell identifier	XY_G11
+E-MTAB-6077		ERR2146905	characteristic	age	10 hour
+E-MTAB-6077		ERR2146905	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146905	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146905	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146905	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146905	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146905	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146905	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146905	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146905	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146905	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146905	factor	single cell identifier	XY_G9
+E-MTAB-6077		ERR2146906	characteristic	age	10 hour
+E-MTAB-6077		ERR2146906	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146906	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146906	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146906	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146906	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146906	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146906	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146906	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146906	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146906	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146906	factor	single cell identifier	XY_H10
+E-MTAB-6077		ERR2146907	characteristic	age	10 hour
+E-MTAB-6077		ERR2146907	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146907	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146907	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146907	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146907	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146907	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146907	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146907	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146907	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146907	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146907	factor	single cell identifier	XY_H11
+E-MTAB-6077		ERR2146908	characteristic	age	10 hour
+E-MTAB-6077		ERR2146908	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146908	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146908	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146908	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146908	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146908	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146908	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146908	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146908	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146908	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146908	factor	single cell identifier	XY_H9
+E-MTAB-6077		ERR2146909	characteristic	age	10 hour
+E-MTAB-6077		ERR2146909	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146909	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146909	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146909	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146909	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146909	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146909	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146909	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146909	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146909	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146909	factor	single cell identifier	XY_A1
+E-MTAB-6077		ERR2146910	characteristic	age	10 hour
+E-MTAB-6077		ERR2146910	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146910	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146910	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146910	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146910	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146910	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146910	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146910	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146910	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146910	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146910	factor	single cell identifier	XY_A2
+E-MTAB-6077		ERR2146911	characteristic	age	10 hour
+E-MTAB-6077		ERR2146911	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146911	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146911	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146911	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146911	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146911	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146911	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146911	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146911	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146911	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146911	factor	single cell identifier	XY_A3
+E-MTAB-6077		ERR2146912	characteristic	age	10 hour
+E-MTAB-6077		ERR2146912	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146912	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146912	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146912	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146912	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146912	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146912	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146912	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146912	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146912	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146912	factor	single cell identifier	XY_A4
+E-MTAB-6077		ERR2146913	characteristic	age	10 hour
+E-MTAB-6077		ERR2146913	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146913	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146913	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146913	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146913	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146913	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146913	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146913	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146913	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146913	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146913	factor	single cell identifier	XY_A5
+E-MTAB-6077		ERR2146914	characteristic	age	10 hour
+E-MTAB-6077		ERR2146914	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146914	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146914	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146914	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146914	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146914	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146914	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146914	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146914	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146914	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146914	factor	single cell identifier	XY_A6
+E-MTAB-6077		ERR2146915	characteristic	age	10 hour
+E-MTAB-6077		ERR2146915	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146915	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146915	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146915	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146915	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146915	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146915	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146915	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146915	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146915	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146915	factor	single cell identifier	XY_B1
+E-MTAB-6077		ERR2146916	characteristic	age	10 hour
+E-MTAB-6077		ERR2146916	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146916	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146916	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146916	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146916	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146916	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146916	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146916	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146916	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146916	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146916	factor	single cell identifier	XY_B2
+E-MTAB-6077		ERR2146917	characteristic	age	10 hour
+E-MTAB-6077		ERR2146917	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146917	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146917	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146917	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146917	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146917	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146917	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146917	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146917	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146917	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146917	factor	single cell identifier	XY_B3
+E-MTAB-6077		ERR2146918	characteristic	age	10 hour
+E-MTAB-6077		ERR2146918	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146918	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146918	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146918	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146918	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146918	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146918	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146918	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146918	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146918	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146918	factor	single cell identifier	XY_B4
+E-MTAB-6077		ERR2146919	characteristic	age	10 hour
+E-MTAB-6077		ERR2146919	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146919	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146919	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146919	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146919	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146919	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146919	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146919	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146919	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146919	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146919	factor	single cell identifier	XY_B5
+E-MTAB-6077		ERR2146920	characteristic	age	10 hour
+E-MTAB-6077		ERR2146920	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146920	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146920	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146920	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146920	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146920	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146920	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146920	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146920	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146920	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146920	factor	single cell identifier	XY_C1
+E-MTAB-6077		ERR2146921	characteristic	age	10 hour
+E-MTAB-6077		ERR2146921	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146921	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146921	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146921	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146921	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146921	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146921	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146921	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146921	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146921	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146921	factor	single cell identifier	XY_C2
+E-MTAB-6077		ERR2146922	characteristic	age	10 hour
+E-MTAB-6077		ERR2146922	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146922	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146922	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146922	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146922	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146922	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146922	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146922	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146922	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146922	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146922	factor	single cell identifier	XY_C3
+E-MTAB-6077		ERR2146923	characteristic	age	10 hour
+E-MTAB-6077		ERR2146923	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146923	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146923	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146923	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146923	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146923	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146923	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146923	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146923	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146923	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146923	factor	single cell identifier	XY_C4
+E-MTAB-6077		ERR2146924	characteristic	age	10 hour
+E-MTAB-6077		ERR2146924	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146924	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146924	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146924	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146924	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146924	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146924	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146924	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146924	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146924	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146924	factor	single cell identifier	XY_C5
+E-MTAB-6077		ERR2146925	characteristic	age	10 hour
+E-MTAB-6077		ERR2146925	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146925	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146925	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146925	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146925	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146925	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146925	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146925	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146925	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146925	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146925	factor	single cell identifier	XY_D1
+E-MTAB-6077		ERR2146926	characteristic	age	10 hour
+E-MTAB-6077		ERR2146926	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146926	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146926	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146926	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146926	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146926	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146926	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146926	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146926	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146926	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146926	factor	single cell identifier	XY_D2
+E-MTAB-6077		ERR2146927	characteristic	age	10 hour
+E-MTAB-6077		ERR2146927	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146927	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146927	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146927	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146927	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146927	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146927	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146927	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146927	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146927	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146927	factor	single cell identifier	XY_D3
+E-MTAB-6077		ERR2146928	characteristic	age	10 hour
+E-MTAB-6077		ERR2146928	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146928	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146928	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146928	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146928	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146928	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146928	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146928	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146928	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146928	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146928	factor	single cell identifier	XY_D4
+E-MTAB-6077		ERR2146929	characteristic	age	10 hour
+E-MTAB-6077		ERR2146929	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146929	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146929	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146929	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146929	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146929	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146929	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146929	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146929	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146929	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146929	factor	single cell identifier	XY_D5
+E-MTAB-6077		ERR2146930	characteristic	age	10 hour
+E-MTAB-6077		ERR2146930	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146930	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146930	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146930	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146930	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146930	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146930	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146930	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146930	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146930	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146930	factor	single cell identifier	XY_E1
+E-MTAB-6077		ERR2146931	characteristic	age	10 hour
+E-MTAB-6077		ERR2146931	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146931	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146931	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146931	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146931	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146931	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146931	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146931	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146931	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146931	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146931	factor	single cell identifier	XY_E12
+E-MTAB-6077		ERR2146932	characteristic	age	10 hour
+E-MTAB-6077		ERR2146932	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146932	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146932	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146932	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146932	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146932	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146932	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146932	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146932	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146932	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146932	factor	single cell identifier	XY_E2
+E-MTAB-6077		ERR2146933	characteristic	age	10 hour
+E-MTAB-6077		ERR2146933	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146933	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146933	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146933	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146933	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146933	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146933	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146933	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146933	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146933	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146933	factor	single cell identifier	XY_E3
+E-MTAB-6077		ERR2146934	characteristic	age	10 hour
+E-MTAB-6077		ERR2146934	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146934	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146934	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146934	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146934	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146934	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146934	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146934	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146934	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146934	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146934	factor	single cell identifier	XY_E4
+E-MTAB-6077		ERR2146935	characteristic	age	10 hour
+E-MTAB-6077		ERR2146935	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146935	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146935	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146935	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146935	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146935	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146935	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146935	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146935	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146935	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146935	factor	single cell identifier	XY_E5
+E-MTAB-6077		ERR2146936	characteristic	age	10 hour
+E-MTAB-6077		ERR2146936	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146936	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146936	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146936	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146936	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146936	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146936	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146936	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146936	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146936	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146936	factor	single cell identifier	XY_F1
+E-MTAB-6077		ERR2146937	characteristic	age	10 hour
+E-MTAB-6077		ERR2146937	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146937	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146937	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146937	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146937	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146937	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146937	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146937	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146937	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146937	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146937	factor	single cell identifier	XY_F12
+E-MTAB-6077		ERR2146938	characteristic	age	10 hour
+E-MTAB-6077		ERR2146938	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146938	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146938	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146938	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146938	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146938	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146938	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146938	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146938	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146938	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146938	factor	single cell identifier	XY_F2
+E-MTAB-6077		ERR2146939	characteristic	age	10 hour
+E-MTAB-6077		ERR2146939	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146939	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146939	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146939	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146939	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146939	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146939	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146939	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146939	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146939	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146939	factor	single cell identifier	XY_F3
+E-MTAB-6077		ERR2146940	characteristic	age	10 hour
+E-MTAB-6077		ERR2146940	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146940	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146940	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146940	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146940	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146940	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146940	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146940	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146940	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146940	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146940	factor	single cell identifier	XY_F4
+E-MTAB-6077		ERR2146941	characteristic	age	10 hour
+E-MTAB-6077		ERR2146941	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146941	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146941	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146941	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146941	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146941	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146941	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146941	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146941	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146941	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146941	factor	single cell identifier	XY_F5
+E-MTAB-6077		ERR2146942	characteristic	age	10 hour
+E-MTAB-6077		ERR2146942	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146942	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146942	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146942	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146942	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146942	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146942	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146942	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146942	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146942	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146942	factor	single cell identifier	XY_G1
+E-MTAB-6077		ERR2146943	characteristic	age	10 hour
+E-MTAB-6077		ERR2146943	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146943	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146943	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146943	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146943	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146943	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146943	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146943	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146943	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146943	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146943	factor	single cell identifier	XY_G12
+E-MTAB-6077		ERR2146944	characteristic	age	10 hour
+E-MTAB-6077		ERR2146944	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146944	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146944	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146944	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146944	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146944	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146944	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146944	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146944	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146944	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146944	factor	single cell identifier	XY_G2
+E-MTAB-6077		ERR2146945	characteristic	age	10 hour
+E-MTAB-6077		ERR2146945	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146945	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146945	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146945	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146945	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146945	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146945	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146945	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146945	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146945	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146945	factor	single cell identifier	XY_G3
+E-MTAB-6077		ERR2146946	characteristic	age	10 hour
+E-MTAB-6077		ERR2146946	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146946	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146946	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146946	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146946	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146946	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146946	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146946	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146946	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146946	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146946	factor	single cell identifier	XY_G4
+E-MTAB-6077		ERR2146947	characteristic	age	10 hour
+E-MTAB-6077		ERR2146947	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146947	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146947	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146947	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146947	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146947	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146947	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146947	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146947	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146947	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146947	factor	single cell identifier	XY_G5
+E-MTAB-6077		ERR2146948	characteristic	age	10 hour
+E-MTAB-6077		ERR2146948	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146948	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146948	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146948	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146948	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146948	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146948	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146948	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146948	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146948	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146948	factor	single cell identifier	XY_H1
+E-MTAB-6077		ERR2146949	characteristic	age	10 hour
+E-MTAB-6077		ERR2146949	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146949	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146949	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146949	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146949	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146949	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146949	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146949	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146949	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146949	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146949	factor	single cell identifier	XY_H12
+E-MTAB-6077		ERR2146950	characteristic	age	10 hour
+E-MTAB-6077		ERR2146950	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146950	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146950	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146950	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146950	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146950	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146950	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146950	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146950	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146950	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146950	factor	single cell identifier	XY_H2
+E-MTAB-6077		ERR2146951	characteristic	age	10 hour
+E-MTAB-6077		ERR2146951	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146951	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146951	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146951	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146951	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146951	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146951	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146951	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146951	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146951	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146951	factor	single cell identifier	XY_H3
+E-MTAB-6077		ERR2146952	characteristic	age	10 hour
+E-MTAB-6077		ERR2146952	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146952	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146952	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146952	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146952	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146952	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146952	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146952	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146952	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146952	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146952	factor	single cell identifier	XY_H4
+E-MTAB-6077		ERR2146953	characteristic	age	10 hour
+E-MTAB-6077		ERR2146953	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146953	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146953	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146953	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146953	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146953	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146953	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146953	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146953	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146953	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146953	factor	single cell identifier	XY_H5
+E-MTAB-6077		ERR2146954	characteristic	age	10 hour
+E-MTAB-6077		ERR2146954	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146954	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146954	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146954	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146954	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146954	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146954	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146954	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146954	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146954	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146954	factor	single cell identifier	XY_A7
+E-MTAB-6077		ERR2146955	characteristic	age	10 hour
+E-MTAB-6077		ERR2146955	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146955	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146955	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146955	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146955	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146955	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146955	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146955	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146955	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146955	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146955	factor	single cell identifier	XY_A8
+E-MTAB-6077		ERR2146956	characteristic	age	10 hour
+E-MTAB-6077		ERR2146956	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146956	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146956	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146956	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146956	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146956	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146956	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146956	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146956	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146956	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146956	factor	single cell identifier	XY_A9
+E-MTAB-6077		ERR2146957	characteristic	age	10 hour
+E-MTAB-6077		ERR2146957	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146957	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146957	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146957	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146957	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146957	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146957	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146957	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146957	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146957	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146957	factor	single cell identifier	XY_B6
+E-MTAB-6077		ERR2146958	characteristic	age	10 hour
+E-MTAB-6077		ERR2146958	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146958	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146958	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146958	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146958	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146958	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146958	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146958	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146958	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146958	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146958	factor	single cell identifier	XY_B7
+E-MTAB-6077		ERR2146959	characteristic	age	10 hour
+E-MTAB-6077		ERR2146959	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146959	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146959	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146959	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146959	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146959	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146959	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146959	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146959	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146959	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146959	factor	single cell identifier	XY_B8
+E-MTAB-6077		ERR2146960	characteristic	age	10 hour
+E-MTAB-6077		ERR2146960	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146960	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146960	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146960	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146960	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146960	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146960	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146960	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146960	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146960	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146960	factor	single cell identifier	XY_C6
+E-MTAB-6077		ERR2146961	characteristic	age	10 hour
+E-MTAB-6077		ERR2146961	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146961	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146961	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146961	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146961	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146961	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146961	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146961	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146961	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146961	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146961	factor	single cell identifier	XY_C7
+E-MTAB-6077		ERR2146962	characteristic	age	10 hour
+E-MTAB-6077		ERR2146962	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146962	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146962	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146962	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146962	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146962	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146962	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146962	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146962	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146962	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146962	factor	single cell identifier	XY_C8
+E-MTAB-6077		ERR2146963	characteristic	age	10 hour
+E-MTAB-6077		ERR2146963	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146963	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146963	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146963	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146963	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146963	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146963	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146963	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146963	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146963	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146963	factor	single cell identifier	XY_D6
+E-MTAB-6077		ERR2146964	characteristic	age	10 hour
+E-MTAB-6077		ERR2146964	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146964	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146964	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146964	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146964	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146964	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146964	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146964	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146964	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146964	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146964	factor	single cell identifier	XY_D7
+E-MTAB-6077		ERR2146965	characteristic	age	10 hour
+E-MTAB-6077		ERR2146965	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146965	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146965	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146965	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146965	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146965	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146965	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146965	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146965	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146965	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146965	factor	single cell identifier	XY_D8
+E-MTAB-6077		ERR2146966	characteristic	age	10 hour
+E-MTAB-6077		ERR2146966	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146966	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146966	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146966	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146966	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146966	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146966	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146966	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146966	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146966	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146966	factor	single cell identifier	XY_E6
+E-MTAB-6077		ERR2146967	characteristic	age	10 hour
+E-MTAB-6077		ERR2146967	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146967	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146967	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146967	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146967	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146967	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146967	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146967	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146967	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146967	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146967	factor	single cell identifier	XY_E7
+E-MTAB-6077		ERR2146968	characteristic	age	10 hour
+E-MTAB-6077		ERR2146968	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146968	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146968	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146968	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146968	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146968	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146968	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146968	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146968	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146968	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146968	factor	single cell identifier	XY_E8
+E-MTAB-6077		ERR2146969	characteristic	age	10 hour
+E-MTAB-6077		ERR2146969	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146969	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146969	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146969	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146969	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146969	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146969	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146969	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146969	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146969	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146969	factor	single cell identifier	XY_F6
+E-MTAB-6077		ERR2146970	characteristic	age	10 hour
+E-MTAB-6077		ERR2146970	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146970	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146970	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146970	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146970	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146970	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146970	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146970	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146970	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146970	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146970	factor	single cell identifier	XY_F7
+E-MTAB-6077		ERR2146971	characteristic	age	10 hour
+E-MTAB-6077		ERR2146971	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146971	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146971	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146971	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146971	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146971	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146971	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146971	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146971	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146971	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146971	factor	single cell identifier	XY_F8
+E-MTAB-6077		ERR2146972	characteristic	age	10 hour
+E-MTAB-6077		ERR2146972	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146972	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146972	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146972	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146972	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146972	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146972	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146972	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146972	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146972	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146972	factor	single cell identifier	XY_G6
+E-MTAB-6077		ERR2146973	characteristic	age	10 hour
+E-MTAB-6077		ERR2146973	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146973	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146973	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146973	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146973	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146973	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146973	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146973	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146973	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146973	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146973	factor	single cell identifier	XY_G7
+E-MTAB-6077		ERR2146974	characteristic	age	10 hour
+E-MTAB-6077		ERR2146974	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146974	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146974	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146974	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146974	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146974	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146974	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146974	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146974	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146974	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146974	factor	single cell identifier	XY_H6
+E-MTAB-6077		ERR2146975	characteristic	age	10 hour
+E-MTAB-6077		ERR2146975	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146975	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146975	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146975	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146975	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146975	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146975	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146975	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146975	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146975	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146975	factor	single cell identifier	XY_H7
+E-MTAB-6077		ERR2146976	characteristic	age	10 hour
+E-MTAB-6077		ERR2146976	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146976	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146976	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146976	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146976	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146976	characteristic	post analysis well quality	pass
+E-MTAB-6077		ERR2146976	characteristic	single cell quality	OK
+E-MTAB-6077		ERR2146976	characteristic	single cell well quality	single cell
+E-MTAB-6077		ERR2146976	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146976	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146976	factor	single cell identifier	XY_H8
+E-MTAB-6077		ERR2146977	characteristic	age	10 hour
+E-MTAB-6077		ERR2146977	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146977	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146977	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146977	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146977	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146977	characteristic	single cell quality	not OK
+E-MTAB-6077		ERR2146977	characteristic	single cell well quality	4000 cells (tube control)
+E-MTAB-6077		ERR2146977	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146977	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146977	factor	single cell identifier	XY_control1
+E-MTAB-6077		ERR2146978	characteristic	age	10 hour
+E-MTAB-6077		ERR2146978	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146978	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146978	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146978	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146978	characteristic	phenotype	GFP negative
+E-MTAB-6077		ERR2146978	characteristic	single cell quality	not OK
+E-MTAB-6077		ERR2146978	characteristic	single cell well quality	4000 cells (tube control)
+E-MTAB-6077		ERR2146978	factor	block	batch_1_2015-03-25
+E-MTAB-6077		ERR2146978	factor	phenotype	GFP negative
+E-MTAB-6077		ERR2146978	factor	single cell identifier	XY_control2
+E-MTAB-6077		ERR2146979	characteristic	age	10 hour
+E-MTAB-6077		ERR2146979	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146979	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146979	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146979	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146979	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146979	characteristic	single cell quality	not OK
+E-MTAB-6077		ERR2146979	characteristic	single cell well quality	4000 cells (tube control)
+E-MTAB-6077		ERR2146979	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146979	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146979	factor	single cell identifier	XY_control3
+E-MTAB-6077		ERR2146980	characteristic	age	10 hour
+E-MTAB-6077		ERR2146980	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146980	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146980	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146980	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146980	characteristic	phenotype	GFP negative
+E-MTAB-6077		ERR2146980	characteristic	single cell quality	not OK
+E-MTAB-6077		ERR2146980	characteristic	single cell well quality	4000 cells (tube control)
+E-MTAB-6077		ERR2146980	factor	block	batch_2_2015-04-08
+E-MTAB-6077		ERR2146980	factor	phenotype	GFP negative
+E-MTAB-6077		ERR2146980	factor	single cell identifier	XY_control4
+E-MTAB-6077		ERR2146981	characteristic	age	10 hour
+E-MTAB-6077		ERR2146981	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146981	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146981	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146981	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146981	characteristic	phenotype	GFP postitive
+E-MTAB-6077		ERR2146981	characteristic	single cell quality	not OK
+E-MTAB-6077		ERR2146981	characteristic	single cell well quality	4000 cells (tube control)
+E-MTAB-6077		ERR2146981	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146981	factor	phenotype	GFP postitive
+E-MTAB-6077		ERR2146981	factor	single cell identifier	XY_control5
+E-MTAB-6077		ERR2146982	characteristic	age	10 hour
+E-MTAB-6077		ERR2146982	characteristic	developmental stage	gastrula	http://purl.obolibrary.org/obo/UBERON_0000109
+E-MTAB-6077		ERR2146982	characteristic	genotype	Smarcd3-F6:EGFPhsc70
+E-MTAB-6077		ERR2146982	characteristic	organism	Danio rerio	http://purl.obolibrary.org/obo/NCBITaxon_7955
+E-MTAB-6077		ERR2146982	characteristic	organism part	whole organism	http://purl.obolibrary.org/obo/UBERON_0000468
+E-MTAB-6077		ERR2146982	characteristic	phenotype	GFP negative
+E-MTAB-6077		ERR2146982	characteristic	single cell quality	not OK
+E-MTAB-6077		ERR2146982	characteristic	single cell well quality	4000 cells (tube control)
+E-MTAB-6077		ERR2146982	factor	block	batch_3_2015-04-15
+E-MTAB-6077		ERR2146982	factor	phenotype	GFP negative
+E-MTAB-6077		ERR2146982	factor	single cell identifier	XY_control6
