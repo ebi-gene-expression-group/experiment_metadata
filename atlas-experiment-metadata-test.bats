@@ -3,11 +3,11 @@
 setup() {
     condense_pl="condense_sdrf.pl"
     condense_sc_sh="single_cell_condensed_sdrf.sh"
+    test_data_dir="test_data"
     test_exp_acc="E-MTAB-6077"
     test_idf="test_data/$test_exp_acc/$test_exp_acc.idf.txt"
-    test_condensed_sdrf="E-MTAB-6077.condensed-sdrf.tsv"
+    test_condensed_sdrf="${test_data_dir}/E-MTAB-6077.condensed-sdrf.tsv"
     test_unmelted_sdrf="E-MTAB-6077.unmelted-sdrf.tsv"
-    test_data_dir="test_data"
     explicit_pl_out_dir='explicit_pl'
     implicit_pl_out_dir='implicit_pl'
     explicit_pl_out="${explicit_pl_out_dir}/E-MTAB-6077.condensed-sdrf.tsv"
