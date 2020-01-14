@@ -65,6 +65,10 @@ if (opt[['retain_types']]){
   condensed$variable <- paste0(ucfirst(condensed$type), '[', condensed$variable, ']')
 }
 
+# Names we'll use for ontology columns
+
+condensed$ont_var <- paste(condensed$variable, 'ontology')
+
 # Do the casting to get back to a wide format. In cases where a variable isn't
 # defined for a run, we will have a zero-length vector, in which case set an
 # empty string
@@ -76,6 +80,20 @@ wide <- dcast(condensed, id ~ variable, value.var = 'value', fun.aggregate = fun
     x
   }
 })
+
+# Now make a separate ontology table
+
+ontology <- dcast(condensed, id ~ ont_var, value.var = 'ontology', fun.aggregate = function(x){
+  if (length(x) == 0 || is.na(x)){
+    ''
+  }else{
+    paste(x, collapse=',')
+  }
+})
+
+# Merge the two
+
+wide <- merge(wide, ontology, by='id', all.x = TRUE, sort = FALSE)
 
 # Write output
 
