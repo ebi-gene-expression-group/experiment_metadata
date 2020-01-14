@@ -52,7 +52,7 @@ colnames(condensed) <- c('exp_id', 'array_design', 'id', 'type', 'variable', 'va
 # Remove replicated sets of id, variable and value, since these are likely to be
 # duplicated values from multiple files for the same run
 
-condensed <- condensed[! duplicated(paste(condensed$id, condensed$variable, condensed$value)), ]
+condensed <- condensed[! duplicated(paste(condensed$id, condensed$variable, condensed$value, condensed$type)), ]
 
 # Remaining duplicates should be labelled  
 
