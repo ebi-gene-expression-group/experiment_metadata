@@ -47,7 +47,16 @@ ucfirst <- function(string) {
 }
 
 condensed <- read.delim(opt[['input_file']], row.names = NULL, header=F, stringsAsFactors = FALSE)
-colnames(condensed) <- c('exp_id', 'array_design', 'id', 'type', 'variable', 'value', 'ontology')
+
+hasOntology <- FALSE
+if (ncol(condensed) == 7){
+    hasOntology = TRUE
+    colnames(condensed) <- c('exp_id', 'array_design', 'id', 'type', 'variable', 'value', 'ontology')
+}else if (ncol(condensed) == 6){
+    colnames(condensed) <- c('exp_id', 'array_design', 'id', 'type', 'variable', 'value')
+}else{
+    stop(paste("Unexpected column number", ncol(condensed), 'in condensed SDRF'))
+}
 
 # Remove replicated sets of id, variable and value, since these are likely to be
 # duplicated values from multiple files for the same run
@@ -81,19 +90,21 @@ wide <- dcast(condensed, id ~ variable, value.var = 'value', fun.aggregate = fun
   }
 })
 
-# Now make a separate ontology table
+# Now make a separate ontology table where appropriate
 
-ontology <- dcast(condensed, id ~ ont_var, value.var = 'ontology', fun.aggregate = function(x){
-  if (length(x) == 0 || is.na(x)){
-    ''
-  }else{
-    paste(x, collapse=',')
-  }
-})
+if (hasOntology){
+  ontology <- dcast(condensed, id ~ ont_var, value.var = 'ontology', fun.aggregate = function(x){
+    if (length(x) == 0 || is.na(x)){
+      ''
+    }else{
+      paste(x, collapse=',')
+    }
+  })
 
-# Merge the two
+  # Merge the two
 
-wide <- merge(wide, ontology, by='id', all.x = TRUE, sort = FALSE)
+  wide <- merge(wide, ontology, by='id', all.x = TRUE, sort = FALSE)
+}
 
 # Write output
 
