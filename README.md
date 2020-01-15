@@ -32,7 +32,7 @@ condense_sdrf.pl -e <experiment accession> -fi <path to IDF file> -o <output dir
 
 This script is a wrapper for condense_sdrf.pl which deals with some single-cell specific issues on technical replication and handling droplet experiments (where cell != library). 
 
-Again, this script can be run in two modes. Default behaviour is to pull the SDRF location from a directory defined by ATLAS_SC_EXPERIMENT:
+Again, this script can be run in two modes. Default behaviour is to pull the SDRF location from a directory defined by ATLAS_SC_EXPERIMENTS:
 
 ```
 bash single_cell_condensed_sdrf.sh -e <experiment ID> -o <output dir> -z <zooma exclusions file>
@@ -55,7 +55,7 @@ single_cell_condensed_sdrf.sh -h
 Sometimes we want to 'unmelt' the condensed SDRF, returning it to a wide format, for example for use in downstream analysis. This is what unmelt_condensed.R does:
 
 ```
-unmelt_condensed.R -i $test_condensed_sdrf -o $test_unmelted_sdrf --retain-types --has-ontology
+unmelt_condensed.R -i <condensed SDRF file> -o <output file path> --retain-types --has-ontology
 ```
 
 It is important that options are provided matching the way in which the condensed SDRF was genereated in the first place:
