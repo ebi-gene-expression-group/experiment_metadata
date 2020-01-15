@@ -81,7 +81,9 @@ ucfirst <- function(string) {
 
 # Read condensed SDRF
 
+print(paste('Reading', opt[['input_file']]), '...')
 condensed <- fread(opt[['input_file']], header=F, stringsAsFactors = FALSE, fill = TRUE)
+print('...done')
 
 # Apply logic to set which fields are which
 
@@ -98,17 +100,20 @@ if (opt[['has_ontology']]){
 # assumptions made by single_cell_condensed_sdrf.sh. It's safe to strip them if
 # they're all NA.
 
-if (length(column_names) > ncol(condensed)){
-  extra_cols <- length(column_names)+1:ncol(condensed)
+if (ncol(condensed) > length(column_names)){
+  extra_cols <- (length(column_names)+1):ncol(condensed)
   
   for (ec in extra_cols){
-    if (all(is.na(condensed[,ec]))){
-      condensed <- condensed[,-ec]
+    if (all(is.na(condensed[,..ec]))){
+      condensed <- condensed[,-..ec]
+      print(paste('Removed empty column', ec))
     }else{
-      stop(paste0('Non-empty ', ec, 'th column not predicted by options used. Review --has-bioreps and --has-ontology'))
+      stop(paste0('Non-empty ', ec, 'th column not predicted by options used. Make sure you have set --has-bioreps and --has-ontology correctly.'))
     }
   }
 }
+
+colnames(condensed) <- column_names
 
 # Remove replicated sets of id, variable and value, since these are likely to be
 # duplicated values from multiple files for the same run
@@ -134,6 +139,7 @@ condensed$ont_var <- paste(condensed$variable, 'ontology')
 # defined for a run, we will have a zero-length vector, in which case set an
 # empty string
 
+print("Reshaping main data...")
 wide <- dcast(condensed, id ~ variable, value.var = 'value', fun.aggregate = function(x){
   if (length(x) == 0 || is.na(x)){
     ''
@@ -141,10 +147,12 @@ wide <- dcast(condensed, id ~ variable, value.var = 'value', fun.aggregate = fun
     x
   }
 })
+print("... done")
 
 # Now make a separate ontology table where appropriate
 
 if (opt[['has_ontology']]){
+  print("Reshaping ontology...")
   ontology <- dcast(condensed, id ~ ont_var, value.var = 'ontology', fun.aggregate = function(x){
     if (length(x) == 0 || is.na(x)){
       ''
@@ -152,12 +160,17 @@ if (opt[['has_ontology']]){
       paste(x, collapse=',')
     }
   })
+  print("... done")
 
   # Merge the two
 
+  print("Merging ontology table with main...")
   wide <- merge(wide, ontology, by='id', all.x = TRUE, sort = FALSE)
+  print("... done")
 }
 
 # Write output
 
+print("Writing reshaped output to file ...")
 fwrite(wide, file = opt[['output_file']], sep="\t", quote = FALSE, row.names = FALSE)
+print("... done")
