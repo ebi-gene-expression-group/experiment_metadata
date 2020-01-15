@@ -160,5 +160,4 @@ if (opt[['has_ontology']]){
 
 # Write output
 
-write.table(wide, file = opt[['output_file']], sep="\t", quote = FALSE, row.names = FALSE)
-
+fwrite(wide, file = opt[['output_file']], sep="\t", quote = FALSE, row.names = FALSE)
