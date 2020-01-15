@@ -63,7 +63,6 @@ if [ -z "$idfFile" ]; then
     idfFile=$experimentDir/$expId/${expId}.idf.txt
 fi
 
-sdrfFile=$(dirname $idfFile)/${expId}.sdrf.txt
 cellTypesFile=$(dirname $idfFile)/${expId}.cells.txt
 cellToLib=$(dirname $idfFile)/cell_to_library.txt
 
@@ -72,9 +71,20 @@ cellToLib=$(dirname $idfFile)/cell_to_library.txt
 if [ ! -e "$idfFile" ]; then
     echo "IDF file for experiment ID $expId ($idfFile) not present" 1>&2
     exit 1
-elif [ ! -e "$sdrfFile" ]; then
-    echo "SDRF file $sdrfFile missing" 1>&2
-    exit 1
+else
+    sdrfLine=$(grep -iP "^SDRF File\t" $idfFile)
+    if [ $? -ne 0 ]; then
+        echo "No SDRF definition found in IDF file" 1>&2
+        exit 1
+    fi
+
+    sdrfFileName=$(echo -e "$sdrfLine" | awk -F"\t" '{print $2}')
+    sdrfFile=$(dirname $idfFile)/$sdrfFileName
+
+    if [ ! -e "$sdrfFile" ]; then
+        echo "SDRF file $sdrfFile missing" 1>&2
+        exit 1
+    fi
 fi
 
 checkExecutableInPath() {
