@@ -70,6 +70,7 @@ setup() {
     fi
 
     run unmelt_condensed.R -i $test_condensed_sdrf -o $test_unmelted_sdrf --retain-types --has-ontology
+    echo "output = ${output}"
 
     [ "$status" -eq 0 ]
     [ -f "$test_unmelted_sdrf" ]
