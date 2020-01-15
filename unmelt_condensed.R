@@ -2,6 +2,24 @@
 
 suppressPackageStartupMessages(require(optparse))
 
+# Flatten a condensed SDRF back to 'wide' format. Condensed SDRFs (made by
+# condense_sdrf.pl) will have the following fields:
+#
+# 1. Experiment accession
+# 2. Array design (empty in sequencing experiments)
+# 3. Assay name (e.g. run ID)
+# 4. (optionally) biorep ID
+# 5. Attribute type (characteristic, factor etc)
+# 6. Variable, e.g 'organism part'
+# 7. Variable value, e.g 'liver'
+# 8. (optionally) Ontology term URI
+#
+# The optional fields mean that the file can have 6,7 or 8 fields, and the order
+# means that we can't rely on the number of fields to infer which is present. To
+# complicate things further, for single-cell the single_cell_condensed_sdrf.sh
+# script assumes that 8 fields are present and adds blank fields if there are
+# not. So we must apply some logic to deal with all eventualities.
+
 option_list = list(
   make_option(
     c("-i", "--input-file"),
@@ -23,6 +41,20 @@ option_list = list(
     default = FALSE,
     type = 'logical',
     help = "Optional flag. Retain field types (characteristic, factor etc) in column headers?"
+  ),
+  make_option(
+    c("-r", "--has-bioreps"),
+    action = "store_true",
+    default = FALSE,
+    type = 'logical',
+    help = "Optional flag. Interpret 4th field as biorep identifier?"
+  ),
+  make_option(
+    c("-r", "--has-ontology"),
+    action = "store_true",
+    default = FALSE,
+    type = 'logical',
+    help = "Optional flag. Indicate that there is a field containing ontology mappings present in either column 7 or 8 (depending on the value of --has-bioreps) ?"
   )
 )
 
@@ -41,21 +73,41 @@ for (file_param in c('input_file', 'output_file')){
 # Do setup after argument parsing
 
 suppressPackageStartupMessages(library(reshape2))
+suppressPackageStartupMessages(library(data.table))
 
 ucfirst <- function(string) {
   paste0(toupper(substr(string, 1, 1)), substr(string, 2, nchar(string)))
 }
 
-condensed <- read.delim(opt[['input_file']], row.names = NULL, header=F, stringsAsFactors = FALSE)
+# Read condensed SDRF
 
-hasOntology <- FALSE
-if (ncol(condensed) == 7){
-    hasOntology = TRUE
-    colnames(condensed) <- c('exp_id', 'array_design', 'id', 'type', 'variable', 'value', 'ontology')
-}else if (ncol(condensed) == 6){
-    colnames(condensed) <- c('exp_id', 'array_design', 'id', 'type', 'variable', 'value')
-}else{
-    stop(paste("Unexpected column number", ncol(condensed), 'in condensed SDRF'))
+condensed <- fread(opt[['input_file']], header=F, stringsAsFactors = FALSE, fill = TRUE)
+
+# Apply logic to set which fields are which
+
+column_names <- c('exp_id', 'array_design', 'id')
+if (opt[['has_bioreps']]){
+  column_names <- c(column_names, 'biorep_id')
+}
+column_names <- c(column_names, c('type', 'variable', 'value'))
+if (opt[['has_ontology']]){
+  column_names <- c(column_names, 'ontology')
+}
+
+# Sometimes input will have had unnecessary blank fields added due to
+# assumptions made by single_cell_condensed_sdrf.sh. It's safe to strip them if
+# they're all NA.
+
+if (length(column_names) > ncol(condensed)){
+  extra_cols <- length(column_names)+1:ncol(condensed)
+  
+  for (ec in extra_cols){
+    if (all(is.na(condensed[,ec]))){
+      condensed <- condensed[,-ec]
+    }else{
+      stop(paste0('Non-empty ', ec, 'th column not predicted by options used. Review --has-bioreps and --has-ontology'))
+    }
+  }
 }
 
 # Remove replicated sets of id, variable and value, since these are likely to be
@@ -92,7 +144,7 @@ wide <- dcast(condensed, id ~ variable, value.var = 'value', fun.aggregate = fun
 
 # Now make a separate ontology table where appropriate
 
-if (hasOntology){
+if (opt[['has_ontology']]){
   ontology <- dcast(condensed, id ~ ont_var, value.var = 'ontology', fun.aggregate = function(x){
     if (length(x) == 0 || is.na(x)){
       ''
