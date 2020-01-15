@@ -81,7 +81,7 @@ ucfirst <- function(string) {
 
 # Read condensed SDRF
 
-print(paste('Reading', opt[['input_file']]), '...')
+print(paste('Reading', opt[['input_file']], '...'))
 condensed <- fread(opt[['input_file']], header=F, stringsAsFactors = FALSE, fill = TRUE)
 print('...done')
 
@@ -118,12 +118,14 @@ colnames(condensed) <- column_names
 # Remove replicated sets of id, variable and value, since these are likely to be
 # duplicated values from multiple files for the same run
 
+print("Checking for and removing duplicate rows from multi-file assays, labelling genuine duplicates...")
 condensed <- condensed[! duplicated(paste(condensed$id, condensed$variable, condensed$value, condensed$type)), ]
 
 # Remaining duplicates should be labelled  
 
-dup <- which(duplicated(paste(condensed$id, condensed$variable, condensed$value)))
+dup <- which(duplicated(paste(condensed$id, condensed$variable, condensed$value, condensed$type)))
 condensed$variable[dup] <- unlist(lapply(split(condensed[dup, 'variable'], condensed[dup, 'id']), function(x) paste0(x, '.', 1:length(x))))
+print("...done")
 
 # Label as factor, characteristic etc if specified
 
