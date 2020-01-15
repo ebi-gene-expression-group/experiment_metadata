@@ -43,14 +43,14 @@ option_list = list(
     help = "Optional flag. Retain field types (characteristic, factor etc) in column headers?"
   ),
   make_option(
-    c("-r", "--has-bioreps"),
+    c("-b", "--has-bioreps"),
     action = "store_true",
     default = FALSE,
     type = 'logical',
     help = "Optional flag. Interpret 4th field as biorep identifier?"
   ),
   make_option(
-    c("-r", "--has-ontology"),
+    c("-n", "--has-ontology"),
     action = "store_true",
     default = FALSE,
     type = 'logical',
