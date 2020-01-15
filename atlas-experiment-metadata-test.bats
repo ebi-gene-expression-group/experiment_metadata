@@ -3,9 +3,11 @@
 setup() {
     condense_pl="condense_sdrf.pl"
     condense_sc_sh="single_cell_condensed_sdrf.sh"
+    test_data_dir="test_data"
     test_exp_acc="E-MTAB-6077"
     test_idf="test_data/$test_exp_acc/$test_exp_acc.idf.txt"
-    test_data_dir="test_data"
+    test_condensed_sdrf="${test_data_dir}/E-MTAB-6077.condensed-sdrf.tsv"
+    test_unmelted_sdrf="E-MTAB-6077.unmelted-sdrf.tsv"
     explicit_pl_out_dir='explicit_pl'
     implicit_pl_out_dir='implicit_pl'
     explicit_pl_out="${explicit_pl_out_dir}/E-MTAB-6077.condensed-sdrf.tsv"
@@ -61,3 +63,16 @@ setup() {
     [ "$status" -eq 0 ]
     [ -f "$implicit_sc_sh_out" ]
 }
+
+@test "Test unmelt for condensed SDRFs" {
+    if [ -f "$test_unmelted_sdrf" ]; then
+        skip "Output from unmelt exists"
+    fi
+
+    run unmelt_condensed.R -i $test_condensed_sdrf -o $test_unmelted_sdrf --retain-types --has-ontology
+    echo "output = ${output}"
+
+    [ "$status" -eq 0 ]
+    [ -f "$test_unmelted_sdrf" ]
+}
+
