@@ -28,6 +28,12 @@ By default this will look for SDRF files under a path defined by the ATLAS_PROD 
 condense_sdrf.pl -e <experiment accession> -fi <path to IDF file> -o <output directory>
 ```
 
+If you wish to use the Zooma mapping functionality, you will also need to supply a Zooma exclusions file like [this one](test_data/zooma_exclusions.yml):
+
+```
+condense_sdrf.pl -e <experiment accession> -fi <path to IDF file> -o <output directory> -z -x <zooma exclusions file>
+```
+
 ### single_cell_condensed_sdrf.sh
 
 This script is a wrapper for condense_sdrf.pl which deals with some single-cell specific issues on technical replication and handling droplet experiments (where cell != library). 
@@ -43,6 +49,8 @@ bash single_cell_condensed_sdrf.sh -e <experiment ID> -o <output dir> -z <zooma 
 ```
 single_cell_condensed_sdrf.sh -e <experiment accession> -f <path to IDF file> -o <output dir> -z <zooma exclusions file>
 ```
+
+Note that this wrapper requests Zooma mappings by default (for which you will have to supply the exclusions), but you can disable the behaviour with the '-s' argument.
 
 See inline help for information on available options:
 
