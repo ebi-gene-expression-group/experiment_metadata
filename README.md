@@ -4,7 +4,27 @@ This is a factoring out of code preiously present in the internal atlas-prod rep
 
 ## Install
 
-These scripts are most easily installed via Bioconda:
+There are some complex Perl dependencies this software, most easily managed using Conda. [Miniconda](https://docs.conda.io/en/latest/miniconda.html) is a good way of getting set up with a basic Conda installation. We recommend you use a fresh environment:
+
+```
+conda create --name atlas-metadata
+```
+
+Activate the environment to use it:
+
+```
+source activate atlas-metadata
+```
+
+It will help if you have your Conda set up to use channels as per Bioconda:
+
+```
+conda config --add channels defaults
+conda config --add channels bioconda
+conda config --add channels conda-forge
+```
+
+Install should then be straightforward like:
 
 ```
 conda install -c ebi-gene-expression-group atlas-experiment-metadata
