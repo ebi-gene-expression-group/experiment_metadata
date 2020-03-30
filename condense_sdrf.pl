@@ -275,7 +275,7 @@ sub parse_args {
         $args{ "output_directory" } = Cwd::cwd();
     }
     unless($args{ "zooma_exclusions_path" }) {
-        my $defaultExclusionsFile="$abs_path/../supporting_files/zooma_exclusions.yml";
+        my $defaultExclusionsFile="$abs_path/../perl-atlas-modules/supporting_files/zooma_exclusions.yml";
         print "Using default exclusions file path of $defaultExclusionsFile\n";
         $args{ "zooma_exclusions_path" } = $defaultExclusionsFile ;
     }

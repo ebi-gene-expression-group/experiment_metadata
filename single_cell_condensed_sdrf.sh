@@ -14,7 +14,7 @@ expId="$EXP_ID"
 idfFile=
 experimentDir="$ATLAS_SC_EXPERIMENTS"
 skipZooma="$SKIP_ZOOMA"
-zoomaExclusions="$scriptDir/../supporting_files/zooma_exclusions.yml"
+zoomaExclusions="$scriptDir/../perl-atlas-modules/supporting_files/zooma_exclusions.yml"
 outputDir=
 
 while getopts ":e:f:s:o:z:" o; do
