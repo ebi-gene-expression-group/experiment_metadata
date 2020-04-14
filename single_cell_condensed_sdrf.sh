@@ -87,6 +87,13 @@ else
     fi
 fi
 
+# If there's a cells file we need the cell/library mapping too
+
+if [ -e "$cellTypesFile" ] && [ ! -e "$cellToLib" ]; then
+    echo "Cell types file is present at ${cellTypesFile}, but no cell/ library maping is available at $cellToLib - this file is required to map cell metadata to libraries"
+    exit 1
+fi
+
 checkExecutableInPath() {
   [[ $(type -P $1) ]] || (echo "$1 binaries not in the path." && exit 1)
   [[ -x $(type -P $1) ]] || (echo "$1 is not executable." && exit 1)
@@ -163,26 +170,36 @@ use_run_id_cell_id_In_condensed() {
     exit 1
   fi
   mv $COND\_expanded $COND
+
 }
 
 use_cell_types_In_condensed() {
   CT="$cellTypesFile"
   COND=$CONDENSED_SDRF_TSV
-  # Find the column in CT for the cell id and the inferred cell types.
-  col_num_ct=$( head -1 $CT | tr '\t' '\012' | nl | grep 'inferred cell type' | awk '{ print $1 }' )
-  col_num_cell_id=$( head -1 $CT | tr '\t' '\012' | nl | grep 'Cell ID' | awk '{ print $1 }' )
-  # For all elements in COND (column 3) that are in CT Cell id column, add columns:
-  # expId\t\tcell-id\tfactor\tinferred cell types\t<value-for-inferred-cell-type
-  # to condensed SDRF
 
+  # For all elements in COND (column 3) that are in CT Cell id column, add
+  # columns e.g: expId\t\tcell-id\tfactor\tinferred cell
+  # types\t<value-for-inferred-cell-type to condensed SDRF
+  
   # First generate the additional condensed rows
-  awk -F'\t' 'BEGIN { OFS = "\t" } NR == FNR { cell[$1]; type[$1]=$2; next } $3 in cell { print $1, $2, $3, "factor", "inferred cell type", type[$3] }' \
-    <( awk -F'\t' -v cellCol=$col_num_cell_id -v ctCol=$col_num_ct 'BEGIN { OFS = "\t" } { print $cellCol, $ctCol }' $CT ) \
-    $COND > $COND\.with_ct
+ 
+  rm -f $COND\.with_ct 
+  for field_to_extract in "inferred cell type" "authors inferred cell type"; do
+  
+      # Find the column in CT for the cell id and the metadata field
+      col_num_ct=$( head -1 $CT | tr '\t' '\012' | nl | grep "$field_to_extract" | awk '{ print $1 }' )
+      col_num_cell_id=$( head -1 $CT | tr '\t' '\012' | nl | grep 'Cell ID' | awk '{ print $1 }' )
+   
+      if [ -n "$col_num_ct" ]; then 
+        awk -v fieldName="$field_to_extract" -F'\t' 'BEGIN { OFS = "\t" } NR == FNR { cell[$1]; type[$1]=$2; next } $3 in cell { print $1, $2, $3, "factor", fieldName, type[$3] }' \
+            <( awk -F'\t' -v cellCol=$col_num_cell_id -v ctCol=$col_num_ct 'BEGIN { OFS = "\t" } { print $cellCol, $ctCol }' $CT ) \
+            <( awk -F'\t' 'BEGIN { OFS = "\t" } {print $1, $2, $3}' $COND | sort | uniq) >> $COND\.with_ct
+      fi
+  done
   # if the file has content, merge it with the condensed.
   # TODO in the future, we could have a Zooma call to get identifiers for each inferred cell type, before adding it to the condensed.
   if [ -s $COND\.with_ct ]; then
-    echo "Found matches for inferred cell types to add to the condensed..."
+    echo "Found matches for $field_to_extract to add to the condensed..."
     cat $COND\.with_ct >> $COND
   else
     echo "WARNING: No matches found between cell types file and the condensed SDRF, please check"
@@ -222,7 +239,7 @@ if [ -f $cellToLib ]; then
   use_run_id_cell_id_In_condensed
 fi
 
-# Explode condensed SDRF with inferred cell type
+# Explode condensed SDRF with inferred cell type etc
 if [ -f "$cellTypesFile" ]; then
   echo "Found cell types file for $expId"
   use_cell_types_In_condensed
