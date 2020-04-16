@@ -187,8 +187,8 @@ use_cell_types_In_condensed() {
   for field_to_extract in "inferred cell type" "authors inferred cell type"; do
   
       # Find the column in CT for the cell id and the metadata field
-      col_num_ct=$( head -1 $CT | tr '\t' '\012' | nl | grep "$field_to_extract" | awk '{ print $1 }' )
-      col_num_cell_id=$( head -1 $CT | tr '\t' '\012' | nl | grep 'Cell ID' | awk '{ print $1 }' )
+      col_num_ct=$( head -1 $CT | tr '\t' '\012' | nl | grep -i "$field_to_extract" | awk '{ print $1 }' )
+      col_num_cell_id=$( head -1 $CT | tr '\t' '\012' | nl | grep -i 'Cell ID' | awk '{ print $1 }' )
    
       if [ -n "$col_num_ct" ]; then 
         awk -v fieldName="$field_to_extract" -F'\t' 'BEGIN { OFS = "\t" } NR == FNR { cell[$1]; type[$1]=$2; next } $3 in cell { print $1, $2, $3, "factor", fieldName, type[$3] }' \
@@ -206,7 +206,7 @@ use_cell_types_In_condensed() {
     echo $CT "and"
     echo $COND
   fi
-  rm $COND\.with_ct
+  rm -f $COND\.with_ct
 }
 
 checkExecutableInPath condense_sdrf.pl
