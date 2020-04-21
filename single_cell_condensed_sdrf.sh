@@ -187,7 +187,7 @@ use_cell_types_In_condensed() {
   for field_to_extract in "inferred cell type" "authors inferred cell type"; do
   
       # Find the column in CT for the cell id and the metadata field
-      col_num_ct=$( head -1 $CT | tr '\t' '\012' | nl | grep -i "$field_to_extract" | awk '{ print $1 }' )
+      col_num_ct=$( head -1 $CT | tr '\t' '\012' | nl | grep -iP "^\s+\d+\s+$field_to_extract$" | awk '{ print $1 }' )
       col_num_cell_id=$( head -1 $CT | tr '\t' '\012' | nl | grep -i 'Cell ID' | awk '{ print $1 }' )
    
       if [ -n "$col_num_ct" ]; then 
