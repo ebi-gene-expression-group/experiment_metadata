@@ -8,6 +8,10 @@
 
 usage() { echo "Usage: $0 [-e <experiment id>] [-f <IDF file location (optional, otherwise inferred from ATLAS_SC_EXPERIMENTS env var)>] [-s <supply any non-empty string to skip zooma processing (if not specified, inferred from SKIP_ZOOM env var where available)>] [-o <directory to store file output (where not specified, output will be experiment location under ATLAS_SC_EXPERIMENTS env var, where specified)>] [-z <zooma exclusions file (optional, overrides default search path)>]" 1>&2; }
 
+# Source script from the same (prod or test) Atlas environment as this script
+
+scriptDir=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
 # Parse arguments
 
 expId="$EXP_ID"
@@ -54,9 +58,6 @@ fi
 # If an actual file is specified, we can pass that directly
 
 set -e
-
-# Source script from the same (prod or test) Atlas environment as this script
-scriptDir=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # Derive input files
 if [ -z "$idfFile" ]; then
