@@ -82,7 +82,7 @@ ucfirst <- function(string) {
 # Read condensed SDRF
 
 print(paste('Reading', opt[['input_file']], '...'))
-condensed <- fread(opt[['input_file']], header=F, stringsAsFactors = FALSE, fill = TRUE)
+condensed <- fread(opt[['input_file']], header=F, stringsAsFactors = FALSE, fill = TRUE, sep="\t")
 print('...done')
 
 # Apply logic to set which fields are which
