@@ -100,7 +100,7 @@ for l in $(cat "$all_atlas_experiments_file"); do
                   if [ $atlas_private_flag == "true" ]; then
                         # Experiment public in AE2 and private in Atlas - make it public in Atlas
                         echo -e "\n$exp_accession - AE2: public; Atlas: private - status change in Atlas: private->public"  >> $process_file.log
-                      curl -u ${ATLAS_ADMIN_UID}:${ATLAS_ADMIN_PASS} -X GET -s -w %{http_code} "http://${ATLAS_URL}/admin/experiments/${exp_accession}/update_public" >> $process_file.log
+                        curl -u ${ATLAS_ADMIN_UID}:${ATLAS_ADMIN_PASS} -X GET -s -w %{http_code} "http://${ATLAS_URL}/admin/experiments/${exp_accession}/update_public" >> $process_file.log
                         echo "$exp_accession" >> $exps_public_in_atlas
                       # At this point, the last line of $process_file.log should contain something like 'Experiment E-GEOD-10406 successfully updated.200'
                       # where 200 is the http response code - fail if the response code is not $SUCCESS_HTTP_RESPONSE
@@ -118,7 +118,7 @@ for l in $(cat "$all_atlas_experiments_file"); do
                    if [ $atlas_private_flag == "false" ]; then
                       # Experiment private in AE2 and public in Atlas - make it private in Atlas
                       echo -e "\n$exp_accession - AE2: private; Atlas: public - status change in Atlas: public->private" >> $process_file.log
-                    curl -u ${ATLAS_ADMIN_UID}:${ATLAS_ADMIN_PASS} -X GET -s -w %{http_code} "http://${ATLAS_URL}/admin/experiments/${exp_accession}/update_private" >> $process_file.log
+                      curl -u ${ATLAS_ADMIN_UID}:${ATLAS_ADMIN_PASS} -X GET -s -w %{http_code} "http://${ATLAS_URL}/admin/experiments/${exp_accession}/update_private" >> $process_file.log
                       echo "$exp_accession" >> $exps_private_in_atlas
                     httpCode=`tail -1 $process_file.log | awk -F"]" '{print $NF}'`
                     if [ "$httpCode" -ne "$SUCCESS_HTTP_RESPONSE" ]; then
