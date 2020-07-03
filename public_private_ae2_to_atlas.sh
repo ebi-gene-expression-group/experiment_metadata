@@ -24,6 +24,7 @@ GXA_OR_SCXA=$1
 [ ! -z ${ATLAS_ADMIN_UID+x} ] || (echo "Env var ATLAS_ADMIN_UID not defined." && exit 1)
 [ ! -z ${ATLAS_ADMIN_PASS+x} ] || (echo "Env var ATLAS_ADMIN_PASS not defined." && exit 1)
 [ ! -z ${ERROR_NOTIFICATION_EMAILADDRESS+x} ] || (echo "Env var ERROR_NOTIFICATION_EMAILADDRESS not defined." && exit 1)
+[ ! -z ${expsDir+x} ] || (echo "Env var expsDir not defined." && exit 1)
 
 
 SUCCESS_HTTP_RESPONSE=200
@@ -42,10 +43,6 @@ touch $process_file.log
 
 
 if [ $GXA_OR_SCXA == 'gxa' ]; then
-  expsDir=$ATLAS_EXPS
-  if [ "$ATLAS_URL" == "ves-hx-77.ebi.ac.uk:8080/gxa" ]; then
-    expsDir=${expsDir}_test
-  fi
 
   # Fetch the list of experiment privacies in Atlas.
   # we will removing PanCancer experiments (E-MTAB-5200 and E-MTAB-5423) as they dont want to be checked, as we want to keep them public
@@ -60,10 +57,6 @@ if [ $GXA_OR_SCXA == 'gxa' ]; then
 fi
 
 if [ $GXA_OR_SCXA == 'scxa' ]; then
-  expsDir=$ATLAS_SC_EXPERIMENTS
-  if [ "$ATLAS_URL" == "ves-hx-77.ebi.ac.uk:8080/gxa/sc" ]; then
-    expsDir=$ATLAS_SC_EXPERIMENTS
-  fi
 
   ## Fetch the list of single cell studies accessions and associated privacy status from webAPI
   curl -s -u ${ATLAS_ADMIN_UID}:${ATLAS_ADMIN_PASS} "${ATLAS_URL}/admin/experiments/all/list" | jq -r '.[].result | [.accession, .isPrivate] | @tsv' > $all_atlas_experiments_file
