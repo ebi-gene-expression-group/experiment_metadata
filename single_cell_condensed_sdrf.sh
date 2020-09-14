@@ -253,10 +253,9 @@ fi
 if [ -f "$cellTypesFile" ]; then
   echo "Found cell types file for $expId"
   use_cell_types_In_condensed
-  annotate_celltypes_condensed_sdrf.pl -c $CONDENSED_SDRF_TSV \
-                                       -o $CONDENSED_SDRF_TSV"_celltypes" \
-                                       -l $CONDENSED_SDRF_TSV"_zoomalogs" \
-                                       $exclusions
+  annotateCommand="annotate_celltypes_condensed_sdrf.pl -c $CONDENSED_SDRF_TSV -o ${CONDENSED_SDRF_TSV}_celltypes -l ${CONDENSED_SDRF_TSV}_zoomalogs $exclusions"
+  eval $annotateCommand
+
   if [ "$?" = "0" ]; then # zooma mapping went fine
     # replace condensed file with the new one that has cell type ontologies.
     mv $CONDENSED_SDRF_TSV"_celltypes" $CONDENSED_SDRF_TSV
