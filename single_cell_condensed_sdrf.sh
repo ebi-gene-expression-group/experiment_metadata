@@ -21,7 +21,7 @@ skipZooma="$SKIP_ZOOMA"
 zoomaExclusions="$scriptDir/../supporting_files/zooma_exclusions.yml"
 outputDir=
 
-while getopts ":e:f:s:o:z:" o; do
+while getopts ":e:f:s:o:z:t:" o; do
     case "${o}" in
         e)
             expId=${OPTARG}
