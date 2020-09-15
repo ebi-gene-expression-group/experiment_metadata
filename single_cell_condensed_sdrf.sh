@@ -6,7 +6,7 @@
 # Optionally:
 # SKIP_ZOOMA (if set, then Zooma mapping is skipped)
 
-usage() { echo "Usage: $0 [-e <experiment id>] [-f <IDF file location (optional, otherwise inferred from ATLAS_SC_EXPERIMENTS env var)>] [-s <supply any non-empty string to skip zooma processing (if not specified, inferred from SKIP_ZOOM env var where available)>] [-o <directory to store file output (where not specified, output will be experiment location under ATLAS_SC_EXPERIMENTS env var, where specified)>] [-z <zooma exclusions file (optional, overrides default search path)>]" 1>&2; }
+usage() { echo "Usage: $0 [-e <experiment id>] [-f <IDF file location (optional, otherwise inferred from ATLAS_SC_EXPERIMENTS env var)>] [-s <supply any non-empty string to skip zooma processing (if not specified, inferred from SKIP_ZOOM env var where available)>] [-o <directory to store file output (where not specified, output will be experiment location under ATLAS_SC_EXPERIMENTS env var, where specified)>] [-z <zooma exclusions file (optional, overrides default search path)>] [-t <list of possible cell fields to extract from .cells.txt file>]" 1>&2; }
 
 # Source script from the same (prod or test) Atlas environment as this script
 
@@ -21,7 +21,7 @@ skipZooma="$SKIP_ZOOMA"
 zoomaExclusions="$scriptDir/../supporting_files/zooma_exclusions.yml"
 outputDir=
 
-while getopts ":e:f:s:o:z:" o; do
+while getopts ":e:f:s:o:z:t:" o; do
     case "${o}" in
         e)
             expId=${OPTARG}
@@ -38,6 +38,9 @@ while getopts ":e:f:s:o:z:" o; do
         z)
             zoomaExclusions=${OPTARG}
             ;;
+        t)
+            cellGroupTypes=${OPTARG}
+            ;;
         *)
             usage
             exit 0
@@ -53,6 +56,10 @@ fi
 
 if [ -z "$outputDir" ]; then 
     outputDir=$experimentDir/$expId/
+fi
+
+if [ -z "$cellGroupTypes" ]; then
+    cellGroupTypes="inferred cell type - ontology labels,inferred cell type - authors labels"
 fi
 
 # If an actual file is specified, we can pass that directly
@@ -185,8 +192,10 @@ use_cell_types_In_condensed() {
   # First generate the additional condensed rows
  
   rm -f $COND\.with_ct 
-  for field_to_extract in "inferred cell type" "authors inferred cell type"; do
-  
+  IFS=, additionalCellGroupTypes=($(echo "$cellGroupTypes"))
+
+  for field_to_extract in "${additionalCellGroupTypes[@]}"; do
+      
       # Find the column in CT for the cell id and the metadata field
       col_num_ct=$( head -1 $CT | tr '\t' '\012' | nl | grep -iP "^\s+\d+\s+$field_to_extract$" | awk '{ print $1 }' )
       col_num_cell_id=$( head -1 $CT | tr '\t' '\012' | nl | grep -i 'Cell ID' | awk '{ print $1 }' )
@@ -244,12 +253,9 @@ fi
 if [ -f "$cellTypesFile" ]; then
   echo "Found cell types file for $expId"
   use_cell_types_In_condensed
+  annotateCommand="annotate_celltypes_condensed_sdrf.pl -c $CONDENSED_SDRF_TSV -o ${CONDENSED_SDRF_TSV}_celltypes -l ${CONDENSED_SDRF_TSV}_zoomalogs $exclusions"
+  eval $annotateCommand
 
-
-  annotate_celltypes_condensed_sdrf.pl -c $CONDENSED_SDRF_TSV \
-                                       -o $CONDENSED_SDRF_TSV"_celltypes" \
-                                       -l $CONDENSED_SDRF_TSV"_zoomalogs" \
-                                       $exclusions
   if [ "$?" = "0" ]; then # zooma mapping went fine
     # replace condensed file with the new one that has cell type ontologies.
     mv $CONDENSED_SDRF_TSV"_celltypes" $CONDENSED_SDRF_TSV
