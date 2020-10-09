@@ -254,4 +254,6 @@ if [ -z "$skipZooma" ]; then
 
     annotateCommand="run_zooma_condensed.pl -c ${CONDENSED_SDRF_TSV} -o ${CONDENSED_SDRF_TSV}_zooma -l  $outputDir/$expId-zoomifications-log.tsv $exclusions"
     eval $annotateCommand
+
+    mv ${CONDENSED_SDRF_TSV}_zooma ${CONDENSED_SDRF_TSV} 
 fi
