@@ -80,7 +80,7 @@ while(my $line = <COND_IN_2>) {
   chomp $line;
   my ($expAccAux, $arrayDesign, $cell, $attributeType, $type, $value, $uri) = split /\t/, $line;
   $uri = "" if( !$uri );
-  if($type eq $args->{"condensed_sdrf_path"}) {
+  if($type eq $args->{"cell_type_field"}) {
     my $organism = $cell2organism->{ $cell };
     my $annot_uri = $automaticMappings->{ $type }->{ $value }->{$organism};
     $uri = $annot_uri if( $annot_uri );
