@@ -209,7 +209,7 @@ use_cell_types_In_condensed() {
         if [ -s $COND\.with_ct ]; then
           echo "Found matches for $field_to_extract to add to the condensed..."
           echo "Annotating $actual_cell_type_field cell types"          
-          annotateCommand="annotate_celltypes_condensed_sdrf.pl -c $CONDENSED_SDRF_TSV -o ${CONDENSED_SDRF_TSV}_celltypes -l ${CONDENSED_SDRF_TSV}_zoomalogs -e $actual_cell_type_field $exclusions"
+          annotateCommand="annotate_celltypes_condensed_sdrf.pl -c $COND\.with_ct -o ${CONDENSED_SDRF_TSV}_celltypes -l ${CONDENSED_SDRF_TSV}_zoomalogs -e $actual_cell_type_field $exclusions"
           eval $annotateCommand
           
           if [ "$?" = "0" ]; then # zooma mapping went fine
