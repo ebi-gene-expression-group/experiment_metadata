@@ -55,7 +55,7 @@ while(my $line = <COND_IN>) {
   my ($expAccAux, $arrayDesign, $cell, $attributeType, $type, $value, $uri) = split /\t/, $line;
   $expAcc = $expAccAux;
   # we only care about cell types
-  $unique_properties->{ $type }->{ $value }->{ $cell } = 1 if $type =~ /.*cell type$/;
+  $unique_properties->{ $type }->{ $value }->{ $cell } = 1 if $type eq $args->{"cell_type_field"};
   # and run zooma needs the organism
   if ($type =~ /^organism$/ && !$cell2organism->{ $cell }) {
       my $org = lc $value;
@@ -80,7 +80,7 @@ while(my $line = <COND_IN_2>) {
   chomp $line;
   my ($expAccAux, $arrayDesign, $cell, $attributeType, $type, $value, $uri) = split /\t/, $line;
   $uri = "" if( !$uri );
-  if($type =~ /.*cell type$/) {
+  if($type eq $args->{"condensed_sdrf_path"}) {
     my $organism = $cell2organism->{ $cell };
     my $annot_uri = $automaticMappings->{ $type }->{ $value }->{$organism};
     $uri = $annot_uri if( $annot_uri );
@@ -90,7 +90,7 @@ while(my $line = <COND_IN_2>) {
 close(COND_IN_2);
 close($fh);
 
-$logger->info( "Successfully produced condensed SDRF with cell types annotated." );
+$logger->info( "Successfully produced condensed SDRF with cell types (by $args->{'cell_type_field'}) annotated." );
 
 
 
@@ -103,6 +103,7 @@ sub parse_args {
     GetOptions(
         "h|help"            => \$want_help,
         "c|condensed=s"    => \$args{ "condensed_sdrf_path" },
+        "e|cell_type_field=s"            => \$args{ "cell_type_field" },
         "x|exclusions_file=s"        => \$args{ "exclusions_file_path" },
         "o|out_condensed=s"        => \$args{ "output_sdrf_condensed" },
         "l|zoomifications_log=s"   => \$args{ "output_zoomifications" },
@@ -111,6 +112,14 @@ sub parse_args {
     unless( $args{ "condensed_sdrf_path" } ) {
         pod2usage(
             -message => "You must specify an input condensed_sdrf_path (-c).\n",
+            -exitval => 255,
+            -output => \*STDOUT,
+            -verbose => 1,
+        );
+    }
+    unless( $args{ "cell_type_field" } ) {
+        pod2usage(
+            -message => "You must specify an input cell type field (-e).\n",
             -exitval => 255,
             -output => \*STDOUT,
             -verbose => 1,

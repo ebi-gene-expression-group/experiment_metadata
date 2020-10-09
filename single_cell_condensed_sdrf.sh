@@ -203,20 +203,30 @@ use_cell_types_In_condensed() {
       if [ -n "$col_num_ct" ]; then 
         awk -v fieldName="$field_to_extract" -F'\t' 'BEGIN { OFS = "\t" } NR == FNR { cell[$1]; type[$1]=$2; next } $3 in cell { print $1, $2, $3, "factor", fieldName, type[$3] }' \
             <( awk -F'\t' -v cellCol=$col_num_cell_id -v ctCol=$col_num_ct 'BEGIN { OFS = "\t" } { print $cellCol, $ctCol }' $CT ) \
-            <( awk -F'\t' 'BEGIN { OFS = "\t" } {print $1, $2, $3}' $COND | sort | uniq) >> $COND\.with_ct
+            <( awk -F'\t' 'BEGIN { OFS = "\t" } {print $1, $2, $3}' $COND | sort | uniq) > $COND\.with_ct
+
+        actual_cell_type_field=$(head -1 $CT | awk -F"\t" -v col=$col_num_ct '{print $col}')
+        if [ -s $COND\.with_ct ]; then
+          echo "Found matches for $field_to_extract to add to the condensed..."
+          echo "Annotating $actual_cell_type_field cell types"          
+          annotateCommand="annotate_celltypes_condensed_sdrf.pl -c $CONDENSED_SDRF_TSV -o ${CONDENSED_SDRF_TSV}_celltypes -l ${CONDENSED_SDRF_TSV}_zoomalogs -e $actual_cell_type_field $exclusions"
+          eval $annotateCommand
+          
+          if [ "$?" = "0" ]; then # zooma mapping went fine
+            cat $CONDENSED_SDRF_TSV"_celltypes" >> $COND
+            # Append cell type zommification logs to main zoomification logs
+            tail -n+2 $CONDENSED_SDRF_TSV"_zoomalogs" >> $outputDir/$expId-zoomifications-log.tsv
+            rm $CONDENSED_SDRF_TSV"_zoomalogs"
+          fi
+  
+        else
+          echo "WARNING: No matches found between cell types file and the condensed SDRF for $actual_cell_type_field, please check"
+          echo $CT "and"
+          echo $COND
+        fi
+        rm -f $COND\.with_ct
       fi
   done
-  # if the file has content, merge it with the condensed.
-  # TODO in the future, we could have a Zooma call to get identifiers for each inferred cell type, before adding it to the condensed.
-  if [ -s $COND\.with_ct ]; then
-    echo "Found matches for $field_to_extract to add to the condensed..."
-    cat $COND\.with_ct >> $COND
-  else
-    echo "WARNING: No matches found between cell types file and the condensed SDRF, please check"
-    echo $CT "and"
-    echo $COND
-  fi
-  rm -f $COND\.with_ct
 }
 
 checkExecutableInPath condense_sdrf.pl
@@ -253,14 +263,4 @@ fi
 if [ -f "$cellTypesFile" ]; then
   echo "Found cell types file for $expId"
   use_cell_types_In_condensed
-  annotateCommand="annotate_celltypes_condensed_sdrf.pl -c $CONDENSED_SDRF_TSV -o ${CONDENSED_SDRF_TSV}_celltypes -l ${CONDENSED_SDRF_TSV}_zoomalogs $exclusions"
-  eval $annotateCommand
-
-  if [ "$?" = "0" ]; then # zooma mapping went fine
-    # replace condensed file with the new one that has cell type ontologies.
-    mv $CONDENSED_SDRF_TSV"_celltypes" $CONDENSED_SDRF_TSV
-    # Append cell type zommification logs to main zoomification logs
-    tail -n+2 $CONDENSED_SDRF_TSV"_zoomalogs" >> $outputDir/$expId-zoomifications-log.tsv
-    rm $CONDENSED_SDRF_TSV"_zoomalogs"
-  fi
 fi
