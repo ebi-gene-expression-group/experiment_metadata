@@ -220,7 +220,7 @@ use_cell_types_In_condensed() {
 }
 
 checkExecutableInPath condense_sdrf.pl
-checkExecutableInPath annotate_celltypes_condensed_sdrf.pl
+checkExecutableInPath run_zooma_condensed.pl
 
 # Figure out if the experiment has technical replicates
 hasTechnicalReplicates
