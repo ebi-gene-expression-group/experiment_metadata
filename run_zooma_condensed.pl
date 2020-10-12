@@ -55,7 +55,7 @@ while(my $line = <COND_IN>) {
   my ($expAccAux, $arrayDesign, $cell, $attributeType, $type, $value, $uri) = split /\t/, $line;
   $expAcc = $expAccAux;
   # we only care about cell types
-  $unique_properties->{ $type }->{ $value }->{ $cell } = 1 if $type =~ /.*cell type$/;
+  $unique_properties->{ $type }->{ $value }->{ $cell } = 1;
   # and run zooma needs the organism
   if ($type =~ /^organism$/ && !$cell2organism->{ $cell }) {
       my $org = lc $value;
@@ -80,21 +80,15 @@ while(my $line = <COND_IN_2>) {
   chomp $line;
   my ($expAccAux, $arrayDesign, $cell, $attributeType, $type, $value, $uri) = split /\t/, $line;
   $uri = "" if( !$uri );
-  if($type =~ /.*cell type$/) {
-    my $organism = $cell2organism->{ $cell };
-    my $annot_uri = $automaticMappings->{ $type }->{ $value }->{$organism};
-    $uri = $annot_uri if( $annot_uri );
-  }
+  my $organism = $cell2organism->{ $cell };
+  my $annot_uri = $automaticMappings->{ $type }->{ $value }->{$organism};
+  $uri = $annot_uri if( $annot_uri );
   say $fh join("\t", $expAccAux, $arrayDesign, $cell, $attributeType, $type, $value, $uri);
 }
 close(COND_IN_2);
 close($fh);
 
-$logger->info( "Successfully produced condensed SDRF with cell types annotated." );
-
-
-
-
+$logger->info( "Successfully produced condensed SDRF with zooma terms annotated." );
 
 # Get commandline arguments.
 sub parse_args {
