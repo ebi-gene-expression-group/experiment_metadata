@@ -50,7 +50,7 @@ option_list = list(
     help = "Optional flag. Interpret 4th field as biorep identifier?"
   ),
   make_option(
-    c("-d", "--delimeter"),
+    c("-d", "--delimiter"),
     action = "store",
     default = NA,
     type = 'character',
@@ -179,8 +179,8 @@ if (opt[['has_ontology']]){
 }
 
 # Add field delimeter to prevent R from adding dots
-if(!is.na(opt$delimeter)){
-    colnames(wide) = gsub(" ", opt$delimeter, colnames(wide))
+if(!is.na(opt$delimiter)){
+    colnames(wide) = gsub(" ", opt$delimiter, colnames(wide))
 }
 # Write output
 
