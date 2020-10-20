@@ -50,6 +50,13 @@ option_list = list(
     help = "Optional flag. Interpret 4th field as biorep identifier?"
   ),
   make_option(
+    c("-d", "--delimeter"),
+    action = "store",
+    default = NA,
+    type = 'character',
+    help = 'What delimeter should be added to field names instead of spaces? Default: none'
+  ),
+  make_option(
     c("-n", "--has-ontology"),
     action = "store_true",
     default = FALSE,
@@ -171,6 +178,10 @@ if (opt[['has_ontology']]){
   print("... done")
 }
 
+# Add field delimeter to prevent R from adding dots
+if(!is.na(opt$delimeter)){
+    colnames(wide) = gsub(" ", opt$delimeter, colnames(wide))
+}
 # Write output
 
 print("Writing reshaped output to file ...")
