@@ -12,3 +12,6 @@ RUN /opt/conda/bin/conda config --add channels defaults && \
 
 ENV PATH "/opt/conda/bin:/opt/conda/condabin:/bin:/sbin:/usr/bin:/usr/local/bin"
 
+ENV ZOOMA_API_BASE=https://www.ebi.ac.uk/spot/zooma/v2/api/
+ENV OLS_API_BASE=http://www.ebi.ac.uk/ols/api/
+
