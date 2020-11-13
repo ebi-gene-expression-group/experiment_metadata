@@ -2,7 +2,7 @@ FROM continuumio/miniconda3:4.8.2
 # debian
 
 RUN apt-get update 
-RUN apt-get install -y git bash
+RUN apt-get install -y git bash gawk
 
 # install conda packages atlas-experiment-metadata and perl dependencies
 RUN /opt/conda/bin/conda config --add channels defaults && \
