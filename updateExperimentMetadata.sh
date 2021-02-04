@@ -208,7 +208,7 @@ while [ $jobCnt -lt $numLsfJobsSubmitted ]; do
             echo "Done" >> $log
           fi
       else
-        echo -e "\nFailed to condense SDRF for $expAcc, This is "$(if [ "$isZoomaError" -ne '0' ]; then echo "not a zooma error"; else echo "an issue with Zooma mapping"; fi)
+        echo -e "\nFailed to condense SDRF for $expAcc, This is "$(if [ "$isZoomaError" -ne '0' ]; then echo "not a zooma error"; else echo "an issue with Zooma mapping"; fi)  >> $log
       fi
 
       rm -rf $lsfOut
