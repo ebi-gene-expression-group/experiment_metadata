@@ -12,6 +12,7 @@ setup() {
     implicit_pl_out_dir='implicit_pl'
     explicit_pl_out="${explicit_pl_out_dir}/E-MTAB-6077.condensed-sdrf.tsv"
     implicit_pl_out="${implicit_pl_out_dir}/E-MTAB-6077.condensed-sdrf.tsv"
+    implicit_pl_output_sdrf="${implicit_pl_out_dir}/${test_exp_acc}.sdrf.txt"
     explicit_sc_sh_out_dir='explicit_sc_sh'
     implicit_sc_sh_out_dir='implicit_sc_sh'
     zooma_exclusions="test_data/zooma_exclusions.yml"
@@ -32,15 +33,16 @@ setup() {
     [ -f "$explicit_pl_out" ]
 }
 
-@test "Test single-cell condense perl script with implicit IDF" {
+@test "Test single-cell condense perl script with implicit IDF and SDRF copy" {
     if [ -f "$implicit_pl_out" ]; then
         skip "Output from implicit condense pl exists"
     fi
 
-    run mkdir -p $implicit_pl_out_dir && env ATLAS_PROD=$test_data_dir $condense_pl -sc -e $test_exp_acc -o $implicit_pl_out_dir
+    run mkdir -p $implicit_pl_out_dir && env ATLAS_PROD=$test_data_dir $condense_pl -sc -s -e $test_exp_acc -o $implicit_pl_out_dir
 
     [ "$status" -eq 0 ]
     [ -f "$implicit_pl_out" ]
+    [ -f "$implicit_pl_output_sdrf" ]
 }
 
 @test "Test single-cell condense wrapper with explicit IDF" {
