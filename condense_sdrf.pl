@@ -335,6 +335,7 @@ sub copy_sdrf_to_output_dir {
         else {
             $logger->logdie( "Could not copy SDRF: $!" );
         }
+    }
 }
 
 sub create_all_atlas_assays {
