@@ -173,7 +173,7 @@ my ($investigation, $magetab) = $reader->parse;
 $logger->info( "Successfully read MAGETAB." );
 
 if( $args->{ "copySDRF" } ) {
-    copy_sdrf_to_output_dir($investigation, $args{ "output_directory" });
+    copy_sdrf_to_output_dir($investigation, $args{ "output_directory" }, $idfFile);
 }
 
 $logger->info( "Merging technical replicates if available.") if( $args->{ "mergeTechReplicates" } );
