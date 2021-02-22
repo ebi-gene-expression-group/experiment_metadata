@@ -109,6 +109,7 @@ use Atlas::ZoomaClient;
 use Atlas::ZoomaClient::MappingResult;
 use Atlas::AtlasConfig::Reader qw( parseAtlasFactors );
 use File::Basename;
+use File::Spec;
 use Data::Dumper;
 
 $| = 1;
@@ -172,7 +173,7 @@ my ($investigation, $magetab) = $reader->parse;
 $logger->info( "Successfully read MAGETAB." );
 
 if( $args->{ "copySDRF" } ) {
-    copy_sdrf_to_output_dir($investigation, $args{ "output_directory" })
+    copy_sdrf_to_output_dir($investigation, $args{ "output_directory" });
 }
 
 $logger->info( "Merging technical replicates if available.") if( $args->{ "mergeTechReplicates" } );
@@ -322,10 +323,17 @@ sub copy_sdrf_to_output_dir {
     my ( $investigation, $output_dir, $idf_abs_path ) = @_;
     foreach my $sdrf ( @{ $investigation->get_sdrfs() } ) {
         $filename = $sdrf->get_uri()->file();
-        if( File::Spec->file_name_is_absolute( $filename ) ) {
-            # copy directly
-        } else {
+        if( !File::Spec->file_name_is_absolute( $filename ) ) {
             # append IDF path
+            my $dir = dirname($idf_abs_path);
+            $filename = File::Spec->catfile( $dir, $filename );
+        } 
+        `cp $filename $output_dir`;
+        unless( $? ) {
+            $logger->info( "Successfully copied SDRF." );
+        }
+        else {
+            $logger->logdie( "Could not copy SDRF: $!" );
         }
 }
 
