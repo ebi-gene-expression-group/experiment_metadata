@@ -368,10 +368,10 @@ else
   mkdir -p $targetDir
   cp $zoomaMappingReport.AUTOMATIC.tsv $zoomaMappingReport.EXCLUDED.tsv $zoomaMappingReport.NO_RESULTS.tsv $zoomaMappingReport.REQUIRES_CURATION.tsv ${targetDir}/
 
+  newToCurate=${targetDir}/atlas_zooma_mapping_report.${today}.tsv.REQUIRES_CURATION.tsv
   if [ ! -z ${previousRunDate+x} ] && [ -d ${targetDir}/../$previousRunDate ]; then
     # Calculating new lines not previously seen
     previousCurated=${targetDir}/../${previousRunDate}/atlas_zooma_mapping_report.${previousRunDate}.tsv.REQUIRES_CURATION.tsv
-    newToCurate=${targetDir}/atlas_zooma_mapping_report.${today}.tsv.REQUIRES_CURATION.tsv
     # Compare based on fields Property value ($2), semantic tag ($3), Ontology label / Zooma mapping ($6)
     awk -F'\t' 'NR==FNR{e[$2$3$6]=1;next};!e[$2$3$6]' $previousCurated $newToCurate > ${targetDir}/atlas_zooma_mapping_report.${today}.tsv.REQUIRES_CURATION_NEW_LINES.tsv
   else
@@ -380,6 +380,8 @@ else
 
   # Mail out the Zoomification reports location
   echo -e "Dear curators,\n      Please find the Zooma mapping reports for the latest run for $today in $targetDir.\n\nGreetings from your friendly neighbourhood cron." | mutt -s "[${mode}/cron] Zooma mapping report is available in $targetDir" -- ${notifEmail}
+  # For the automatic previous_run detection if no date is provided on the next run.
+  ln -s $newToCurate atlas_zooma_mapping_report.previous_run.tsv.REQUIRES_CURATION.tsv
   pushd $targetDir/../
   current_run=$(ls -ltr | grep -v previous_run | grep -e '[[:digit:]]\{4\}-[[:digit:]]\{2\}' | tail -n 1 | awk '{ print $9 }')
   rm -f previous_run
