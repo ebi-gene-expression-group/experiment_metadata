@@ -2,7 +2,7 @@ name: test
 dependencies:
   - bats
   - coreutils
-  - perl=5.22.0
+  - perl
   - perl-atlas-modules
   - libgfortran
   - r-optparse=1.6.0
