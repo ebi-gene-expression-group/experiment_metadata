@@ -1,0 +1,9 @@
+name: test
+dependencies:
+  - bats
+  - perl
+  - perl-atlas-modules
+  - libgfortran
+  - r-optparse=1.6.0
+  - r-reshape2
+  - r-data.table
