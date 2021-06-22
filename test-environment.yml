@@ -1,6 +1,7 @@
 name: test
 dependencies:
   - bats
+  - coreutils
   - perl
   - perl-atlas-modules
   - libgfortran
