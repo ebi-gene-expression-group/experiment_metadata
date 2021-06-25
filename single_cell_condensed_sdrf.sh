@@ -59,7 +59,7 @@ if [ -z "$outputDir" ]; then
 fi
 
 if [ -z "$cellGroupTypes" ]; then
-    cellGroupTypes="inferred cell type - ontology labels,inferred cell type - authors labels"
+    cellGroupTypes="authors cell type - ontology labels,authors cell type,inferred cell type - ontology labels,inferred cell type - authors labels"
 fi
 
 # If an actual file is specified, we can pass that directly
