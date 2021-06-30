@@ -105,6 +105,7 @@ use Atlas::Common qw(
     get_idfFile_path
     get_singlecell_idfFile_path
 );
+use Atlas::Util qw( get_supporting_file);
 use Atlas::ZoomaClient;
 use Atlas::ZoomaClient::MappingResult;
 use Atlas::AtlasConfig::Reader qw( parseAtlasFactors );
@@ -286,7 +287,7 @@ sub parse_args {
         $args{ "output_directory" } = Cwd::cwd();
     }
     unless($args{ "zooma_exclusions_path" }) {
-        my $defaultExclusionsFile="$abs_path/../supporting_files/zooma_exclusions.yml";
+        my $defaultExclusionsFile=get_supporting_file('zooma_exclusions.yml');
         print "Using default exclusions file path of $defaultExclusionsFile\n";
         $args{ "zooma_exclusions_path" } = $defaultExclusionsFile ;
     }
