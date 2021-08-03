@@ -15,10 +15,11 @@ setup() {
     implicit_pl_output_sdrf="${implicit_pl_out_dir}/${test_exp_acc}.sdrf.txt"
     explicit_sc_sh_out_dir='explicit_sc_sh'
     implicit_sc_sh_out_dir='implicit_sc_sh'
+    implicit_sc_sh_exc_out_dir='implicit_sc_sh_env_exc'
     zooma_exclusions="$test_data_dir/zooma_exclusions.yml"
     explicit_sc_sh_out="${explicit_sc_sh_out_dir}/E-MTAB-6077.condensed-sdrf.tsv"
     implicit_sc_sh_out="${implicit_sc_sh_out_dir}/E-MTAB-6077.condensed-sdrf.tsv"
-    implicit_sc_sh_out_env_exc="${implicit_sc_sh_out_dir}/E-MTAB-6077.condensed-sdrf.env_exc.tsv"
+    implicit_sc_sh_out_env_exc="${implicit_sc_sh_exc_out_dir}/E-MTAB-6077.condensed-sdrf.tsv"
     celltype_fields="inferred cell type"
 }
 
@@ -73,7 +74,7 @@ setup() {
         skip "Output from SC sh condense wrapper exists"
     fi
 
-    run mkdir -p $implicit_sc_sh_out_dir && env ATLAS_SC_EXPERIMENTS=$test_data_dir ATLAS_META_CONFIG=$test_data_dir bash single_cell_condensed_sdrf.sh -t "$celltype_fields" -e E-MTAB-6077 -o $implicit_sc_sh_out_dir
+    run mkdir -p $implicit_sc_sh_out_dir && env ATLAS_SC_EXPERIMENTS=$test_data_dir ATLAS_META_CONFIG=$test_data_dir bash single_cell_condensed_sdrf.sh -t "$celltype_fields" -e E-MTAB-6077 -o $implicit_sc_sh_exc_out_dir
 
     [ "$status" -eq 0 ]
     [ -f "$implicit_sc_sh_out_env_exc" ]
