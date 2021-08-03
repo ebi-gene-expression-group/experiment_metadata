@@ -15,7 +15,7 @@ setup() {
     implicit_pl_output_sdrf="${implicit_pl_out_dir}/${test_exp_acc}.sdrf.txt"
     explicit_sc_sh_out_dir='explicit_sc_sh'
     implicit_sc_sh_out_dir='implicit_sc_sh'
-    zooma_exclusions="test_data/zooma_exclusions.yml"
+    zooma_exclusions="$test_data_dir/zooma_exclusions.yml"
     explicit_sc_sh_out="${explicit_sc_sh_out_dir}/E-MTAB-6077.condensed-sdrf.tsv"
     implicit_sc_sh_out="${implicit_sc_sh_out_dir}/E-MTAB-6077.condensed-sdrf.tsv"
     celltype_fields="inferred cell type"
@@ -45,7 +45,7 @@ setup() {
     [ -f "$implicit_pl_output_sdrf" ]
 }
 
-@test "Test single-cell condense wrapper with explicit IDF" {
+@test "Test single-cell condense wrapper with explicit IDF and Zooma" {
     if [ -f "$explicit_sc_sh_out" ]; then
         skip "Output from SC sh condense wrapper exists"
     fi
@@ -56,12 +56,23 @@ setup() {
     [ -f "$explicit_sc_sh_out" ]
 }
 
-@test "Test single-cell condense wrapper with implicit IDF" {
+@test "Test single-cell condense wrapper with implicit IDF and Zooma" {
     if [ -f "$implicit_sc_sh_out" ]; then
         skip "Output from SC sh condense wrapper exists"
     fi
 
     run mkdir -p $implicit_sc_sh_out_dir && env ATLAS_SC_EXPERIMENTS=$test_data_dir bash single_cell_condensed_sdrf.sh -t "$celltype_fields" -e E-MTAB-6077 -o $implicit_sc_sh_out_dir -z $zooma_exclusions
+
+    [ "$status" -eq 0 ]
+    [ -f "$implicit_sc_sh_out" ]
+}
+
+@test "Test single-cell condense wrapper with implicit IDF and Zooma from env" {
+    if [ -f "$implicit_sc_sh_out" ]; then
+        skip "Output from SC sh condense wrapper exists"
+    fi
+
+    run mkdir -p $implicit_sc_sh_out_dir && env ATLAS_SC_EXPERIMENTS=$test_data_dir ATLAS_META_CONFIG=$test_data_dir bash single_cell_condensed_sdrf.sh -t "$celltype_fields" -e E-MTAB-6077 -o $implicit_sc_sh_out_dirs
 
     [ "$status" -eq 0 ]
     [ -f "$implicit_sc_sh_out" ]
