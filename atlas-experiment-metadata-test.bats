@@ -18,6 +18,7 @@ setup() {
     zooma_exclusions="$test_data_dir/zooma_exclusions.yml"
     explicit_sc_sh_out="${explicit_sc_sh_out_dir}/E-MTAB-6077.condensed-sdrf.tsv"
     implicit_sc_sh_out="${implicit_sc_sh_out_dir}/E-MTAB-6077.condensed-sdrf.tsv"
+    implicit_sc_sh_out_env_exc="${implicit_sc_sh_out_dir}/E-MTAB-6077.condensed-sdrf.env_exc.tsv"
     celltype_fields="inferred cell type"
 }
 
@@ -68,14 +69,14 @@ setup() {
 }
 
 @test "Test single-cell condense wrapper with implicit IDF and Zooma from env" {
-    if [ -f "$implicit_sc_sh_out" ]; then
+    if [ -f "$implicit_sc_sh_out_env_exc" ]; then
         skip "Output from SC sh condense wrapper exists"
     fi
 
     run mkdir -p $implicit_sc_sh_out_dir && env ATLAS_SC_EXPERIMENTS=$test_data_dir ATLAS_META_CONFIG=$test_data_dir bash single_cell_condensed_sdrf.sh -t "$celltype_fields" -e E-MTAB-6077 -o $implicit_sc_sh_out_dirs
 
     [ "$status" -eq 0 ]
-    [ -f "$implicit_sc_sh_out" ]
+    [ -f "$implicit_sc_sh_out_env_exc" ]
 }
 
 @test "Test unmelt for condensed SDRFs" {
