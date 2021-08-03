@@ -73,7 +73,7 @@ setup() {
         skip "Output from SC sh condense wrapper exists"
     fi
 
-    run mkdir -p $implicit_sc_sh_out_dir && env ATLAS_SC_EXPERIMENTS=$test_data_dir ATLAS_META_CONFIG=$test_data_dir bash single_cell_condensed_sdrf.sh -t "$celltype_fields" -e E-MTAB-6077 -o $implicit_sc_sh_out_dirs
+    run mkdir -p $implicit_sc_sh_out_dir && env ATLAS_SC_EXPERIMENTS=$test_data_dir ATLAS_META_CONFIG=$test_data_dir bash single_cell_condensed_sdrf.sh -t "$celltype_fields" -e E-MTAB-6077 -o $implicit_sc_sh_out_dir
 
     [ "$status" -eq 0 ]
     [ -f "$implicit_sc_sh_out_env_exc" ]
