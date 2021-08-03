@@ -286,10 +286,12 @@ sub parse_args {
         print "WARN  - No output directory specified, will write output files in ", Cwd::cwd(), "\n";
         $args{ "output_directory" } = Cwd::cwd();
     }
-    unless($args{ "zooma_exclusions_path" }) {
-        my $defaultExclusionsFile=get_supporting_file('zooma_exclusions.yml');
-        print "Using default exclusions file path of $defaultExclusionsFile\n";
-        $args{ "zooma_exclusions_path" } = $defaultExclusionsFile ;
+    if($args{ "zooma" } ){
+        unless($args{ "zooma_exclusions_path" }) {
+            my $defaultExclusionsFile=get_supporting_file('zooma_exclusions.yml');
+            print "Using default exclusions file path of $defaultExclusionsFile\n";
+            $args{ "zooma_exclusions_path" } = $defaultExclusionsFile ;
+        }
     }
 
     # If one was specified, check that it's writable and die if not.
