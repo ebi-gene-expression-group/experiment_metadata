@@ -131,7 +131,6 @@ sub parse_args {
 
 sub run_zooma_mapping {
     my ( $allPropertiesAssays, $cell2organism, $zoomaExclusionsFilename, $zoomificationsFilename, $expAcc ) = @_;
-    #my $zoomaExclusionsFile = "$abs_path/../supporting_files/zooma_exclusions.yml";
     my $zoomaExclusions = Config::YAML->new(
         config => $zoomaExclusionsFilename
     ) if $zoomaExclusionsFilename;

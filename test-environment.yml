@@ -3,7 +3,7 @@ dependencies:
   - bats
   - coreutils
   - perl
-  - perl-atlas-modules
+  - perl-atlas-modules>=0.3.1
   - libgfortran
   - r-optparse=1.6.0
   - r-reshape2
