@@ -18,7 +18,7 @@ expId="$EXP_ID"
 idfFile=
 experimentDir="$ATLAS_SC_EXPERIMENTS"
 skipZooma="$SKIP_ZOOMA"
-zoomaExclusions="$scriptDir/../supporting_files/zooma_exclusions.yml"
+zoomaExclusions="$ATLAS_META_CONFIG/zooma_exclusions.yml"
 outputDir=
 
 while getopts ":e:f:s:o:z:t:" o; do
@@ -59,7 +59,7 @@ if [ -z "$outputDir" ]; then
 fi
 
 if [ -z "$cellGroupTypes" ]; then
-    cellGroupTypes="inferred cell type - ontology labels,inferred cell type - authors labels"
+    cellGroupTypes="authors cell type - ontology labels,authors cell type,inferred cell type - ontology labels,inferred cell type - authors labels"
 fi
 
 # If an actual file is specified, we can pass that directly
@@ -202,7 +202,7 @@ use_cell_types_In_condensed() {
    
       if [ -n "$col_num_ct" ]; then 
         awk -v fieldName="$field_to_extract" -F'\t' 'BEGIN { OFS = "\t" } NR == FNR { cell[$1]; type[$1]=$2; next } $3 in cell { print $1, $2, $3, "factor", fieldName, type[$3] }' \
-            <( awk -F'\t' -v cellCol=$col_num_cell_id -v ctCol=$col_num_ct 'BEGIN { OFS = "\t" } { print $cellCol, $ctCol }' $CT ) \
+            <( awk -F'\t' -v cellCol=$col_num_cell_id -v ctCol=$col_num_ct 'BEGIN { OFS = "\t" } {if ($ctCol ~ /\S/) print $cellCol, $ctCol }' $CT ) \
             <( awk -F'\t' 'BEGIN { OFS = "\t" } {print $1, $2, $3}' $COND | sort | uniq) > $COND\.with_ct
 
         actual_cell_type_field=$(head -1 $CT | awk -F"\t" -v col=$col_num_ct '{print $col}')

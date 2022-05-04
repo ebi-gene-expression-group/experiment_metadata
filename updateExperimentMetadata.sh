@@ -27,6 +27,7 @@ fi
 
 notifEmail=$1
 mode=$2
+retryWithoutZooma=${3:-yes}
 
 checkZooma() {
   log=$1
@@ -165,43 +166,49 @@ while [ $jobCnt -lt $numLsfJobsSubmitted ]; do
       # Log error condition, but don't fail - condense SDRF without Zooma mapping.
       errors=$(cat $lsfErr)
       errors="$errors"`grep "Failed to query ZOOMA" $lsfOut | grep ":ERROR"`
+      isZoomaError=$?
       errors="$errors"`grep "Exception:" $lsfOut`
       errors="$errors"`grep "^ERROR" $lsfOut`
 
-      if [ ! -z "$errors" ]; then
+      if [ -n "$errors" ]; then
         echo -e "\n\nErrors for ${expAcc} (condense_sdrf.pl call FAILED): " >> $log
         echo -e $errors >> $log
       fi
 
-      echo "Condensing SDRF $expAcc without Zooma mapping..." >> $log
+      if [ "$isZoomaError" -eq '0' ] && [ "$retryWithoutZooma" = 'yes' ]; then
 
-      if [ "$mode" == "atlas" ]; then
-        # Get the experiment type from the experiment config.
-        expType=$(get_experiment_type_from_xml.pl $expAcc/$expAcc-configuration.xml)
-        if [ $? -ne 0 ]; then
-          echo "ERROR: failed to get $expAcc experiment type from XML config. Cannot generate condensed SDRF."
-          exit 1
-        fi
+          echo "Condensing SDRF $expAcc without Zooma mapping..." >> $log
 
-        if [[ $expType == *baseline ]]; then
-          condense_sdrf.pl -e $expAcc -f $expAcc/$expAcc-factors.xml -i -o $expAcc
-        else
-          condense_sdrf.pl -e $expAcc -i -o $expAcc
-        fi
+          if [ "$mode" == "atlas" ]; then
+            # Get the experiment type from the experiment config.
+            expType=$(get_experiment_type_from_xml.pl $expAcc/$expAcc-configuration.xml)
+            if [ $? -ne 0 ]; then
+              echo "ERROR: failed to get $expAcc experiment type from XML config. Cannot generate condensed SDRF."
+              exit 1
+            fi
 
-      elif [ "$mode" == "single_cell" ]; then
-        export EXP_ID=$expAcc
-        export SKIP_ZOOMA=yes
-        single_cell_condensed_sdrf.sh
+            if [[ $expType == *baseline ]]; then
+              condense_sdrf.pl -e $expAcc -f $expAcc/$expAcc-factors.xml -i -o $expAcc
+            else
+              condense_sdrf.pl -e $expAcc -i -o $expAcc
+            fi
 
-      elif [ "$mode" == "irap_single_lib" ]; then
-        condense_sdrf.pl -e $expAcc -i -o $expAcc -b
-      fi
+          elif [ "$mode" == "single_cell" ]; then
+            export EXP_ID=$expAcc
+            export SKIP_ZOOMA=yes
+            single_cell_condensed_sdrf.sh
 
-      if [ $? -ne 0 ]; then
-        echo -e "\nFailed to condense SDRF for $expAcc without Zooma mappings, following error from trying with Zooma mappings" >> $log
+          elif [ "$mode" == "irap_single_lib" ]; then
+            condense_sdrf.pl -e $expAcc -i -o $expAcc -b
+          fi
+
+          if [ $? -ne 0 ]; then
+            echo -e "\nFailed to condense SDRF for $expAcc without Zooma mappings, following error from trying with Zooma mappings" >> $log
+          else
+            echo "Done" >> $log
+          fi
       else
-        echo "Done" >> $log
+        echo -e "\nFailed to condense SDRF for $expAcc, This is "$(if [ "$isZoomaError" -ne '0' ]; then echo "not a zooma error"; else echo "an issue with Zooma mapping"; fi)  >> $log
       fi
 
       rm -rf $lsfOut

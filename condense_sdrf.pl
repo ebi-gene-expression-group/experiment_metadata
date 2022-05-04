@@ -45,6 +45,10 @@ Optional. Path to Factors XML config (e.g. E-MTAB-1829-factors.xml)
 
 Optional. Copy IDF file from ArrayExpress load directory to output directory.
 
+=item -s --copySDRF
+
+Optional. Copy SDRF file from the IDF determined location to the output directory.
+
 =item -o --outdir
 
 Optional. Destination directory for output file(s). Will use current working
@@ -101,10 +105,12 @@ use Atlas::Common qw(
     get_idfFile_path
     get_singlecell_idfFile_path
 );
+use Atlas::Util qw( get_supporting_file);
 use Atlas::ZoomaClient;
 use Atlas::ZoomaClient::MappingResult;
 use Atlas::AtlasConfig::Reader qw( parseAtlasFactors );
 use File::Basename;
+use File::Spec;
 use Data::Dumper;
 
 $| = 1;
@@ -164,8 +170,13 @@ my $reader = Bio::MAGETAB::Util::Reader->new( {
         ignore_datafiles    => 1
     });
 
-my $magetab = $reader->parse;
+my ($investigation, $magetab) = $reader->parse;
 $logger->info( "Successfully read MAGETAB." );
+
+if( $args->{ "copySDRF" } ) {
+    copy_sdrf_to_output_dir($investigation, $args->{ "output_directory" }, $idfFile);
+}
+
 $logger->info( "Merging technical replicates if available.") if( $args->{ "mergeTechReplicates" } );
 my $atlasAssays = create_all_atlas_assays( $magetab, $args->{ "mergeTechReplicates" } );
 $logger->debug( Dumper( $atlasAssays ) );
@@ -247,6 +258,7 @@ sub parse_args {
         "z|zooma"           => \$args{ "zooma" },
         "x|zoomaExclusions=s" => \$args{ "zooma_exclusions_path" },
         "i|idf"             => \$args{ "idf" },
+        "s|copySDRF"        => \$args{"copySDRF"},
         "f|factors=s"       => \$args{ "factors_file" },
         "b|bioreps"         => \$args{ "bioreps" },
         "d|debug"           => \$args{ "debug" },
@@ -274,10 +286,12 @@ sub parse_args {
         print "WARN  - No output directory specified, will write output files in ", Cwd::cwd(), "\n";
         $args{ "output_directory" } = Cwd::cwd();
     }
-    unless($args{ "zooma_exclusions_path" }) {
-        my $defaultExclusionsFile="$abs_path/../supporting_files/zooma_exclusions.yml";
-        print "Using default exclusions file path of $defaultExclusionsFile\n";
-        $args{ "zooma_exclusions_path" } = $defaultExclusionsFile ;
+    if($args{ "zooma" } ){
+        unless($args{ "zooma_exclusions_path" }) {
+            my $defaultExclusionsFile=get_supporting_file('zooma_exclusions.yml');
+            print "Using default exclusions file path of $defaultExclusionsFile\n";
+            $args{ "zooma_exclusions_path" } = $defaultExclusionsFile ;
+        }
     }
 
     # If one was specified, check that it's writable and die if not.
@@ -305,6 +319,25 @@ sub copy_idf_from_ae {
     }
     else {
         $logger->logdie( "Could not copy IDF: $!" );
+    }
+}
+
+sub copy_sdrf_to_output_dir {
+    my ( $investigation, $output_dir, $idf_abs_path ) = @_;
+    foreach my $sdrf ( @{ $investigation->get_sdrfs() } ) {
+        my $filename = $sdrf->get_uri()->file();
+        if( !File::Spec->file_name_is_absolute( $filename ) ) {
+            # append IDF path
+            my $dir = dirname($idf_abs_path);
+            $filename = File::Spec->catfile( $dir, $filename );
+        } 
+        `cp $filename $output_dir`;
+        unless( $? ) {
+            $logger->info( "Successfully copied SDRF." );
+        }
+        else {
+            $logger->logdie( "Could not copy SDRF: $!" );
+        }
     }
 }
 
