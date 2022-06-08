@@ -12,7 +12,7 @@ import os
 
 # source bash functions
 
-# need somewhere a mapping part, to go from many accessions build the unified reports
+# need somewhere a mapping part, to go from many accessions build the unified reports (agreggation)
 
 def get_outputs():
 
