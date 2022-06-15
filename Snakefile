@@ -38,6 +38,19 @@ rule check_zooma:
     """
     Check that zooma returns successful http code
     """
+    output:
+        http_code_txt="" # Make this write to a temporary file
+    shell:
+        """
+        zoomaMetadataUrl="${ZOOMA_API_BASE}/server/metadata"
+        httpResponse=`curl -o /dev/null -X GET -s -w %{http_code} ${zoomaMetadataUrl}`
+        if [ "$httpResponse" -e 200 ]; then
+            echo $httpResponse > {http_code_txt}
+        else
+            # Message 
+            echo "ERROR: Zooma not responding correctly"
+            echo "${zoomaMetadataUrl} returned a non-success http code: $httpResponse"
+        """
 
 rule remove_aux_files:
 
