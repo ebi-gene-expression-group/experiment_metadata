@@ -1,4 +1,5 @@
-import os
+from os import listdir
+import re
 
 # example run 
 
@@ -14,20 +15,41 @@ import os
 
 # need somewhere a mapping part, to go from many accessions build the unified reports (agreggation)
 
-def get_outputs():
+
+# Parse config from command line
+
+mode = config.get("mode")
+
+
+def get_accessions(mode):
     """
-    Generate the expected output file names
+    Generate the expected output file names.
+    Not yet sure if for all modes, the glob path below
+    is where the accession dirs are found.
+    Edit accordingly once known.
     """
-    pass
+    workdir = "" # Should be determined by mode
+    acc_regex = re.compile("E-\D+-\d+")
+    acc_dirs = listdir(f"{workdir}")
+    ACCESSIONS = [acc for acc in acc_dirs if acc_regex.match(acc)]
+    return(workdir, ACCESSIONS)
+
+workdir, ACCESSIONS = get_accessions(mode)
 
 
-
+# Below probably no longer needed bec of regex above
 wildcard_constraints:
     accession = "E-\D+-\d+"
 
+
+# Rule for running the whole pipelien
+# Not yet sure if below is the desired path for the output condensed sdrf files
+# Edit accordingly once the output dir is identified
 rule all:
     input:
-        required_outputs=get_outputs()
+        expand("{workdir}/{acc}/{acc}.condensed-sdrf.tsv", acc=ACCESSIONS)
+
+
 
 
 # MEM_FOR_APPLY_FIXES=
