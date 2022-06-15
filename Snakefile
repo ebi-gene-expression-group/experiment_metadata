@@ -39,7 +39,7 @@ rule check_zooma:
     Check that zooma returns successful http code
     """
     output:
-        http_code_txt="" # Make this write to a temporary file
+        http_code_txt=temp("prep_env/http_code.txt")
     shell:
         """
         zoomaMetadataUrl="${ZOOMA_API_BASE}/server/metadata"
@@ -53,6 +53,13 @@ rule check_zooma:
         """
 
 rule remove_aux_files:
+    input:
+        "prep_env/http_code.txt"
+    output:
+        ""
+    shell:
+        """
+        """
 
 
 rule run_condense_sdrf:
