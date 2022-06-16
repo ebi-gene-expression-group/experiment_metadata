@@ -1,12 +1,6 @@
 from os import listdir
 import re
 
-# example run 
-
-# snakemake .....--config \
-#    accession={wildcards.accession} \
-#    mode="single_cell" 
-
 # This workflow updates all ontology mappings in condensed SDRF files, and then
 # updates all experiment designs on ves-hx-76:8080
 
@@ -47,7 +41,7 @@ wildcard_constraints:
 # Edit accordingly once the output dir is identified
 rule all:
     input:
-        expand("{workdir}/{acc}/{acc}.condensed-sdrf.tsv", acc=ACCESSIONS)
+        condensed_sdrf=expand("{workdir}/{acc}/{acc}.condensed-sdrf.tsv", acc=ACCESSIONS),
 
 
 
@@ -60,27 +54,45 @@ rule check_zooma:
     """
     Check that zooma returns successful http code
     """
+    log:
+        "logs/{accession}-check_zooma.log"
     output:
-        http_code_txt=temp("prep_env/http_code.txt")
+        temp("{accession}/check_zooma.done")
+    params:
+        zoomaMetadataUrl=config['zoomaMetadataUrl']
     shell:
         """
-        zoomaMetadataUrl="${ZOOMA_API_BASE}/server/metadata"
-        httpResponse=`curl -o /dev/null -X GET -s -w %{http_code} ${zoomaMetadataUrl}`
+        set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
+        exec &> "{log}"
+
+        httpResponse=`curl -o /dev/null -X GET -s -w %{http_code} {params.zoomaMetadataUrl}`
         if [ "$httpResponse" -e 200 ]; then
-            echo $httpResponse > {http_code_txt}
+            touch {output}
         else
-            # Message 
             echo "ERROR: Zooma not responding correctly"
-            echo "${zoomaMetadataUrl} returned a non-success http code: $httpResponse"
+            echo "{params.zoomaMetadataUrl} returned a non-success http code: $httpResponse for {wildcards.accession}"
+        fi
         """
 
 rule remove_aux_files:
+    """
+    Remove auxiliary files
+    """
+    log:
+        "logs/{accession}-remove_aux_files.log"
     input:
-        "prep_env/http_code.txt"
+        rules.check_zooma.output
     output:
-        ""
+        temp("{accession}/remove_aux_files.done")
     shell:
         """
+        set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
+        exec &> "{log}"
+        rm -rf {wildcards.accession}/condense_sdrf.???
+        rm -rf {wildcards.accession}/fixes.???
+        rm -rf {wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv
+        #rm -rf $zoomaMappingReport.aux
+        touch {output}
         """
 
 
@@ -91,19 +103,35 @@ rule run_condense_sdrf:
     """
     conda: "envs/perl-atlas-modules.yaml"
     log:
+    input:
+        "{accession}-configuration.xml"
+    params:
+        mode=config['mode']
     output:
+
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
         exec &> "{log}"
 
-        ..condense_sdrf.pl
+        # Run condense_sdrf.pl with options to map terms with Zooma (-z) and import
+        # the IDF from ArrayExpress load directory (-i).
+        if [ {params.mode} == "atlas" ]; then
+
+            expType=$(get_experiment_type_from_xml.pl {input})
+
+            if [[ $expType == *baseline ]]; then
+                ../condense_sdrf.pl ..
+            else
+                ../condense_sdrf.pl ..
+            fi
 
         # if error detected, then condense SDRF without Zooma mapping:
         ..condense_sdrf.pl
 
         #if success, run next rule
         """
+
 
 rule apply_fixes:
     """
