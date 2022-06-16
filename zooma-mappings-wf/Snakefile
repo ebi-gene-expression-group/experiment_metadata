@@ -11,10 +11,8 @@ import re
 
 
 # Parse config from command line
+workdir = config.get("workdir")
 
-mode = config.get("mode")
-
-workdir = config.get("working_dir")
 
 def get_accessions(workdir):
     """
@@ -32,13 +30,12 @@ def get_accessions(workdir):
 ACCESSIONS = get_accessions(workdir)
 
 
-
 # Below probably no longer needed bec of regex above
 wildcard_constraints:
     accession = "E-\D+-\d+"
 
 
-# Rule for running the whole pipelien
+# Rule for running the whole pipeline
 # Not yet sure if below is the desired path for the output condensed sdrf files
 # Edit accordingly once the output dir is identified
 rule all:
