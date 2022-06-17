@@ -14,38 +14,24 @@ import re
 
 mode = config.get("mode")
 
-def get_working_dir():
-    if 'mode' in config:
-        if config['mode'] == 'atlas':
-            workingDir=config['atlas_exps']
-        elif config['mode'] == 'single_cell':
-            workingDir=config['atlas_sc_experiments']
-        elif config['mode'] == 'irap_single_lib':
-            workingDir=config['irap_single_lib']
-        else:
-            print(f"ERROR: mode not recognised")
-            exit(2)
-        return workingDir
-    else: 
-        exit(2)
+workdir = config.get("working_dir")
 
-
-def get_accessions(mode):
+def get_accessions(workdir):
     """
     Generate the expected output file names.
     Not yet sure if for all modes, the glob path below
     is where the accession dirs are found.
     Edit accordingly once known.
     """
-    workdir = get_working_dir() # Should be determined by mode
+    #workdir = config['working_dir'] # Should be determined by mode
     acc_regex = re.compile("E-\D+-\d+")
     acc_dirs = listdir(f"{workdir}")
     ACCESSIONS = [acc for acc in acc_dirs if acc_regex.match(acc)]
     return(workdir, ACCESSIONS)
 
-ACCESSIONS = get_accessions(mode)
+ACCESSIONS = get_accessions(workdir)
 
-workingDir = get_working_dir()
+
 
 # Below probably no longer needed bec of regex above
 wildcard_constraints:
@@ -119,7 +105,9 @@ rule run_condense_sdrf:
     input:
         "{accession}-configuration.xml"
     params:
-        mode=config['mode']
+        mode=config['mode'],
+        attempt_number=attempt,
+        retry_without_zooma=config['retryWithoutZooma']
     output:
 
     shell:
@@ -127,22 +115,61 @@ rule run_condense_sdrf:
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
         exec &> "{log}"
 
-        # Run condense_sdrf.pl with options to map terms with Zooma (-z) and import
-        # the IDF from ArrayExpress load directory (-i).
-        if [ {params.mode} == "atlas" ]; then
+        if [[ {params.attempt_number} -lt 2 ]]; then
+            # Run condense_sdrf.pl with options to map terms with Zooma (-z) and import
+            # the IDF from ArrayExpress load directory (-i).
+            if [ {params.mode} == "atlas" ]; then
 
-            expType=$(get_experiment_type_from_xml.pl {input})
+                # Get the experiment type from the experiment config.
+                expType=$(get_experiment_type_from_xml.pl {input})
 
-            if [[ $expType == *baseline ]]; then
-                ../condense_sdrf.pl ..
+                if [[ $expType == *baseline ]]; then
+                    ../condense_sdrf.pl -e {wildcards.accession} -f {wildcards.accession}/{wildcards.accession}-factors.xml -z -i -o {wildcards.accession}
+                else
+                    ../condense_sdrf.pl -e {wildcards.accession} -z -i -o {wildcards.accession}
+                fi
+            elif [ "$mode" == "single_cell" ]; then
+                export EXP_ID={wildcards.accession}
+                {workflow.basedir}/single_cell_condensed_sdrf.sh
+
+            elif [ "$mode" == "irap_single_lib" ]; then
+                # also collect biological replicate IDs for irap_single_lib mode
+                condense_sdrf.pl -e {wildcards.accession} -z -b -i -o {wildcards.accession}
             else
-                ../condense_sdrf.pl ..
+                echo "Mode $mode not recognised."
+                exit 1
             fi
+        elif [[ {params.retry_without_zooma} == "yes" ]]; then
 
-        # if error detected, then condense SDRF without Zooma mapping:
-        ..condense_sdrf.pl
+            # if error detected, then condense SDRF without Zooma mapping
+
+            if [ {params.mode} == "atlas" ]; then
+
+                expType=$(get_experiment_type_from_xml.pl {input})
+
+                if [[ $expType == *baseline ]]; then
+                    ../condense_sdrf.pl -e {wildcards.accession} -f {wildcards.accession}/{wildcards.accession}-factors.xml -i -o {wildcards.accession}
+                else
+                    ../condense_sdrf.pl -e {wildcards.accession} -i -o {wildcards.accession}
+                fi
+            elif [ "$mode" == "single_cell" ]; then
+                export EXP_ID={wildcards.accession}
+                export SKIP_ZOOMA={params.retry_without_zooma} 
+                {workflow.basedir}/single_cell_condensed_sdrf.sh
+
+            elif [ "$mode" == "irap_single_lib" ]; then
+                # also collect biological replicate IDs for irap_single_lib mode
+                condense_sdrf.pl -e {wildcards.accession} -b -i -o {wildcards.accession}
+            else
+                echo "Mode $mode not recognised."
+                exit 1
+            fi
+        else
+            echo "Failed to condense SDRF for {wildcards.accession}"
+        fi
 
         #if success, run next rule
+
         """
 
 
@@ -152,14 +179,39 @@ rule apply_fixes:
     """
     resources: 
         mem_mb=16000
+    log:
+    input:
+    output:
+    shell:
+        """
 
+        source generic_routines.sh
+
+        applyAllFixesForExperiment {wildcards.accession}
+        
+        """
 
 rule check_zooma_mapping_report:
-
+    log:
+    input:
+    output:
+    shell:
+        """
+        """
+        
 
 rule copy_reports_to_targetDir:
     """
     Copy reports to $targetDir.
     Mail out the Zoomification reports location
     """
+    log:
+    input:
+    output:
+    shell:
+        """
+
+        # upon sucess, mail out the Zoomification reports location 
+        """
+        
 
