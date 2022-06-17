@@ -27,9 +27,10 @@ else
 fi
 
 
-# Source script with applyAllFixesForExperiment and export the function
+# Derive variables and source script for apply_fixes rule
 PROCESSED_BRANCH=$(echo $ATLAS_PROD_BRANCH | sed 's+/+_+g')
 ATLAS_PROD_CO="${ATLAS_PROD}/sw/atlasinstall_branches/atlasprod_${PROCESSED_BRANCH}/atlasprod"
+EXP_METADATA_DIR="${ATLAS_PROD_CO}/experiment_metadata"
 source ${ATLAS_PROD_CO}/bash_util/generic_routines.sh
 export -f applyAllFixesForExperiment
 
@@ -42,6 +43,7 @@ snakemake --use-conda --conda-frontend mamba --restart-times $RESTART_TIMES --co
     notifEmail=$EMAIL \
     retryWithoutZooma=$RETRYWOUTZOOMA \
     working_dir=$WORKING_DIR \
+    exp_metadata_dir=$EXP_METADATA_DIR \
     -j $NJOBS -s Snakefile
 
 
