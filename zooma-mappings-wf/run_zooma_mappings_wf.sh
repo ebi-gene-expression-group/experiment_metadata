@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 MODE=${mode:-"atlas"}
+ATLAS_PROD_BRANCH=${$atlas_prod_branch:-"develop"}
 FORCEALL=${FORCEALL:-false}
 RESTART_TIMES=${RESTART_TIMES:-3}
 NJOBS=${NJOBS:-2}
@@ -24,6 +25,12 @@ else
   echo "ERROR: mode: $MODE not recognised"
   exit 1
 fi
+
+
+# Source script with applyAllFixesForExperiment
+PROCESSED_BRANCH=$(echo $ATLAS_PROD_BRANCH | sed 's+/+_+g')
+ATLAS_PROD_CO="${ATLAS_PROD}/sw/atlasinstall_branches/atlasprod_${PROCESSED_BRANCH}/atlasprod"
+source ${ATLAS_PROD_CO}/bash_util/generic_routines.sh
 
 
 # -conda-prefix $SN_CONDA_PREFIX
