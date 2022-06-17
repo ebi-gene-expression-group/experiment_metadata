@@ -27,10 +27,11 @@ else
 fi
 
 
-# Source script with applyAllFixesForExperiment
+# Source script with applyAllFixesForExperiment and export the function
 PROCESSED_BRANCH=$(echo $ATLAS_PROD_BRANCH | sed 's+/+_+g')
 ATLAS_PROD_CO="${ATLAS_PROD}/sw/atlasinstall_branches/atlasprod_${PROCESSED_BRANCH}/atlasprod"
 source ${ATLAS_PROD_CO}/bash_util/generic_routines.sh
+export -f applyAllFixesForExperiment
 
 
 # -conda-prefix $SN_CONDA_PREFIX
