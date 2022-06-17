@@ -14,6 +14,21 @@ import re
 
 mode = config.get("mode")
 
+def get_working_dir():
+    if 'mode' in config:
+        if config['mode'] == 'atlas':
+            workingDir=config['atlas_exps']
+        elif config['mode'] == 'single_cell':
+            workingDir=config['atlas_sc_experiments']
+        elif config['mode'] == 'irap_single_lib':
+            workingDir=config['irap_single_lib']
+        else:
+            print(f"ERROR: mode not recognised")
+            exit(2)
+        return workingDir
+    else: 
+        exit(2)
+
 
 def get_accessions(mode):
     """
@@ -22,14 +37,15 @@ def get_accessions(mode):
     is where the accession dirs are found.
     Edit accordingly once known.
     """
-    workdir = "" # Should be determined by mode
+    workdir = get_working_dir() # Should be determined by mode
     acc_regex = re.compile("E-\D+-\d+")
     acc_dirs = listdir(f"{workdir}")
     ACCESSIONS = [acc for acc in acc_dirs if acc_regex.match(acc)]
     return(workdir, ACCESSIONS)
 
-workdir, ACCESSIONS = get_accessions(mode)
+ACCESSIONS = get_accessions(mode)
 
+workingDir = get_working_dir()
 
 # Below probably no longer needed bec of regex above
 wildcard_constraints:
@@ -45,9 +61,6 @@ rule all:
 
 
 
-
-# MEM_FOR_APPLY_FIXES=
-# or adjust via retrial system
 
 
 rule check_zooma:
@@ -137,6 +150,8 @@ rule apply_fixes:
     """
     Apply automatic fixes to all imported sdrf and idf files
     """
+    resources: 
+        mem_mb=16000
 
 
 rule check_zooma_mapping_report:
