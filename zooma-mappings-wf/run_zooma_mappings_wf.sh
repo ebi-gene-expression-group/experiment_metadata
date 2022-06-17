@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 MODE=${mode:-"atlas"}
-ATLAS_PROD_BRANCH=${$atlas_prod_branch:-"develop"}
+ATLAS_PROD_BRANCH=${atlas_prod_branch:-"develop"}
 FORCEALL=${FORCEALL:-false}
 RESTART_TIMES=${RESTART_TIMES:-3}
 NJOBS=${NJOBS:-2}
