@@ -11,13 +11,14 @@ import re
 
 
 # Parse config from command line
+mode = config.get("mode")
 workdir = config.get("workdir")
 
 
 def get_accessions(workdir):
     """
     Generate the expected output file names.
-    Not yet sure if for all modes, the glob path below
+    Not yet sure if for all modes, the listdir path below
     is where the accession dirs are found.
     Edit accordingly once known.
     """
