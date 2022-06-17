@@ -14,6 +14,7 @@ import re
 
 mode = config.get("mode")
 working_dir = config.get("working_dir")
+exp_metadata_dir = config.get("exp_metadata_dir")
 
 
 def get_accessions(working_dir):
@@ -179,13 +180,18 @@ rule apply_fixes:
         mem_mb=16000
     log:
     input:
+        autofix_properties="{exp_metadata_dir}/automatic_fixes_values.txt"
+        autofix_values="{exp_metadata_dir}/automatic_fixes_properties.txt"
+        idf="{working_dir}/{accession}/{accession}.idf.txt"
+        condensed_sdrf="{working_dir}/{accession}/{accession}.condensed-sdrf.tsv"
     output:
+        temp("{accession}/apply_fixes.done")
     shell:
         """
 
-        source generic_routines.sh
+        # source generic_routines.sh
 
-        applyAllFixesForExperiment {wildcards.accession}
+        applyAllFixesForExperiment {wildcards.accession} && touch {output}
         
         """
 
