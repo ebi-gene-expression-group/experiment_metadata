@@ -13,23 +13,22 @@ import re
 # Parse config from command line
 
 mode = config.get("mode")
-workdir = config.get("workdir")
+working_dir = config.get("working_dir")
 
 
-def get_accessions(workdir):
+def get_accessions(working_dir):
     """
     Generate the expected output file names.
     Not yet sure if for all modes, the listdir path below
     is where the accession dirs are found.
     Edit accordingly once known.
     """
-    #workdir = config['working_dir'] # Should be determined by mode
     acc_regex = re.compile("E-\D+-\d+")
-    acc_dirs = listdir(f"{workdir}")
+    acc_dirs = listdir(f"{working_dir}")
     ACCESSIONS = [acc for acc in acc_dirs if acc_regex.match(acc)]
     return ACCESSIONS
 
-ACCESSIONS = get_accessions(workdir)
+ACCESSIONS = get_accessions(working_dir)
 
 
 # Below probably no longer needed bec of regex above
@@ -42,7 +41,7 @@ wildcard_constraints:
 # Edit accordingly once the output dir is identified
 rule all:
     input:
-        condensed_sdrf=expand("{workdir}/{acc}/{acc}.condensed-sdrf.tsv", acc=ACCESSIONS),
+        condensed_sdrf=expand("{working_dir}/{acc}/{acc}.condensed-sdrf.tsv", acc=ACCESSIONS),
 
 
 
