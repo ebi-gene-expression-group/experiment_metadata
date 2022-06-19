@@ -94,6 +94,7 @@ rule remove_aux_files:
         rm -rf {wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv
         #rm -rf $zoomaMappingReport.aux
         touch {output}
+        popd
         """
 
 rule run_condense_sdrf:
