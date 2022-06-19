@@ -1,5 +1,6 @@
-from os import listdir
 import re
+from os import listdir
+
 
 # This workflow updates all ontology mappings in condensed SDRF files, and then
 # updates all experiment designs on ves-hx-76:8080
@@ -25,7 +26,7 @@ def get_accessions(working_dir):
     Edit accordingly once known.
     """
     acc_regex = re.compile("E-\D+-\d+")
-    acc_dirs = listdir(f"{working_dir}")
+    acc_dirs = os.listdir(f"{working_dir}")
     ACCESSIONS = [acc for acc in acc_dirs if acc_regex.match(acc)]
     return ACCESSIONS
 
@@ -42,7 +43,7 @@ wildcard_constraints:
 # Edit accordingly once the output dir is identified
 rule all:
     input:
-        condensed_sdrf=expand("{working_dir}/{acc}/{acc}.condensed-sdrf.tsv", acc=ACCESSIONS),
+        condensed_sdrf=expand(working_dir+"/{acc}/{acc}.condensed-sdrf.tsv", acc=ACCESSIONS),
 
 
 
@@ -53,9 +54,9 @@ rule check_zooma:
     Check that zooma returns successful http code
     """
     log:
-        "logs/{accession}-check_zooma.log"
+        "{working_dir}/logs/{accession}-check_zooma.log"
     output:
-        temp("{accession}/check_zooma.done")
+        temp("{working_dir}/{accession}/check_zooma.done")
     params:
         zoomaMetadataUrl=config['zoomaMetadataUrl']
     shell:
@@ -77,22 +78,23 @@ rule remove_aux_files:
     Remove auxiliary files
     """
     log:
-        "logs/{accession}-remove_aux_files.log"
+        "{working_dir}/logs/{accession}-remove_aux_files.log"
     input:
-        rules.check_zooma.output
+        rules.check_zooma.output,
+        working_directory=working_dir
     output:
-        temp("{accession}/remove_aux_files.done")
+        temp("{working_dir}/{accession}/remove_aux_files.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
         exec &> "{log}"
+        pushd {input.working_directory}
         rm -rf {wildcards.accession}/condense_sdrf.???
         rm -rf {wildcards.accession}/fixes.???
         rm -rf {wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv
         #rm -rf $zoomaMappingReport.aux
         touch {output}
         """
-
 
 rule run_condense_sdrf:
     """
