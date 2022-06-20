@@ -1,21 +1,15 @@
 import re
 from os import listdir
 
-
 # This workflow updates all ontology mappings in condensed SDRF files, and then
 # updates all experiment designs on ves-hx-76:8080
-
-
-# source bash functions
-
-# need somewhere a mapping part, to go from many accessions build the unified reports (agreggation)
 
 
 # Parse config from command line
 
 mode = config.get("mode")
 working_dir = config.get("working_dir")
-exp_metadata_dir = config.get("exp_metadata_dir")
+# = config.get("exp_metadata_dir")
 
 
 def get_accessions(working_dir):
@@ -33,6 +27,14 @@ def get_accessions(working_dir):
 ACCESSIONS = get_accessions(working_dir)
 
 
+def zooma_mapping_report(wildcards):
+    from datetime import datetime
+    x = datetime.datetime.now()
+    date_time = x.strftime("%Y/%m/%d").replace("/","-")
+    return f"{config['temp_dir']}/{wildcards['accession']}_{config['mode']}_refresh_experiment_metadata.{date_time}.log"
+
+
+
 # Below probably no longer needed bec of regex above
 wildcard_constraints:
     accession = "E-\D+-\d+"
@@ -42,8 +44,10 @@ wildcard_constraints:
 # Not yet sure if below is the desired path for the output condensed sdrf files
 # Edit accordingly once the output dir is identified
 rule all:
-    input:
+    input: 
         condensed_sdrf=expand(working_dir+"/{acc}/{acc}.condensed-sdrf.tsv", acc=ACCESSIONS),
+        apply_fixes=expand(working_dir+"/{acc}/{acc}.apply_fixes.done", acc=ACCESSIONS)
+
 
 
 
@@ -54,7 +58,7 @@ rule check_zooma:
     Check that zooma returns successful http code
     """
     log:
-        "{working_dir}/logs/{accession}-check_zooma.log"
+        "{working_dir}/{accession}/logs/{accession}-check_zooma.log"
     output:
         temp("{working_dir}/{accession}/check_zooma.done")
     params:
@@ -68,7 +72,7 @@ rule check_zooma:
         if [ "$httpResponse" -e 200 ]; then
             touch {output}
         else
-            echo "ERROR: Zooma not responding correctly"
+            echo "ERROR: Zooma doesn't respond correctly"
             echo "{params.zoomaMetadataUrl} returned a non-success http code: $httpResponse for {wildcards.accession}"
         fi
         """
@@ -78,22 +82,28 @@ rule remove_aux_files:
     Remove auxiliary files
     """
     log:
-        "{working_dir}/logs/{accession}-remove_aux_files.log"
+        "{working_dir}/{accession}/logs/{accession}-remove_aux_files.log"
     input:
-        rules.check_zooma.output,
-        working_directory=working_dir
+        rules.check_zooma.output
+    params:
+        working_directory=working_dir,
+        zoomaMappingReport=zooma_mapping_report
     output:
         temp("{working_dir}/{accession}/remove_aux_files.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
         exec &> "{log}"
-        pushd {input.working_directory}
-        rm -rf {wildcards.accession}/condense_sdrf.???
-        rm -rf {wildcards.accession}/fixes.???
-        rm -rf {wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv
-        #rm -rf $zoomaMappingReport.aux
+        pushd {params.working_directory}/{wildcards.accession}
+        rm -rf condense_sdrf.???
+        rm -rf fixes.???
+        rm -rf {wildcards.accession}-zoomifications-log.tsv
+        rm -rf {params.zoomaMappingReport}.aux
         touch {output}
+        # save a backup of the condensed SDRF file if present
+        if [ -s "{wildcards.accession}.condensed-sdrf.tsv" ]; then
+	        mv {wildcards.accession}.condensed-sdrf.tsv {wildcards.accession}.condensed-sdrf.tsv.bak
+        fi
         popd
         """
 
@@ -102,20 +112,33 @@ rule run_condense_sdrf:
     Run condense_sdrf.pl with options to map terms with Zooma (-z) and import
     the IDF from ArrayExpress load directory (-i).
     """
-    conda: "envs/perl-atlas-modules.yaml"
+    conda: 
+        "envs/perl-atlas-modules.yaml"
     log:
+        "{working_dir}/{accession}/logs/{accession}-run_condense_sdrf.log"
     input:
-        "{accession}-configuration.xml"
+        "{working_dir}/{accession}/{accession}-configuration.xml"
     params:
+        rm_aux_files_done=rules.remove_aux_files.output,
         mode=config['mode'],
         attempt_number=attempt,
-        retry_without_zooma=config['retryWithoutZooma']
+        retry_without_zooma=config['retryWithoutZooma'],
+        script_dir=config['atlas_prod_co'],
+        working_directory=working_dir,
+        zooma_exclusions=config['zooma_exclusions']
     output:
-
+        "{working_dir}/{accession}/{accession}.condensed-sdrf.tsv"
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
         exec &> "{log}"
+
+        # For condense_sdrf.pl, get_experiment_type_from_xml.pl
+        export PATH={params.script_dir}/db/scripts:$PATH
+        # source bash functions
+        source {params.script_dir}/bash_util/generic_routines.sh
+
+        # pushd {params.working_directory}/{wildcards.accession}
 
         if [[ {params.attempt_number} -lt 2 ]]; then
             # Run condense_sdrf.pl with options to map terms with Zooma (-z) and import
@@ -123,45 +146,46 @@ rule run_condense_sdrf:
             if [ {params.mode} == "atlas" ]; then
 
                 # Get the experiment type from the experiment config.
-                expType=$(get_experiment_type_from_xml.pl {input})
+                expType=$(perl get_experiment_type_from_xml.pl {input})
 
                 if [[ $expType == *baseline ]]; then
-                    ../condense_sdrf.pl -e {wildcards.accession} -f {wildcards.accession}/{wildcards.accession}-factors.xml -z -i -o {wildcards.accession}
+                    ../condense_sdrf.pl -e {wildcards.accession} -f {params.working_directory}/{wildcards.accession}/{wildcards.accession}-factors.xml -z -i -o {params.working_directory}/{wildcards.accession} -x {params.zooma_exclusions}
                 else
-                    ../condense_sdrf.pl -e {wildcards.accession} -z -i -o {wildcards.accession}
+                    ../condense_sdrf.pl -e {wildcards.accession} -z -i -o {params.working_directory}/{wildcards.accession}
                 fi
             elif [ "$mode" == "single_cell" ]; then
                 export EXP_ID={wildcards.accession}
-                {workflow.basedir}/single_cell_condensed_sdrf.sh
+                ../single_cell_condensed_sdrf.sh
 
             elif [ "$mode" == "irap_single_lib" ]; then
                 # also collect biological replicate IDs for irap_single_lib mode
-                condense_sdrf.pl -e {wildcards.accession} -z -b -i -o {wildcards.accession}
+                ../condense_sdrf.pl -e {wildcards.accession} -z -b -i -o {params.working_directory}/{wildcards.accession}
             else
                 echo "Mode $mode not recognised."
                 exit 1
             fi
+        
         elif [[ {params.retry_without_zooma} == "yes" ]]; then
 
             # if error detected, then condense SDRF without Zooma mapping
 
             if [ {params.mode} == "atlas" ]; then
 
-                expType=$(get_experiment_type_from_xml.pl {input})
+                expType=$(perl get_experiment_type_from_xml.pl {input})
 
                 if [[ $expType == *baseline ]]; then
-                    ../condense_sdrf.pl -e {wildcards.accession} -f {wildcards.accession}/{wildcards.accession}-factors.xml -i -o {wildcards.accession}
+                    ../condense_sdrf.pl -e {wildcards.accession} -f {params.working_directory}/{wildcards.accession}/{wildcards.accession}-factors.xml -i -o {params.working_directory}/{wildcards.accession} -x {params.zooma_exclusions}
                 else
-                    ../condense_sdrf.pl -e {wildcards.accession} -i -o {wildcards.accession}
+                    ../condense_sdrf.pl -e {wildcards.accession} -i -o {params.working_directory}/{wildcards.accession}
                 fi
             elif [ "$mode" == "single_cell" ]; then
                 export EXP_ID={wildcards.accession}
-                export SKIP_ZOOMA={params.retry_without_zooma} 
-                {workflow.basedir}/single_cell_condensed_sdrf.sh
+                export SKIP_ZOOMA="yes" 
+                ../single_cell_condensed_sdrf.sh
 
             elif [ "$mode" == "irap_single_lib" ]; then
                 # also collect biological replicate IDs for irap_single_lib mode
-                condense_sdrf.pl -e {wildcards.accession} -b -i -o {wildcards.accession}
+                ../condense_sdrf.pl -e {wildcards.accession} -b -i -o {params.working_directory}/{wildcards.accession}
             else
                 echo "Mode $mode not recognised."
                 exit 1
@@ -170,40 +194,77 @@ rule run_condense_sdrf:
             echo "Failed to condense SDRF for {wildcards.accession}"
         fi
 
-        #if success, run next rule
-
+        # check if successful
+        if [ ! -s "{params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv" ]; then
+	        echo "ERROR: Failed to generate {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv"
+            rm -rf {params.working_directory}/{wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv
+	        exit 1
+        else
+            echo "All condense_sdrf tasks now done"
+            echo "Updated condensed sdrf and idf files for all experiments"
+        fi
         """
 
 
 rule apply_fixes:
     """
-    Apply automatic fixes to all imported sdrf and idf files
+    Apply automatic fixes to all imported sdrf and idf files.
+    NOTE: We might need to add a submodule of atlas-bash-utils here
     """
     resources: 
         mem_mb=16000
     log:
+        "{working_dir}/{accession}/logs/{accession}-apply_fixes.log"
     input:
-        autofix_properties="{exp_metadata_dir}/automatic_fixes_values.txt"
-        autofix_values="{exp_metadata_dir}/automatic_fixes_properties.txt"
-        idf="{working_dir}/{accession}/{accession}.idf.txt"
+        #autofix_properties="{exp_metadata_dir}/automatic_fixes_values.txt",
+        #autofix_values="{exp_metadata_dir}/automatic_fixes_properties.txt",
+        #idf="{working_dir}/{accession}/{accession}.idf.txt",
         condensed_sdrf="{working_dir}/{accession}/{accession}.condensed-sdrf.tsv"
     output:
-        temp("{accession}/apply_fixes.done")
+        temp("{working_dir}/{accession}/{accession}-apply_fixes.done")
     shell:
         """
+        set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
+        exec &> "{log}"
 
-        # source generic_routines.sh
+        # source bash functions
+        source {params.script_dir}/bash_util/generic_routines.sh
+
+        echo "About to apply automatic fixes to all imported sdrf and idf files"
 
         applyAllFixesForExperiment {wildcards.accession} && touch {output}
+
+        echo "All fixes tasks now done"
         
+        # we certainly don't want an email for each accession..
+        # mailx -s 
         """
 
 rule check_zooma_mapping_report:
+    """
+    Break down $zoomaMappingReport.aux into four report files: automatic, excluded, noresults, requirescuration
+    """
     log:
+        "{working_dir}/{accession}/logs/{accession}-check_zooma_mapping_report.log"
     input:
+        zoomaMappingReport=zooma_mapping_report,
+        fixes_done="{working_dir}/{accession}/{accession}-apply_fixes.done"
+
     output:
+
     shell:
         """
+        set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
+        exec &> "{log}"
+
+        if [ ! -s "{zoomaMappingReport}.aux" ]; then
+            echo "ERROR: Something went wrong with condense_sdrf.pl run with Zooma mappings - no report is available" 
+            exit 1
+        else
+            # Now break down $zoomaMappingReport.aux into four report files: automatic, excluded, noresults, requirescuration
+
+        fi
+
         """
         
 
@@ -213,12 +274,16 @@ rule copy_reports_to_targetDir:
     Mail out the Zoomification reports location
     """
     log:
+        "{working_dir}/{accession}/logs/{accession}-copy_reports_to_targetDir.log"
     input:
+
     output:
+
     shell:
         """
 
         # upon sucess, mail out the Zoomification reports location 
         """
-        
+
+
 

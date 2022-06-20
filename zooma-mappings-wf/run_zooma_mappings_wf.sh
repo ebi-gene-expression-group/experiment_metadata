@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 
-MODE=${mode:-"atlas"}
-ATLAS_PROD_BRANCH=${atlas_prod_branch:-"develop"}
-FORCEALL=${FORCEALL:-false}
+MODE=${MODE:-"atlas"}
+ATLAS_PROD_BRANCH=${ATLAS_PROD_BRANCH:-"develop"}
+FORCEALL=${FORCEALL:-true} # set to true. If the file is present it won't update
 RESTART_TIMES=${RESTART_TIMES:-3}
 NJOBS=${NJOBS:-2}
 EMAIL=${EMAIL:-false}
-RETRYWOUTZOOMA=${3:-yes}
+RETRYWOUTZOOMA=${RETRYWOUTZOOMA:-yes} # or true
 ZOOMA_META_URL=${ZOOMA_API_BASE}/server/metadata
+# temp dir for zooma mapping reports
+TEMP_DIR=/hps/nobackup/ma/... #$FG_ATLAS_TMP !!!!!!!!!!!!!!
+ZOOMA_EXCLUSIONS=
 
 # Check that relevant env vars are set
 [ -z ${SN_CONDA_PREFIX +x} ] && echo "Env var SN_CONDA_PREFIX needs to be defined." && exit 1
@@ -30,8 +33,8 @@ fi
 # Derive variables and source script for apply_fixes rule
 PROCESSED_BRANCH=$(echo $ATLAS_PROD_BRANCH | sed 's+/+_+g')
 ATLAS_PROD_CO="${ATLAS_PROD}/sw/atlasinstall_branches/atlasprod_${PROCESSED_BRANCH}/atlasprod"
-EXP_METADATA_DIR="${ATLAS_PROD_CO}/experiment_metadata"
-source ${ATLAS_PROD_CO}/bash_util/generic_routines.sh
+#EXP_METADATA_DIR="${ATLAS_PROD_CO}/experiment_metadata"
+#source ${ATLAS_PROD_CO}/bash_util/generic_routines.sh
 export -f applyAllFixesForExperiment
 
 
@@ -39,11 +42,13 @@ export -f applyAllFixesForExperiment
 snakemake --use-conda --conda-frontend mamba --restart-times $RESTART_TIMES --config \
     mode=$MODE \
     zooma_exclusions=$ZOOMA_EXCLUSIONS \
+    temp_dir=$TEMP_DIR \
     zoomaMetadataUrl=$ZOOMA_META_URL \
     notifEmail=$EMAIL \
     retryWithoutZooma=$RETRYWOUTZOOMA \
     working_dir=$WORKING_DIR \
-    exp_metadata_dir=$EXP_METADATA_DIR \
+    atlas_prod_co=$ATLAS_PROD_CO \
+    #exp_metadata_dir=$EXP_METADATA_DIR \
     -j $NJOBS -s Snakefile
 
 
