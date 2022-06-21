@@ -121,7 +121,7 @@ rule run_condense_sdrf:
         attempt_number=get_attempt,
         retry_without_zooma=config['retryWithoutZooma'],
         script_dir=config['atlas_prod_co'],
-        experiment_metadata_dir=config['experiment_metadata_dir='],
+        experiment_metadata_dir=config['experiment_metadata_dir'],
         working_directory=working_dir,
         zooma_exclusions=config['zooma_exclusions']
     output:
