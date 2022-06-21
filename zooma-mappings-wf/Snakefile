@@ -1,5 +1,6 @@
 import re
 from os import listdir
+from datetime import datetime
 
 # This workflow updates all ontology mappings in condensed SDRF files, and then
 # updates all experiment designs on ves-hx-76:8080
@@ -20,7 +21,7 @@ def get_accessions(working_dir):
     Edit accordingly once known.
     """
     acc_regex = re.compile("E-\D+-\d+")
-    acc_dirs = os.listdir(f"{working_dir}")
+    acc_dirs = listdir(f"{working_dir}")
     ACCESSIONS = [acc for acc in acc_dirs if acc_regex.match(acc)]
     return ACCESSIONS
 
@@ -28,9 +29,8 @@ ACCESSIONS = get_accessions(working_dir)
 
 
 def zooma_mapping_report(wildcards):
-    from datetime import datetime
-    x = datetime.datetime.now()
-    date_time = x.strftime("%Y/%m/%d").replace("/","-")
+    x = datetime.now()
+    date_time = x.strftime("%Y-%m-%d")
     return f"{config['temp_dir']}/{wildcards['accession']}_{config['mode']}_refresh_experiment_metadata.{date_time}.log"
 
 
@@ -45,8 +45,8 @@ wildcard_constraints:
 # Edit accordingly once the output dir is identified
 rule all:
     input: 
-        condensed_sdrf=expand(working_dir+"/{acc}/{acc}.condensed-sdrf.tsv", acc=ACCESSIONS),
-        apply_fixes=expand(working_dir+"/{acc}/{acc}.apply_fixes.done", acc=ACCESSIONS)
+        condensed_sdrf=expand(f"{working_dir}/{acc}/{acc}.condensed-sdrf.tsv", acc=ACCESSIONS),
+        apply_fixes=expand(f"{working_dir}/{acc}/{acc}.apply_fixes.done", acc=ACCESSIONS)
 
 
 
@@ -87,7 +87,7 @@ rule remove_aux_files:
         rules.check_zooma.output
     params:
         working_directory=working_dir,
-        zoomaMappingReport=zooma_mapping_report
+        zoomaMappingReport=zooma_mapping_report(wildcards)
     output:
         temp("{working_dir}/{accession}/remove_aux_files.done")
     shell:
@@ -247,7 +247,7 @@ rule check_zooma_mapping_report:
     log:
         "{working_dir}/{accession}/logs/{accession}-check_zooma_mapping_report.log"
     input:
-        zoomaMappingReport=zooma_mapping_report,
+        zoomaMappingReport=zooma_mapping_report(wildcards),
         fixes_done="{working_dir}/{accession}/{accession}-apply_fixes.done"
 
     output:
