@@ -28,6 +28,8 @@ CONDA_PREFIX_LINE="--conda-prefix $SN_CONDA_PREFIX"
 
 [ -z ${EXPERIMENT_METADATA_DIR+x} ] && echo "Env var EXPERIMENT_METADATA_DIR needs to be defined." && exit 1
 
+[ -z ${PREVIOUS_RUN_DATE+x} ] && echo "Env var PREVIOUS_RUN_DATE needs to be defined." && exit 1
+
 
 # -conda-prefix $SN_CONDA_PREFIX
 snakemake --dry-run --use-conda --conda-frontend mamba --restart-times $RESTART_TIMES \
@@ -43,6 +45,7 @@ snakemake --dry-run --use-conda --conda-frontend mamba --restart-times $RESTART_
     experiment_metadata_dir=$EXPERIMENT_METADATA_DIR \
     atlas_prod_co=$ATLAS_PROD_CO \
     lsf_config=$LSF_CONFIG \
+    previousRunDate=$PREVIOUS_RUN_DATE \
     -j $NJOBS -s Snakefile
 
 

@@ -312,7 +312,8 @@ rule copy_reports_to_targetDir:
         mode=config['mode'],
         working_directory=working_dir,
         zoomaMappingReport=zooma_mapping_report,
-        notifEmail=config['notifEmail']
+        notifEmail=config['notifEmail'],
+        previous_run_date=config['previousRunDate']
     output:
         "{working_dir}/{accession}/{accession}-copy_reports_to_targetDir.done"
     shell:
@@ -320,6 +321,7 @@ rule copy_reports_to_targetDir:
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
         exec &> "{log}"
         today="`eval date +%Y-%m-%d`"
+        previousRunDate={params.previous_run_date}
 
         # Copy reports to $targetDir
         if [ {params.mode} == "atlas" ]; then
@@ -338,14 +340,14 @@ rule copy_reports_to_targetDir:
         mkdir -p ${{targetDir}}
         cp {params.zoomaMappingReport}.AUTOMATIC.tsv {params.zoomaMappingReport}.EXCLUDED.tsv {params.zoomaMappingReport}.NO_RESULTS.tsv {params.zoomaMappingReport}.REQUIRES_CURATION.tsv ${{targetDir}}/
 
-        if [ ! -z ${previousRunDate+x} ] && [ -d ${{targetDir}}/../$previousRunDate ]; then
+        if [ ! -z ${{previousRunDate+x}} ] && [ -d ${{targetDir}}/../${{previousRunDate}} ]; then
             # Calculating new lines not previously seen
-            previousCurated=${{targetDir}}/../${previousRunDate}/atlas_zooma_mapping_report.${previousRunDate}.tsv.REQUIRES_CURATION.tsv
+            previousCurated=${{targetDir}}/../${{previousRunDate}}/atlas_zooma_mapping_report.${{previousRunDate}}.tsv.REQUIRES_CURATION.tsv
             newToCurate=${{targetDir}}/atlas_zooma_mapping_report.${{today}}.tsv.REQUIRES_CURATION.tsv
             # Compare based on fields Property value ($2), semantic tag ($3), Ontology label / Zooma mapping ($6)
             awk -F'\t' 'NR==FNR{e[$2$3$6]=1;next};!e[$2$3$6]' $previousCurated $newToCurate > ${{targetDir}}/atlas_zooma_mapping_report.${{today}}.tsv.REQUIRES_CURATION_NEW_LINES.tsv
         else
-            echo "Variable previousRunDate value \"$previousRunDate\" does not take us to previous run, so no new lines" 
+            echo "Variable previousRunDate value \"${{previousRunDate}}\" does not take us to previous run, so no new lines" 
         fi
 
         # upon sucess, mail out the Zoomification reports location 
