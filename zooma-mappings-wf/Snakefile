@@ -321,14 +321,14 @@ rule copy_reports_to_targetDir:
 
         # Copy reports to $targetDir
         if [ {params.mode} == "atlas" ]; then
-            #targetDir=$ATLAS_FTP/curation/zoomage_reports/${today}
-            targetDir={params.working_directory}/curation/zoomage_reports/${today}
+            #targetDir=$ATLAS_FTP/curation/zoomage_reports/${{today}}
+            targetDir={params.working_directory}/curation/zoomage_reports/${{today}}
         elif [ {params.mode} == "single_cell" ]; then
-            #targetDir=$ATLAS_FTP/curation/zoomage_reports/single_cell/${today}
-            targetDir={params.working_directory}/curation/zoomage_reports/single_cell/${today}
+            #targetDir=$ATLAS_FTP/curation/zoomage_reports/single_cell/${{today}}
+            targetDir={params.working_directory}/curation/zoomage_reports/single_cell/${{today}}
         elif [ {params.mode} == "irap_single_lib" ]; then
-            #targetDir=$IRAP_SINGLE_LIB/zoomage/reports/${today}
-            targetDir={params.working_directory}/zoomage/reports/${today}
+            #targetDir=$IRAP_SINGLE_LIB/zoomage/reports/${{today}}
+            targetDir={params.working_directory}/zoomage/reports/${{today}}
         else
             echo "ERROR: mode: {params.mode} not recognised"
             exit 1
@@ -339,15 +339,15 @@ rule copy_reports_to_targetDir:
         if [ ! -z ${previousRunDate+x} ] && [ -d ${targetDir}/../$previousRunDate ]; then
             # Calculating new lines not previously seen
             previousCurated=${targetDir}/../${previousRunDate}/atlas_zooma_mapping_report.${previousRunDate}.tsv.REQUIRES_CURATION.tsv
-            newToCurate=${targetDir}/atlas_zooma_mapping_report.${today}.tsv.REQUIRES_CURATION.tsv
+            newToCurate=${targetDir}/atlas_zooma_mapping_report.${{today}}.tsv.REQUIRES_CURATION.tsv
             # Compare based on fields Property value ($2), semantic tag ($3), Ontology label / Zooma mapping ($6)
-            awk -F'\t' 'NR==FNR{e[$2$3$6]=1;next};!e[$2$3$6]' $previousCurated $newToCurate > ${targetDir}/atlas_zooma_mapping_report.${today}.tsv.REQUIRES_CURATION_NEW_LINES.tsv
+            awk -F'\t' 'NR==FNR{e[$2$3$6]=1;next};!e[$2$3$6]' $previousCurated $newToCurate > ${targetDir}/atlas_zooma_mapping_report.${{today}}.tsv.REQUIRES_CURATION_NEW_LINES.tsv
         else
             echo "Variable previousRunDate value \"$previousRunDate\" does not take us to previous run, so no new lines" 
         fi
 
         # upon sucess, mail out the Zoomification reports location 
-        echo -e "Dear curators,\n      Please find the Zooma mapping reports for the latest run for $today in $targetDir.\n\nGreetings from your friendly neighbourhood cron." | mutt -s "[${mode}/cron] Zooma mapping report is available in $targetDir" -- ${notifEmail}
+        echo -e "Dear curators,\n      Please find the Zooma mapping reports for the latest run for ${{today}} in $targetDir.\n\nGreetings from your friendly neighbourhood cron." | mutt -s "[${mode}/cron] Zooma mapping report is available in $targetDir" -- ${notifEmail}
         pushd $targetDir/../
         current_run=$(ls -ltr | grep -v previous_run | grep -e '[[:digit:]]\{4\}-[[:digit:]]\{2\}' | tail -n 1 | awk '{ print $9 }')
         rm -f previous_run
