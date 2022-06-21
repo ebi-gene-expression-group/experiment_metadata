@@ -51,8 +51,6 @@ rule all:
 
 
 
-
-
 rule check_zooma:
     """
     Check that zooma returns successful http code
@@ -87,7 +85,7 @@ rule remove_aux_files:
         rules.check_zooma.output
     params:
         working_directory=working_dir,
-        zoomaMappingReport=zooma_mapping_report(wildcards)
+        zoomaMappingReport=zooma_mapping_report
     output:
         temp("{working_dir}/{accession}/remove_aux_files.done")
     shell:
@@ -232,7 +230,8 @@ rule apply_fixes:
 
         echo "About to apply automatic fixes to all imported sdrf and idf files"
 
-        applyAllFixesForExperiment {wildcards.accession} && touch {output}
+        applyAllFixesForExperiment {wildcards.accession}
+        touch {output}
 
         echo "All fixes tasks now done"
         
@@ -240,31 +239,33 @@ rule apply_fixes:
         # mailx -s 
         """
 
-rule check_zooma_mapping_report:
+rule split_zooma_mapping_report:
     """
     Break down $zoomaMappingReport.aux into four report files: automatic, excluded, noresults, requirescuration
     """
     log:
         "{working_dir}/{accession}/logs/{accession}-check_zooma_mapping_report.log"
     input:
-        zoomaMappingReport=zooma_mapping_report(wildcards),
+        zoomaMappingReport=zooma_mapping_report,
         fixes_done="{working_dir}/{accession}/{accession}-apply_fixes.done"
 
     output:
-
+        expand(zooma_mapping_report+f".aux.{section}.tsv", section=['AUTOMATIC','EXCLUDED','NO_RESULTS','REQUIRES_CURATION'])  
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
         exec &> "{log}"
 
-        if [ ! -s "{zoomaMappingReport}.aux" ]; then
+        if [ ! -s "{input.zoomaMappingReport}.aux" ]; then
             echo "ERROR: Something went wrong with condense_sdrf.pl run with Zooma mappings - no report is available" 
             exit 1
         else
             # Now break down $zoomaMappingReport.aux into four report files: automatic, excluded, noresults, requirescuration
+            source ./bin/split_zooma_mapping_report.sh
+
+            split_zooma_mapping_report {params.zoomaMappingReport}
 
         fi
-
         """
         
 
@@ -277,10 +278,28 @@ rule copy_reports_to_targetDir:
         "{working_dir}/{accession}/logs/{accession}-copy_reports_to_targetDir.log"
     input:
 
+    params:
+        mode=config['mode']
     output:
 
     shell:
         """
+        set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
+        exec &> "{log}"
+
+        # Copy reports to $targetDir
+        if [ {params.mode} == "atlas" ]; then
+            targetDir=$ATLAS_FTP/curation/zoomage_reports/${today}
+        elif [ {params.mode} == "single_cell" ]; then
+            targetDir=$ATLAS_FTP/curation/zoomage_reports/single_cell/${today}
+        elif [ {params.mode} == "irap_single_lib" ]; then
+            targetDir=$IRAP_SINGLE_LIB/zoomage/reports/${today}
+        else
+            echo "ERROR: mode: {params.mode} not recognised"
+            exit 1
+        fi
+        mkdir -p $targetDir
+
 
         # upon sucess, mail out the Zoomification reports location 
         """
