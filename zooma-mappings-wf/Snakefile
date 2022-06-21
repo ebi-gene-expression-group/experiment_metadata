@@ -333,7 +333,7 @@ rule copy_reports_to_targetDir:
             echo "ERROR: mode: {params.mode} not recognised"
             exit 1
         fi
-        mkdir -p $targetDir
+        mkdir -p ${{targetDir}}
         cp $zoomaMappingReport.AUTOMATIC.tsv $zoomaMappingReport.EXCLUDED.tsv $zoomaMappingReport.NO_RESULTS.tsv $zoomaMappingReport.REQUIRES_CURATION.tsv ${targetDir}/
 
         if [ ! -z ${previousRunDate+x} ] && [ -d ${{targetDir}}/../$previousRunDate ]; then
@@ -347,8 +347,8 @@ rule copy_reports_to_targetDir:
         fi
 
         # upon sucess, mail out the Zoomification reports location 
-        echo -e "Dear curators,\n      Please find the Zooma mapping reports for the latest run for ${{today}} in $targetDir.\n\nGreetings from your friendly neighbourhood cron." | mutt -s "[${mode}/cron] Zooma mapping report is available in $targetDir" -- ${notifEmail}
-        pushd $targetDir/../
+        echo -e "Dear curators,\n      Please find the Zooma mapping reports for the latest run for ${{today}} in ${{targetDir}}.\n\nGreetings from your friendly neighbourhood cron." | mutt -s "[${mode}/cron] Zooma mapping report is available in ${{targetDir}}" -- ${notifEmail}
+        pushd ${{targetDir}}/../
         current_run=$(ls -ltr | grep -v previous_run | grep -e '[[:digit:]]\{4\}-[[:digit:]]\{2\}' | tail -n 1 | awk '{ print $9 }')
         rm -f previous_run
         ln -s $current_run previous_run
