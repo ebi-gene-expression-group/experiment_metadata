@@ -32,7 +32,8 @@ def zooma_mapping_report(wildcards):
     date_time = x.strftime("%Y-%m-%d")
     return f"{config['temp_dir']}/{wildcards['accession']}_{config['mode']}_refresh_experiment_metadata.{date_time}.log"
 
-
+def get_attempt(wildcards, attempt):
+    return attempt
 
 # Below probably no longer needed bec of regex above
 wildcard_constraints:
@@ -117,7 +118,7 @@ rule run_condense_sdrf:
         check_zooma_done=rules.check_zooma.output
     params:
         mode=config['mode'],
-        attempt_number=attempt,
+        attempt_number=get_attempt,
         retry_without_zooma=config['retryWithoutZooma'],
         script_dir=config['atlas_prod_co'],
         experiment_metadata_dir=config['experiment_metadata_dir='],
