@@ -310,7 +310,9 @@ rule copy_reports_to_targetDir:
         "{working_dir}/{accession}/{accession}-split_zooma_mapping_report.done"
     params:
         mode=config['mode'],
-        working_directory=working_dir
+        working_directory=working_dir,
+        zoomaMappingReport=zooma_mapping_report,
+        notifEmail=config['notifEmail']
     output:
         "{working_dir}/{accession}/{accession}-copy_reports_to_targetDir.done"
     shell:
@@ -334,7 +336,7 @@ rule copy_reports_to_targetDir:
             exit 1
         fi
         mkdir -p ${{targetDir}}
-        cp $zoomaMappingReport.AUTOMATIC.tsv $zoomaMappingReport.EXCLUDED.tsv $zoomaMappingReport.NO_RESULTS.tsv $zoomaMappingReport.REQUIRES_CURATION.tsv ${targetDir}/
+        cp {params.zoomaMappingReport}.AUTOMATIC.tsv {params.zoomaMappingReport}.EXCLUDED.tsv {params.zoomaMappingReport}.NO_RESULTS.tsv {params.zoomaMappingReport}.REQUIRES_CURATION.tsv ${{targetDir}}/
 
         if [ ! -z ${previousRunDate+x} ] && [ -d ${{targetDir}}/../$previousRunDate ]; then
             # Calculating new lines not previously seen
@@ -347,7 +349,7 @@ rule copy_reports_to_targetDir:
         fi
 
         # upon sucess, mail out the Zoomification reports location 
-        echo -e "Dear curators,\n      Please find the Zooma mapping reports for the latest run for ${{today}} in ${{targetDir}}.\n\nGreetings from your friendly neighbourhood cron." | mutt -s "[${mode}/cron] Zooma mapping report is available in ${{targetDir}}" -- ${notifEmail}
+        echo -e "Dear curators,\n      Please find the Zooma mapping reports for the latest run for ${{today}} in ${{targetDir}}.\n\nGreetings from your friendly neighbourhood cron." | mutt -s "[{params.mode}/cron] Zooma mapping report is available in ${{targetDir}}" -- {params.notifEmail}
         pushd ${{targetDir}}/../
         current_run=$(ls -ltr | grep -v previous_run | grep -e '[[:digit:]]\{4\}-[[:digit:]]\{2\}' | tail -n 1 | awk '{ print $9 }')
         rm -f previous_run
