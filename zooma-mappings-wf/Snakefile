@@ -255,9 +255,10 @@ rule split_zooma_mapping_report:
     input:
         zoomaMappingReport=zooma_mapping_report,
         fixes_done="{working_dir}/{accession}/{accession}-apply_fixes.done"
+    params:
+        split_report_files=expand(zooma_mapping_report+".aux.{section}.tsv", section=['AUTOMATIC','EXCLUDED','NO_RESULTS','REQUIRES_CURATION'])
     output:
-        split_report_files=expand(zooma_mapping_report+f".aux.{section}.tsv", section=['AUTOMATIC','EXCLUDED','NO_RESULTS','REQUIRES_CURATION']),
-        split_completed=temp("{working_dir}/{accession}/{accession}-split_zooma_mapping_report.done")
+        temp("{working_dir}/{accession}/{accession}-split_zooma_mapping_report.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -273,7 +274,15 @@ rule split_zooma_mapping_report:
             split_zooma_mapping_report {params.zoomaMappingReport}
 
         fi
-        touch {output.split_completed}
+
+        for f in {params.split_report_files}; do
+            if [ ! -s "$f"" ]; then
+                echo "One of the split file not genetated for {input.zoomaMappingReport}"
+                exit 1
+            fi
+        done
+
+        touch {output}
         """
         
 
@@ -288,7 +297,7 @@ rule copy_reports_to_targetDir:
         "{working_dir}/{accession}/{accession}-split_zooma_mapping_report.done"
     params:
         mode=config['mode'],
-        working_directory=working_dir,
+        working_directory=working_dir
     output:
         "{working_dir}/{accession}/{accession}-copy_reports_to_targetDir.done"
     shell:
