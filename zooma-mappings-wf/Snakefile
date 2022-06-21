@@ -353,7 +353,7 @@ rule copy_reports_to_targetDir:
         # upon sucess, mail out the Zoomification reports location 
         echo -e "Dear curators,\n      Please find the Zooma mapping reports for the latest run for ${{today}} in ${{targetDir}}.\n\nGreetings from your friendly neighbourhood cron." | mutt -s "[{params.mode}/cron] Zooma mapping report is available in ${{targetDir}}" -- {params.notifEmail}
         pushd ${{targetDir}}/../
-        current_run=$(ls -ltr | grep -v previous_run | grep -e '[[:digit:]]\{4\}-[[:digit:]]\{2\}' | tail -n 1 | awk '{{ print $9 }}')
+        current_run=$(ls -ltr | grep -v previous_run | grep -e '[[:digit:]]\{{4\}}-[[:digit:]]\{{2\}}' | tail -n 1 | awk '{{ print $9 }}')
         rm -f previous_run
         ln -s $current_run previous_run
         popd
