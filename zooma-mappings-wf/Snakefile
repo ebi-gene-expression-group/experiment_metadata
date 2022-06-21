@@ -46,9 +46,8 @@ wildcard_constraints:
 rule all:
     input: 
         condensed_sdrf=expand(f"{working_dir}/{acc}/{acc}.condensed-sdrf.tsv", acc=ACCESSIONS),
-        apply_fixes=expand(f"{working_dir}/{acc}/{acc}.apply_fixes.done", acc=ACCESSIONS)
-
-
+        apply_fixes=expand(f"{working_dir}/{acc}/{acc}.apply_fixes.done", acc=ACCESSIONS),
+        completed=expand(f"{working_dir}/{acc}/{acc}.-zooma_mapping_update.done", acc=ACCESSIONS)
 
 
 rule check_zooma:
@@ -250,7 +249,8 @@ rule split_zooma_mapping_report:
         fixes_done="{working_dir}/{accession}/{accession}-apply_fixes.done"
 
     output:
-        expand(zooma_mapping_report+f".aux.{section}.tsv", section=['AUTOMATIC','EXCLUDED','NO_RESULTS','REQUIRES_CURATION'])  
+        split_report_files=expand(zooma_mapping_report+f".aux.{section}.tsv", section=['AUTOMATIC','EXCLUDED','NO_RESULTS','REQUIRES_CURATION']),
+        split_completed=temp("{working_dir}/{accession}/{accession}-split_zooma_mapping_report")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -277,11 +277,11 @@ rule copy_reports_to_targetDir:
     log:
         "{working_dir}/{accession}/logs/{accession}-copy_reports_to_targetDir.log"
     input:
-
+        "{working_dir}/{accession}/{accession}-split_zooma_mapping_report"
     params:
         mode=config['mode']
     output:
-
+        "{working_dir}/{accession}/{accession}-zooma_mapping_update.done"
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -299,9 +299,26 @@ rule copy_reports_to_targetDir:
             exit 1
         fi
         mkdir -p $targetDir
+        cp $zoomaMappingReport.AUTOMATIC.tsv $zoomaMappingReport.EXCLUDED.tsv $zoomaMappingReport.NO_RESULTS.tsv $zoomaMappingReport.REQUIRES_CURATION.tsv ${targetDir}/
 
+        if [ ! -z ${previousRunDate+x} ] && [ -d ${targetDir}/../$previousRunDate ]; then
+            # Calculating new lines not previously seen
+            previousCurated=${targetDir}/../${previousRunDate}/atlas_zooma_mapping_report.${previousRunDate}.tsv.REQUIRES_CURATION.tsv
+            newToCurate=${targetDir}/atlas_zooma_mapping_report.${today}.tsv.REQUIRES_CURATION.tsv
+            # Compare based on fields Property value ($2), semantic tag ($3), Ontology label / Zooma mapping ($6)
+            awk -F'\t' 'NR==FNR{e[$2$3$6]=1;next};!e[$2$3$6]' $previousCurated $newToCurate > ${targetDir}/atlas_zooma_mapping_report.${today}.tsv.REQUIRES_CURATION_NEW_LINES.tsv
+        else
+            echo "Variable previousRunDate value \"$previousRunDate\" does not take us to previous run, so no new lines" 
+        fi
 
         # upon sucess, mail out the Zoomification reports location 
+        echo -e "Dear curators,\n      Please find the Zooma mapping reports for the latest run for $today in $targetDir.\n\nGreetings from your friendly neighbourhood cron." | mutt -s "[${mode}/cron] Zooma mapping report is available in $targetDir" -- ${notifEmail}
+        pushd $targetDir/../
+        current_run=$(ls -ltr | grep -v previous_run | grep -e '[[:digit:]]\{4\}-[[:digit:]]\{2\}' | tail -n 1 | awk '{ print $9 }')
+        rm -f previous_run
+        ln -s $current_run previous_run
+        popd
+        touch {output}
         """
 
 
