@@ -55,7 +55,7 @@ wildcard_constraints:
 # Edit accordingly once the output dir is identified
 rule all:
     input: 
-        completed=expand(working_dir+"/{acc}/{acc}.-copy_reports_to_targetDir.done", acc=ACCESSIONS)
+        completed=expand(working_dir+"/{acc}/{acc}-copy_reports_to_targetDir.done", acc=ACCESSIONS)
         #condensed_sdrf=expand(f"{working_dir}/{acc}/{acc}.condensed-sdrf.tsv", acc=ACCESSIONS),
         #apply_fixes=expand(f"{working_dir}/{acc}/{acc}.apply_fixes.done", acc=ACCESSIONS)
 
