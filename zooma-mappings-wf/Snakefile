@@ -74,7 +74,7 @@ rule check_zooma:
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
         exec &> "{log}"
 
-        httpResponse=`curl -o /dev/null -X GET -s -w %{http_code} {params.zoomaMetadataUrl}`
+        httpResponse=`curl -o /dev/null -X GET -s -w "%{http_code}" {params.zoomaMetadataUrl}`
         if [ "$httpResponse" -e 200 ]; then
             touch {output}
         else
