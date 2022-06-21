@@ -15,17 +15,18 @@ ATLAS_PROD_BRANCH=${ATLAS_PROD_BRANCH:-"develop"}
 PROCESSED_BRANCH=$(echo $ATLAS_PROD_BRANCH | sed 's+/+_+g')
 ATLAS_PROD_CO="${ATLAS_PROD}/sw/atlasinstall_branches/atlasprod_${PROCESSED_BRANCH}/atlasprod"
 LSF_CONFIG=$( pwd )/lsf.yaml
+CONDA_PREFIX_LINE="--conda-prefix $SN_CONDA_PREFIX"
 
 # Check that relevant env vars are set
-[ -z ${WORKING_DIR +x} ] && echo "Env var WORKING_DIR needs to be defined." && exit 1
+[ -z ${WORKING_DIR+x} ] && echo "Env var WORKING_DIR needs to be defined." && exit 1
 
-[ -z ${TEMP_DIR +x} ] && echo "Env var TEMP_DIR needs to be defined." && exit 1
+[ -z ${TEMP_DIR+x} ] && echo "Env var TEMP_DIR needs to be defined." && exit 1
 
-[ -z ${CONDA_PREFIX_LINE +x} ] && echo "Env var CONDA_PREFIX_LINE needs to be defined." && exit 1
+[ -z ${CONDA_PREFIX_LINE+x} ] && echo "Env var CONDA_PREFIX_LINE needs to be defined." && exit 1
 
-[ -z ${ZOOMA_META_URL +x} ] && echo "Env var ZOOMA_META_URL needs to be defined." && exit 1
+[ -z ${ZOOMA_META_URL+x} ] && echo "Env var ZOOMA_META_URL needs to be defined." && exit 1
 
-[ -z ${EXPERIMENT_METADATA_DIR +x} ] && echo "Env var EXPERIMENT_METADATA_DIR needs to be defined." && exit 1
+[ -z ${EXPERIMENT_METADATA_DIR+x} ] && echo "Env var EXPERIMENT_METADATA_DIR needs to be defined." && exit 1
 
 
 # -conda-prefix $SN_CONDA_PREFIX
