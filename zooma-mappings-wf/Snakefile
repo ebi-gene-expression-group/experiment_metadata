@@ -263,10 +263,10 @@ rule split_zooma_mapping_report:
     log:
         "{working_dir}/{accession}/logs/{accession}-check_zooma_mapping_report.log"
     input:
-        zoomaMappingReport=zooma_mapping_report,
         fixes_done="{working_dir}/{accession}/{accession}-apply_fixes.done"
     params:
-        split_report_files=get_split_report_files
+        split_report_files=get_split_report_files,
+        zoomaMappingReport=zooma_mapping_report
     output:
         temp("{working_dir}/{accession}/{accession}-split_zooma_mapping_report.done")
     shell:
@@ -274,7 +274,7 @@ rule split_zooma_mapping_report:
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
         exec &> "{log}"
 
-        if [ ! -s "{input.zoomaMappingReport}.aux" ]; then
+        if [ ! -s "{params.zoomaMappingReport}.aux" ]; then
             echo "ERROR: Something went wrong with condense_sdrf.pl run with Zooma mappings - no report is available" 
             exit 1
         else
@@ -287,7 +287,7 @@ rule split_zooma_mapping_report:
 
         for f in {params.split_report_files}; do
             if [ ! -s "$f"" ]; then
-                echo "One of the split file not genetated for {input.zoomaMappingReport}"
+                echo "One of the split file not genetated for {params.zoomaMappingReport}"
                 exit 1
             fi
         done
