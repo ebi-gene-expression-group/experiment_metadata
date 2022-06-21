@@ -123,13 +123,14 @@ rule run_condense_sdrf:
         "envs/perl-atlas-modules.yaml"
     log:
         "{working_dir}/{accession}/logs/{accession}-run_condense_sdrf.log"
+    resources:
+        attempt_number = lambda wildcards, attempt: attempt  #get_attempt,
     input:
         config_xml="{working_dir}/{accession}/{accession}-configuration.xml",
         rm_aux_done=rules.remove_aux_files.output,
         check_zooma_done=rules.check_zooma.output
     params:
         mode=config['mode'],
-        attempt_number=lambda wildcards, attempt: attempt, #get_attempt,
         retry_without_zooma=config['retryWithoutZooma'],
         script_dir=config['atlas_prod_co'],
         experiment_metadata_dir=config['experiment_metadata_dir'],
@@ -146,11 +147,11 @@ rule run_condense_sdrf:
         export PATH={params.script_dir}/db/scripts:$PATH
         # source bash functions
         source {params.script_dir}/bash_util/generic_routines.sh
-        echo "attempt: {params.attempt_number}"
+        echo "attempt: {resources.attempt_number}"
 
         pushd {params.working_directory}/{wildcards.accession}
 
-        if [[ {params.attempt_number} -lt 2 ]]; then
+        if [[ {resources.attempt_number} -lt 2 ]]; then
             # Run condense_sdrf.pl with options to map terms with Zooma (-z) and import
             # the IDF from ArrayExpress load directory (-i).
             if [ {params.mode} == "atlas" ]; then
