@@ -35,6 +35,16 @@ def zooma_mapping_report(wildcards):
 def get_attempt(wildcards, attempt):
     return attempt
 
+def get_split_report_files(wildcards):
+    x = datetime.now()
+    date_time = x.strftime("%Y-%m-%d")
+    zooma_mapping_report = f"{config['temp_dir']}/{wildcards['accession']}_{config['mode']}_refresh_experiment_metadata.{date_time}.log"
+    split_report_files= []
+    for section in ['AUTOMATIC','EXCLUDED','NO_RESULTS','REQUIRES_CURATION']:
+        split_report_files.append(f"{zooma_mapping_report}.aux.{section}.tsv" )
+    return split_report_files
+
+
 # Below probably no longer needed bec of regex above
 wildcard_constraints:
     accession = "E-\D+-\d+"
@@ -256,7 +266,7 @@ rule split_zooma_mapping_report:
         zoomaMappingReport=zooma_mapping_report,
         fixes_done="{working_dir}/{accession}/{accession}-apply_fixes.done"
     params:
-        split_report_files=expand(zooma_mapping_report+".aux.{section}.tsv", section=['AUTOMATIC','EXCLUDED','NO_RESULTS','REQUIRES_CURATION'])
+        split_report_files=get_split_report_files
     output:
         temp("{working_dir}/{accession}/{accession}-split_zooma_mapping_report.done")
     shell:
