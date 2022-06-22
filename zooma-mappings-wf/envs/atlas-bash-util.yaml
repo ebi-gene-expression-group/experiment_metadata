@@ -1,0 +1,5 @@
+channels:
+ - conda-forge
+ - bioconda
+dependencies:
+ - atlas-bash-util >=0.1.3

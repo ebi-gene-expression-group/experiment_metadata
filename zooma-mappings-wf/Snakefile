@@ -231,8 +231,9 @@ rule run_condense_sdrf:
 rule apply_fixes:
     """
     Apply automatic fixes to all imported sdrf and idf files.
-    NOTE: We might need to add a submodule of atlas-bash-utils here
     """
+    conda: 
+        "envs/atlas-bash-util.yaml"
     resources: 
         mem_mb=16000
     log:
@@ -245,7 +246,8 @@ rule apply_fixes:
         #condensed_sdrf="{working_dir}/{accession}/{accession}.condensed-sdrf.tsv"
     params:
         working_directory=working_dir,
-        script_dir=config['atlas_prod_co']
+        script_dir=config['atlas_prod_co'],
+        fixes_file_dir=config['experiment_metadata_dir']
     output:
         temp("{working_dir}/{accession}/{accession}-apply_fixes.done")
     shell:
@@ -253,18 +255,25 @@ rule apply_fixes:
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
         exec &> "{log}"
 
-        # source bash functions
-        source {params.script_dir}/bash_util/generic_routines.sh
-
         echo "About to apply automatic fixes to all imported sdrf and idf files"
 
-        pushd {params.working_directory}/{wildcards.accession}
-        applyAllFixesForExperiment {wildcards.accession}
-        touch {output}
+        # source bash functions
+        # source {params.script_dir}/bash_util/generic_routines.sh
+ 
+        pushd {params.working_directory} #might need change
+
+        # applyAllFixesForExperiment {wildcards.accession} {params.fixes_file_dir}
+        atlas-bash-util applyAllFixesForExperiment {wildcards.accession} {params.fixes_file_dir}
+        set +e
+        if [ $? -ne 0 ]; then
+	        echo "ERROR: Applying fixes for experiment {wildcards.accession} failed" >&2
+            return 1
+        fi
+        set -e
 
         echo "All fixes tasks now done"
-        popd
         touch {output}
+        popd
         # we certainly don't want an email for each accession..
         # mailx -s 
         """
