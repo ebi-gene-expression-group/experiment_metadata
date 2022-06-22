@@ -343,7 +343,7 @@ rule copy_reports_to_targetDir:
         notifEmail=config['notifEmail'],
         previous_run_date=config['previousRunDate']
     output:
-        "{working_dir}/{accession}/{accession}-copy_reports_to_targetDir.done"
+        temp("{working_dir}/{accession}/{accession}-copy_reports_to_targetDir.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -385,8 +385,8 @@ rule copy_reports_to_targetDir:
         rm -f previous_run
         ln -s $current_run previous_run
         popd
-        # remove old condensed
-        # rm -rf {wildcards.accession}.condensed-sdrf.tsv.bak
+        # remove backup of old condensed
+        rm -rf {working_dir}/{accession}/{wildcards.accession}.condensed-sdrf.tsv.bak
         touch {output}
         """
 
