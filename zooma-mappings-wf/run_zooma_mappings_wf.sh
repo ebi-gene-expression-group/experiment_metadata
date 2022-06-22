@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 MODE=${MODE:-"atlas"}
-ZOOMA_EXCLUSIONS=$( pwd )/zooma_exclusions.yml
 FORCEALL=${FORCEALL:-true} # set to true. If the file is present it won't update
 if [ "$FORCEALL" = true ]; then FORCE_ALL="--forceall"; else FORCE_ALL=""; fi
 
@@ -27,6 +26,8 @@ CONDA_PREFIX_LINE="--conda-prefix $SN_CONDA_PREFIX"
 [ -z ${ZOOMA_API_BASE+x} ] && echo "Env var ZOOMA_API_BASE needs to be defined." && exit 1
 
 [ -z ${ZOOMA_META_URL+x} ] && echo "Env var ZOOMA_META_URL needs to be defined." && exit 1
+
+[ -z ${ZOOMA_EXCLUSIONS+x} ] && echo "Env var ZOOMA_EXCLUSIONS needs to be defined." && exit 1
 
 [ -z ${EXPERIMENT_METADATA_DIR+x} ] && echo "Env var EXPERIMENT_METADATA_DIR needs to be defined." && exit 1
 
