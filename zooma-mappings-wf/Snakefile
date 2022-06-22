@@ -151,7 +151,8 @@ rule run_condense_sdrf:
         # export PATH={params.script_dir}/db/scripts:$PATH
         # source bash functions
         # source {params.script_dir}/bash_util/generic_routines.sh
-        echo "attempt: {resources.attempt_number}"
+        echo "Attempt number: {resources.attempt_number}"
+        echo "Zooma exclusions file: {params.zooma_exclusions} "
 
         pushd {params.working_directory} #/{wildcards.accession}
 
@@ -171,9 +172,9 @@ rule run_condense_sdrf:
                 echo $expType
 
                 if [[ $expType == *baseline ]]; then
-                    {params.experiment_metadata_dir}/condense_sdrf.pl -e {wildcards.accession} -f {params.working_directory}/{wildcards.accession}/{wildcards.accession}-factors.xml -z -i -o {params.working_directory}/{wildcards.accession} -x {params.zooma_exclusions} -fi $idf_path
+                    {params.experiment_metadata_dir}/zooma-mappings-wf/bin/condense_sdrf.pl -e {wildcards.accession} -f {params.working_directory}/{wildcards.accession}/{wildcards.accession}-factors.xml -z -i -o {params.working_directory}/{wildcards.accession} -x {params.zooma_exclusions} -fi $idf_path
                 else
-                    {params.experiment_metadata_dir}/condense_sdrf.pl -e {wildcards.accession} -z -i -o {params.working_directory}/{wildcards.accession} -fi $idf_path
+                    {params.experiment_metadata_dir}/zooma-mappings-wf/bin/condense_sdrf.pl -e {wildcards.accession} -z -i -o {params.working_directory}/{wildcards.accession} -fi $idf_path
                 fi
             elif [ {params.mode} == "single_cell" ]; then
                 export EXP_ID={wildcards.accession}
@@ -181,7 +182,7 @@ rule run_condense_sdrf:
 
             elif [ {params.mode} == "irap_single_lib" ]; then
                 # also collect biological replicate IDs for irap_single_lib mode
-                {params.experiment_metadata_dir}/condense_sdrf.pl -e {wildcards.accession} -z -b -i -o {params.working_directory}/{wildcards.accession} -fi $idf_path
+                {params.experiment_metadata_dir}/zooma-mappings-wf/bin/condense_sdrf.pl -e {wildcards.accession} -z -b -i -o {params.working_directory}/{wildcards.accession} -fi $idf_path
             else
                 echo "Mode {params.mode} not recognised."
                 exit 1
@@ -199,9 +200,9 @@ rule run_condense_sdrf:
                     echo $expType
 
                     if [[ $expType == *baseline ]]; then
-                        {params.experiment_metadata_dir}/condense_sdrf.pl -e {wildcards.accession} -f {params.working_directory}/{wildcards.accession}/{wildcards.accession}-factors.xml -i -o {params.working_directory}/{wildcards.accession} -x {params.zooma_exclusions} -fi $idf_path
+                        {params.experiment_metadata_dir}/zooma-mappings-wf/bin/condense_sdrf.pl -e {wildcards.accession} -f {params.working_directory}/{wildcards.accession}/{wildcards.accession}-factors.xml -i -o {params.working_directory}/{wildcards.accession} -x {params.zooma_exclusions} -fi $idf_path
                     else
-                        {params.experiment_metadata_dir}/condense_sdrf.pl -e {wildcards.accession} -i -o {params.working_directory}/{wildcards.accession} -fi $idf_path
+                        {params.experiment_metadata_dir}/zooma-mappings-wf/bin/condense_sdrf.pl -e {wildcards.accession} -i -o {params.working_directory}/{wildcards.accession} -fi $idf_path
                     fi
                 elif [ {params.mode} == "single_cell" ]; then
                     export EXP_ID={wildcards.accession}
@@ -210,7 +211,7 @@ rule run_condense_sdrf:
 
                 elif [ {params.mode} == "irap_single_lib" ]; then
                     # also collect biological replicate IDs for irap_single_lib mode
-                    {params.experiment_metadata_dir}/condense_sdrf.pl -e {wildcards.accession} -b -i -o {params.working_directory}/{wildcards.accession} -fi $idf_path
+                    {params.experiment_metadata_dir}/zooma-mappings-wf/bin/condense_sdrf.pl -e {wildcards.accession} -b -i -o {params.working_directory}/{wildcards.accession} -fi $idf_path
                 else
                     echo "Mode {params.mode} not recognised."
                     exit 1
