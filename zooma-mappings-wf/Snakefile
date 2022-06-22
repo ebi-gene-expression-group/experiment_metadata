@@ -27,18 +27,19 @@ def get_accessions(working_dir):
 ACCESSIONS = get_accessions(working_dir)
 
 
-def zooma_mapping_report(wildcards):
+def zooma_mapping_report():
     x = datetime.now()
     date_time = x.strftime("%Y-%m-%d")
-    return f"{config['temp_dir']}/{wildcards['accession']}_{config['mode']}_refresh_experiment_metadata.{date_time}.log"
+    return f"{config['temp_dir']}/{config['mode']}_zooma_mapping_report.{date_time}.tsv"
+
 
 def get_attempt(wildcards, attempt):
     return attempt
 
-def get_split_report_files(wildcards):
+def get_split_report_files():
     x = datetime.now()
     date_time = x.strftime("%Y-%m-%d")
-    zooma_mapping_report = f"{config['temp_dir']}/{wildcards['accession']}_{config['mode']}_refresh_experiment_metadata.{date_time}.log"
+    zooma_mapping_report = f"{config['temp_dir']}/{config['mode']}_zooma_mapping_report.{date_time}.tsv"
     split_report_files= []
     for section in ['AUTOMATIC','EXCLUDED','NO_RESULTS','REQUIRES_CURATION']:
         split_report_files.append(f"{zooma_mapping_report}.aux.{section}.tsv" )
@@ -96,7 +97,7 @@ rule remove_aux_files:
         rules.check_zooma.output
     params:
         working_directory=working_dir,
-        zoomaMappingReport=zooma_mapping_report
+        zoomaMappingReport=zooma_mapping_report()
     output:
         temp("{working_dir}/{accession}/remove_aux_files.done")
     shell:
@@ -107,7 +108,7 @@ rule remove_aux_files:
         rm -rf condense_sdrf.???
         rm -rf fixes.???
         rm -rf {wildcards.accession}-zoomifications-log.tsv
-        rm -rf {params.zoomaMappingReport}.aux
+        #rm -rf {params.zoomaMappingReport}.aux
         touch {output}
         # save a backup of the condensed SDRF file if present
         if [ -s "{wildcards.accession}.condensed-sdrf.tsv" ]; then
@@ -137,7 +138,8 @@ rule run_condense_sdrf:
         script_dir=config['atlas_prod_co'],
         experiment_metadata_dir=config['experiment_metadata_dir'],
         working_directory=working_dir,
-        zooma_exclusions=config['zooma_exclusions']
+        zooma_exclusions=config['zooma_exclusions'],
+        zoomaMappingReport=zooma_mapping_report()
     output:
         "{working_dir}/{accession}/{accession}.condensed-sdrf.tsv"
     shell:
@@ -225,6 +227,9 @@ rule run_condense_sdrf:
         else
             echo "All condense_sdrf tasks now done"
             echo "Updated condensed sdrf and idf files for all experiments"
+
+            cat {wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv >> {params.zoomaMappingReport}.aux
+            rm -rf {wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv
         fi
         popd
         """
@@ -285,12 +290,12 @@ rule split_zooma_mapping_report:
     Break down $zoomaMappingReport.aux into four report files: automatic, excluded, noresults, requirescuration
     """
     log:
-        "{working_dir}/{accession}/logs/{accession}-check_zooma_mapping_report.log"
+        "{working_dir}/{accession}/logs/{accession}-split_zooma_mapping_report.log"
     input:
         fixes_done="{working_dir}/{accession}/{accession}-apply_fixes.done"
     params:
-        split_report_files=get_split_report_files,
-        zoomaMappingReport=zooma_mapping_report
+        split_report_files=get_split_report_files(),
+        zoomaMappingReport=zooma_mapping_report()
     output:
         temp("{working_dir}/{accession}/{accession}-split_zooma_mapping_report.done")
     shell:
@@ -333,7 +338,7 @@ rule copy_reports_to_targetDir:
     params:
         mode=config['mode'],
         working_directory=working_dir,
-        zoomaMappingReport=zooma_mapping_report,
+        zoomaMappingReport=zooma_mapping_report(),
         notifEmail=config['notifEmail'],
         previous_run_date=config['previousRunDate']
     output:
