@@ -274,7 +274,7 @@ rule apply_fixes:
         atlas-bash-util applyAllFixesForExperiment {wildcards.accession} {params.fixes_file_dir}
         set +e
         if [ $? -ne 0 ]; then
-	        echo "ERROR: Applying fixes for experiment {wildcards.accession} failed" >&2
+            echo "ERROR: Applying fixes for experiment {wildcards.accession} failed" >&2
             return 1
         fi
         set -e
@@ -284,21 +284,26 @@ rule apply_fixes:
         popd
         # we certainly don't want an email for each accession..
         # mailx -s 
+	
+	# remove backup of old condensed
+        rm -rf {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv.bak
         """
 
+	
 rule split_zooma_mapping_report:
     """
     Break down $zoomaMappingReport.aux into four report files: automatic, excluded, noresults, requirescuration
+    after processing all accessions.
     """
     log:
-        "{working_dir}/{accession}/logs/{accession}-split_zooma_mapping_report.log"
+        "{working_dir}/logs/split_zooma_mapping_report.log" #"{working_dir}/{accession}/logs/{accession}-split_zooma_mapping_report.log"
     input:
-        fixes_done="{working_dir}/{accession}/{accession}-apply_fixes.done"
+        expand(working_dir+"/{acc}/{acc}-apply_fixes.done", acc=ACCESSIONS) #"{working_dir}/{accession}/{accession}-apply_fixes.done"
     params:
         split_report_files=get_split_report_files(),
         zoomaMappingReport=zooma_mapping_report()
     output:
-        temp("{working_dir}/{accession}/{accession}-split_zooma_mapping_report.done")
+        temp("{working_dir}/split_zooma_mapping_report.done") #temp("{working_dir}/{accession}/{accession}-split_zooma_mapping_report.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -333,9 +338,9 @@ rule copy_reports_to_targetDir:
     Mail out the Zoomification reports location
     """
     log:
-        "{working_dir}/{accession}/logs/{accession}-copy_reports_to_targetDir.log"
+        "{working_dir}/logs/copy_reports_to_targetDir.log" #"{working_dir}/{accession}/logs/{accession}-copy_reports_to_targetDir.log"
     input:
-        "{working_dir}/{accession}/{accession}-split_zooma_mapping_report.done"
+        "{working_dir}/split_zooma_mapping_report.done"
     params:
         mode=config['mode'],
         working_directory=working_dir,
@@ -343,7 +348,7 @@ rule copy_reports_to_targetDir:
         notifEmail=config['notifEmail'],
         previous_run_date=config['previousRunDate']
     output:
-        temp("{working_dir}/{accession}/{accession}-copy_reports_to_targetDir.done")
+        temp("{working_dir}/copy_reports_to_targetDir.done") #temp("{working_dir}/{accession}/{accession}-copy_reports_to_targetDir.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -385,8 +390,7 @@ rule copy_reports_to_targetDir:
         rm -f previous_run
         ln -s $current_run previous_run
         popd
-        # remove backup of old condensed
-        rm -rf {working_dir}/{accession}/{wildcards.accession}.condensed-sdrf.tsv.bak
+
         touch {output}
         """
 
