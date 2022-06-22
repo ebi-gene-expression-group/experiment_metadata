@@ -42,7 +42,7 @@ def get_split_report_files():
     zooma_mapping_report = f"{config['temp_dir']}/{config['mode']}_zooma_mapping_report.{date_time}.tsv"
     split_report_files= []
     for section in ['AUTOMATIC','EXCLUDED','NO_RESULTS','REQUIRES_CURATION']:
-        split_report_files.append(f"{zooma_mapping_report}.aux.{section}.tsv" )
+        split_report_files.append(f"{zooma_mapping_report}.{section}.tsv" )
     return split_report_files
 
 
