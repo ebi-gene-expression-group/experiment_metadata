@@ -5,7 +5,7 @@ ZOOMA_EXCLUSIONS=$( pwd )/zooma_exclusions.yml
 FORCEALL=${FORCEALL:-true} # set to true. If the file is present it won't update
 if [ "$FORCEALL" = true ]; then FORCE_ALL="--forceall"; else FORCE_ALL=""; fi
 
-RESTART_TIMES=${RESTART_TIMES:-3}
+RESTART_TIMES=${RESTART_TIMES:-2}
 NJOBS=${NJOBS:-2}
 EMAIL=${EMAIL:-false}
 RETRYWOUTZOOMA=${RETRYWOUTZOOMA:-yes} # or true
