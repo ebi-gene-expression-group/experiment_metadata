@@ -161,6 +161,9 @@ rule run_condense_sdrf:
         if [ {params.mode} == "atlas" ] || [ {params.mode} == "irap_single_lib" ]; then
                 # Get idf file
                 idf_path=$(perl {params.script_dir}/exec/get_magetab_paths.pl -e {wildcards.accession} -i) 
+                pushd {params.working_directory} #/{wildcards.accession}
+        else
+                pushd {params.experiment_metadata_dir}
         fi
 
 
@@ -235,8 +238,8 @@ rule run_condense_sdrf:
             echo "All condense_sdrf tasks now done"
             echo "Updated condensed sdrf and idf files for all experiments"
 
-            cat {wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv >> {params.zoomaMappingReport}.aux
-            rm -rf {wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv
+            cat {params.working_directory}/{wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv >> {params.zoomaMappingReport}.aux
+            rm -rf {params.working_directory}/{wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv
             touch {output.done}
         fi
         popd
