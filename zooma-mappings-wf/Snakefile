@@ -285,11 +285,11 @@ rule apply_fixes:
         # we certainly don't want an email for each accession..
         # mailx -s 
 	
-	# remove backup of old condensed
+	    # remove backup of old condensed
         rm -rf {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv.bak
         """
 
-	
+
 rule split_zooma_mapping_report:
     """
     Break down $zoomaMappingReport.aux into four report files: automatic, excluded, noresults, requirescuration
@@ -318,7 +318,6 @@ rule split_zooma_mapping_report:
             source ./bin/split_zooma_mapping_report.sh
 
             split_zooma_mapping_report {params.zoomaMappingReport}
-
         fi
 
         for f in {params.split_report_files}; do
