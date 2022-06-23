@@ -356,7 +356,7 @@ rule copy_reports_to_targetDir:
         today="`eval date +%Y-%m-%d`"
         previousRunDate={params.previous_run_date}
         echo "Today: $today"
-        echo "Previous run date is: {params.previous_run_date}"
+        echo "Previous run folder name: {params.previous_run_date}"
 
         # Copy reports to $targetDir
         if [ {params.mode} == "atlas" ]; then
@@ -376,8 +376,10 @@ rule copy_reports_to_targetDir:
         cp {params.zoomaMappingReport}.AUTOMATIC.tsv {params.zoomaMappingReport}.EXCLUDED.tsv {params.zoomaMappingReport}.NO_RESULTS.tsv {params.zoomaMappingReport}.REQUIRES_CURATION.tsv ${{targetDir}}/
 
         if [ ! -z ${{previousRunDate+x}} ] && [ -d ${{targetDir}}/../${{previousRunDate}} ]; then
+            previous_run_date=$(readlink ${{targetDir}}/../${{previousRunDate}})
+            echo $previous_run_date
             # Calculating new lines not previously seen
-            previousCurated=${{targetDir}}/../${{previousRunDate}}/atlas_zooma_mapping_report.${{previousRunDate}}.tsv.REQUIRES_CURATION.tsv
+            previousCurated=${{targetDir}}/../${{previousRunDate}}/atlas_zooma_mapping_report.${{previous_run_date}}.tsv.REQUIRES_CURATION.tsv
             newToCurate=${{targetDir}}/atlas_zooma_mapping_report.${{today}}.tsv.REQUIRES_CURATION.tsv
             # Compare based on fields Property value ($2), semantic tag ($3), Ontology label / Zooma mapping ($6)
             awk -F'\t' 'NR==FNR{{e[$2$3$6]=1;next}};!e[$2$3$6]' $previousCurated $newToCurate > ${{targetDir}}/atlas_zooma_mapping_report.${{today}}.tsv.REQUIRES_CURATION_NEW_LINES.tsv
