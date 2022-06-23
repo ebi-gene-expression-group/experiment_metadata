@@ -12,8 +12,8 @@ usage() { echo "Usage: $0 [-e <experiment id>] [-f <IDF file location (optional,
 
 # Source script from the same (prod or test) Atlas environment as this script
 
-#scriptDir=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-cd $SCRIPT_DIR
+scriptDir=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+#cd $SCRIPT_DIR
 
 # Parse arguments
 
