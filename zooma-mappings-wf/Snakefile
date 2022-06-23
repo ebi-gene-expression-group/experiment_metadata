@@ -181,7 +181,7 @@ rule run_condense_sdrf:
             elif [ {params.mode} == "single_cell" ]; then
                 export EXP_ID={wildcards.accession}
                 export ATLAS_SC_EXPERIMENTS={params.working_directory}
-                export SCRIPT_DIR={params.experiment_metadata_dir}
+                #export SCRIPT_DIR={params.experiment_metadata_dir}
                 {params.experiment_metadata_dir}/single_cell_condensed_sdrf.sh -z {params.zooma_exclusions}
 
             elif [ {params.mode} == "irap_single_lib" ]; then
@@ -211,7 +211,7 @@ rule run_condense_sdrf:
                 elif [ {params.mode} == "single_cell" ]; then
                     export EXP_ID={wildcards.accession}
                     export ATLAS_SC_EXPERIMENTS={params.working_directory}
-                    export SCRIPT_DIR={params.experiment_metadata_dir}
+                    #export SCRIPT_DIR={params.experiment_metadata_dir}
                     export SKIP_ZOOMA="yes"
                     {params.experiment_metadata_dir}/single_cell_condensed_sdrf.sh -z {params.zooma_exclusions}
 
@@ -255,7 +255,7 @@ rule apply_fixes:
         "{working_dir}/{accession}/logs/{accession}-apply_fixes.log"
     input:
         rules.run_condense_sdrf.output.sdrf,
-        rules.run_condense_sdrf.output.done,
+        rules.run_condense_sdrf.output.done
         #autofix_properties="{exp_metadata_dir}/automatic_fixes_values.txt",
         #autofix_values="{exp_metadata_dir}/automatic_fixes_properties.txt",
         #idf="{working_dir}/{accession}/{accession}.idf.txt",
