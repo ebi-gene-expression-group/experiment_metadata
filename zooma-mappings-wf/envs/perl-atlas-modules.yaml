@@ -2,4 +2,5 @@ channels:
  - conda-forge
  - bioconda
 dependencies:
+ - perl
  - perl-atlas-modules >=0.3.1
