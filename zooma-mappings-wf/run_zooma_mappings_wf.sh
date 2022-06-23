@@ -33,6 +33,8 @@ CONDA_PREFIX_LINE="--conda-prefix $SN_CONDA_PREFIX"
 
 [ -z ${PREVIOUS_RUN_DATE+x} ] && echo "Env var PREVIOUS_RUN_DATE needs to be defined." && exit 1
 
+[ -z ${ATLAS_FTP+x} ] && echo "Env var ATLAS_FTP needs to be defined." && exit 1
+
 #--dry-run
 snakemake --use-conda --conda-frontend mamba --restart-times $RESTART_TIMES \
     --latency-wait 20 --keep-going \
@@ -48,5 +50,6 @@ snakemake --use-conda --conda-frontend mamba --restart-times $RESTART_TIMES \
     atlas_prod_co=$ATLAS_PROD_CO \
     lsf_config=$LSF_CONFIG \
     previousRunDate=$PREVIOUS_RUN_DATE \
+    atlas_ftp=$ATLAS_FTP \
     -j $NJOBS -s Snakefile
 

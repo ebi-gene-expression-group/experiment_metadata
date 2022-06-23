@@ -3,6 +3,8 @@
 # We require
 # EXP_ID
 # ATLAS_SC_EXPERIMENTS
+# ZOOMA_EXCLUSIONS
+# SCRIPT_DIR
 # Optionally:
 # SKIP_ZOOMA (if set, then Zooma mapping is skipped)
 
@@ -10,7 +12,8 @@ usage() { echo "Usage: $0 [-e <experiment id>] [-f <IDF file location (optional,
 
 # Source script from the same (prod or test) Atlas environment as this script
 
-scriptDir=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+#scriptDir=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd $SCRIPT_DIR
 
 # Parse arguments
 
@@ -18,7 +21,7 @@ expId="$EXP_ID"
 idfFile=
 experimentDir="$ATLAS_SC_EXPERIMENTS"
 skipZooma="$SKIP_ZOOMA"
-zoomaExclusions="$ATLAS_META_CONFIG/zooma_exclusions.yml"
+zoomaExclusions="$ZOOMA_EXCLUSIONS" #"$ATLAS_META_CONFIG/zooma_exclusions.yml"
 outputDir=
 
 while getopts ":e:f:s:o:z:t:" o; do

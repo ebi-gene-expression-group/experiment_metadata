@@ -179,6 +179,9 @@ rule run_condense_sdrf:
                 fi
             elif [ {params.mode} == "single_cell" ]; then
                 export EXP_ID={wildcards.accession}
+                export ATLAS_SC_EXPERIMENTS={params.working_directory}
+                export ZOOMA_EXCLUSIONS={params.zooma_exclusions}
+                export SCRIPT_DIR={params.experiment_metadata_dir}
                 {params.experiment_metadata_dir}/single_cell_condensed_sdrf.sh
 
             elif [ {params.mode} == "irap_single_lib" ]; then
@@ -207,7 +210,10 @@ rule run_condense_sdrf:
                     fi
                 elif [ {params.mode} == "single_cell" ]; then
                     export EXP_ID={wildcards.accession}
-                    export SKIP_ZOOMA="yes" 
+                    export ATLAS_SC_EXPERIMENTS={params.working_directory}
+                    export ZOOMA_EXCLUSIONS={params.zooma_exclusions}
+                    export SCRIPT_DIR={params.experiment_metadata_dir}
+                    export SKIP_ZOOMA="yes"
                     {params.experiment_metadata_dir}/single_cell_condensed_sdrf.sh
 
                 elif [ {params.mode} == "irap_single_lib" ]; then
@@ -346,7 +352,8 @@ rule copy_reports_to_targetDir:
         working_directory=working_dir,
         zoomaMappingReport=zooma_mapping_report(),
         notifEmail=config['notifEmail'],
-        previous_run_date=config['previousRunDate']
+        previous_run_date=config['previousRunDate'],
+        atlas_ftp=config['atlas_ftp']
     output:
         temp("{working_dir}/copy_reports_to_targetDir.done") #temp("{working_dir}/{accession}/{accession}-copy_reports_to_targetDir.done")
     shell:
@@ -357,14 +364,13 @@ rule copy_reports_to_targetDir:
         previousRunDate={params.previous_run_date}
         echo "Today: $today"
         echo "Previous run folder name: {params.previous_run_date}"
+        ATLAS_FTP={params.atlas_ftp}
 
         # Copy reports to $targetDir
         if [ {params.mode} == "atlas" ]; then
-            #targetDir=$ATLAS_FTP/curation/zoomage_reports/${{today}}
-            targetDir={params.working_directory}/curation/zoomage_reports/${{today}}
+            targetDir=$ATLAS_FTP/curation/zoomage_reports/${{today}}
         elif [ {params.mode} == "single_cell" ]; then
-            #targetDir=$ATLAS_FTP/curation/zoomage_reports/single_cell/${{today}}
-            targetDir={params.working_directory}/curation/zoomage_reports/single_cell/${{today}}
+            targetDir=$ATLAS_FTP/curation/zoomage_reports/single_cell/${{today}}
         elif [ {params.mode} == "irap_single_lib" ]; then
             #targetDir=$IRAP_SINGLE_LIB/zoomage/reports/${{today}}
             targetDir={params.working_directory}/zoomage/reports/${{today}}
@@ -377,7 +383,7 @@ rule copy_reports_to_targetDir:
 
         if [ ! -z ${{previousRunDate+x}} ] && [ -d ${{targetDir}}/../${{previousRunDate}} ]; then
             previous_run_date=$(readlink ${{targetDir}}/../${{previousRunDate}})
-            echo $previous_run_date
+            echo "previous_run symlink: $previous_run_date"
             # Calculating new lines not previously seen
             previousCurated=${{targetDir}}/../${{previousRunDate}}/atlas_zooma_mapping_report.${{previous_run_date}}.tsv.REQUIRES_CURATION.tsv
             newToCurate=${{targetDir}}/atlas_zooma_mapping_report.${{today}}.tsv.REQUIRES_CURATION.tsv
