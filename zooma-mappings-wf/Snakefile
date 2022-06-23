@@ -58,7 +58,7 @@ localrules: check_zooma, remove_aux_files
 # Edit accordingly once the output dir is identified
 rule all:
     input:
-        "{working_dir}/logs/copy_reports_to_targetDir.log"
+        completed=f"{working_dir}/logs/copy_reports_to_targetDir.log"
         #completed=expand(working_dir+"/{acc}/{acc}-copy_reports_to_targetDir.done", acc=ACCESSIONS)
         #condensed_sdrf=expand(f"{working_dir}/{acc}/{acc}.condensed-sdrf.tsv", acc=ACCESSIONS),
         #apply_fixes=expand(f"{working_dir}/{acc}/{acc}.apply_fixes.done", acc=ACCESSIONS)
