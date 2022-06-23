@@ -142,7 +142,8 @@ rule run_condense_sdrf:
         zooma_exclusions=config['zooma_exclusions'],
         zoomaMappingReport=zooma_mapping_report()
     output:
-        "{working_dir}/{accession}/{accession}.condensed-sdrf.tsv"
+        sdrf="{working_dir}/{accession}/{accession}.condensed-sdrf.tsv",
+        done=temp("{working_dir}/{accession}/run_condense_sdrf.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -236,6 +237,7 @@ rule run_condense_sdrf:
 
             cat {wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv >> {params.zoomaMappingReport}.aux
             rm -rf {wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv
+            touch {output.done}
         fi
         popd
         """
@@ -252,7 +254,8 @@ rule apply_fixes:
     log:
         "{working_dir}/{accession}/logs/{accession}-apply_fixes.log"
     input:
-        rules.run_condense_sdrf.output
+        rules.run_condense_sdrf.output.sdrf,
+        rules.run_condense_sdrf.output.done,
         #autofix_properties="{exp_metadata_dir}/automatic_fixes_values.txt",
         #autofix_values="{exp_metadata_dir}/automatic_fixes_properties.txt",
         #idf="{working_dir}/{accession}/{accession}.idf.txt",
