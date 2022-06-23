@@ -130,7 +130,7 @@ rule run_condense_sdrf:
     resources:
         attempt_number = lambda wildcards, attempt: attempt  #get_attempt,
     input:
-        config_xml="{working_dir}/{accession}/{accession}-configuration.xml",
+        config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'atlas' in config['mode'] else f"{working_dir}/{wildcards.accession}/check_zooma.done" , # config_xml="{working_dir}/{accession}/{accession}-configuration.xml",
         rm_aux_done=rules.remove_aux_files.output,
         check_zooma_done=rules.check_zooma.output
     params:
