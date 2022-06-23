@@ -180,9 +180,8 @@ rule run_condense_sdrf:
             elif [ {params.mode} == "single_cell" ]; then
                 export EXP_ID={wildcards.accession}
                 export ATLAS_SC_EXPERIMENTS={params.working_directory}
-                export ZOOMA_EXCLUSIONS={params.zooma_exclusions}
                 export SCRIPT_DIR={params.experiment_metadata_dir}
-                {params.experiment_metadata_dir}/single_cell_condensed_sdrf.sh
+                {params.experiment_metadata_dir}/single_cell_condensed_sdrf.sh -z {params.zooma_exclusions}
 
             elif [ {params.mode} == "irap_single_lib" ]; then
                 # also collect biological replicate IDs for irap_single_lib mode
@@ -211,10 +210,9 @@ rule run_condense_sdrf:
                 elif [ {params.mode} == "single_cell" ]; then
                     export EXP_ID={wildcards.accession}
                     export ATLAS_SC_EXPERIMENTS={params.working_directory}
-                    export ZOOMA_EXCLUSIONS={params.zooma_exclusions}
                     export SCRIPT_DIR={params.experiment_metadata_dir}
                     export SKIP_ZOOMA="yes"
-                    {params.experiment_metadata_dir}/single_cell_condensed_sdrf.sh
+                    {params.experiment_metadata_dir}/single_cell_condensed_sdrf.sh -z {params.zooma_exclusions}
 
                 elif [ {params.mode} == "irap_single_lib" ]; then
                     # also collect biological replicate IDs for irap_single_lib mode

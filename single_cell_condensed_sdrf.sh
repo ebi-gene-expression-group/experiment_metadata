@@ -21,7 +21,7 @@ expId="$EXP_ID"
 idfFile=
 experimentDir="$ATLAS_SC_EXPERIMENTS"
 skipZooma="$SKIP_ZOOMA"
-zoomaExclusions="$ZOOMA_EXCLUSIONS" #"$ATLAS_META_CONFIG/zooma_exclusions.yml"
+zoomaExclusions="$ATLAS_META_CONFIG/zooma_exclusions.yml"
 outputDir=
 
 while getopts ":e:f:s:o:z:t:" o; do
