@@ -376,7 +376,7 @@ rule copy_reports_to_targetDir:
         if [ {params.mode} == "atlas" ]; then
             targetDir=$ATLAS_FTP/curation/zoomage_reports/${{today}}
         elif [ {params.mode} == "single_cell" ]; then
-            targetDir=$ATLAS_FTP/curation/zoomage_reports/single_cell/${{today}}
+            targetDir=$ATLAS_FTP/curation/zoomage_reports/${{today}} #single_cell/${{today}}
         elif [ {params.mode} == "irap_single_lib" ]; then
             #targetDir=$IRAP_SINGLE_LIB/zoomage/reports/${{today}}
             targetDir={params.working_directory}/zoomage/reports/${{today}}
