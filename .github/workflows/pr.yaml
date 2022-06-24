@@ -51,4 +51,5 @@ jobs:
         with:
           directory: 'test_data'
           snakefile: 'zooma-mappings-wf/Snakefile'
-          args: '--lint --config mode="atlas" working_dir=../test_data zooma_exclusions=../test_data/zooma_exclusions.yml'
+          args: '--lint --config mode="atlas" working_dir=../test_data zooma_exclusions=../test_data/zooma_exclusions.yml temp_dir=../test_data zoomaMetadataUrl=zoomaMetadataUrl notifEmail=false retryWithoutZooma=no experiment_metadata_dir=experiment_metadata_dir atlas_prod_co=atlas_prod_co lsf_config=lsf_config previousRunDate=previous_run atlas_ftp=atlas_ftp'
+
