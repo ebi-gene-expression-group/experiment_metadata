@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
+NJOBS=${NJOBS:-10}
+LOAD_MAX=${LOAD_MAX:-100}
+LOAD_ZOOMA_JOBS=${LOAD_ZOOMA_JOBS:-30}
+
 MODE=${MODE:-"atlas"}
 FORCEALL=${FORCEALL:-true} # set to true. If the file is present it won't update
 if [ "$FORCEALL" = true ]; then FORCE_ALL="--forceall"; else FORCE_ALL=""; fi
-
 RESTART_TIMES=${RESTART_TIMES:-2}
-NJOBS=${NJOBS:-2}
 EMAIL=${EMAIL:-false}
 RETRYWOUTZOOMA=${RETRYWOUTZOOMA:-yes}
 ZOOMA_META_URL=${ZOOMA_API_BASE}/server/metadata
@@ -37,7 +39,7 @@ CONDA_PREFIX_LINE="--conda-prefix $SN_CONDA_PREFIX"
 
 
 snakemake --use-conda --conda-frontend mamba --restart-times $RESTART_TIMES \
-    --latency-wait 20 --keep-going \
+    --resources load=$LOAD_MAX --latency-wait 20 --keep-going \
     $PROFILE_LINE $CONDA_PREFIX_LINE $FORCE_ALL  --config \
     mode=$MODE \
     zooma_exclusions=$ZOOMA_EXCLUSIONS \
@@ -51,5 +53,6 @@ snakemake --use-conda --conda-frontend mamba --restart-times $RESTART_TIMES \
     lsf_config=$LSF_CONFIG \
     previousRunDate=$PREVIOUS_RUN_DATE \
     atlas_ftp=$ATLAS_FTP \
+    load_zooma_jobs=$LOAD_ZOOMA_JOBS \
     -j $NJOBS -s Snakefile
 

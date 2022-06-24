@@ -59,6 +59,8 @@ rule check_zooma:
     """
     Check that zooma returns successful http code
     """
+    resources:
+        load=config['load_zooma_jobs']
     log:
         "{working_dir}/{accession}/logs/{accession}-check_zooma.log"
     output:
@@ -120,6 +122,7 @@ rule run_condense_sdrf:
     log:
         "{working_dir}/{accession}/logs/{accession}-run_condense_sdrf.log"
     resources:
+        load=config['load_zooma_jobs'],
         attempt_number = lambda wildcards, attempt: attempt
     input:
         config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'atlas' in config['mode'] else f"{working_dir}/{wildcards.accession}/check_zooma.done" ,
