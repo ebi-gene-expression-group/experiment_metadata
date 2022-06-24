@@ -395,10 +395,10 @@ rule copy_reports_to_targetDir:
             previous_run_date=$(readlink ${{targetDir}}/../${{previousRunDate}})
             echo "previous_run symlink: $previous_run_date"
             # Calculating new lines not previously seen
-            previousCurated=${{targetDir}}/../${{previous_run_date}}/atlas_zooma_mapping_report.${{previous_run_date}}.tsv.REQUIRES_CURATION.tsv
-            newToCurate=${{targetDir}}/atlas_zooma_mapping_report.${{today}}.tsv.REQUIRES_CURATION.tsv
+            previousCurated=${{targetDir}}/../${{previous_run_date}}/{params.mode}_zooma_mapping_report.${{previous_run_date}}.tsv.REQUIRES_CURATION.tsv
+            newToCurate=${{targetDir}}/{params.mode}_zooma_mapping_report.${{today}}.tsv.REQUIRES_CURATION.tsv
             # Compare based on fields Property value ($2), semantic tag ($3), Ontology label / Zooma mapping ($6)
-            awk -F'\t' 'NR==FNR{{e[$2$3$6]=1;next}};!e[$2$3$6]' $previousCurated $newToCurate > ${{targetDir}}/atlas_zooma_mapping_report.${{today}}.tsv.REQUIRES_CURATION_NEW_LINES.tsv
+            awk -F'\t' 'NR==FNR{{e[$2$3$6]=1;next}};!e[$2$3$6]' $previousCurated $newToCurate > ${{targetDir}}/{params.mode}_zooma_mapping_report.${{today}}.tsv.REQUIRES_CURATION_NEW_LINES.tsv
         else
             echo "Variable previousRunDate value \"${{previousRunDate}}\" does not take us to previous run, so no new lines" 
         fi
