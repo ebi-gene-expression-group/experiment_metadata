@@ -26,20 +26,23 @@ def get_accessions(working_dir):
 
 ACCESSIONS = get_accessions(working_dir)
 
-
-def zooma_mapping_report():
+# define timestamp only once
+def get_date():
     x = datetime.now()
     date_time = x.strftime("%Y-%m-%d-%H:%M")
-    return f"{config['temp_dir']}/{config['mode']}_zooma_mapping_report.{date_time}.tsv"
+    return date_time
+
+date_current_run = get_date()
+
+def zooma_mapping_report(date_current_run):
+    return f"{config['temp_dir']}/{config['mode']}_zooma_mapping_report.{date_current_run}.tsv"
 
 
 def get_attempt(wildcards, attempt):
     return attempt
 
-def get_split_report_files():
-    x = datetime.now()
-    date_time = x.strftime("%Y-%m-%d-%H:%M")
-    zooma_mapping_report = f"{config['temp_dir']}/{config['mode']}_zooma_mapping_report.{date_time}.tsv"
+def get_split_report_files(date_current_run):
+    zooma_mapping_report = f"{config['temp_dir']}/{config['mode']}_zooma_mapping_report.{date_current_run}.tsv"
     split_report_files= []
     for section in ['AUTOMATIC','EXCLUDED','NO_RESULTS','REQUIRES_CURATION']:
         split_report_files.append(f"{zooma_mapping_report}.{section}.tsv" )
@@ -359,14 +362,15 @@ rule copy_reports_to_targetDir:
         zoomaMappingReport=zooma_mapping_report(),
         notifEmail=config['notifEmail'],
         previous_run_date=config['previousRunDate'],
-        atlas_ftp=config['atlas_ftp']
+        atlas_ftp=config['atlas_ftp'],
+        current_run=date_current_run
     output:
         temp("{working_dir}/copy_reports_to_targetDir.done") #temp("{working_dir}/{accession}/{accession}-copy_reports_to_targetDir.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
         exec &> "{log}"
-        today="`eval date +%Y-%m-%d-%H:%M`"
+        today={params.current_run}   #"`eval date +%Y-%m-%d-%H:%M`"
         previousRunDate={params.previous_run_date}
         echo "Today: $today"
         echo "Previous run folder name: {params.previous_run_date}"
