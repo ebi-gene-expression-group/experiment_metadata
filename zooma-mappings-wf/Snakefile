@@ -101,7 +101,7 @@ rule remove_aux_files:
         rules.check_zooma.output
     params:
         working_directory=working_dir,
-        zoomaMappingReport=zooma_mapping_report()
+        zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
         temp("{working_dir}/{accession}/remove_aux_files.done")
     shell:
@@ -143,7 +143,7 @@ rule run_condense_sdrf:
         experiment_metadata_dir=config['experiment_metadata_dir'],
         working_directory=working_dir,
         zooma_exclusions=config['zooma_exclusions'],
-        zoomaMappingReport=zooma_mapping_report()
+        zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
         sdrf="{working_dir}/{accession}/{accession}.condensed-sdrf.tsv",
         done=temp("{working_dir}/{accession}/run_condense_sdrf.done")
@@ -316,8 +316,8 @@ rule split_zooma_mapping_report:
     input:
         expand(working_dir+"/{acc}/{acc}-apply_fixes.done", acc=ACCESSIONS) #"{working_dir}/{accession}/{accession}-apply_fixes.done"
     params:
-        split_report_files=get_split_report_files(),
-        zoomaMappingReport=zooma_mapping_report()
+        split_report_files=get_split_report_files(date_current_run),
+        zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
         temp("{working_dir}/split_zooma_mapping_report.done") #temp("{working_dir}/{accession}/{accession}-split_zooma_mapping_report.done")
     shell:
@@ -359,7 +359,7 @@ rule copy_reports_to_targetDir:
     params:
         mode=config['mode'],
         working_directory=working_dir,
-        zoomaMappingReport=zooma_mapping_report(),
+        zoomaMappingReport=zooma_mapping_report(date_current_run),
         notifEmail=config['notifEmail'],
         previous_run_date=config['previousRunDate'],
         atlas_ftp=config['atlas_ftp'],
