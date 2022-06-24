@@ -7,7 +7,7 @@ if [ "$FORCEALL" = true ]; then FORCE_ALL="--forceall"; else FORCE_ALL=""; fi
 RESTART_TIMES=${RESTART_TIMES:-2}
 NJOBS=${NJOBS:-2}
 EMAIL=${EMAIL:-false}
-RETRYWOUTZOOMA=${RETRYWOUTZOOMA:-yes} # or true
+RETRYWOUTZOOMA=${RETRYWOUTZOOMA:-yes}
 ZOOMA_META_URL=${ZOOMA_API_BASE}/server/metadata
 
 ATLAS_PROD_BRANCH=${ATLAS_PROD_BRANCH:-"develop"}
@@ -35,7 +35,7 @@ CONDA_PREFIX_LINE="--conda-prefix $SN_CONDA_PREFIX"
 
 [ -z ${ATLAS_FTP+x} ] && echo "Env var ATLAS_FTP needs to be defined." && exit 1
 
-#--dry-run
+
 snakemake --use-conda --conda-frontend mamba --restart-times $RESTART_TIMES \
     --latency-wait 20 --keep-going \
     $PROFILE_LINE $CONDA_PREFIX_LINE $FORCE_ALL  --config \

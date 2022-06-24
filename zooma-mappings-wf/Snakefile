@@ -13,12 +13,6 @@ working_dir = config.get("working_dir")
 
 
 def get_accessions(working_dir):
-    """
-    Generate the expected output file names.
-    Not yet sure if for all modes, the listdir path below
-    is where the accession dirs are found.
-    Edit accordingly once known.
-    """
     acc_regex = re.compile("E-\D+-\d+")
     acc_dirs = listdir(f"{working_dir}")
     ACCESSIONS = [acc for acc in acc_dirs if acc_regex.match(acc)]
@@ -49,26 +43,21 @@ def get_split_report_files(date_current_run):
     return split_report_files
 
 
-# Below probably no longer needed bec of regex above
+# below probably no longer needed bec of regex above
 wildcard_constraints:
     accession = "E-\D+-\d+"
 
 
 localrules: check_zooma, remove_aux_files
 
-# Rule for running the whole pipeline
-# Not yet sure if below is the desired path for the output condensed sdrf files
-# Edit accordingly once the output dir is identified
 rule all:
     input:
         completed=f"{working_dir}/logs/copy_reports_to_targetDir.log"
-        #completed=expand(working_dir+"/{acc}/{acc}-copy_reports_to_targetDir.done", acc=ACCESSIONS)
-        #condensed_sdrf=expand(f"{working_dir}/{acc}/{acc}.condensed-sdrf.tsv", acc=ACCESSIONS),
-        #apply_fixes=expand(f"{working_dir}/{acc}/{acc}.apply_fixes.done", acc=ACCESSIONS)
+
 
 rule check_zooma:
     """
-    Check that zooma returns successful http code.
+    Check that zooma returns successful http code
     """
     log:
         "{working_dir}/{accession}/logs/{accession}-check_zooma.log"
@@ -131,9 +120,9 @@ rule run_condense_sdrf:
     log:
         "{working_dir}/{accession}/logs/{accession}-run_condense_sdrf.log"
     resources:
-        attempt_number = lambda wildcards, attempt: attempt  #get_attempt,
+        attempt_number = lambda wildcards, attempt: attempt
     input:
-        config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'atlas' in config['mode'] else f"{working_dir}/{wildcards.accession}/check_zooma.done" , # config_xml="{working_dir}/{accession}/{accession}-configuration.xml",
+        config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'atlas' in config['mode'] else f"{working_dir}/{wildcards.accession}/check_zooma.done" ,
         rm_aux_done=rules.remove_aux_files.output,
         check_zooma_done=rules.check_zooma.output
     params:
@@ -152,10 +141,6 @@ rule run_condense_sdrf:
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
         exec &> "{log}"
 
-        # For condense_sdrf.pl, get_experiment_type_from_xml.pl
-        # export PATH={params.script_dir}/db/scripts:$PATH
-        # source bash functions
-        # source {params.script_dir}/bash_util/generic_routines.sh
         echo "Attempt number: {resources.attempt_number}"
         echo "Zooma exclusions file: {params.zooma_exclusions}"
 
@@ -168,7 +153,6 @@ rule run_condense_sdrf:
         else
                 pushd {params.experiment_metadata_dir}
         fi
-
 
         if [[ {resources.attempt_number} -eq 1 ]]; then
             # Run condense_sdrf.pl with options to map terms with Zooma (-z) and import
@@ -188,7 +172,6 @@ rule run_condense_sdrf:
                 export PATH={params.experiment_metadata_dir}:{params.experiment_metadata_dir}:$PATH
                 export EXP_ID={wildcards.accession}
                 export ATLAS_SC_EXPERIMENTS={params.working_directory}
-                #export SCRIPT_DIR={params.experiment_metadata_dir}
                 single_cell_condensed_sdrf.sh -z {params.zooma_exclusions}
 
             elif [ {params.mode} == "irap_single_lib" ]; then
@@ -202,7 +185,7 @@ rule run_condense_sdrf:
         else
             
             if [[ {params.retry_without_zooma} == "yes" ]]; then
-                # however Zooma mapping report won't be generated
+                # however Zzoma mapping report won't be generated
                 echo "Error detected, try to condense SDRF without Zooma mapping"
 
                 if [ {params.mode} == "atlas" ]; then
@@ -219,7 +202,6 @@ rule run_condense_sdrf:
                     export PATH={params.experiment_metadata_dir}:{params.experiment_metadata_dir}:$PATH
                     export EXP_ID={wildcards.accession}
                     export ATLAS_SC_EXPERIMENTS={params.working_directory}
-                    #export SCRIPT_DIR={params.experiment_metadata_dir}
                     export SKIP_ZOOMA="yes"
                     single_cell_condensed_sdrf.sh -z {params.zooma_exclusions}
 
@@ -264,10 +246,6 @@ rule apply_fixes:
     input:
         rules.run_condense_sdrf.output.sdrf,
         rules.run_condense_sdrf.output.done
-        #autofix_properties="{exp_metadata_dir}/automatic_fixes_values.txt",
-        #autofix_values="{exp_metadata_dir}/automatic_fixes_properties.txt",
-        #idf="{working_dir}/{accession}/{accession}.idf.txt",
-        #condensed_sdrf="{working_dir}/{accession}/{accession}.condensed-sdrf.tsv"
     params:
         working_directory=working_dir,
         script_dir=config['atlas_prod_co'],
@@ -286,7 +264,6 @@ rule apply_fixes:
  
         pushd {params.working_directory} #might need change
 
-        # applyAllFixesForExperiment {wildcards.accession} {params.fixes_file_dir}
         atlas-bash-util applyAllFixesForExperiment {wildcards.accession} {params.fixes_file_dir}
         set +e
         if [ $? -ne 0 ]; then
@@ -298,13 +275,10 @@ rule apply_fixes:
         echo "All fixes tasks now done"
         touch {output}
         popd
-        # we certainly don't want an email for each accession..
-        # mailx -s 
 	
 	    # remove backup of old condensed
         rm -rf {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv.bak
         """
-
 
 rule split_zooma_mapping_report:
     """
@@ -312,14 +286,14 @@ rule split_zooma_mapping_report:
     after processing all accessions.
     """
     log:
-        "{working_dir}/logs/split_zooma_mapping_report.log" #"{working_dir}/{accession}/logs/{accession}-split_zooma_mapping_report.log"
+        "{working_dir}/logs/split_zooma_mapping_report.log"
     input:
-        expand(working_dir+"/{acc}/{acc}-apply_fixes.done", acc=ACCESSIONS) #"{working_dir}/{accession}/{accession}-apply_fixes.done"
+        expand(working_dir+"/{acc}/{acc}-apply_fixes.done", acc=ACCESSIONS)
     params:
         split_report_files=get_split_report_files(date_current_run),
         zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
-        temp("{working_dir}/split_zooma_mapping_report.done") #temp("{working_dir}/{accession}/{accession}-split_zooma_mapping_report.done")
+        temp("{working_dir}/split_zooma_mapping_report.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -346,14 +320,12 @@ rule split_zooma_mapping_report:
         touch {output}
         """
 
-
 rule copy_reports_to_targetDir:
     """
-    Copy reports to $targetDir.
-    Mail out the Zoomification reports location
+    Copy reports to $targetDir
     """
     log:
-        "{working_dir}/logs/copy_reports_to_targetDir.log" #"{working_dir}/{accession}/logs/{accession}-copy_reports_to_targetDir.log"
+        "{working_dir}/logs/copy_reports_to_targetDir.log"
     input:
         "{working_dir}/split_zooma_mapping_report.done"
     params:
@@ -365,7 +337,7 @@ rule copy_reports_to_targetDir:
         atlas_ftp=config['atlas_ftp'],
         current_run=date_current_run
     output:
-        temp("{working_dir}/copy_reports_to_targetDir.done") #temp("{working_dir}/{accession}/{accession}-copy_reports_to_targetDir.done")
+        temp("{working_dir}/copy_reports_to_targetDir.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -413,6 +385,4 @@ rule copy_reports_to_targetDir:
 
         touch {output}
         """
-
-
 
