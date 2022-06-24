@@ -49,6 +49,6 @@ jobs:
       - name: Linting
         uses: snakemake/snakemake-github-action@v1
         with:
-          directory: '.zooma-mappings-wf'
-          snakefile: 'Snakefile'
+          directory: 'test_data'
+          snakefile: 'zooma-mappings-wf/Snakefile'
           args: '--lint'

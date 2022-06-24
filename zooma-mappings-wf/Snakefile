@@ -29,7 +29,7 @@ ACCESSIONS = get_accessions(working_dir)
 
 def zooma_mapping_report():
     x = datetime.now()
-    date_time = x.strftime("%Y-%m-%d")
+    date_time = x.strftime("%Y-%m-%d-%H:%M")
     return f"{config['temp_dir']}/{config['mode']}_zooma_mapping_report.{date_time}.tsv"
 
 
@@ -38,7 +38,7 @@ def get_attempt(wildcards, attempt):
 
 def get_split_report_files():
     x = datetime.now()
-    date_time = x.strftime("%Y-%m-%d")
+    date_time = x.strftime("%Y-%m-%d-%H:%M")
     zooma_mapping_report = f"{config['temp_dir']}/{config['mode']}_zooma_mapping_report.{date_time}.tsv"
     split_report_files= []
     for section in ['AUTOMATIC','EXCLUDED','NO_RESULTS','REQUIRES_CURATION']:
@@ -366,7 +366,7 @@ rule copy_reports_to_targetDir:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
         exec &> "{log}"
-        today="`eval date +%Y-%m-%d`"
+        today="`eval date +%Y-%m-%d-%H:%M`"
         previousRunDate={params.previous_run_date}
         echo "Today: $today"
         echo "Previous run folder name: {params.previous_run_date}"
@@ -391,7 +391,7 @@ rule copy_reports_to_targetDir:
             previous_run_date=$(readlink ${{targetDir}}/../${{previousRunDate}})
             echo "previous_run symlink: $previous_run_date"
             # Calculating new lines not previously seen
-            previousCurated=${{targetDir}}/../${{previousRunDate}}/atlas_zooma_mapping_report.${{previous_run_date}}.tsv.REQUIRES_CURATION.tsv
+            previousCurated=${{targetDir}}/../${{previous_run_date}}/atlas_zooma_mapping_report.${{previous_run_date}}.tsv.REQUIRES_CURATION.tsv
             newToCurate=${{targetDir}}/atlas_zooma_mapping_report.${{today}}.tsv.REQUIRES_CURATION.tsv
             # Compare based on fields Property value ($2), semantic tag ($3), Ontology label / Zooma mapping ($6)
             awk -F'\t' 'NR==FNR{{e[$2$3$6]=1;next}};!e[$2$3$6]' $previousCurated $newToCurate > ${{targetDir}}/atlas_zooma_mapping_report.${{today}}.tsv.REQUIRES_CURATION_NEW_LINES.tsv
