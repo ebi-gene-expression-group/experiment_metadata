@@ -45,3 +45,10 @@ jobs:
       - name: Run tests
         run: |
           atlas-experiment-metadata-test.bats
+
+      - name: Linting
+        uses: snakemake/snakemake-github-action@v1
+        with:
+          directory: '.zooma-mappings-wf'
+          snakefile: 'Snakefile'
+          args: '--lint'
