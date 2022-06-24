@@ -3,8 +3,6 @@
 # We require
 # EXP_ID
 # ATLAS_SC_EXPERIMENTS
-# ZOOMA_EXCLUSIONS
-# SCRIPT_DIR
 # Optionally:
 # SKIP_ZOOMA (if set, then Zooma mapping is skipped)
 
@@ -13,7 +11,7 @@ usage() { echo "Usage: $0 [-e <experiment id>] [-f <IDF file location (optional,
 # Source script from the same (prod or test) Atlas environment as this script
 
 scriptDir=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-#cd $SCRIPT_DIR
+
 
 # Parse arguments
 

@@ -182,10 +182,11 @@ rule run_condense_sdrf:
                     {params.experiment_metadata_dir}/condense_sdrf.pl -e {wildcards.accession} -z -i -o {wildcards.accession} -x {params.zooma_exclusions} -fi $idf_path
                 fi
             elif [ {params.mode} == "single_cell" ]; then
+                export PATH={params.experiment_metadata_dir}:{params.experiment_metadata_dir}:$PATH
                 export EXP_ID={wildcards.accession}
                 export ATLAS_SC_EXPERIMENTS={params.working_directory}
                 #export SCRIPT_DIR={params.experiment_metadata_dir}
-                {params.experiment_metadata_dir}/single_cell_condensed_sdrf.sh -z {params.zooma_exclusions}
+                single_cell_condensed_sdrf.sh -z {params.zooma_exclusions}
 
             elif [ {params.mode} == "irap_single_lib" ]; then
                 # also collect biological replicate IDs for irap_single_lib mode
@@ -212,11 +213,12 @@ rule run_condense_sdrf:
                         {params.experiment_metadata_dir}/condense_sdrf.pl -e {wildcards.accession} -i -o {wildcards.accession} -x {params.zooma_exclusions} -fi $idf_path
                     fi
                 elif [ {params.mode} == "single_cell" ]; then
+                    export PATH={params.experiment_metadata_dir}:{params.experiment_metadata_dir}:$PATH
                     export EXP_ID={wildcards.accession}
                     export ATLAS_SC_EXPERIMENTS={params.working_directory}
                     #export SCRIPT_DIR={params.experiment_metadata_dir}
                     export SKIP_ZOOMA="yes"
-                    {params.experiment_metadata_dir}/single_cell_condensed_sdrf.sh -z {params.zooma_exclusions}
+                    single_cell_condensed_sdrf.sh -z {params.zooma_exclusions}
 
                 elif [ {params.mode} == "irap_single_lib" ]; then
                     # also collect biological replicate IDs for irap_single_lib mode
