@@ -27,6 +27,8 @@ rule check_zooma:
     """
     Check that zooma returns successful http code
     """
+    conda: 
+        "envs/base.yaml"
     resources:
         load=config['load_zooma_jobs']
     log:
@@ -54,6 +56,8 @@ rule remove_aux_files:
     """
     Remove auxiliary files
     """
+    conda: 
+        "envs/base.yaml"
     log:
         "{working_dir}/{accession}/logs/{accession}-remove_aux_files.log"
     input:
@@ -256,6 +260,8 @@ rule split_zooma_mapping_report:
     Break down $zoomaMappingReport.aux into four report files: automatic, excluded, noresults, requirescuration
     after processing all accessions.
     """
+    conda: 
+        "envs/base.yaml"
     log:
         "{working_dir}/logs/split_zooma_mapping_report.log"
     input:
@@ -295,6 +301,8 @@ rule copy_reports_to_targetDir:
     """
     Copy reports to $targetDir
     """
+    conda: 
+        "envs/base.yaml"
     log:
         "{working_dir}/logs/copy_reports_to_targetDir.log"
     input:
