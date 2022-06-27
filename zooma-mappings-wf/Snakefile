@@ -13,7 +13,7 @@ include: "rules/common.smk"  # python helper functions
 
 # below probably no longer needed bec of regex above
 wildcard_constraints:
-    accession = f"E-(\D{{+}})-(\d{{+}})"
+    accession = "E-\D+-\d+"
 
 
 localrules: check_zooma, remove_aux_files
