@@ -1,5 +1,5 @@
 channels:
-  - conda-forge
   - defaults
+  - anaconda
 dependencies:
-  - python=3.x
+  - python >=3.6
