@@ -1,10 +1,12 @@
 import re
 from os import listdir
 from datetime import datetime
+from snakemake.utils import min_version
+
+min_version("6.6.1")
 
 # This workflow updates all ontology mappings in condensed SDRF files, and then
 # updates all experiment designs on ves-hx-76:8080
-
 
 # Parse config from command line
 
