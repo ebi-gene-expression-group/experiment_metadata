@@ -265,7 +265,7 @@ rule split_zooma_mapping_report:
     log:
         "{working_dir}/logs/split_zooma_mapping_report.log"
     input:
-        expand(working_dir+"/{acc}/{acc}-apply_fixes.done", acc=ACCESSIONS)
+        get_split_zooma_mapping_report_inputs(ACCESSIONS, working_dir)
     params:
         split_report_files=get_split_report_files(date_current_run),
         zoomaMappingReport=zooma_mapping_report(date_current_run)
