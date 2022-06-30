@@ -15,7 +15,7 @@ ZOOMA_META_URL=${ZOOMA_API_BASE}/server/metadata
 ATLAS_PROD_BRANCH=${ATLAS_PROD_BRANCH:-"develop"}
 PROCESSED_BRANCH=$(echo $ATLAS_PROD_BRANCH | sed 's+/+_+g')
 ATLAS_PROD_CO="${ATLAS_PROD}/sw/atlasinstall_branches/atlasprod_${PROCESSED_BRANCH}/atlasprod"
-LSF_CONFIG=$( pwd )/lsf.yaml
+LSF_CONFIG=$(pwd)/lsf.yaml
 CONDA_PREFIX_LINE="--conda-prefix $SN_CONDA_PREFIX"
 
 # Check that relevant env vars are set
@@ -37,10 +37,9 @@ CONDA_PREFIX_LINE="--conda-prefix $SN_CONDA_PREFIX"
 
 [ -z ${ATLAS_FTP+x} ] && echo "Env var ATLAS_FTP needs to be defined." && exit 1
 
-
 snakemake --use-conda --conda-frontend mamba --restart-times $RESTART_TIMES \
     --resources load=$LOAD_MAX --latency-wait 20 --keep-going \
-    $PROFILE_LINE $CONDA_PREFIX_LINE $FORCE_ALL  --config \
+    $PROFILE_LINE $CONDA_PREFIX_LINE $FORCE_ALL --config \
     mode=$MODE \
     zooma_exclusions=$ZOOMA_EXCLUSIONS \
     temp_dir=$TEMP_DIR \
@@ -55,4 +54,3 @@ snakemake --use-conda --conda-frontend mamba --restart-times $RESTART_TIMES \
     atlas_ftp=$ATLAS_FTP \
     load_zooma_jobs=$LOAD_ZOOMA_JOBS \
     -j $NJOBS -s Snakefile
-
