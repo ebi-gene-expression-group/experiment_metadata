@@ -11,9 +11,9 @@ min_version("6.6.1")
 include: "rules/common.smk"  # python helper functions 
 
 
-# below probably no longer needed bec of regex above
+# below probably no longer needed bec of regex in common.smk
 wildcard_constraints:
-    accession = "E-\D+-\d+"
+    accession = 'E-\D{1,20}-\d{1,20}'
 
 
 localrules: check_zooma, remove_aux_files

@@ -1,4 +1,3 @@
-
 # Parse config from command line
 
 mode = config.get("mode")
@@ -6,7 +5,7 @@ working_dir = config.get("working_dir")
 
 
 def get_accessions(working_dir):
-    acc_regex = re.compile("E-\D+-\d+")
+    acc_regex = re.compile(f"E-(\D+)-(\d+)")
     acc_dirs = listdir(f"{working_dir}")
     ACCESSIONS = [acc for acc in acc_dirs if acc_regex.match(acc)]
     return ACCESSIONS
