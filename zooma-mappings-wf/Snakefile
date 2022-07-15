@@ -313,7 +313,7 @@ rule copy_reports_to_targetDir:
         zoomaMappingReport=zooma_mapping_report(date_current_run),
         notifEmail=config['notifEmail'],
         previous_run_date=config['previousRunDate'],
-        atlas_ftp=config['atlas_ftp'],
+        dest=config['dest'],
         current_run=date_current_run
     output:
         temp("{working_dir}/copy_reports_to_targetDir.done")
@@ -325,13 +325,13 @@ rule copy_reports_to_targetDir:
         previousRunDate={params.previous_run_date}
         echo "Today: $today"
         echo "Previous run folder name: {params.previous_run_date}"
-        ATLAS_FTP={params.atlas_ftp}
+        DEST={params.dest}
 
         # Copy reports to $targetDir
         if [ {params.mode} == "atlas" ]; then
-            targetDir=$ATLAS_FTP/curation/zoomage_reports/${{today}}
+            targetDir=$DEST/curation/zoomage_reports/${{today}}
         elif [ {params.mode} == "single_cell" ]; then
-            targetDir=$ATLAS_FTP/curation/zoomage_reports/${{today}} #single_cell/${{today}}
+            targetDir=$DEST/curation/zoomage_reports/${{today}}  #single_cell/${{today}}
         elif [ {params.mode} == "irap_single_lib" ]; then
             #targetDir=$IRAP_SINGLE_LIB/zoomage/reports/${{today}}
             targetDir={params.working_directory}/zoomage/reports/${{today}}
