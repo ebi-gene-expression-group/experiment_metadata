@@ -15,7 +15,7 @@ ZOOMA_META_URL=${ZOOMA_API_BASE}/server/metadata
 ATLAS_PROD_BRANCH=${ATLAS_PROD_BRANCH:-"develop"}
 PROCESSED_BRANCH=$(echo $ATLAS_PROD_BRANCH | sed 's+/+_+g')
 ATLAS_PROD_CO="${ATLAS_PROD}/sw/atlasinstall_branches/atlasprod_${PROCESSED_BRANCH}/atlasprod"
-LSF_CONFIG=$(pwd)/lsf.yaml
+LSF_CONFIG=$( pwd )/lsf.yaml
 CONDA_PREFIX_LINE="--conda-prefix $SN_CONDA_PREFIX"
 
 # Check that relevant env vars are set

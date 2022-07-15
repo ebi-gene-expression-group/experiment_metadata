@@ -2,7 +2,7 @@
 
 split_zooma_mapping_report(){
    
-    zoomaMappingReport=$1
+   zoomaMappingReport=$1
 
    # Now break down $zoomaMappingReport.aux into four report files: automatic, excluded, noresults, requirescuration
    section=AUTOMATIC
