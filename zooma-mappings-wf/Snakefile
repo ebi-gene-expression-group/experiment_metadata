@@ -332,7 +332,7 @@ rule copy_reports_to_targetDir:
         DEST={params.dest}
 
         # Copy reports to $targetDir
-        if [ {params.mode} == "bulk ]; then
+        if [ {params.mode} == "bulk" ]; then
             targetDir=$DEST/zooma_mappings/${{today}}
         elif [ {params.mode} == "single_cell" ]; then
             targetDir=$DEST/zooma_mappings/${{today}}
