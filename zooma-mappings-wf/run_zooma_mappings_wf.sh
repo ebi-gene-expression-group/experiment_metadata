@@ -11,6 +11,7 @@ RESTART_TIMES=${RESTART_TIMES:-2}
 EMAIL=${EMAIL:-false}
 RETRYWOUTZOOMA=${RETRYWOUTZOOMA:-yes}
 ZOOMA_META_URL=${ZOOMA_API_BASE}/server/metadata
+KEEP_BACKUP_SDRF=${KEEP_BACKUP_SDRF:-true}
 
 ATLAS_PROD_BRANCH=${ATLAS_PROD_BRANCH:-"develop"}
 PROCESSED_BRANCH=$(echo $ATLAS_PROD_BRANCH | sed 's+/+_+g')
@@ -53,4 +54,5 @@ snakemake --use-conda --conda-frontend mamba --restart-times $RESTART_TIMES \
     previousRunDate=$PREVIOUS_RUN_DATE \
     dest=$DEST \
     load_zooma_jobs=$LOAD_ZOOMA_JOBS \
+    keep_backup_sdrf=$KEEP_BACKUP_SDRF \
     -j $NJOBS -s Snakefile

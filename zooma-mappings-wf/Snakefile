@@ -20,7 +20,7 @@ localrules: check_zooma, remove_aux_files
 
 rule all:
     input:
-        completed=f"{working_dir}/logs/copy_reports_to_targetDir.log"
+        completed=f"{working_dir}/logs-zoomage/copy_reports_to_targetDir.log"
 
 
 rule check_zooma:
@@ -79,6 +79,7 @@ rule remove_aux_files:
         touch {output}
         # save a backup of the condensed SDRF file if present
         if [ -s "{wildcards.accession}.condensed-sdrf.tsv" ]; then
+            rm -f {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv.bak
 	        mv {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv.bak
         fi
         popd
@@ -210,7 +211,7 @@ rule run_condense_sdrf:
 
 rule apply_fixes:
     """
-    Apply automatic fixes to all imported sdrf and idf files.
+    Apply automatic fixes to all imported sdrf and idf files
     """
     conda: 
         "envs/atlas-bash-util.yaml"
@@ -224,7 +225,8 @@ rule apply_fixes:
     params:
         working_directory=working_dir,
         script_dir=config['atlas_prod_co'],
-        fixes_file_dir=config['experiment_metadata_dir']
+        fixes_file_dir=config['experiment_metadata_dir'],
+        keep_backup_sdrf=config['keep_backup_sdrf=']
     output:
         temp("{working_dir}/{accession}/{accession}-apply_fixes.done")
     shell:
@@ -251,8 +253,10 @@ rule apply_fixes:
         touch {output}
         popd
 	
-	    # remove backup of old condensed
-        rm -rf {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv.bak
+        if [ {params.keep_backup_sdrf} == "true" ]; then
+	        # remove backup of old condensed
+            rm -rf {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv.bak
+        fi
         """
 
 rule split_zooma_mapping_report:
@@ -263,7 +267,7 @@ rule split_zooma_mapping_report:
     conda: 
         "envs/base.yaml"
     log:
-        "{working_dir}/logs/split_zooma_mapping_report.log"
+        "{working_dir}/logs-zoomage/split_zooma_mapping_report.log"
     input:
         get_split_zooma_mapping_report_inputs(ACCESSIONS, working_dir)
     params:
@@ -304,7 +308,7 @@ rule copy_reports_to_targetDir:
     conda: 
         "envs/base.yaml"
     log:
-        "{working_dir}/logs/copy_reports_to_targetDir.log"
+        "{working_dir}/logs-zoomage/copy_reports_to_targetDir.log"
     input:
         "{working_dir}/split_zooma_mapping_report.done"
     params:
