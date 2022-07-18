@@ -240,7 +240,7 @@ rule apply_fixes:
         # source {params.script_dir}/bash_util/generic_routines.sh
  
         pushd {params.working_directory} #might need change
-        
+
         set +e
         atlas-bash-util applyAllFixesForExperiment {wildcards.accession} {params.fixes_file_dir}
         if [ $? -ne 0 ]; then
@@ -358,8 +358,11 @@ rule copy_reports_to_targetDir:
             echo "Variable previousRunDate value \"${{previousRunDate}}\" does not take us to previous run, so no new lines" 
         fi
 
-        # upon sucess, mail out the Zoomification reports location 
-        echo -e "Dear curators,\n      Please find the Zooma mapping reports for the latest run for ${{today}} in ${{targetDir}}.\n\nGreetings from your friendly neighbourhood cron." | mutt -s "[{params.mode}/cron] Zooma mapping report is available in ${{targetDir}}" -- {params.notifEmail}
+        # upon sucess, mail out the Zoomification reports location
+        # not currently implemented
+        if [ {params.notifEmail} == "true" ]; then
+            echo -e "Dear curators,\n      Please find the Zooma mapping reports for the latest run for ${{today}} in ${{targetDir}}.\n\nGreetings from your friendly neighbourhood cron." | mutt -s "[{params.mode}/cron] Zooma mapping report is available in ${{targetDir}}" -- {params.notifEmail}
+        fi
         pushd ${{targetDir}}/../
         current_run=$(ls -ltr | grep -v previous_run | grep -e '[[:digit:]]\{{4\}}-[[:digit:]]\{{2\}}' | tail -n 1 | awk '{{ print $9 }}')
         rm -f previous_run
