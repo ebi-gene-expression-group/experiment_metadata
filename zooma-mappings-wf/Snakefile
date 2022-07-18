@@ -226,7 +226,7 @@ rule apply_fixes:
         working_directory=working_dir,
         script_dir=config['atlas_prod_co'],
         fixes_file_dir=config['experiment_metadata_dir'],
-        keep_backup_sdrf=config['keep_backup_sdrf=']
+        keep_backup_sdrf=config['keep_backup_sdrf']
     output:
         temp("{working_dir}/{accession}/{accession}-apply_fixes.done")
     shell:
