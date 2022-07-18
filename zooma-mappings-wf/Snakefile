@@ -240,9 +240,9 @@ rule apply_fixes:
         # source {params.script_dir}/bash_util/generic_routines.sh
  
         pushd {params.working_directory} #might need change
-
-        atlas-bash-util applyAllFixesForExperiment {wildcards.accession} {params.fixes_file_dir}
+        
         set +e
+        atlas-bash-util applyAllFixesForExperiment {wildcards.accession} {params.fixes_file_dir}
         if [ $? -ne 0 ]; then
             echo "ERROR: Applying fixes for experiment {wildcards.accession} failed" >&2
             return 1
