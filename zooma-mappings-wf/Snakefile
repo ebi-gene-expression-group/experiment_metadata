@@ -253,7 +253,7 @@ rule apply_fixes:
         touch {output}
         popd
 	
-        if [ {params.keep_backup_sdrf} == "true" ]; then
+        if [ {params.keep_backup_sdrf} == "false" ]; then
 	        # remove backup of old condensed
             rm -rf {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv.bak
         fi
