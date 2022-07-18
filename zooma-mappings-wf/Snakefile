@@ -20,7 +20,7 @@ localrules: check_zooma, remove_aux_files
 
 rule all:
     input:
-        completed=f"{working_dir}/logs-zoomage/copy_reports_to_targetDir.log"
+        completed=f"{working_dir}/logs_zooma_mappings/copy_reports_to_targetDir.log"
 
 
 rule check_zooma:
@@ -32,7 +32,7 @@ rule check_zooma:
     resources:
         load=config['load_zooma_jobs']
     log:
-        "{working_dir}/{accession}/logs-zoomage/{accession}-check_zooma.log"
+        "{working_dir}/{accession}/logs_zooma_mappings/{accession}-check_zooma.log"
     output:
         temp("{working_dir}/{accession}/check_zooma.done")
     params:
@@ -59,7 +59,7 @@ rule remove_aux_files:
     conda: 
         "envs/base.yaml"
     log:
-        "{working_dir}/{accession}/logs-zoomage/{accession}-remove_aux_files.log"
+        "{working_dir}/{accession}/logs_zooma_mappings/{accession}-remove_aux_files.log"
     input:
         rules.check_zooma.output
     params:
@@ -93,12 +93,12 @@ rule run_condense_sdrf:
     conda: 
         "envs/perl-atlas-modules.yaml"
     log:
-        "{working_dir}/{accession}/logs-zoomage/{accession}-run_condense_sdrf.log"
+        "{working_dir}/{accession}/logs_zooma_mappings/{accession}-run_condense_sdrf.log"
     resources:
         load=config['load_zooma_jobs'],
         attempt_number = lambda wildcards, attempt: attempt
     input:
-        config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'atlas' in config['mode'] else f"{working_dir}/{wildcards.accession}/check_zooma.done" ,
+        config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'bulk' in config['mode'] else f"{working_dir}/{wildcards.accession}/check_zooma.done" ,
         rm_aux_done=rules.remove_aux_files.output,
         check_zooma_done=rules.check_zooma.output
     params:
@@ -122,7 +122,7 @@ rule run_condense_sdrf:
 
         pushd {params.working_directory} #/{wildcards.accession}
 
-        if [ {params.mode} == "atlas" ] || [ {params.mode} == "irap_single_lib" ]; then
+        if [ {params.mode} == "bulk" ] || [ {params.mode} == "irap_single_lib" ]; then
                 # Get idf file
                 idf_path=$(perl {params.script_dir}/exec/get_magetab_paths.pl -e {wildcards.accession} -i) 
                 pushd {params.working_directory} #/{wildcards.accession}
@@ -133,7 +133,7 @@ rule run_condense_sdrf:
         if [[ {resources.attempt_number} -eq 1 ]]; then
             # Run condense_sdrf.pl with options to map terms with Zooma (-z) and import
             # the IDF from ArrayExpress load directory (-i).
-            if [ {params.mode} == "atlas" ]; then
+            if [ {params.mode} == "bulk" ]; then
 
                 # Get the experiment type from the experiment config.
                 expType=$(perl {params.script_dir}/db/scripts/get_experiment_type_from_xml.pl {input.config_xml})
@@ -164,7 +164,7 @@ rule run_condense_sdrf:
                 # however Zzoma mapping report won't be generated
                 echo "Error detected, try to condense SDRF without Zooma mapping"
 
-                if [ {params.mode} == "atlas" ]; then
+                if [ {params.mode} == "bulk" ]; then
 
                     expType=$(perl {params.script_dir}/db/scripts/get_experiment_type_from_xml.pl {input})
                     echo $expType
@@ -218,7 +218,7 @@ rule apply_fixes:
     resources: 
         mem_mb=16000
     log:
-        "{working_dir}/{accession}/logs-zoomage/{accession}-apply_fixes.log"
+        "{working_dir}/{accession}/logs_zooma_mappings/{accession}-apply_fixes.log"
     input:
         rules.run_condense_sdrf.output.sdrf,
         rules.run_condense_sdrf.output.done
@@ -267,7 +267,7 @@ rule split_zooma_mapping_report:
     conda: 
         "envs/base.yaml"
     log:
-        "{working_dir}/logs-zoomage/split_zooma_mapping_report.log"
+        "{working_dir}/logs_zooma_mappings/split_zooma_mapping_report.log"
     input:
         get_split_zooma_mapping_report_inputs(ACCESSIONS, working_dir)
     params:
@@ -308,7 +308,7 @@ rule copy_reports_to_targetDir:
     conda: 
         "envs/base.yaml"
     log:
-        "{working_dir}/logs-zoomage/copy_reports_to_targetDir.log"
+        "{working_dir}/logs_zooma_mappings/copy_reports_to_targetDir.log"
     input:
         "{working_dir}/split_zooma_mapping_report.done"
     params:
@@ -332,10 +332,10 @@ rule copy_reports_to_targetDir:
         DEST={params.dest}
 
         # Copy reports to $targetDir
-        if [ {params.mode} == "atlas" ]; then
-            targetDir=$DEST/curation/zoomage_reports/${{today}}
+        if [ {params.mode} == "bulk ]; then
+            targetDir=$DEST/zooma_mappings/${{today}}
         elif [ {params.mode} == "single_cell" ]; then
-            targetDir=$DEST/curation/zoomage_reports/${{today}}  #single_cell/${{today}}
+            targetDir=$DEST/zooma_mappings/${{today}}
         elif [ {params.mode} == "irap_single_lib" ]; then
             #targetDir=$IRAP_SINGLE_LIB/zoomage/reports/${{today}}
             targetDir={params.working_directory}/zoomage/reports/${{today}}
