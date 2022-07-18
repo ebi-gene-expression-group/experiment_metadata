@@ -32,7 +32,7 @@ rule check_zooma:
     resources:
         load=config['load_zooma_jobs']
     log:
-        "{working_dir}/{accession}/logs/{accession}-check_zooma.log"
+        "{working_dir}/{accession}/logs-zoomage/{accession}-check_zooma.log"
     output:
         temp("{working_dir}/{accession}/check_zooma.done")
     params:
@@ -59,7 +59,7 @@ rule remove_aux_files:
     conda: 
         "envs/base.yaml"
     log:
-        "{working_dir}/{accession}/logs/{accession}-remove_aux_files.log"
+        "{working_dir}/{accession}/logs-zoomage/{accession}-remove_aux_files.log"
     input:
         rules.check_zooma.output
     params:
@@ -92,7 +92,7 @@ rule run_condense_sdrf:
     conda: 
         "envs/perl-atlas-modules.yaml"
     log:
-        "{working_dir}/{accession}/logs/{accession}-run_condense_sdrf.log"
+        "{working_dir}/{accession}/logs-zoomage/{accession}-run_condense_sdrf.log"
     resources:
         load=config['load_zooma_jobs'],
         attempt_number = lambda wildcards, attempt: attempt
@@ -217,7 +217,7 @@ rule apply_fixes:
     resources: 
         mem_mb=16000
     log:
-        "{working_dir}/{accession}/logs/{accession}-apply_fixes.log"
+        "{working_dir}/{accession}/logs-zoomage/{accession}-apply_fixes.log"
     input:
         rules.run_condense_sdrf.output.sdrf,
         rules.run_condense_sdrf.output.done
