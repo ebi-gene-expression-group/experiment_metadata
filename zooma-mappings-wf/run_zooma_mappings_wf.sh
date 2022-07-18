@@ -4,7 +4,7 @@ NJOBS=${NJOBS:-10}
 LOAD_MAX=${LOAD_MAX:-100}
 LOAD_ZOOMA_JOBS=${LOAD_ZOOMA_JOBS:-30}
 
-MODE=${MODE:-"atlas"}
+MODE=${MODE:-"bulk"}
 FORCEALL=${FORCEALL:-true} # set to true. If the file is present it won't update
 if [ "$FORCEALL" = true ]; then FORCE_ALL="--forceall"; else FORCE_ALL=""; fi
 RESTART_TIMES=${RESTART_TIMES:-2}
