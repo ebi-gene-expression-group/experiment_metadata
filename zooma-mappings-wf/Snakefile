@@ -8,6 +8,8 @@ min_version("6.6.1")
 # This workflow updates all ontology mappings in condensed SDRF files, and then
 # updates all experiment designs on ves-hx-76:8080
 
+# The minimal required inputs are configuration files in xml format
+
 include: "rules/common.smk"  # python helper functions 
 
 
