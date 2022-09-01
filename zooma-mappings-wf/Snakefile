@@ -92,7 +92,7 @@ rule run_condense_sdrf:
     Run condense_sdrf.pl with options to map terms with Zooma (-z) and import
     the IDF from ArrayExpress load directory (-i).
     """
-    container: "docker://quay.io/biocontainers/perl-atlas-modules:0.3.0--h1b792b2_0" 
+    container: "docker://quay.io/biocontainers/perl-atlas-modules:0.2.0--h1b792b2_0" 
     log:
         "{working_dir}/{accession}/logs_zooma_mappings/{accession}-run_condense_sdrf.log"
     resources:
