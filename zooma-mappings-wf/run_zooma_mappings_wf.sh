@@ -38,7 +38,7 @@ CONDA_PREFIX_LINE="--conda-prefix $SN_CONDA_PREFIX"
 
 [ -z ${DEST+x} ] && echo "Env var DEST needs to be defined." && exit 1
 
-snakemake --use-singularity --use-conda --conda-frontend mamba --restart-times $RESTART_TIMES \
+snakemake --use-conda --conda-frontend mamba --restart-times $RESTART_TIMES \
     --resources load=$LOAD_MAX --latency-wait 20 --keep-going \
     $PROFILE_LINE $CONDA_PREFIX_LINE $FORCE_ALL --config \
     mode=$MODE \
