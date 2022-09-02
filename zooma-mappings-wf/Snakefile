@@ -100,7 +100,7 @@ rule run_condense_sdrf:
         load=config['load_zooma_jobs'],
         attempt_number = lambda wildcards, attempt: attempt
     input:
-        config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'bulk' in config['mode'] else f"{working_dir}/{wildcards.accession}/check_zooma.done" ,
+        config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'bulk' in config['mode'] else f"{working_dir}/{wildcards.accession}/logs_zooma_mappings/check_zooma.done" ,
         rm_aux_done=rules.remove_aux_files.output,
         check_zooma_done=rules.check_zooma.output
     params:
