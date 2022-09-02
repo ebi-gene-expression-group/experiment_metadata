@@ -36,7 +36,7 @@ rule check_zooma:
     log:
         "{working_dir}/{accession}/logs_zooma_mappings/{accession}-check_zooma.log"
     output:
-        temp("{working_dir}/{accession}/check_zooma.done")
+        temp("{working_dir}/{accession}/logs_zooma_mappings/check_zooma.done")
     params:
         zoomaMetadataUrl=config['zoomaMetadataUrl']
     shell:
@@ -68,7 +68,7 @@ rule remove_aux_files:
         working_directory=working_dir,
         zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
-        temp("{working_dir}/{accession}/remove_aux_files.done")
+        temp("{working_dir}/{accession}/logs_zooma_mappings/remove_aux_files.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -113,7 +113,7 @@ rule run_condense_sdrf:
         zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
         sdrf="{working_dir}/{accession}/{accession}.condensed-sdrf.tsv",
-        done=temp("{working_dir}/{accession}/run_condense_sdrf.done")
+        done=temp("{working_dir}/{accession}/logs_zooma_mappings/run_condense_sdrf.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -230,7 +230,7 @@ rule apply_fixes:
         fixes_file_dir=config['experiment_metadata_dir'],
         keep_backup_sdrf=config['keep_backup_sdrf']
     output:
-        temp("{working_dir}/{accession}/{accession}-apply_fixes.done")
+        "{working_dir}/{accession}/{accession}-apply_fixes_zooma.done"
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -276,7 +276,7 @@ rule split_zooma_mapping_report:
         split_report_files=get_split_report_files(date_current_run),
         zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
-        temp("{working_dir}/split_zooma_mapping_report.done")
+        "{working_dir}/split_zooma_mapping_report.done"
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -322,7 +322,7 @@ rule copy_reports_to_targetDir:
         dest=config['dest'],
         current_run=date_current_run
     output:
-        temp("{working_dir}/copy_reports_to_targetDir.done")
+        "{working_dir}/copy_reports_to_targetDir.done"
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set

@@ -35,5 +35,5 @@ def get_split_report_files(date_current_run):
 def get_split_zooma_mapping_report_inputs(accessions, wd):
     inputs = []
     for acc in accessions:
-        inputs.append(f"{wd}/{acc}/{acc}-apply_fixes.done")
+        inputs.append(f"{wd}/{acc}/{acc}-apply_fixes_zooma.done")
     return inputs
