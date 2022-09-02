@@ -312,7 +312,7 @@ rule copy_reports_to_targetDir:
     log:
         "{working_dir}/logs_zooma_mappings/copy_reports_to_targetDir.log"
     input:
-        "{working_dir}/split_zooma_mapping_report.done"
+        "{working_dir}/logs_zooma_mappings/split_zooma_mapping_report.done"
     params:
         mode=config['mode'],
         working_directory=working_dir,
