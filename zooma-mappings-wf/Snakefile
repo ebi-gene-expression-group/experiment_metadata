@@ -34,9 +34,9 @@ rule check_zooma:
     resources:
         load=config['load_zooma_jobs']
     log:
-        "{working_dir}/{accession}/logs_zooma_mappings/{accession}-check_zooma.log"
+        "{working_dir}/logs_zooma_mappings/{accession}/{accession}-check_zooma.log"
     output:
-        temp("{working_dir}/{accession}/logs_zooma_mappings/check_zooma.done")
+        temp("{working_dir}/logs_zooma_mappings/{accession}/check_zooma.done")
     params:
         zoomaMetadataUrl=config['zoomaMetadataUrl']
     shell:
@@ -61,14 +61,14 @@ rule remove_aux_files:
     conda: 
         "envs/base.yaml"
     log:
-        "{working_dir}/{accession}/logs_zooma_mappings/{accession}-remove_aux_files.log"
+        "{working_dir}/logs_zooma_mappings/{accession}/{accession}-remove_aux_files.log"
     input:
         rules.check_zooma.output
     params:
         working_directory=working_dir,
         zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
-        temp("{working_dir}/{accession}/logs_zooma_mappings/remove_aux_files.done")
+        temp("{working_dir}/logs_zooma_mappings/{accession}/remove_aux_files.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -95,12 +95,12 @@ rule run_condense_sdrf:
     conda: "envs/perl-atlas-modules.yaml"
     #container: "docker://quay.io/biocontainers/perl-atlas-modules:0.2.0--h1b792b2_0" 
     log:
-        "{working_dir}/{accession}/logs_zooma_mappings/{accession}-run_condense_sdrf.log"
+        "{working_dir}/logs_zooma_mappings/{accession}/{accession}-run_condense_sdrf.log"
     resources:
         load=config['load_zooma_jobs'],
         attempt_number = lambda wildcards, attempt: attempt
     input:
-        config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'bulk' in config['mode'] else f"{working_dir}/{wildcards.accession}/logs_zooma_mappings/check_zooma.done" ,
+        config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'bulk' in config['mode'] else f"{working_dir}/logs_zooma_mappings/{wildcards.accession}/check_zooma.done" ,
         rm_aux_done=rules.remove_aux_files.output,
         check_zooma_done=rules.check_zooma.output
     params:
@@ -113,7 +113,7 @@ rule run_condense_sdrf:
         zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
         sdrf="{working_dir}/{accession}/{accession}.condensed-sdrf.tsv",
-        done=temp("{working_dir}/{accession}/logs_zooma_mappings/run_condense_sdrf.done")
+        done=temp("{working_dir}/logs_zooma_mappings/{accession}/run_condense_sdrf.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -220,7 +220,7 @@ rule apply_fixes:
     resources: 
         mem_mb=16000
     log:
-        "{working_dir}/{accession}/logs_zooma_mappings/{accession}-apply_fixes.log"
+        "{working_dir}/logs_zooma_mappings/{accession}/{accession}-apply_fixes_mappings.log"
     input:
         rules.run_condense_sdrf.output.sdrf,
         rules.run_condense_sdrf.output.done
@@ -230,7 +230,7 @@ rule apply_fixes:
         fixes_file_dir=config['experiment_metadata_dir'],
         keep_backup_sdrf=config['keep_backup_sdrf']
     output:
-        "{working_dir}/{accession}/{accession}-apply_fixes_zooma.done"
+        "{working_dir}/{accession}/{accession}-apply_fixes_zooma_mappings.done"
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
