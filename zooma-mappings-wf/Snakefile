@@ -110,6 +110,7 @@ rule run_condense_sdrf:
         experiment_metadata_dir=config['experiment_metadata_dir'],
         working_directory=working_dir,
         zooma_exclusions=config['zooma_exclusions'],
+	prot_idf_path=config['prot_magetabfiles'],
         zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
         sdrf="{working_dir}/{accession}/{accession}.condensed-sdrf.tsv",
@@ -126,7 +127,11 @@ rule run_condense_sdrf:
 
         if [ {params.mode} == "bulk" ] || [ {params.mode} == "irap_single_lib" ]; then
                 # Get idf file
-                idf_path=$(perl {params.script_dir}/exec/get_magetab_paths.pl -e {wildcards.accession} -i) 
+		if echo {wildcards.accession} | grep -q "E-PROT"; then
+			idf_path={params.prot_idf_path}/{wildcards.accession}/{wildcards.accession}.idf.txt
+		else
+                	idf_path=$(perl {params.script_dir}/exec/get_magetab_paths.pl -e {wildcards.accession} -i) 
+		fi
                 pushd {params.working_directory} #/{wildcards.accession}
         else
                 pushd {params.experiment_metadata_dir}
