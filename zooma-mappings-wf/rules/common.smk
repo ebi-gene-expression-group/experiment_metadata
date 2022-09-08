@@ -14,7 +14,7 @@ ACCESSIONS = get_accessions(working_dir)
 
 def get_exp_type_from_xml(wildcards):
     from xml.dom import minidom
-    xmldoc = minidom.parse( f"{wildcards['accession']}-configuration.xml" )
+    xmldoc = minidom.parse( f"{working_dir}/{wildcards['accession']}/{wildcards['accession']}-configuration.xml" )
     exp_type = []
     config_tag=xmldoc.getElementsByTagName('configuration')
     for i in config_tag:
