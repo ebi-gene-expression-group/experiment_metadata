@@ -129,6 +129,9 @@ rule run_condense_sdrf:
                 # Get idf file
 		if echo {wildcards.accession} | grep -q "E-PROT"; then
 			idf_path={params.prot_idf_path}/{wildcards.accession}/{wildcards.accession}.idf.txt
+			if [ ! -f "$idf_path" ]; then
+				idf_path=$(perl {params.script_dir}/exec/get_magetab_paths.pl -e {wildcards.accession} -i) 
+			fi
 		else
                 	idf_path=$(perl {params.script_dir}/exec/get_magetab_paths.pl -e {wildcards.accession} -i) 
 		fi
