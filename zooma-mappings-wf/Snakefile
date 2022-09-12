@@ -187,7 +187,7 @@ rule run_condense_sdrf:
                 if [ {params.mode} == "bulk" ]; then
 
                     #expType=$(perl {params.script_dir}/db/scripts/get_experiment_type_from_xml.pl {input})
-		    expType={params.experiment_type}
+		            expType={params.experiment_type}
                     echo $expType
 
                     if [[ $expType == *baseline ]] || [[ $expType == *baseline_dia ]]; then
