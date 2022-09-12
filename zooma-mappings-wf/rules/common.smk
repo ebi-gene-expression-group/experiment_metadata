@@ -3,10 +3,29 @@
 mode = config.get("mode")
 working_dir = config.get("working_dir")
 
+def read_skip_accessions_file():
+    import yaml
+    if 'skip_accessions' in config:
+        skip_acc = []
+        with open(config['skip_accessions'], 'r') as stream:
+            try:
+                skip_acc=yaml.safe_load(stream)
+            except yaml.YAMLError as exc:
+                print(exc)
+        return skip_acc['skips']
+
+
 def get_accessions(working_dir):
     acc_regex = re.compile(f"E-(\D+)-(\d+)")
     acc_dirs = listdir(f"{working_dir}")
     ACCESSIONS = [acc for acc in acc_dirs if acc_regex.match(acc)]
+    # skip accessions if provided in config
+    if config.get("skip_accessions"):
+        SKIP_ACCESSIONS = read_skip_accessions_file()
+        print(f"The following accessions will be skipped: {SKIP_ACCESSIONS}")
+        for element in SKIP_ACCESSIONS:
+            if element in ACCESSIONS:
+                ACCESSIONS.remove(element)
     return ACCESSIONS
 
 ACCESSIONS = get_accessions(working_dir)
