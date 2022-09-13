@@ -16,16 +16,19 @@ def read_skip_accessions_file():
 
 
 def get_accessions(working_dir):
-    acc_regex = re.compile(f"E-(\D+)-(\d+)")
-    acc_dirs = listdir(f"{working_dir}")
-    ACCESSIONS = [acc for acc in acc_dirs if acc_regex.match(acc)]
-    # skip accessions if provided in config
-    if config.get("skip_accessions"):
-        SKIP_ACCESSIONS = read_skip_accessions_file()
-        print(f"The following accessions will be skipped: {SKIP_ACCESSIONS}")
-        for element in SKIP_ACCESSIONS:
-            if element in ACCESSIONS:
-                ACCESSIONS.remove(element)
+    if 'accessions' in config:
+        ACCESSIONS=config['accessions'].split(":")
+    else:
+        acc_regex = re.compile(f"E-(\D+)-(\d+)")
+        acc_dirs = listdir(f"{working_dir}")
+        ACCESSIONS = [acc for acc in acc_dirs if acc_regex.match(acc)]
+        # skip accessions if provided in config
+        if config.get("skip_accessions"):
+            SKIP_ACCESSIONS = read_skip_accessions_file()
+            print(f"The following accessions will be skipped: {SKIP_ACCESSIONS}")
+            for element in SKIP_ACCESSIONS:
+                if element in ACCESSIONS:
+                    ACCESSIONS.remove(element)
     return ACCESSIONS
 
 ACCESSIONS = get_accessions(working_dir)
