@@ -34,9 +34,9 @@ rule check_zooma:
     resources:
         load=config['load_zooma_jobs']
     log:
-        "{logs_path}/{accession}/{accession}-check_zooma.log"
+        logs_path+"/{accession}/{accession}-check_zooma.log"
     output:
-        temp("{logs_path}/{accession}/check_zooma.done")
+        temp(logs_path+"/{accession}/check_zooma.done")
     params:
         zoomaMetadataUrl=config['zoomaMetadataUrl']
     shell:
@@ -61,14 +61,14 @@ rule remove_aux_files:
     conda: 
         "envs/base.yaml"
     log:
-        "{logs_path}/{accession}/{accession}-remove_aux_files.log"
+        logs_path+"/{accession}/{accession}-remove_aux_files.log"
     input:
         rules.check_zooma.output
     params:
         working_directory=working_dir,
         zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
-        temp("{logs_path}/{accession}/remove_aux_files.done")
+        temp(logs_path+"/{accession}/remove_aux_files.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
