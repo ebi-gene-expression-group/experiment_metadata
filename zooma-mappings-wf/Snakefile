@@ -239,7 +239,7 @@ rule apply_fixes:
     resources: 
         mem_mb=16000
     log:
-        "{logs_path}/{accession}/{accession}-apply_fixes_mappings.log"
+        logs_path+"/{accession}/{accession}-apply_fixes_mappings.log"
     input:
         rules.run_condense_sdrf.output.sdrf,
         rules.run_condense_sdrf.output.done
@@ -249,7 +249,7 @@ rule apply_fixes:
         fixes_file_dir=config['experiment_metadata_dir'],
         keep_backup_sdrf=config['keep_backup_sdrf']
     output:
-        "{working_dir}/{accession}/{accession}-apply_fixes_zooma_mappings.done"
+        working_dir+"/{accession}/{accession}-apply_fixes_zooma_mappings.done"
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
