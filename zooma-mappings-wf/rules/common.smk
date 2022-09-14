@@ -2,6 +2,7 @@
 
 mode = config.get("mode")
 working_dir = config.get("working_dir")
+logs_path = config.get("zooma_logs")
 
 def read_skip_accessions_file():
     import yaml
