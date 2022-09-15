@@ -115,8 +115,8 @@ rule run_condense_sdrf:
         debugging=config['debugging'],
         zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
-        sdrf=expand("{workingdir}/{{accessions}}/{{accessions}}.condensed-sdrf.tsv", workingdir=working_dir), 
-        done=temp(expand("{logspath}/{{accessions}}/run_condense_sdrf.done", logspath=logs_path))
+        sdrf=expand("{workingdir}/{{accession}}/{{accession}}.condensed-sdrf.tsv", workingdir=working_dir), 
+        done=temp(expand("{logspath}/{{accession}}/run_condense_sdrf.done", logspath=logs_path))
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
