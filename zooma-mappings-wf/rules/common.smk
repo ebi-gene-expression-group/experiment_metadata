@@ -1,7 +1,6 @@
 # Parse config from command line
 
 mode = config.get("mode")
-global working_dir
 working_dir = config.get("working_dir")
 global logs_path
 logs_path = config.get("zooma_logs")
