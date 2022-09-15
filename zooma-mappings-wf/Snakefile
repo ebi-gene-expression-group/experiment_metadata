@@ -22,7 +22,7 @@ localrules: check_zooma, remove_aux_files
 
 rule all:
     input:
-        completed=f"{logs_path}/copy_reports_to_targetDir.done"
+        completed="{config['zooma_logs']}/copy_reports_to_targetDir.done"
 
 
 rule check_zooma:
