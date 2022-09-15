@@ -34,7 +34,7 @@ rule check_zooma:
     resources:
         load=config['load_zooma_jobs']
     log:
-        f"{config.get("zooma_logs")}/{accession}/{accession}-check_zooma.log"
+        f"{config['zooma_logs']}/{accession}/{accession}-check_zooma.log"
     output:
         temp(f"{config.get("zooma_logs")}/{accession}/check_zooma.done")
     params:
