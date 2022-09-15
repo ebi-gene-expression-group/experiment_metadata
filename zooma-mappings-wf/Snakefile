@@ -120,7 +120,7 @@ rule run_condense_sdrf:
         #sdrf="{working_dir}/{accessions}/{accessions}.condensed-sdrf.tsv",
         #done=temp("{logs_path}/{accessions}/run_condense_sdrf.done")
         sdrf=''.join([working_dir, "/{accession}/{accession}.condensed-sdrf.tsv"]),
-        done=temp(''.join([logs_path, "/{accession}/run_condense_sdrf.done""]),)
+        done=temp(''.join([logs_path, "/{accession}/run_condense_sdrf.done"]))
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
