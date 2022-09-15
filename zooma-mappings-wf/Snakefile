@@ -95,14 +95,12 @@ rule run_condense_sdrf:
     conda: "envs/perl-atlas-modules.yaml"
     #container: "docker://quay.io/biocontainers/perl-atlas-modules:0.2.0--h1b792b2_0" 
     log:
-        #"{logs_path}/{accession}/{accession}-run_condense_sdrf.log"
-        ''.join([logs_path, "/{accession}/{accession}-run_condense_sdrf.log"])
+        expand("{logspath}/{{accession}}/{{accession}}-run_condense_sdrf.log",logspath=logs_path)
     resources:
         load=config['load_zooma_jobs'],
         attempt_number = lambda wildcards, attempt: attempt
     input:
-        #config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'bulk' in config['mode'] else f"{logs_path}/{wildcards.accession}/check_zooma.done" ,
-        config_xml=lambda wildcards: ''.join([working_dir,"/{wildcards.accession}/{wildcards.accession}-configuration.xml"]) if 'bulk' in config['mode'] else ''.join([logs_path, "/{wildcards.accession}/check_zooma.done"]) ,
+        config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'bulk' in config['mode'] else f"{logs_path}/{wildcards.accession}/check_zooma.done" ,
         rm_aux_done=rules.remove_aux_files.output,
         check_zooma_done=rules.check_zooma.output
     params:
@@ -117,10 +115,8 @@ rule run_condense_sdrf:
         debugging=config['debugging'],
         zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
-        #sdrf="{working_dir}/{accessions}/{accessions}.condensed-sdrf.tsv",
-        #done=temp("{logs_path}/{accessions}/run_condense_sdrf.done")
-        sdrf=''.join([working_dir, "/{accession}/{accession}.condensed-sdrf.tsv"]),
-        done=temp(''.join([logs_path, "/{accession}/run_condense_sdrf.done"]))
+        sdrf=expand("{workingdir}/{{accessions}}/{{accessions}}.condensed-sdrf.tsv", workingdir=working_dir), 
+        done=temp(expand("{logspath}/{{accessions}}/run_condense_sdrf.done", logspath=logs_path))
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
