@@ -71,8 +71,8 @@ def get_split_report_files(date_current_run):
         split_report_files.append(f"{zooma_mapping_report}.{section}.tsv")
     return split_report_files
 
-def get_split_zooma_mapping_report_inputs(accessions):
+def get_split_zooma_mapping_report_inputs(accessions, lp):
     inputs = []
     for acc in accessions:
-        inputs.append(f"{logs_path}/{acc}/{acc}-apply_fixes_zooma_mappings.done")
+        inputs.append(f"{lp}/{acc}/{acc}-apply_fixes_zooma_mappings.done")
     return inputs
