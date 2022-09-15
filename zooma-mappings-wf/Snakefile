@@ -95,7 +95,7 @@ rule run_condense_sdrf:
     conda: "envs/perl-atlas-modules.yaml"
     #container: "docker://quay.io/biocontainers/perl-atlas-modules:0.2.0--h1b792b2_0" 
     log:
-        expand("{logs}/{accession}/{accession}-run_condense_sdrf.log", logs=logs_path, accessions=ACCCESIONS)
+        expand("{logs}/{accession}/{accession}-run_condense_sdrf.log", logs=logs_path, accessions=ACCESSIONS)
     resources:
         load=config['load_zooma_jobs'],
         attempt_number = lambda wildcards, attempt: attempt
@@ -115,8 +115,8 @@ rule run_condense_sdrf:
         debugging=config['debugging'],
         zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
-        sdrf=expand("{wd}/{accession}/{accession}.condensed-sdrf.tsv", wd=working_dir, accessions=ACCCESIONS),
-        done=temp(expand("{logs}/{accession}/run_condense_sdrf.done", logs=logs_path, accessions=ACCCESIONS))
+        sdrf=expand("{wd}/{accession}/{accession}.condensed-sdrf.tsv", wd=working_dir, accessions=ACCESSIONS),
+        done=temp(expand("{logs}/{accession}/run_condense_sdrf.done", logs=logs_path, accessions=ACCESSIONS))
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
