@@ -290,7 +290,7 @@ rule split_zooma_mapping_report:
     log:
         "{config['zooma_logs']}/split_zooma_mapping_report.log"
     input:
-        get_split_zooma_mapping_report_inputs(ACCESSIONS, logs_path)
+        get_split_zooma_mapping_report_inputs(ACCESSIONS)
     params:
         split_report_files=get_split_report_files(date_current_run),
         zoomaMappingReport=zooma_mapping_report(date_current_run)
