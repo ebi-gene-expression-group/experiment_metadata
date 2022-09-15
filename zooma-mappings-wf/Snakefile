@@ -288,14 +288,14 @@ rule split_zooma_mapping_report:
     conda: 
         "envs/base.yaml"
     log:
-        "{logs_path}/split_zooma_mapping_report.log"
+        "{config['zooma_logs']}/split_zooma_mapping_report.log"
     input:
         get_split_zooma_mapping_report_inputs(ACCESSIONS, logs_path)
     params:
         split_report_files=get_split_report_files(date_current_run),
         zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
-        "{logs_path}/split_zooma_mapping_report.done"
+        "{config['zooma_logs']}/split_zooma_mapping_report.done"
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -329,9 +329,9 @@ rule copy_reports_to_targetDir:
     conda: 
         "envs/base.yaml"
     log:
-        "{logs_path}/copy_reports_to_targetDir.log"
+        "{config['zooma_logs']}/copy_reports_to_targetDir.log"
     input:
-        "{logs_path}/split_zooma_mapping_report.done"
+        "{config['zooma_logs']}/split_zooma_mapping_report.done"
     params:
         mode=config['mode'],
         working_directory=working_dir,
@@ -341,7 +341,7 @@ rule copy_reports_to_targetDir:
         dest=config['dest'],
         current_run=date_current_run
     output:
-        "{logs_path}/copy_reports_to_targetDir.done"
+        "{config['zooma_logs']}/copy_reports_to_targetDir.done"
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
