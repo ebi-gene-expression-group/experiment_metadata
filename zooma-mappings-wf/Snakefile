@@ -22,7 +22,7 @@ localrules: check_zooma, remove_aux_files
 
 rule all:
     input:
-        completed="{config['zooma_logs']}/copy_reports_to_targetDir.done"
+        completed=f"{logs_path}/copy_reports_to_targetDir.done"
 
 
 rule check_zooma:
@@ -34,9 +34,9 @@ rule check_zooma:
     resources:
         load=config['load_zooma_jobs']
     log:
-        "{config['zooma_logs']}/{accession}/{accession}-check_zooma.log"
+        "{logs_path}/{accession}/{accession}-check_zooma.log"
     output:
-        temp("{config['zooma_logs']}/{accession}/check_zooma.done")
+        temp("{logs_path}/{accession}/check_zooma.done")
     params:
         zoomaMetadataUrl=config['zoomaMetadataUrl']
     shell:
@@ -61,14 +61,14 @@ rule remove_aux_files:
     conda: 
         "envs/base.yaml"
     log:
-        "{config['zooma_logs']}/{accession}/{accession}-remove_aux_files.log"
+        "{logs_path}/{accession}/{accession}-remove_aux_files.log"
     input:
         rules.check_zooma.output
     params:
         working_directory=working_dir,
         zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
-        temp("{config['zooma_logs']}/{accession}/remove_aux_files.done")
+        temp("{logs_path}/{accession}/remove_aux_files.done")
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -95,12 +95,12 @@ rule run_condense_sdrf:
     conda: "envs/perl-atlas-modules.yaml"
     #container: "docker://quay.io/biocontainers/perl-atlas-modules:0.2.0--h1b792b2_0" 
     log:
-        "{config['zooma_logs']}/{accession}/{accession}-run_condense_sdrf.log"
+        expand("{logs}/{accession}/{accession}-run_condense_sdrf.log", logs=logs_path, accessions=ACCCESIONS)
     resources:
         load=config['load_zooma_jobs'],
         attempt_number = lambda wildcards, attempt: attempt
     input:
-        config_xml=lambda wildcards: f"{config['working_dir']}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'bulk' in config['mode'] else f"{config['zooma_logs']}/{wildcards.accession}/check_zooma.done" ,
+        config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'bulk' in config['mode'] else f"{logs_path}/{wildcards.accession}/check_zooma.done" ,
         rm_aux_done=rules.remove_aux_files.output,
         check_zooma_done=rules.check_zooma.output
     params:
@@ -115,8 +115,8 @@ rule run_condense_sdrf:
         debugging=config['debugging'],
         zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
-        sdrf="{config['working_dir']}/{accession}/{accession}.condensed-sdrf.tsv",
-        done=temp("{config['zooma_logs']}/{accession}/run_condense_sdrf.done")
+        sdrf=expand("{wd}/{accession}/{accession}.condensed-sdrf.tsv", wd=working_dir, accessions=ACCCESIONS),
+        done=temp(expand("{logs}/{accession}/run_condense_sdrf.done", logs=logs_path, accessions=ACCCESIONS))
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -239,7 +239,7 @@ rule apply_fixes:
     resources: 
         mem_mb=16000
     log:
-        "{config['zooma_logs']}/{accession}/{accession}-apply_fixes_mappings.log"
+        "{logs_path}/{accession}/{accession}-apply_fixes_mappings.log"
     input:
         rules.run_condense_sdrf.output.sdrf,
         rules.run_condense_sdrf.output.done
@@ -249,7 +249,7 @@ rule apply_fixes:
         fixes_file_dir=config['experiment_metadata_dir'],
         keep_backup_sdrf=config['keep_backup_sdrf']
     output:
-        "{config['zooma_logs']}/{accession}/{accession}-apply_fixes_zooma_mappings.done"
+        "{logs_path}/{accession}/{accession}-apply_fixes_zooma_mappings.done"
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -288,14 +288,14 @@ rule split_zooma_mapping_report:
     conda: 
         "envs/base.yaml"
     log:
-        "{config['zooma_logs']}/split_zooma_mapping_report.log"
+        "{logs_path}/split_zooma_mapping_report.log"
     input:
         get_split_zooma_mapping_report_inputs(ACCESSIONS)
     params:
         split_report_files=get_split_report_files(date_current_run),
         zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
-        "{config['zooma_logs']}/split_zooma_mapping_report.done"
+        "{logs_path}/split_zooma_mapping_report.done"
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
@@ -329,9 +329,9 @@ rule copy_reports_to_targetDir:
     conda: 
         "envs/base.yaml"
     log:
-        "{config['zooma_logs']}/copy_reports_to_targetDir.log"
+        "{logs_path}/copy_reports_to_targetDir.log"
     input:
-        "{config['zooma_logs']}/split_zooma_mapping_report.done"
+        "{logs_path}/split_zooma_mapping_report.done"
     params:
         mode=config['mode'],
         working_directory=working_dir,
@@ -341,7 +341,7 @@ rule copy_reports_to_targetDir:
         dest=config['dest'],
         current_run=date_current_run
     output:
-        "{config['zooma_logs']}/copy_reports_to_targetDir.done"
+        "{logs_path}/copy_reports_to_targetDir.done"
     shell:
         """
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set

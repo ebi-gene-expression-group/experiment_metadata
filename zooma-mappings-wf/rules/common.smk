@@ -1,7 +1,10 @@
 # Parse config from command line
 
 mode = config.get("mode")
+global working_dir
 working_dir = config.get("working_dir")
+global logs_path
+logs_path = config.get("zooma_logs")
 
 def read_skip_accessions_file():
     import yaml
@@ -31,6 +34,7 @@ def get_accessions(working_dir):
                     ACCESSIONS.remove(element)
     return ACCESSIONS
 
+global ACCESSIONS
 ACCESSIONS = get_accessions(working_dir)
 
 
@@ -69,7 +73,6 @@ def get_split_report_files(date_current_run):
 
 def get_split_zooma_mapping_report_inputs(accessions):
     inputs = []
-    logs_path=config['zooma_logs']
     for acc in accessions:
         inputs.append(f"{logs_path}/{acc}/{acc}-apply_fixes_zooma_mappings.done")
     return inputs
