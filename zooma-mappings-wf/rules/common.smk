@@ -1,7 +1,7 @@
 # Parse config from command line
 
 mode = config.get("mode")
-working_dir = config.get("working_dir")
+working_dir = get_working_dir()
 global logs_path
 logs_path = config.get("zooma_logs")
 
@@ -35,6 +35,12 @@ def get_accessions(working_dir):
 
 global ACCESSIONS
 ACCESSIONS = get_accessions(working_dir)
+
+def get_working_dir():
+    if 'working_dir' in config:
+        return config['working_dir']
+    else:
+        sys.exit("No working_dir specified")
 
 
 def get_exp_type_from_xml(wildcards):
