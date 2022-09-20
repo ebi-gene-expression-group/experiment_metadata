@@ -108,7 +108,7 @@ rule run_condense_sdrf:
         retry_without_zooma=config['retryWithoutZooma'],
         script_dir=config['atlas_prod_co'],
         experiment_metadata_dir=config['experiment_metadata_dir'],
-        working_directory=lambda wildcards, output: os.path.splitext(output[0])[0].split({wildcards.accession})[0][:-1],  #get_working_dir(),
+        working_directory=lambda wildcards, output: os.path.splitext(output[0])[0].split({wildcards.accession})[0][:-1],
         zooma_exclusions=config['zooma_exclusions'],
 	    prot_idf_path=config['prot_magetabfiles'],
 	    experiment_type=get_exp_type_from_xml,
@@ -244,7 +244,7 @@ rule apply_fixes:
         rules.run_condense_sdrf.output.sdrf,
         rules.run_condense_sdrf.output.done
     params:
-        working_directory=get_working_dir(),
+        working_directory=lambda wildcards, input: os.path.splitext(input[0])[0].split({wildcards.accession})[0][:-1], 
         script_dir=config['atlas_prod_co'],
         fixes_file_dir=config['experiment_metadata_dir'],
         keep_backup_sdrf=config['keep_backup_sdrf']
