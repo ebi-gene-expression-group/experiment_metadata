@@ -107,7 +107,7 @@ rule run_condense_sdrf:
         mode=config['mode'],
         retry_without_zooma=config['retryWithoutZooma'],
         script_dir=config['atlas_prod_co'],
-        experiment_metadata_dir=config['experiment_metadata_dir'], lambda wildcards, output: output[0][:-4]
+        experiment_metadata_dir=config['experiment_metadata_dir'],
         working_directory=lambda wildcards, output: os.path.splitext(output[0])[0].split(f"/{wildcards.accession}")[0],  #get_working_dir(),
         zooma_exclusions=config['zooma_exclusions'],
 	    prot_idf_path=config['prot_magetabfiles'],
