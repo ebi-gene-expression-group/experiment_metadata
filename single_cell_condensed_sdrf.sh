@@ -12,6 +12,7 @@ usage() { echo "Usage: $0 [-e <experiment id>] [-f <IDF file location (optional,
 
 scriptDir=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+
 # Parse arguments
 
 expId="$EXP_ID"

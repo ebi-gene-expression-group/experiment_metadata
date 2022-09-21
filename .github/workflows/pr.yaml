@@ -34,6 +34,7 @@ jobs:
         with:
           activate-environment: test
           environment-file: test-environment.yml
+          mamba-version: "*"
           python-version: 3.6
           channels: ebi-gene-expression-group,conda-forge,bioconda,defaults
           allow-softlinks: true
@@ -44,3 +45,11 @@ jobs:
       - name: Run tests
         run: |
           atlas-experiment-metadata-test.bats
+
+      - name: Linting
+        uses: snakemake/snakemake-github-action@v1
+        with:
+          directory: 'test_data'
+          snakefile: 'zooma-mappings-wf/Snakefile'
+          args: '--lint --config mode="atlas" working_dir=../test_data debugging=true zooma_logs=../test_data zooma_exclusions=../test_data/zooma_exclusions.yml load_zooma_jobs=30 prot_magetabfiles=/magetab_path/ temp_dir=../test_data zoomaMetadataUrl=zoomaMetadataUrl notifEmail=false retryWithoutZooma=no experiment_metadata_dir=experiment_metadata_dir atlas_prod_co=atlas_prod_co lsf_config=lsf_config previousRunDate=previous_run dest=dest keep_backup_sdrf=false'
+

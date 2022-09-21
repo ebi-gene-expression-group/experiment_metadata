@@ -1,0 +1,6 @@
+channels:
+ - conda-forge
+ - bioconda
+ - ebi-gene-expression-group
+dependencies:
+ - atlas-bash-util >=0.1.3

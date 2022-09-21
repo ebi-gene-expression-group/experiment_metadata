@@ -1,0 +1,395 @@
+import re
+from os import listdir
+from datetime import datetime
+from snakemake.utils import min_version
+
+min_version("6.6.1")
+
+# This workflow updates all ontology mappings in condensed SDRF files, and then
+# updates all experiment designs on the current wwwdev tomcat machine (if set)
+
+# The minimal required inputs are configuration files in xml format
+
+include: "rules/common.smk"  # python helper functions 
+
+
+# below probably no longer needed bec of regex in common.smk
+wildcard_constraints:
+    accession = 'E-\D{1,20}-\d{1,20}'
+
+
+localrules: check_zooma, remove_aux_files
+
+rule all:
+    input:
+        completed=f"{logs_path}/copy_reports_to_targetDir.done"
+
+
+rule check_zooma:
+    """
+    Check that zooma returns successful http code
+    """
+    conda: 
+        "envs/base.yaml"
+    resources:
+        load=config['load_zooma_jobs']
+    log:
+        "{logs_path}/{accession}/{accession}-check_zooma.log"
+    output:
+        temp("{logs_path}/{accession}/check_zooma.done")
+    params:
+        zoomaMetadataUrl=config['zoomaMetadataUrl']
+    shell:
+        """
+        set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
+        exec &> "{log}"
+
+        httpResponse=`curl -o /dev/null -X GET -s -w "%{{http_code}}" {params.zoomaMetadataUrl}`
+        if [ "$httpResponse" -ne 200 ]; then
+            echo "ERROR: Zooma doesn't respond correctly"
+            echo "{params.zoomaMetadataUrl} returned a non-success http code: $httpResponse for {wildcards.accession}"
+            exit 1
+        else
+            touch {output}
+        fi
+        """
+
+rule remove_aux_files:
+    """
+    Remove auxiliary files
+    """
+    conda: 
+        "envs/base.yaml"
+    log:
+        "{logs_path}/{accession}/{accession}-remove_aux_files.log"
+    input:
+        rules.check_zooma.output
+    params:
+        working_directory=working_dir,
+        zoomaMappingReport=zooma_mapping_report(date_current_run)
+    output:
+        temp("{logs_path}/{accession}/remove_aux_files.done")
+    shell:
+        """
+        set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
+        exec &> "{log}"
+        pushd {params.working_directory}/{wildcards.accession}
+        rm -rf condense_sdrf.???
+        rm -rf fixes.???
+        rm -rf {wildcards.accession}-zoomifications-log.tsv
+        #rm -rf {params.zoomaMappingReport}.aux
+        touch {output}
+        # save a backup of the condensed SDRF file if present
+        if [ -s "{wildcards.accession}.condensed-sdrf.tsv" ]; then
+            rm -f {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv.bak
+	        mv {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv.bak
+        fi
+        popd
+        """
+
+rule run_condense_sdrf:
+    """
+    Run condense_sdrf.pl with options to map terms with Zooma (-z) and import
+    the IDF from ArrayExpress load directory (-i).
+    """
+    conda: "envs/perl-atlas-modules.yaml"
+    #container: "docker://quay.io/biocontainers/perl-atlas-modules:0.2.0--h1b792b2_0" 
+    log:
+        expand("{logspath}/{{accession}}/{{accession}}-run_condense_sdrf.log",logspath=logs_path)
+    resources:
+        load=config['load_zooma_jobs'],
+        attempt_number = lambda wildcards, attempt: attempt
+    input:
+        config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'bulk' in config['mode'] else f"{logs_path}/{wildcards.accession}/check_zooma.done" ,
+        rm_aux_done=expand("{logspath}/{{accession}}/remove_aux_files.done",logspath=logs_path),
+        check_zooma_done=expand("{logspath}/{{accession}}/check_zooma.done",logspath=logs_path)
+    params:
+        mode=config['mode'],
+        retry_without_zooma=config['retryWithoutZooma'],
+        script_dir=config['atlas_prod_co'],
+        experiment_metadata_dir=config['experiment_metadata_dir'],
+        working_directory=lambda wildcards, output: os.path.splitext(output[0])[0].split(str(wildcards.accession))[0][:-1],
+        zooma_exclusions=config['zooma_exclusions'],
+	    prot_idf_path=config['prot_magetabfiles'],
+	    experiment_type=get_exp_type_from_xml,
+        debugging=config['debugging'],
+        zoomaMappingReport=zooma_mapping_report(date_current_run)
+    output:
+        sdrf=expand("{workingdir}/{{accession}}/{{accession}}.condensed-sdrf.tsv", workingdir=working_dir), 
+        done=temp(expand("{logspath}/{{accession}}/run_condense_sdrf.done", logspath=logs_path))
+    shell:
+        """
+        set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
+        exec &> "{log}"
+
+        echo "Attempt number: {resources.attempt_number}"
+        echo "Zooma exclusions file: {params.zooma_exclusions}"
+
+        pushd {params.working_directory} #/{wildcards.accession}
+
+        if [ {params.debugging} == "true" ]; then
+            debug="-d"
+        else
+            debug=""
+        fi
+
+        if [ {params.mode} == "bulk" ] || [ {params.mode} == "irap_single_lib" ]; then
+            # Get idf file
+		    if echo {wildcards.accession} | grep -q "E-PROT"; then
+			    idf_path={params.prot_idf_path}/{wildcards.accession}/{wildcards.accession}.idf.txt
+			    if [ ! -f "$idf_path" ]; then
+				    idf_path=$(perl {params.script_dir}/exec/get_magetab_paths.pl -e {wildcards.accession} -i) 
+			    fi
+		    else
+                idf_path=$(perl {params.script_dir}/exec/get_magetab_paths.pl -e {wildcards.accession} -i) 
+		    fi
+            pushd {params.working_directory} #/{wildcards.accession}
+        else
+            pushd {params.experiment_metadata_dir}
+        fi
+
+        if [[ {resources.attempt_number} -eq 1 ]]; then
+            # Run condense_sdrf.pl with options to map terms with Zooma (-z) and import
+            # the IDF from ArrayExpress load directory (-i).
+            if [ {params.mode} == "bulk" ]; then
+
+                # Get the experiment type from the experiment config.
+                # expType=$(perl {params.script_dir}/db/scripts/get_experiment_type_from_xml.pl {input.config_xml})
+		        # get_experiment_type_from_xml.pl fails validation for proteomics_baseline_dia
+               	expType={params.experiment_type}
+		        echo $expType
+                
+                if [[ $expType == *baseline ]] || [[ $expType == *baseline_dia ]]; then
+                    {params.experiment_metadata_dir}/condense_sdrf.pl $debug -e {wildcards.accession} -f {wildcards.accession}/{wildcards.accession}-factors.xml -z -i -o {wildcards.accession} -x {params.zooma_exclusions} -fi $idf_path
+                else
+                    {params.experiment_metadata_dir}/condense_sdrf.pl $debug -e {wildcards.accession} -z -i -o {wildcards.accession} -x {params.zooma_exclusions} -fi $idf_path
+                fi
+            elif [ {params.mode} == "single_cell" ]; then
+                export PATH={params.experiment_metadata_dir}:{params.experiment_metadata_dir}:$PATH
+                export EXP_ID={wildcards.accession}
+                export ATLAS_SC_EXPERIMENTS={params.working_directory}
+                single_cell_condensed_sdrf.sh -z {params.zooma_exclusions}
+
+            elif [ {params.mode} == "irap_single_lib" ]; then
+                # also collect biological replicate IDs for irap_single_lib mode
+                {params.experiment_metadata_dir}/condense_sdrf.pl $debug -e {wildcards.accession} -z -b -i -o {wildcards.accession} -fi $idf_path
+            else
+                echo "Mode {params.mode} not recognised."
+                exit 1
+            fi
+        
+        else
+            
+            if [[ {params.retry_without_zooma} == "yes" ]]; then
+                # however Zooma mapping report won't be generated
+                echo "Error detected, try to condense SDRF without Zooma mapping"
+
+                if [ {params.mode} == "bulk" ]; then
+
+                    #expType=$(perl {params.script_dir}/db/scripts/get_experiment_type_from_xml.pl {input})
+		            expType={params.experiment_type}
+                    echo $expType
+
+                    if [[ $expType == *baseline ]] || [[ $expType == *baseline_dia ]]; then
+                        {params.experiment_metadata_dir}/condense_sdrf.pl $debug -e {wildcards.accession} -f {wildcards.accession}/{wildcards.accession}-factors.xml -i -o {wildcards.accession} -x {params.zooma_exclusions} -fi $idf_path
+                    else
+                        {params.experiment_metadata_dir}/condense_sdrf.pl $debug -e {wildcards.accession} -i -o {wildcards.accession} -x {params.zooma_exclusions} -fi $idf_path
+                    fi
+                elif [ {params.mode} == "single_cell" ]; then
+                    export PATH={params.experiment_metadata_dir}:{params.experiment_metadata_dir}:$PATH
+                    export EXP_ID={wildcards.accession}
+                    export ATLAS_SC_EXPERIMENTS={params.working_directory}
+                    export SKIP_ZOOMA="yes"
+                    single_cell_condensed_sdrf.sh -z {params.zooma_exclusions}
+
+                elif [ {params.mode} == "irap_single_lib" ]; then
+                    # also collect biological replicate IDs for irap_single_lib mode
+                    {params.experiment_metadata_dir}/condense_sdrf.pl $debug -e {wildcards.accession} -b -i -o {wildcards.accession} -fi $idf_path
+                else
+                    echo "Mode {params.mode} not recognised."
+                    exit 1
+                fi
+
+            fi
+        fi
+
+        # check if condense SDRF was successful 
+        if [ ! -s "{params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv" ]; then
+	        echo "ERROR: Failed to generate {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv"
+            rm -rf {params.working_directory}/{wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv
+	        exit 1
+        else
+            echo "All condense_sdrf tasks now done"
+            echo "Updated condensed sdrf and idf files for all experiments"
+
+            cat {params.working_directory}/{wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv >> {params.zoomaMappingReport}.aux
+            rm -rf {params.working_directory}/{wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv
+            touch {output.done}
+        fi
+        popd
+        """
+
+
+rule apply_fixes:
+    """
+    Apply automatic fixes to all imported sdrf and idf files
+    """
+    conda: 
+        "envs/atlas-bash-util.yaml"
+    resources: 
+        mem_mb=16000
+    log:
+        "{logs_path}/{accession}/{accession}-apply_fixes_mappings.log"
+    input:
+        rules.run_condense_sdrf.output.sdrf,
+        rules.run_condense_sdrf.output.done
+    params:
+        working_directory=lambda wildcards, input: os.path.splitext(input[0])[0].split(str(wildcards.accession))[0][:-1], 
+        script_dir=config['atlas_prod_co'],
+        fixes_file_dir=config['experiment_metadata_dir'],
+        keep_backup_sdrf=config['keep_backup_sdrf']
+    output:
+        "{logs_path}/{accession}/{accession}-apply_fixes_zooma_mappings.done"
+    shell:
+        """
+        set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
+        exec &> "{log}"
+
+        echo "About to apply automatic fixes to all imported sdrf and idf files"
+
+        # source bash functions
+        # source {params.script_dir}/bash_util/generic_routines.sh
+ 
+        pushd {params.working_directory} #might need change
+
+        set +e
+        atlas-bash-util applyAllFixesForExperiment {wildcards.accession} {params.fixes_file_dir}
+        if [ $? -ne 0 ]; then
+            echo "ERROR: Applying fixes for experiment {wildcards.accession} failed" >&2
+            return 1
+        fi
+        set -e
+
+        echo "All fixes tasks now done"
+        touch {output}
+        popd
+	
+        if [ {params.keep_backup_sdrf} == "false" ]; then
+	        # remove backup of old condensed
+            rm -rf {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv.bak
+        fi
+        """
+
+rule split_zooma_mapping_report:
+    """
+    Break down $zoomaMappingReport.aux into four report files: automatic, excluded, noresults, requirescuration
+    after processing all accessions.
+    """
+    conda: 
+        "envs/base.yaml"
+    log:
+        "{logs_path}/split_zooma_mapping_report.log"
+    input:
+        get_split_zooma_mapping_report_inputs(ACCESSIONS, logs_path)
+    params:
+        split_report_files=get_split_report_files(date_current_run),
+        zoomaMappingReport=zooma_mapping_report(date_current_run)
+    output:
+        "{logs_path}/split_zooma_mapping_report.done"
+    shell:
+        """
+        set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
+        exec &> "{log}"
+        echo {params.zoomaMappingReport}
+
+        if [ ! -s "{params.zoomaMappingReport}.aux" ]; then
+            echo "ERROR: Something went wrong with condense_sdrf.pl run with Zooma mappings - no report is available" 
+            exit 1
+        else
+            # Now break down $zoomaMappingReport.aux into four report files: automatic, excluded, noresults, requirescuration
+            source ./bin/split_zooma_mapping_report.sh
+
+            split_zooma_mapping_report {params.zoomaMappingReport}
+        fi
+
+        for f in {params.split_report_files}; do
+            if [ ! -s "$f" ]; then
+                echo "One of the split file not genetated for {params.zoomaMappingReport}"
+                exit 1
+            fi
+        done
+
+        touch {output}
+        """
+
+rule copy_reports_to_targetDir:
+    """
+    Copy reports to $targetDir
+    """
+    conda: 
+        "envs/base.yaml"
+    log:
+        "{logs_path}/copy_reports_to_targetDir.log"
+    input:
+        "{logs_path}/split_zooma_mapping_report.done"
+    params:
+        mode=config['mode'],
+        working_directory=working_dir,
+        zoomaMappingReport=zooma_mapping_report(date_current_run),
+        notifEmail=config['notifEmail'],
+        previous_run_date=config['previousRunDate'],
+        dest=config['dest'],
+        current_run=date_current_run
+    output:
+        "{logs_path}/copy_reports_to_targetDir.done"
+    shell:
+        """
+        set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
+        exec &> "{log}"
+        today={params.current_run}   #"`eval date +%Y-%m-%d-%H:%M`"
+        previousRunDate={params.previous_run_date}
+        echo "Today: $today"
+        echo "Previous run folder name: {params.previous_run_date}"
+        DEST={params.dest}
+
+        # Copy reports to $targetDir
+        if [ {params.mode} == "bulk" ]; then
+            targetDir=$DEST/zooma_mappings/${{today}}
+        elif [ {params.mode} == "single_cell" ]; then
+            targetDir=$DEST/zooma_mappings/${{today}}
+        elif [ {params.mode} == "irap_single_lib" ]; then
+            #targetDir=$IRAP_SINGLE_LIB/zoomage/reports/${{today}}
+            targetDir={params.working_directory}/zoomage/reports/${{today}}
+        else
+            echo "ERROR: mode: {params.mode} not recognised"
+            exit 1
+        fi
+        mkdir -p ${{targetDir}}
+        cp {params.zoomaMappingReport}.AUTOMATIC.tsv {params.zoomaMappingReport}.EXCLUDED.tsv {params.zoomaMappingReport}.NO_RESULTS.tsv {params.zoomaMappingReport}.REQUIRES_CURATION.tsv ${{targetDir}}/
+
+        if [ ! -z ${{previousRunDate+x}} ] && [ -d ${{targetDir}}/../${{previousRunDate}} ]; then
+            previous_run_date=$(readlink ${{targetDir}}/../${{previousRunDate}})
+            echo "previous_run symlink: $previous_run_date"
+            # Calculating new lines not previously seen
+            previousCurated=${{targetDir}}/../${{previous_run_date}}/{params.mode}_zooma_mapping_report.${{previous_run_date}}.tsv.REQUIRES_CURATION.tsv
+            newToCurate=${{targetDir}}/{params.mode}_zooma_mapping_report.${{today}}.tsv.REQUIRES_CURATION.tsv
+            # Compare based on fields Property value ($2), semantic tag ($3), Ontology label / Zooma mapping ($6)
+            awk -F'\t' 'NR==FNR{{e[$2$3$6]=1;next}};!e[$2$3$6]' $previousCurated $newToCurate > ${{targetDir}}/{params.mode}_zooma_mapping_report.${{today}}.tsv.REQUIRES_CURATION_NEW_LINES.tsv
+        else
+            echo "Variable previousRunDate value \"${{previousRunDate}}\" does not take us to previous run, so no new lines" 
+        fi
+
+        # upon sucess, mail out the Zoomification reports location
+        # not currently implemented
+        if [ {params.notifEmail} == "true" ]; then
+            echo -e "Dear curators,\n      Please find the Zooma mapping reports for the latest run for ${{today}} in ${{targetDir}}.\n\nGreetings from your friendly neighbourhood cron." | mutt -s "[{params.mode}/cron] Zooma mapping report is available in ${{targetDir}}" -- {params.notifEmail}
+        fi
+        pushd ${{targetDir}}/../
+        current_run=$(ls -ltr | grep -v previous_run | grep -e '[[:digit:]]\{{4\}}-[[:digit:]]\{{2\}}' | tail -n 1 | awk '{{ print $9 }}')
+        rm -f previous_run
+        ln -s $current_run previous_run
+        popd
+
+        touch {output}
+        """
+
