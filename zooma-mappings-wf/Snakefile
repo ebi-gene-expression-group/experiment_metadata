@@ -101,8 +101,8 @@ rule run_condense_sdrf:
         attempt_number = lambda wildcards, attempt: attempt
     input:
         config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'bulk' in config['mode'] else f"{logs_path}/{wildcards.accession}/check_zooma.done" ,
-        rm_aux_done=expand("{logspath}/{{accession}}/remove_aux_files.done",logspath=logs_path), #rules.remove_aux_files.output,
-        check_zooma_done=expand("{logspath}/{{accession}}/check_zooma.done",logspath=logs_path) #rules.check_zooma.output
+        rm_aux_done=expand("{logspath}/{{accession}}/remove_aux_files.done",logspath=logs_path),
+        check_zooma_done=expand("{logspath}/{{accession}}/check_zooma.done",logspath=logs_path)
     params:
         mode=config['mode'],
         retry_without_zooma=config['retryWithoutZooma'],
