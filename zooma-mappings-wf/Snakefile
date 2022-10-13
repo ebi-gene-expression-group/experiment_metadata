@@ -98,6 +98,7 @@ rule run_condense_sdrf:
         expand("{logspath}/{{accession}}/{{accession}}-run_condense_sdrf.log",logspath=logs_path)
     resources:
         load=config['load_zooma_jobs'],
+        mem_mb=get_mem_mb,
         attempt_number = lambda wildcards, attempt: attempt
     input:
         config_xml=lambda wildcards: f"{working_dir}/{wildcards.accession}/{wildcards.accession}-configuration.xml" if 'bulk' in config['mode'] else f"{logs_path}/{wildcards.accession}/check_zooma.done" ,
