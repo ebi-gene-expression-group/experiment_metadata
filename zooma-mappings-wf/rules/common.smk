@@ -95,3 +95,4 @@ def get_mem_mb(wildcards, attempt):
     """
     mem_avail = [ 4, 8, 16, 32 ]  
     return mem_avail[attempt-1] * 1000
+
