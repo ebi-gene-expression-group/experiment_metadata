@@ -86,3 +86,13 @@ def get_split_zooma_mapping_report_inputs(accessions, lp):
     for acc in accessions:
         inputs.append(f"{lp}/{acc}/{acc}-apply_fixes_zooma_mappings.done")
     return inputs
+
+def get_mem_mb(wildcards, attempt):
+    """
+    To adjust resources in the rules 
+    attemps = reiterations + 1
+    Max number attemps = 4
+    """
+    mem_avail = [ 4, 8, 16, 32 ]  
+    return mem_avail[attempt-1] * 1000
+
