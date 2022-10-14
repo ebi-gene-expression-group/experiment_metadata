@@ -305,11 +305,11 @@ rule split_zooma_mapping_report:
 
         # generate $zoomaMappingReport.aux from all accessions at once
 
-        for wd in {params.working_directory}; do
-            for acc in {params.accs}; do
-       	        cat ${{wd}}/${{acc}}/${{acc}}-zoomifications-log.tsv >> {params.zoomaMappingReport}.aux
-      	        rm -rf ${{wd}}/${{acc}}/${{acc}}-zoomifications-log.tsv
-            done
+        for acc in {params.accs}; do
+            pushd {params.working_directory}/${{acc}}
+            cat ${{acc}}-zoomifications-log.tsv >> {params.zoomaMappingReport}.aux
+            rm -rf ${{acc}}-zoomifications-log.tsv
+            popd
         done
 
         echo ".aux file generated"
