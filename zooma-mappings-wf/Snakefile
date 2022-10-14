@@ -228,19 +228,7 @@ rule run_condense_sdrf:
         popd
         """
 
-rule compile_aux_file:
-    log:
-    input:
-        get_split_zooma_mapping_report_inputs(ACCESSIONS, logs_path)
-    shell:
-        """
-        set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
-        exec &> "{log}"
 
-       	cat {params.working_directory}/{wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv >> {params.zoomaMappingReport}.aux
-      	rm -rf {params.working_directory}/{wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv
-        """
-	
 rule apply_fixes:
     """
     Apply automatic fixes to all imported sdrf and idf files
@@ -304,7 +292,9 @@ rule split_zooma_mapping_report:
         get_split_zooma_mapping_report_inputs(ACCESSIONS, logs_path)
     params:
         split_report_files=get_split_report_files(date_current_run),
-        zoomaMappingReport=zooma_mapping_report(date_current_run)
+        zoomaMappingReport=zooma_mapping_report(date_current_run),
+        working_directory=working_dir,
+        accs=ACCESSIONS
     output:
         "{logs_path}/split_zooma_mapping_report.done"
     shell:
@@ -312,6 +302,15 @@ rule split_zooma_mapping_report:
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
         exec &> "{log}"
         echo {params.zoomaMappingReport}
+
+        # generate $zoomaMappingReport.aux from all accessions at once
+
+        for acc in {params.accs}; do
+       	    cat {params.working_directory}/${acc}/${acc}-zoomifications-log.tsv >> {params.zoomaMappingReport}.aux
+      	    rm -rf {params.working_directory}/${acc}/${acc}-zoomifications-log.tsv
+        done
+
+        echo ".aux file generated"
 
         if [ ! -s "{params.zoomaMappingReport}.aux" ]; then
             echo "ERROR: Something went wrong with condense_sdrf.pl run with Zooma mappings - no report is available" 
