@@ -1,6 +1,5 @@
 import re
 from os import listdir
-from os import environ
 from datetime import datetime
 from snakemake.utils import min_version
 
@@ -13,8 +12,6 @@ min_version("6.6.1")
 
 include: "rules/common.smk"  # python helper functions 
 
-envvars:
-    "WORKING_DIR"
 
 # below probably no longer needed bec of regex in common.smk
 wildcard_constraints:
@@ -296,7 +293,7 @@ rule split_zooma_mapping_report:
     params:
         split_report_files=get_split_report_files(date_current_run),
         zoomaMappingReport=zooma_mapping_report(date_current_run),
-        working_directory=os.environ["WORKING_DIR"], 
+        working_directory=working_dir,
         accs=get_accessions(working_dir)
     output:
         "{logs_path}/split_zooma_mapping_report.done"
