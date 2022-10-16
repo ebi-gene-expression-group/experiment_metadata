@@ -20,6 +20,9 @@ jobs:
         run: |
           echo "${GITHUB_WORKSPACE}" >> $GITHUB_PATH
 
+      - name: Set env for linting
+        run: echo "WORKING_DIR=../test_data" >> $GITHUB_ENV
+
       - name: Cache conda
         uses: actions/cache@v1
         env:
