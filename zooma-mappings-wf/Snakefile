@@ -216,15 +216,13 @@ rule run_condense_sdrf:
 
         # check if condense SDRF was successful 
         if [ ! -s "{params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv" ]; then
-	        echo "ERROR: Failed to generate {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv"
+            echo "ERROR: Failed to generate {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv"
             rm -rf {params.working_directory}/{wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv
-	        exit 1
+            exit 1
         else
             echo "All condense_sdrf tasks now done"
             echo "Updated condensed sdrf and idf files for all experiments"
 
-            cat {params.working_directory}/{wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv >> {params.zoomaMappingReport}.aux
-            rm -rf {params.working_directory}/{wildcards.accession}/{wildcards.accession}-zoomifications-log.tsv
             touch {output.done}
         fi
         popd
@@ -276,7 +274,7 @@ rule apply_fixes:
         popd
 	
         if [ {params.keep_backup_sdrf} == "false" ]; then
-	        # remove backup of old condensed
+            # remove backup of old condensed
             rm -rf {params.working_directory}/{wildcards.accession}/{wildcards.accession}.condensed-sdrf.tsv.bak
         fi
         """
@@ -294,7 +292,9 @@ rule split_zooma_mapping_report:
         get_split_zooma_mapping_report_inputs(ACCESSIONS, logs_path)
     params:
         split_report_files=get_split_report_files(date_current_run),
-        zoomaMappingReport=zooma_mapping_report(date_current_run)
+        zoomaMappingReport=zooma_mapping_report(date_current_run),
+        working_directory=working_dir,
+        accs=get_accessions(working_dir)
     output:
         "{logs_path}/split_zooma_mapping_report.done"
     shell:
@@ -302,6 +302,28 @@ rule split_zooma_mapping_report:
         set -e # snakemake on the cluster doesn't stop on error when --keep-going is set
         exec &> "{log}"
         echo {params.zoomaMappingReport}
+
+        # generate $zoomaMappingReport.aux from all accessions at once
+	
+        # first check that zoomifications files exists
+        missingzoomi=false
+        for acc in {params.accs}; do
+       	    if ! [ -f "{params.working_directory}/${{acc}}/${{acc}}-zoomifications-log.tsv" ]; then
+                echo "zoomifications-log.tsv not found for ${{acc}}"
+                missingzoomi=true
+       	    fi
+        done	
+        if [ "$missingzoomi" = true ] ; then
+            echo "Exiting execution due to missing zoomification files"
+            exit 1
+        fi
+
+        for acc in {params.accs}; do
+       	    cat {params.working_directory}/${{acc}}/${{acc}}-zoomifications-log.tsv >> {params.zoomaMappingReport}.aux
+      	    rm -rf {params.working_directory}/${{acc}}/${{acc}}-zoomifications-log.tsv
+        done
+
+        echo ".aux file generated"
 
         if [ ! -s "{params.zoomaMappingReport}.aux" ]; then
             echo "ERROR: Something went wrong with condense_sdrf.pl run with Zooma mappings - no report is available" 
@@ -327,7 +349,7 @@ rule copy_reports_to_targetDir:
     """
     Copy reports to $targetDir
     """
-    conda: 
+    conda:
         "envs/base.yaml"
     log:
         "{logs_path}/copy_reports_to_targetDir.log"
