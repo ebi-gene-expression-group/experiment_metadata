@@ -310,13 +310,13 @@ rule split_zooma_mapping_report:
         for acc in {params.accs}; do
        	    if ! [ -f "{params.working_directory}/${{acc}}/${{acc}}-zoomifications-log.tsv" ]; then
                 echo "zoomifications-log.tsv not found for ${{acc}}"
-		        missingzoomi=true
+                missingzoomi=true
        	    fi
         done	
-	    if [ "$missingzoomi" = true ] ; then
+        if [ "$missingzoomi" = true ] ; then
             echo "Exiting execution due to missing zoomification files"
             exit 1
-	    fi
+        fi
 
         for acc in {params.accs}; do
        	    cat {params.working_directory}/${{acc}}/${{acc}}-zoomifications-log.tsv >> {params.zoomaMappingReport}.aux
