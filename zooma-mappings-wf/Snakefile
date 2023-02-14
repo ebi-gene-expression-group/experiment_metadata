@@ -405,7 +405,7 @@ rule copy_reports_to_targetDir:
         # upon sucess, mail out the Zoomification reports location
         
         if [ {params.notifEmail} == "true" ]; then
-            echo -e "Dear curators,\n      Please find the Zooma mapping reports for the latest run for ${{today}} in ${{targetDir}}.\n\nGreetings from your friendly neighbourhood cron." | mutt -s "[{params.mode}/cron] Zooma mapping report is available in ${{targetDir}}" -- {params.notifEmail}
+            echo -e "Dear curators,\n\n       Please find the Zooma mapping reports for the latest run on ${{today}} in codon: ${{targetDir}}.\n\nGreetings from your Jenkins pipeline." | mutt -s "[notification] Zooma mapping reports available for {params.mode}" -- gene-expression@ebi.ac.uk
         fi
         pushd ${{targetDir}}/../
         current_run=$(ls -ltr | grep -v previous_run | grep -e '[[:digit:]]\{{4\}}-[[:digit:]]\{{2\}}' | tail -n 1 | awk '{{ print $9 }}')
