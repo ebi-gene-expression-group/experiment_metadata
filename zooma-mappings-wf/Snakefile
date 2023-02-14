@@ -403,7 +403,7 @@ rule copy_reports_to_targetDir:
         fi
 
         # upon sucess, mail out the Zoomification reports location
-        # not currently implemented
+        
         if [ {params.notifEmail} == "true" ]; then
             echo -e "Dear curators,\n      Please find the Zooma mapping reports for the latest run for ${{today}} in ${{targetDir}}.\n\nGreetings from your friendly neighbourhood cron." | mutt -s "[{params.mode}/cron] Zooma mapping report is available in ${{targetDir}}" -- {params.notifEmail}
         fi
