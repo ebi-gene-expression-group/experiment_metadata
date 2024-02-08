@@ -3,7 +3,7 @@ from os import listdir
 from datetime import datetime
 from snakemake.utils import min_version
 
-min_version("6.6.1")
+min_version("7.32.4")
 
 # This workflow updates all ontology mappings in condensed SDRF files, and then
 # updates all experiment designs on the current wwwdev tomcat machine (if set)
