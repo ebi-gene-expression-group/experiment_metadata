@@ -5,7 +5,8 @@ from snakemake.utils import min_version
 
 min_version("7.32.4")
 
-DATE_CURRENT_RUN=date_current_run
+# Define the constant with the current date
+DATE_CURRENT_RUN = datetime.now().strftime("%Y-%m-%d-%H:%M")
 
 # This workflow updates all ontology mappings in condensed SDRF files, and then
 # updates all experiment designs on the current wwwdev tomcat machine (if set)
