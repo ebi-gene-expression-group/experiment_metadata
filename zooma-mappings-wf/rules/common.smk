@@ -56,13 +56,7 @@ def get_exp_type_from_xml(wildcards):
 
 
 # define timestamp only once
-def get_date():
-    x = datetime.now()
-    date_time = x.strftime("%Y-%m-%d-%H:%M")
-    return date_time
-
-
-date_current_run = get_date()
+date_current_run = datetime.now().strftime("%Y-%m-%d-%H:%M")
 
 
 def zooma_mapping_report(date_current_run):
