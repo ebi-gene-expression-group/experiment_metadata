@@ -5,8 +5,6 @@ from snakemake.utils import min_version
 
 min_version("7.32.4")
 
-# Define the constant with the current date
-DATE_CURRENT_RUN = datetime.now().strftime("%Y-%m-%d-%H:%M")
 
 # This workflow updates all ontology mappings in condensed SDRF files, and then
 # updates all experiment designs on the current wwwdev tomcat machine (if set)
@@ -69,7 +67,7 @@ rule remove_aux_files:
         rules.check_zooma.output
     params:
         working_directory=working_dir,
-        zoomaMappingReport=zooma_mapping_report(DATE_CURRENT_RUN)
+        zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
         temp("{logs_path}/{accession}/remove_aux_files.done")
     shell:
@@ -117,7 +115,7 @@ rule run_condense_sdrf:
 	    prot_idf_path=config['prot_magetabfiles'],
 	    experiment_type=get_exp_type_from_xml,
         debugging=config['debugging'],
-        zoomaMappingReport=zooma_mapping_report(DATE_CURRENT_RUN)
+        zoomaMappingReport=zooma_mapping_report(date_current_run)
     output:
         sdrf=expand("{workingdir}/{{accession}}/{{accession}}.condensed-sdrf.tsv", workingdir=working_dir), 
         done=temp(expand("{logspath}/{{accession}}/run_condense_sdrf.done", logspath=logs_path))
@@ -294,8 +292,8 @@ rule split_zooma_mapping_report:
     input:
         get_split_zooma_mapping_report_inputs(ACCESSIONS, logs_path)
     params:
-        split_report_files=get_split_report_files(DATE_CURRENT_RUN),
-        zoomaMappingReport=zooma_mapping_report(DATE_CURRENT_RUN),
+        split_report_files=get_split_report_files(date_current_run),
+        zoomaMappingReport=zooma_mapping_report(date_current_run),
         working_directory=working_dir,
         accs=get_accessions(working_dir)
     output:
@@ -361,11 +359,11 @@ rule copy_reports_to_targetDir:
     params:
         mode=config['mode'],
         working_directory=working_dir,
-        zoomaMappingReport=zooma_mapping_report(DATE_CURRENT_RUN),
+        zoomaMappingReport=zooma_mapping_report(date_current_run),
         notifEmail=config['notifEmail'],
         previous_run_date=config['previousRunDate'],
         dest=config['dest'],
-        current_run=DATE_CURRENT_RUN
+        current_run=date_current_run
     output:
         "{logs_path}/copy_reports_to_targetDir.done"
     shell:
