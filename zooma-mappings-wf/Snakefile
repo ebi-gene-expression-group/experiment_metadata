@@ -5,12 +5,17 @@ from snakemake.utils import min_version
 
 min_version("7.32.4")
 
+
 # This workflow updates all ontology mappings in condensed SDRF files, and then
 # updates all experiment designs on the current wwwdev tomcat machine (if set)
 
 # The minimal required inputs are configuration files in xml format
 
 include: "rules/common.smk"  # python helper functions 
+
+# define timestamp only once
+date_current_run = None
+initialize_date_current_run()
 
 
 # below probably no longer needed bec of regex in common.smk
