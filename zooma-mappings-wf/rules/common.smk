@@ -56,11 +56,19 @@ def get_exp_type_from_xml(wildcards):
 
 
 
-# Define a function to initialize date_current_run only once
+# Define a function to initialize date_current_run only once, and write it to a file
+file_path = f"{logs_path}/date_current_run.txt"
+
 def initialize_date_current_run():
     global date_current_run
     if date_current_run is None:
-        date_current_run = datetime.now().strftime("%Y-%m-%d-%H:%M")
+        if os.path.exists(file_path):
+            with open(file_path, "r") as file:
+                date_current_run = file.read()
+        else:
+            date_current_run = datetime.now().strftime("%Y-%m-%d-%H:%M")
+            with open(file_path, "w") as file:
+                file.write(date_current_run)
 
 
 def zooma_mapping_report(date_current_run):
