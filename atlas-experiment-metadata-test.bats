@@ -92,3 +92,6 @@ setup() {
     [ -f "$test_unmelted_sdrf" ]
 }
 
+@test "Test get experiment type from XML" {
+    run perl get_experiment_type_from_xml.pl 
+}
